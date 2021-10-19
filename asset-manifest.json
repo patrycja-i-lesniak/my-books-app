@@ -1,0 +1,17 @@
+{
+  "files": {
+    "main.js": "/github.io/my-books-app/static/js/main.c72eb7bb.chunk.js",
+    "main.js.map": "/github.io/my-books-app/static/js/main.c72eb7bb.chunk.js.map",
+    "runtime-main.js": "/github.io/my-books-app/static/js/runtime-main.1c890e7b.js",
+    "runtime-main.js.map": "/github.io/my-books-app/static/js/runtime-main.1c890e7b.js.map",
+    "static/js/2.3b085406.chunk.js": "/github.io/my-books-app/static/js/2.3b085406.chunk.js",
+    "static/js/2.3b085406.chunk.js.map": "/github.io/my-books-app/static/js/2.3b085406.chunk.js.map",
+    "index.html": "/github.io/my-books-app/index.html",
+    "static/js/2.3b085406.chunk.js.LICENSE.txt": "/github.io/my-books-app/static/js/2.3b085406.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.1c890e7b.js",
+    "static/js/2.3b085406.chunk.js",
+    "static/js/main.c72eb7bb.chunk.js"
+  ]
+}
