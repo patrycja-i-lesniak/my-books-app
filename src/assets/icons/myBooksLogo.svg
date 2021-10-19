@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 2012 414" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linecap:square;stroke-miterlimit:2;">
+    <g transform="matrix(1,0,0,1,-194.472,-1084.92)">
+        <g transform="matrix(7.53546,0,0,7.53546,-3699.48,-6362.83)">
+            <text x="513px" y="1030px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;">my</text>
+        </g>
+        <g transform="matrix(524.856,0,0,508.577,746.487,1364.59)">
+            <path d="M0.452,0.257L0.451,-0.549L0.532,-0.549L0.532,0.257L0.452,0.257Z" style="fill:rgb(255,0,102);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(524.856,0,0,508.577,824.844,1364.59)">
+            <path d="M0.452,0.257L0.451,-0.549L0.532,-0.549L0.531,0.257L0.452,0.257Z" style="fill:rgb(255,0,102);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(535.389,0,0,514.778,632.685,1364.66)">
+            <path d="M0.077,0.254L0.319,-0.335L0.397,-0.335L0.154,0.254L0.077,0.254Z" style="fill:rgb(255,0,102);fill-rule:nonzero;"/>
+            <clipPath id="_clip1">
+                <path d="M0.077,0.254L0.319,-0.335L0.397,-0.335L0.154,0.254L0.077,0.254Z" clip-rule="nonzero"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1,0,0,1.36929,0.396372,-0.0759102)">
+                    <path d="M0.077,0.254L0.451,-0.328L0.533,-0.328L0.154,0.254L0.077,0.254Z" style="fill-rule:nonzero;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(535.389,0,0,704.879,709.685,1316.42)">
+            <path d="M0.077,0.254L0.395,-0.328L0.477,-0.328L0.154,0.254L0.077,0.254Z" style="fill:rgb(255,0,102);fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(7.53546,0,0,7.53546,-2759.02,-6266.03)">
+            <text x="513px" y="1030px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;">books</text>
+        </g>
+    </g>
+</svg>
