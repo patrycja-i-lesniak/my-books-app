@@ -16,12 +16,8 @@ html  {
 
 
 body {
-    max-width: 1000px;
     margin: 0 auto;
-    display: flex;
-    justify-content: center;
     font-family: "Poppins", sans-serif;
-    background-color:  ${({ theme }) => theme.white};
-
+    background-color: ${({ theme }) => theme.colors.white};
 }
 `;
