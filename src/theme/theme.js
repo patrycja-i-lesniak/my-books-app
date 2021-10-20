@@ -3,6 +3,7 @@ export const theme = {
     white: '#FFFFFF',
     lightLipstick: '#C4024F',
     lipstick: '#AE0046',
+    silver: '#CCCCCC',
     gray: '#808080',
     black: '#000000',
   },
@@ -23,9 +24,8 @@ export const theme = {
     small: 598,
     medium: 768,
   },
-shadows: {
-  boxShadow: '0 5px 20px -5px rgba(128, 128, 128, 0.8)',
-  textShadow: "-1px 3px 3px #bfbfbf",
-}
-  
+  shadows: {
+    boxShadow: '0 5px 20px -5px rgba(128, 128, 128, 0.8)',
+    textShadow: '-1px 3px 3px #bfbfbf',
+  },
 };
