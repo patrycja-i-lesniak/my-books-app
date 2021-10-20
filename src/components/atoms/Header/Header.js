@@ -1,6 +1,6 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
-const Heading = styled.h1`
+const Header = styled.h1`
   font-size: ${({ theme }) => theme.font.l};
   font-weight: ${({ theme }) => theme.bold};
   color: ${({ theme }) => theme.colors.lipstick};
@@ -15,4 +15,4 @@ const Heading = styled.h1`
     `};
 `;
 
-export default Heading;
+export default Header;
