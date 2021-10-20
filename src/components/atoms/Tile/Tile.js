@@ -9,12 +9,12 @@ const Tile = styled.div`
   border-radius: 3px;
   transition: transform 0.3s;
   background-image: url(${image});
-  background-size: 133px 200px;
+  background-size: 150px 200px;
   background-repeat: no-repeat;
-  background-position: center 20px;
 
   &:hover {
     transform: scale(1.05);
+    background-color: ${({ theme }) => theme.colors.lipstick};
   }
 
   ${({ secondary }) =>
