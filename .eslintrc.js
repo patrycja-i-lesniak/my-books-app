@@ -19,11 +19,13 @@ module.exports = {
   },
   plugins: ['react', 'import'],
   rules: {
-    'import/no-unresolved': [2, {commonjs: true, amd: true}],
+    'import/named': 2,
+    'import/namespace': 2,
+    'import/default': 2,
+    'import/export': 2,
     // suppress errors for missing 'import React' in files
     'react/react-in-jsx-scope': 'off',
     // allow jsx syntax in js files (for next.js project)
     'react/jsx-filename-extension': [1, { extensions: ['.js', '.jsx'] }], //should add ".ts" if typescript project,
-    
   },
 };
