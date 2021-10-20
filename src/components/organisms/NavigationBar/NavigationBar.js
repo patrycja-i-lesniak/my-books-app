@@ -37,7 +37,10 @@ const StyledLinkList = styled.ul`
   list-style: none;
 `;
 
-const StyledItem = styled.li`
+const activeClassName = 'active';
+
+const StyledItem = styled(NavLink).attrs(() => 
+({ activeClassName }))`
   padding: 0 50px 0 0;
   list-style: none;
   text-decoration: none;
@@ -47,7 +50,7 @@ const StyledItem = styled.li`
     display: none;
   }
 
-  &:active {
+  &.${activeClassName} {
     font-weight: 700;
   }
 `;
