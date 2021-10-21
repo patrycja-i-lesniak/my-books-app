@@ -12,6 +12,7 @@ const Header = styled.h1`
     secondary &&
     css`
       color: ${({ theme }) => theme.colors.gray};
+      font-size: ${({ theme }) => theme.font.s};
     `};
 `;
 
