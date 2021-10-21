@@ -39,11 +39,11 @@ const StyledLinkList = styled.ul`
 
 const activeClassName = 'active';
 
-const StyledItem = styled(NavLink).attrs(() => 
-({ activeClassName }))`
+const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   padding: 0 50px 0 0;
   list-style: none;
   text-decoration: none;
+  font-size: ${({ theme }) => theme.font.xxs};
   color: ${({ theme }) => theme.colors.gray};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
