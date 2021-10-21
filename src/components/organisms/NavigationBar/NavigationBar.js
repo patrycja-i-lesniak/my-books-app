@@ -4,7 +4,6 @@ import myBooksLogo from 'assets/icons/myBooksLogo.svg';
 import Button from 'components/atoms/Button/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Input from 'components/atoms/Input/Input';
-import searchIcon from 'assets/icons/search.svg';
 
 const StyledWrapper = styled.div`
   display: grid;
@@ -57,24 +56,6 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   }
 `;
 
-const StyledInputBox = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 260px;
-  height: 36px;
-  border-radius: 5px;
-  background-image: url(${searchIcon});
-  background-repeat: no-repeat;
-  background-position: 10px 50%;
-  border: 1px solid ${({ theme }) => theme.colors.desertStorm};
-`;
-
-const StyledInput = styled(Input)`
-  width: 220px;
-  height: 34px;
-  border: none;
-`;
-
 const NavigationBar = () => (
   <StyledWrapper>
     <StyledNavigationWrapper>
@@ -91,9 +72,7 @@ const NavigationBar = () => (
         </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
-    <StyledInputBox>
-      <StyledInput placeholder="search" />
-    </StyledInputBox>
+    <Input search/>
     <Button>new item</Button>
     <ButtonIcon></ButtonIcon>
   </StyledWrapper>

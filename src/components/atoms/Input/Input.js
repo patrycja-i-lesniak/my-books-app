@@ -1,4 +1,5 @@
-import styled from "styled-components";
+import styled, {css} from "styled-components";
+import searchIcon from "assets/icons/search.svg";
 
 const Input = styled.input`
   position: relative;
@@ -14,6 +15,21 @@ const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme.colors.gray};
   }
+
+  ${({ search }) =>
+    search &&
+    css`
+      padding: 10px 20px 10px 40px;
+      font-size: ${({ theme }) => theme.font.xxs};
+      background-image: url(${searchIcon});
+      background-size: 15px;
+      background-position: 15px 50%;
+      background-repeat: no-repeat;
+      border: 1px solid ${({ theme }) => theme.colors.desertStorm};
+      width: 270px;
+      height: 36px;
+      border-radius: 5px;
+    `}
 `;
 
 export default Input;
