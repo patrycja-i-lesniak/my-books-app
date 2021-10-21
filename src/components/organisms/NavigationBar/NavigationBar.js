@@ -92,7 +92,7 @@ const NavigationBar = () => (
       </StyledLinkList>
     </StyledNavigationWrapper>
     <StyledInputBox>
-      <StyledInput />
+      <StyledInput placeholder="search" />
     </StyledInputBox>
     <Button>new item</Button>
     <ButtonIcon></ButtonIcon>
