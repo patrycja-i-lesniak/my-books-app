@@ -1,17 +1,30 @@
 {
   "files": {
-    "main.js": "/github.io/my-books-app/static/js/main.c72eb7bb.chunk.js",
-    "main.js.map": "/github.io/my-books-app/static/js/main.c72eb7bb.chunk.js.map",
-    "runtime-main.js": "/github.io/my-books-app/static/js/runtime-main.1c890e7b.js",
-    "runtime-main.js.map": "/github.io/my-books-app/static/js/runtime-main.1c890e7b.js.map",
-    "static/js/2.3b085406.chunk.js": "/github.io/my-books-app/static/js/2.3b085406.chunk.js",
-    "static/js/2.3b085406.chunk.js.map": "/github.io/my-books-app/static/js/2.3b085406.chunk.js.map",
-    "index.html": "/github.io/my-books-app/index.html",
-    "static/js/2.3b085406.chunk.js.LICENSE.txt": "/github.io/my-books-app/static/js/2.3b085406.chunk.js.LICENSE.txt"
+    "main.css": "/flashcards-app/static/css/main.88550212.chunk.css",
+    "main.js": "/flashcards-app/static/js/main.d7008dd0.chunk.js",
+    "main.js.map": "/flashcards-app/static/js/main.d7008dd0.chunk.js.map",
+    "runtime-main.js": "/flashcards-app/static/js/runtime-main.cc23dc8c.js",
+    "runtime-main.js.map": "/flashcards-app/static/js/runtime-main.cc23dc8c.js.map",
+    "static/js/2.e4046353.chunk.js": "/flashcards-app/static/js/2.e4046353.chunk.js",
+    "static/js/2.e4046353.chunk.js.map": "/flashcards-app/static/js/2.e4046353.chunk.js.map",
+    "index.html": "/flashcards-app/index.html",
+    "static/css/main.88550212.chunk.css.map": "/flashcards-app/static/css/main.88550212.chunk.css.map",
+    "static/js/2.e4046353.chunk.js.LICENSE.txt": "/flashcards-app/static/js/2.e4046353.chunk.js.LICENSE.txt",
+    "static/media/10minut.4e746013.jpg": "/flashcards-app/static/media/10minut.4e746013.jpg",
+    "static/media/RotaryBox.module.scss": "/flashcards-app/static/media/readingIcon.6c279f8f.svg",
+    "static/media/close.c2cf8b48.svg": "/flashcards-app/static/media/close.c2cf8b48.svg",
+    "static/media/hamburger.817b99e3.svg": "/flashcards-app/static/media/hamburger.817b99e3.svg",
+    "static/media/ksiegatesknot.4d071442.jpg": "/flashcards-app/static/media/ksiegatesknot.4d071442.jpg",
+    "static/media/malarzdusz.cb4678fc.jpg": "/flashcards-app/static/media/malarzdusz.cb4678fc.jpg",
+    "static/media/malezycie.eecd65c2.jpg": "/flashcards-app/static/media/malezycie.eecd65c2.jpg",
+    "static/media/myBooksLogo.5916d3aa.svg": "/flashcards-app/static/media/myBooksLogo.5916d3aa.svg",
+    "static/media/search.c8fb929d.svg": "/flashcards-app/static/media/search.c8fb929d.svg",
+    "static/media/wyznaje.bcd8c1c0.jpg": "/flashcards-app/static/media/wyznaje.bcd8c1c0.jpg"
   },
   "entrypoints": [
-    "static/js/runtime-main.1c890e7b.js",
-    "static/js/2.3b085406.chunk.js",
-    "static/js/main.c72eb7bb.chunk.js"
+    "static/js/runtime-main.cc23dc8c.js",
+    "static/js/2.e4046353.chunk.js",
+    "static/css/main.88550212.chunk.css",
+    "static/js/main.d7008dd0.chunk.js"
   ]
 }
