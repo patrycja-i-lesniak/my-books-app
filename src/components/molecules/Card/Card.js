@@ -1,6 +1,6 @@
+import PropTypes from "prop-types";
 import styled from "styled-components";
 import Button from "components/atoms/Button/Button";
-import image from "assets/images/ksiegatesknot.jpg";
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -9,7 +9,7 @@ const StyledWrapper = styled.div`
   padding: 20px;
   margin: 0;
   width: 200px;
-  height: 350px;
+  min-height: 350px;
   transition: transform 0.3s;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   background-color: ${({ theme }) => theme.colors.white};
@@ -17,14 +17,13 @@ const StyledWrapper = styled.div`
   &:hover {
     transform: scale(1.03);
     background-color: ${({ theme }) => theme.colors.lipstick};
-    color: white;
+    color: ${({ theme }) => theme.colors.white};
   }
 `;
 
-const StyledImage = styled.img`
-  width: 150px;
+const StyledImage = styled.img` 
   height: 225px;
-  padding: 0 0 20px;
+  padding: 0 0 10px;
   background-color: transparent;
 `;
 
@@ -45,17 +44,28 @@ const StyledAuthor = styled.h2`
   padding: 0 0 5px;
 `;
 
-const Card = () => {
+const Card = ({cardType, imageUrl, title, author}) => {
   return (
     <>
-      <StyledWrapper>
-        <StyledImage src={image}/>
-        <StyledTitle>Księga Tęsknot</StyledTitle>
-        <StyledAuthor>Sue Monk Kidd</StyledAuthor>
+      <StyledWrapper cardType={cardType}>
+        <StyledImage src={imageUrl}/>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledAuthor>{author}</StyledAuthor>
         <Button books>see more</Button>
       </StyledWrapper>
     </>
   );
+};
+
+Card.propTypes = {
+  cardType: PropTypes.oneOf(['small', 'big']),
+  imageUrl: PropTypes.string.isRequired,
+  title: PropTypes.string.isRequired,
+  author: PropTypes.string.isRequired,
+};
+
+Card.defaultProps = {
+  cardTypes: 'medium',
 };
 
 export default Card;
