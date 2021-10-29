@@ -6,7 +6,8 @@ import Books from 'views/Books';
 import Home from 'views/Home';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 
-function Root() {
+
+const Root = () => {
   return (
     <BrowserRouter>
       <MainTemplate>
