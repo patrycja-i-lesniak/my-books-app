@@ -6,6 +6,7 @@ export const theme = {
     desertStorm: '#F1F1EF',
     silver: '#CCCCCC',
     gray: '#808080',
+    mineShaft: '#222222',
     black: '#000000',
   },
 
@@ -29,4 +30,6 @@ export const theme = {
     boxShadow: '0 5px 20px -5px rgba(128, 128, 128, 0.8)',
     textShadow: '-1px 3px 3px #bfbfbf',
   },
+
+  transitionTimingFunction: 'cubic-bezier(0.4, 0.2, 0.2, 1)',
 };
