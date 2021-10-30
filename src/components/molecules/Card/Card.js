@@ -7,10 +7,10 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
+  align-content: space-between;
+  width: 200px;
   padding: 20px;
   margin: 0;
-  width: 200px;
-  min-height: 350px;
   transition: transform 0.3s;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   background-color: ${({ theme }) => theme.colors.white};
@@ -76,19 +76,17 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const Card = ({ pageType, imageUrl, title, author, name, content, description, date }) => {
+const Card = ({ pageType, imageUrl, title, author, content, date }) => {
   return (
     <>
       <StyledWrapper pageType={pageType}>
-        <StyledImage pageType={pageType !== 'notes'} src={imageUrl} alt={title} />
+        <StyledImage src={imageUrl} />
         <StyledTitle>
           {title}
-          {name}
         </StyledTitle>
         <StyledParagraph>{date}</StyledParagraph>
         <StyledAuthor>{author}</StyledAuthor>
         <Paragraph>{content}</Paragraph>
-        <Paragraph>{description}</Paragraph>
         <StyledButton seeMore>see more</StyledButton>
       </StyledWrapper>
     </>
@@ -97,17 +95,21 @@ const Card = ({ pageType, imageUrl, title, author, name, content, description, d
 
 Card.propTypes = {
   pageType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
-  imageUrl: PropTypes.string.isRequired,
+  imageUrl: PropTypes.any,
   title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired,
-  name: PropTypes.string.isRequired,
-  content: PropTypes.string.isRequired,
-  date: PropTypes.string.isRequired,
-  description: PropTypes.string.isRequired,
+  author: PropTypes.string,
+  content: PropTypes.string,
+  date: PropTypes.string,
+  description: PropTypes.string,
 };
 
 Card.defaultProps = {
   pageTypes: 'books',
+  imageUrl: null,
+  author: null,
+  date: null,
+  description: null,
+  content: null,
 };
 
 export default Card;
