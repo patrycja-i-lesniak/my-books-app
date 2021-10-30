@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route } from 'react-router-dom';
+import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
 import Authors from 'views/Authors';
 import Notes from 'views/Notes';
@@ -12,7 +12,8 @@ const Root = () => {
     <BrowserRouter>
       <MainTemplate>
         <Switch>
-          <Route path="/" component={Home} />
+          <Route exact path="/" render={() => <Redirect to='/home'/>} />
+          <Route exact path="/home" component={Home} />
           <Route exact path="/books" component={Books} />
           <Route path="books/:id" component={DetailsPageTemplate} />
           <Route exact path="/authors" component={Authors} />
@@ -25,4 +26,4 @@ const Root = () => {
   );
 }
 
-export default Root;
+export default Root

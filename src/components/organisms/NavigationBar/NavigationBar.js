@@ -59,7 +59,7 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
 const NavigationBar = () => (
   <StyledWrapper>
     <StyledNavigationWrapper>
-      <StyledLogoLink as={NavLink} to="/" />
+      <StyledLogoLink to="/" />
       <StyledLinkList>
         <StyledItem as={NavLink} to="/books">
           books
