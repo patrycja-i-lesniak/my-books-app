@@ -28,22 +28,6 @@ const Button = styled.button`
       background-color: ${({ theme }) => theme.colors.white};
       color: ${({ theme }) => theme.colors.lipstick};
     `}
-
-  ${({ books }) =>
-    books &&
-    css`
-      border: none;
-      box-shadow: none;
-      background-color: transparent;
-      color: ${({ theme }) => theme.colors.gray};
-      font-size: ${({ theme }) => theme.font.xxs};
-      font-weight: ${({ theme }) => theme.font.light};
-
-      &:active {
-        font-weight: ${({ theme }) => theme.font.bold};
-        color: ${({ theme }) => theme.colors.white};
-      }
-    `}
 `;
 
 export default Button;
