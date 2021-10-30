@@ -1,6 +1,6 @@
 import styles from "./RotaryBox.module.scss";
 
-const Box = () => (
+const RotaryBox = () => (
   <>
     <div className={styles.wrapper}>
       <article className={styles.article}>
@@ -54,7 +54,7 @@ const Box = () => (
   </>
 );
 
-export default Box;
+export default RotaryBox;
 
 
 
