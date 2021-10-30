@@ -1,28 +1,37 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import PropTypes from 'prop-types';
 import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
 
 const StyledWrapper = styled.div`
   max-width: 1080px;
-  background-color: #f4f1f1;
   margin: 50px auto;
 `;
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: ${({pageType}) => ( pageType === 'home' ? 'repeat(3, 1fr)' : 'repeat(5, 1fr)')};
+  grid-template-columns: repeat(5, 1fr);
   grid-gap: 40px 20px;
   justify-items: center;
 
+  ${({ pageType }) =>
+    pageType === 'home' &&
+    css`
+      grid-template-columns: 1fr;
+    `};
 
+  ${({ pageType }) =>
+    pageType === 'notes' &&
+    css`
+      grid-template-columns: 1fr;
+    `}
 `;
 
 const GridTemplate = ({ children, pageType }) => (
   <UserPageTemplate>
     <StyledWrapper>
       <Header >Nagłówek strony {pageType}</Header>
-      <StyledGrid>{children}</StyledGrid>
+      <StyledGrid pageType={pageType}>{children}</StyledGrid>
     </StyledWrapper>
   </UserPageTemplate>
 );
