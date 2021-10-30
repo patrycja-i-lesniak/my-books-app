@@ -5,7 +5,7 @@ export const theme = {
     lipstick: '#AE0046',
     desertStorm: '#F1F1EF',
     silver: '#CCCCCC',
-    gray: '#808080',
+    grey: '#808080',
     mineShaft: '#222222',
     black: '#000000',
   },

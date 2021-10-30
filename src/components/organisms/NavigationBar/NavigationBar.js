@@ -45,7 +45,7 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   list-style: none;
   text-decoration: none;
   font-size: ${({ theme }) => theme.font.xxs};
-  color: ${({ theme }) => theme.colors.gray};
+  color: ${({ theme }) => theme.colors.grey};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;

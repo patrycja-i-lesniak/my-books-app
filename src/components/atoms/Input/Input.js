@@ -13,7 +13,7 @@ const Input = styled.input`
   outline: none;
 
   ::placeholder {
-    color: ${({ theme }) => theme.colors.gray};
+    color: ${({ theme }) => theme.colors.grey};
   }
 
   ${({ search }) =>
