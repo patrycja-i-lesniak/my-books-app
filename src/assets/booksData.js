@@ -6,6 +6,7 @@ import wyznaje from "assets/images/wyznaje.jpg";
 
 export const booksData = [
   {
+    id: 1,
     imageUrl: malezycie,
     title: "Małe życie",
     author: "Hanya Yanagihara",
@@ -20,6 +21,7 @@ export const booksData = [
   },
 
   {
+    id: 2,
     imageUrl: ksiegatesknot,
     title: "Księga tęsknot",
     author: "Sue Monk Kidd",
@@ -34,6 +36,7 @@ export const booksData = [
   },
 
   {
+    id: 3,
     imageUrl: dziesiecminut,
     title: "10 minut i 38 sekund na tym dziwnym świecie",
     author: "Elif Shafak",
@@ -48,6 +51,7 @@ export const booksData = [
   },
 
   {
+    id: 4,
     imageUrl: malarzdusz,
     title: "Malarz dusz",
     author: "Ildefonso Falcones",
@@ -62,6 +66,7 @@ export const booksData = [
   },
 
   {
+    id: 5,
     imageUrl: wyznaje,
     title: "Wyznaję",
     author: "Jaume Cabré",
@@ -78,14 +83,16 @@ export const booksData = [
 
 export const authorsData = [
   {
+    id: 1,
     imageUrl: "https://s.lubimyczytac.pl/upload/authors/30385/876459-352x500.jpg",
-    author: "Brandon Sanderson",
+    name: "Brandon Sanderson",
     date: "19.12.1975",
     description:
       "Amerykański pisarz fantastyki i powieści przygodowych dla młodzieży, wykładowca twórczego pisania. Dwukrotny laureat nagrody Hugo. Jego książka „Stalowe serce” została nominowana w Plebiscycie Książka Roku 2015 lubimyczytac.pl w kategorii SF. Sanderson konsekwentnie pisał przez cały okres studiów licencjackich i magisterskich, a do 2003 roku napisał dwanaście powieści, chociaż żaden z wydawców nie zaakceptował żadnej z nich do publikacji. Będąc w trakcie studiów podyplomowych na BYU, redaktor Tor Books Moshe Feder skontaktował się z nim, aby powiedzieć, że chce nabyć jedną ze swoich książek. Sanderson przedłożył rękopis swojej szóstej powieści Elantris półtora roku wcześniej. Elantris został opublikowany przez Tor Books w dniu 21 kwietnia 2005 r., Aby ogólnie pozytywne recenzje. Następnie w 2006 r. Ukazał się Mistborn: The Final Empire , pierwsza książka w jego Mistbornfantastyczna trylogia, w której „allomanci” - ludzie zdolni do „spalania” metali i stopów po ich spożyciu - zyskują wzmocnione zmysły i kontrolę nad potężnymi siłami nadprzyrodzonymi. W 2007 roku opublikował drugą książkę z serii Mistborn The Well of Ascension . Później tego samego roku Sanderson opublikował powieść dla dzieci Alcatraz Versus the Evil Librarians , o chłopcu o imieniu Alcatraz z talentem do robienia rzeczy. Alcatraz konfrontuje się z grupą złych bibliotekarzy, którzy chcą przejąć władzę nad światem. Pierwsze z jego „ praw magii ” opublikowano po raz pierwszy w 2007 r., A drugie i trzecie odpowiednio w 2012 i 2013 r. W 2008 r. Opublikowano trzecią i ostatnią książkę trylogii Mistborn, zatytułowaną The Hero of Ages , a także drugą książkę z serii Alcatraz, zatytułowanąAlcatraz kontra kości skryba . W tym samym roku rozpoczął podcast Writing Excuses z Howardem Taylerem i Danem Wellsem. W 2009 roku Tor Books opublikował Warbreaker , który pierwotnie pojawił się seryjnie na stronie Sandersona, gdy pisał powieść od 2006 do 2009 roku. W tym samym roku ukazała się trzecia książka o Alcatraz , zatytułowana Alcatraz kontra rycerze kryształów .",
     oficialPage: "http://www.brandonsanderson.com/",
   },
   {
+    id: 2,
     imageUrl: "https://s.lubimyczytac.pl/upload/authors/81732/766091-352x500.jpg",
     author: "Samantha Shannon",
     date: "08.11.1991",
@@ -97,9 +104,17 @@ export const authorsData = [
 
 export const notesData = [
   {
-    title: "Lorem ipsum",
-    date: "21.10.2021",
-    description:
-      "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.",
+    id: 1,
+    title: 'Lorem ipsum',
+    date: '21.10.2021',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
+  },
+  {
+    id: 2,
+    title: 'Lorem ipsum',
+    date: '30.10.2021',
+    content:
+      'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
 ];
