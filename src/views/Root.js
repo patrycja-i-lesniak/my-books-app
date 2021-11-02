@@ -1,4 +1,4 @@
-import { BrowserRouter, Switch, Route, Redirect } from 'react-router-dom';
+import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
 import Authors from 'views/Authors';
 import Notes from 'views/Notes';
@@ -9,7 +9,7 @@ import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 
 const Root = () => {
   return (
-    <BrowserRouter>
+    <HashRouter>
       <MainTemplate>
         <Switch>
           <Route exact path="/" render={() => <Redirect to='/home'/>} />
@@ -22,7 +22,7 @@ const Root = () => {
           <Route path="notes/:id" component={DetailsPageTemplate} />
         </Switch>
       </MainTemplate>
-    </BrowserRouter>
+    </HashRouter>
   );
 }
 
