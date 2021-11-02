@@ -6,14 +6,14 @@ const authors = authorsData;
 
 const Authors = () => (
   <GridTemplate pageType="authors">
-    {authors.map(({ name, imageUrl, id, date, description, oficialPage }) => (
+    {authors.map(({ name, imageUrl, id, date, content, oficialPage }) => (
       <Card
         imageUrl={imageUrl}
-        name={name}
+        title={name}
         date={date}
         oficialPage={oficialPage}
         key={id}
-        description={description}
+        content={content}
       />
     ))}
   </GridTemplate>
