@@ -2,7 +2,6 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import myBooksLogo from 'assets/icons/myBooksLogo.svg';
 import Button from 'components/atoms/Button/Button';
-import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Input from 'components/atoms/Input/Input';
 
 const StyledWrapper = styled.div`
@@ -74,7 +73,6 @@ const NavigationBar = () => (
     </StyledNavigationWrapper>
     <Input search placeholder='search by title, author or ISBN'/>
     <Button>log in</Button>
-    <ButtonIcon></ButtonIcon>
   </StyledWrapper>
 );
 
