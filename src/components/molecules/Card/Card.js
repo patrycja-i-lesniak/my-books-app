@@ -29,7 +29,7 @@ const StyledImage = styled.img`
 
 const StyledTitle = styled.h1`
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.font.xs};
+  font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.font.bold};
   text-align: center;
   padding: 0 0 10px;
@@ -42,7 +42,7 @@ const StyledTitle = styled.h1`
 
 const StyledAuthor = styled.h2`
   color: ${({ theme }) => theme.colors.black};
-  font-size: ${({ theme }) => theme.font.xxs};
+  font-size: 1.4rem;
   font-weight: ${({ theme }) => theme.font.regular};
   margin: 0;
   text-align: center;
@@ -63,7 +63,7 @@ const StyledButton = styled(Button)`
   box-shadow: none;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.grey};
-  font-size: ${({ theme }) => theme.font.xxs};
+  font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.font.light};
 
   ${StyledWrapper}:hover & {
@@ -81,9 +81,7 @@ const Card = ({ pageType, imageUrl, title, author, content, date }) => {
     <>
       <StyledWrapper pageType={pageType}>
         <StyledImage src={imageUrl} />
-        <StyledTitle>
-          {title}
-        </StyledTitle>
+        <StyledTitle>{title}</StyledTitle>
         <StyledParagraph>{date}</StyledParagraph>
         <StyledAuthor>{author}</StyledAuthor>
         <Paragraph>{content}</Paragraph>
