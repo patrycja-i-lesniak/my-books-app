@@ -11,6 +11,7 @@
     "eslint-plugin-import": "^2.25.2",
     "gh-pages": "^3.2.3",
     "node-sass": "^6.0.1",
+    "or": "^0.2.0",
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
@@ -19,7 +20,8 @@
     "react-scripts": "4.0.3",
     "styled-components": "^5.3.3",
     "styled-normalize": "^8.0.7",
-    "web-vitals": "^1.1.2"
+    "web-vitals": "^1.1.2",
+    "with-router": "^1.0.1"
   },
   "scripts": {
     "start": "react-scripts start",
