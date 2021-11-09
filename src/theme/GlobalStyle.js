@@ -11,7 +11,7 @@ ${normalize}
 }
 
 html  {
-  font-size: 62.5%large;
+  font-size: 62.5%;
 }
 
 
