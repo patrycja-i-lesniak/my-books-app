@@ -14,12 +14,7 @@ export const theme = {
     light: 300,
     regular: 400,
     bold: 600,
-    xxs: '1rem',
-    xs: '1.2rem',
-    s: '1.5rem',
-    m: '1,7rem',
-    l: '2rem',
-    xl: '4rem',
+   
   },
 
   breakpoints: {
