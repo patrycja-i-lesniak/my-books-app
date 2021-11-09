@@ -20,6 +20,7 @@ export const theme = {
   breakpoints: {
     small: 598,
     medium: 768,
+    large:  1024,
   },
   shadows: {
     boxShadow: '0 5px 20px -5px rgba(128, 128, 128, 0.8)',
