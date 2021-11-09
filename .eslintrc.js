@@ -19,7 +19,7 @@ module.exports = {
   },
   plugins: ['react', 'import'],
   rules: {
-    // 'import/named': 1,
+    'import/named': 1,
     // 'import/namespace': 1,
     // 'import/default': 1,
     // 'import/export': 0,
