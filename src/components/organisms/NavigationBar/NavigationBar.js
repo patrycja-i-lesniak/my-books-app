@@ -7,7 +7,7 @@ import Input from 'components/atoms/Input/Input';
 
 const StyledWrapper = styled.div`
   display: grid;
-  grid-template-columns: 1fr 300px 120px;
+  grid-template-columns: 1fr 360px 120px;
   align-items: end;
   padding: 20px 40px;
   border-bottom: 2px solid ${({ theme }) => theme.colors.lipstick};
@@ -72,8 +72,8 @@ const NavigationBar = () => (
         </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
-    <Input search/>
-    <Button>new item</Button>
+    <Input search placeholder='search by title, author or ISBN'/>
+    <Button>log in</Button>
     <ButtonIcon></ButtonIcon>
   </StyledWrapper>
 );
