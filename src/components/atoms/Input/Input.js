@@ -4,9 +4,8 @@ import searchIcon from "assets/icons/search.svg";
 const Input = styled.input`
     position: relative;
     margin: 0;
-    width: 100%;
     color: ${({ theme }) => theme.colors.lipstick};
-    font-size: ${({ theme }) => theme.font.xxs};
+    font-size: 1.6rem;
     border: none;
     transition: 0.1s all;
     border-bottom: 1px solid ${({ theme }) => theme.colors.silver};
@@ -20,7 +19,7 @@ const Input = styled.input`
         search &&
         css`
             padding: 10px 20px 10px 40px;
-            font-size: ${({ theme }) => theme.font.xxs};
+            font-size: 1.2rem;
             background-image: url(${searchIcon});
             background-size: 15px;
             background-position: 15px 50%;

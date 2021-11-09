@@ -7,7 +7,6 @@ const Button = styled.button`
   font-weight: 600;
   width: 120px;
   height: 36px;
-  font-size: ${({ theme }) => theme.font.xxs};
   border-radius: 3px;
   cursor: pointer;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};

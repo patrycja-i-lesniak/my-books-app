@@ -1,7 +1,7 @@
 import styled, { css } from 'styled-components';
 
 const Header = styled.h1`
-  font-size: ${({ theme }) => theme.font.l};
+  font-size: 3.5rem;
   font-weight: ${({ theme }) => theme.bold};
   color: ${({ theme }) => theme.colors.lipstick};
   text-align: center;
@@ -12,7 +12,7 @@ const Header = styled.h1`
     secondary &&
     css`
       color: ${({ theme }) => theme.colors.gray};
-      font-size: ${({ theme }) => theme.font.s};
+      font-size: 2rem;
     `};
 `;
 

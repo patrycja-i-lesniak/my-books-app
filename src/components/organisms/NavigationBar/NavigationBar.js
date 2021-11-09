@@ -43,7 +43,7 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   padding: 0 50px 0 0;
   list-style: none;
   text-decoration: none;
-  font-size: ${({ theme }) => theme.font.xxs};
+  font-size: 1.7rem;
   color: ${({ theme }) => theme.colors.grey};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
