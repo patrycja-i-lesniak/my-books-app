@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
 import { Container } from 'components/atoms/Container';
-
+import Modal from 'components/organisms/Modal';
 
 const StyledGrid = styled.div`
   display: grid;
@@ -33,6 +33,7 @@ const GridTemplate = ({ children, pageType }) => (
       <Header>Nagłówek strony {pageType}</Header>
       <StyledGrid pageType={pageType}>{children}
       </StyledGrid>
+      <Modal/>
     </Container>
   </UserPageTemplate>
 );
