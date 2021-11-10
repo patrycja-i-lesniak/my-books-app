@@ -2,7 +2,7 @@ import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
 import myBooksLogo from 'assets/icons/myBooksLogo.svg';
 import Button from 'components/atoms/Button/Button';
-import Input from 'components/atoms/Input/Input';
+import SearchBox from 'components/atoms/SearchBox';
 
 const StyledWrapper = styled.div`
   display: grid;
@@ -67,11 +67,7 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   }
 `;
 
-const StyledInput = styled(Input)`
-  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-    display: none;
-  }
-`;
+
 
 const NavigationBar = () => (
   <StyledWrapper>
@@ -89,7 +85,7 @@ const NavigationBar = () => (
         </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
-    <StyledInput search placeholder='search by title, author or ISBN'/>
+    <SearchBox placeholder='search by title, author or ISBN'/>
     <Button>log in</Button>
   </StyledWrapper>
 );
