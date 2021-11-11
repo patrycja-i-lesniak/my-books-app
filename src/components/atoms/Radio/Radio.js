@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const StyledWrapper = styled.div`
@@ -33,11 +33,10 @@ const StyledInput = styled.input`
 // `;
 
 const Radio = () => {
-  const [itemType, setItemType] = React.useState('book');
+  const [itemType, setItemType] = useState('book');
 
   const handleRadioButtonChange = (e) => {
     setItemType(e.target.value);
-    console.log(e.target.value);
   };
 
   return (
