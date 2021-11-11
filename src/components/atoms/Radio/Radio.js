@@ -27,7 +27,6 @@ const StyledField = styled(Field)`
 `;
 
 const Radio = () => {
-  
   return (
     <StyledWrapper>
       <Formik
@@ -36,7 +35,7 @@ const Radio = () => {
         }}
         onSubmit={async (values) => {
           await new Promise((r) => setTimeout(r, 500));
-          alert(JSON.stringify(values, null, 3));
+          alert(JSON.stringify(values, null, 2));
         }}
       >
         {() => (
