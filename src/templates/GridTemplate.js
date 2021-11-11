@@ -49,6 +49,12 @@ class GridTemplate extends Component {
     }));
   };
 
+  closeModal = () => {
+    this.setState(() => ({
+      isModalOpen: false,
+    }));
+  };
+
   render() {
     const { isModalOpen } = this.state;
     const { children, pageType } = this.props;
@@ -62,7 +68,7 @@ class GridTemplate extends Component {
           {isModalOpen && (
             <>
               <StyledBackdrop />
-              <Modal />
+              <Modal closeModalFn={this.closeModal} />
             </>
           )}
         </Container>
