@@ -13,7 +13,7 @@ const Header = styled.h1`
     css`
       color: ${({ theme }) => theme.colors.gray};
       font-size: 2.6rem;
-      margin: 4rem 0;
+      margin: 3rem 0;
     `};
 `;
 
