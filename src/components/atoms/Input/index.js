@@ -44,7 +44,7 @@ const Input = ({ name, type, onChange, onBlur, values }) => (
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  type: PropTypes.oneOf(['text', 'number', 'url']),
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   values: PropTypes.func.isRequired,
