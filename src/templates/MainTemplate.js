@@ -23,8 +23,6 @@ const initialBookState = booksData;
 const initialAuthorState = authorsData;
 const initialNoteState = notesData;
 
-
-
 class MainTemplate extends Component {
   state = {
     pageType: 'home',
