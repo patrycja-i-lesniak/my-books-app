@@ -32,4 +32,5 @@ export const StyledBackdrop = styled.div`
   left: 0;
   top: 0;
   z-index: 0;
+  position: fixed;
 `;
