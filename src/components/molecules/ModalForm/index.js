@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button/Button';
@@ -37,7 +38,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const ModalForm = () => {
+const ModalForm = ({addItemFn}) => {
   const { values, handleChange, handleSubmit, handleBlur } = useFormik({
     initialValues: {
       type: '',
@@ -57,7 +58,7 @@ const ModalForm = () => {
 
   return (
     <StyledWrapper>
-      <StyledForm autoComplete="off" onSubmit={handleSubmit}>
+      <StyledForm autoComplete="off" onSubmit={handleSubmit, addItemFn}>
         <Input
           type="text"
           name="title"
@@ -135,5 +136,9 @@ const ModalForm = () => {
     </StyledWrapper>
   );
 };
+
+ModalForm.propTypes = {
+  addItemFn: PropTypes.func.isRequired,
+}
 
 export default ModalForm;
