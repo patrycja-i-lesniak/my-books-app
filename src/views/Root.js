@@ -1,3 +1,4 @@
+import React from 'react';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
 import Authors from 'views/Authors';
@@ -6,13 +7,11 @@ import Books from 'views/Books';
 import Home from 'views/Home';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 
-
-const Root = () => {
-  return (
+const Root = () => (
     <HashRouter>
       <MainTemplate>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to='/home'/>} />
+          <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/books" component={Books} />
           <Route path="books/:id" component={DetailsPageTemplate} />
@@ -24,6 +23,5 @@ const Root = () => {
       </MainTemplate>
     </HashRouter>
   );
-}
 
-export default Root
+export default Root;
