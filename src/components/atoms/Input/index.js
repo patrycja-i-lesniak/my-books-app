@@ -26,11 +26,17 @@ const StyledLabel = styled.label`
   color: ${({ theme }) => theme.colors.grey};
 `;
 
-const Input = ({name}) => (
+const Input = ({ name, type, onChange, onBlur, values }) => (
   <StyledWrapper>
-    <StyledField/>
-    <StyledLabel>{name}</StyledLabel>  
-</StyledWrapper>  
+    <StyledField
+      type={type}
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={values}
+    />
+    <StyledLabel>{name}</StyledLabel>
+  </StyledWrapper>
 );
 
 
