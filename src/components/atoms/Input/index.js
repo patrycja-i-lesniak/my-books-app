@@ -2,7 +2,7 @@ import PropTypes from "prop-types";
 import styled from "styled-components";
 
 const StyledWrapper = styled.div`
-  /* position: relative; */
+  position: relative;
   width: 100%;
   display: flex; flex-direction: column;
 `;
@@ -11,7 +11,7 @@ const StyledField = styled.input`
   color: ${({ theme }) => theme.colors.lipstick};
   font-size: 1.5rem;
   border: none;
-  line-height: 2;
+  line-height: 3;
   border-bottom: 1px solid ${({ theme }) => theme.colors.silver};
   outline: none;
 
@@ -24,6 +24,8 @@ const StyledField = styled.input`
 const StyledLabel = styled.label`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.grey};
+  position: absolute;
+  bottom: 3px
 `;
 
 const Input = ({ name, type, onChange, onBlur, values }) => (
@@ -41,7 +43,11 @@ const Input = ({ name, type, onChange, onBlur, values }) => (
 
 
 Input.propTypes = {
-    name: PropTypes.string.isRequired,
+  name: PropTypes.string.isRequired,
+  type: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  onChange: PropTypes.func.isRequired,
+  onBlur: PropTypes.func.isRequired,
+  values: PropTypes.func.isRequired,
 };
 
 export default Input; 
