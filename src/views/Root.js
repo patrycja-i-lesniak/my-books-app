@@ -5,7 +5,7 @@ import Authors from 'views/Authors';
 import Notes from 'views/Notes';
 import Books from 'views/Books';
 import Home from 'views/Home';
-import DetailsPageTemplate from 'templates/DetailsPageTemplate';
+import DetailsPage from 'views/DetailsPage';
 
 const Root = () => (
     <HashRouter>
@@ -14,11 +14,11 @@ const Root = () => (
           <Route exact path="/" render={() => <Redirect to="/home" />} />
           <Route exact path="/home" component={Home} />
           <Route exact path="/books" component={Books} />
-          <Route path="books/:id" component={DetailsPageTemplate} />
+          <Route path="books/:id" component={DetailsPage} />
           <Route exact path="/authors" component={Authors} />
-          <Route path="notes/:id" component={DetailsPageTemplate} />
+          <Route path="notes/:id" component={DetailsPage} />
           <Route exact path="/notes" component={Notes} />
-          <Route path="notes/:id" component={DetailsPageTemplate} />
+          <Route path="notes/:id" component={DetailsPage} />
         </Switch>
       </MainTemplate>
     </HashRouter>
