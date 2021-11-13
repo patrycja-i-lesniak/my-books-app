@@ -26,7 +26,7 @@ const StyledGrid = styled.div`
 `;
 
 const GridTemplate = ({ children, pageType }) => (
-      <UserPageTemplate>
+      <UserPageTemplate pageType={pageType}>
         <Container>
           <Header>Nagłówek strony {pageType}</Header>
           <StyledGrid pageType={pageType}>
