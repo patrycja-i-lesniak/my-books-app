@@ -12,11 +12,13 @@ const Authors = ({authors}) => (
 );
 
 Authors.propTypes = {
-  authors: PropTypes.shape({
+  authors: PropTypes.arrayOf(
+  PropTypes.shape({
     id: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
+    name: PropTypes.string.isRequired,
   }),
+  ),
 };
 
 Authors.defaultProps = {
