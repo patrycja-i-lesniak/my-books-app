@@ -74,32 +74,29 @@ const StyledButton = styled(Button)`
     color: ${({ theme }) => theme.colors.white};
   }
 
-   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: inline-block;
-   }
+  }
 `;
 
 const InnerWrapper = styled.div`
-display: flex;
-flex-direction: column;
-align-items: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 `;
 
 const Card = ({ pageType, imageUrl, title, author, content, date }) => {
   return (
-    <>
-      <StyledWrapper pageType={pageType}>
-        <StyledImage src={imageUrl} />
-        <InnerWrapper>
-          <StyledTitle>{title}</StyledTitle>
-          <StyledAuthor>{author}</StyledAuthor>
-          {pageType === 'notes'
-            ? <StyledParagraph>{date}</StyledParagraph> && <Paragraph>{content}</Paragraph>
-            : null}
-        </InnerWrapper>
-        <StyledButton seeMore>read more</StyledButton>
-      </StyledWrapper>
-    </>
+    <StyledWrapper pageType={pageType}>
+      <StyledImage src={imageUrl} />
+      <InnerWrapper>
+        <StyledTitle>{title}</StyledTitle>
+        <StyledAuthor>{author}</StyledAuthor>
+        <StyledParagraph>{date}</StyledParagraph>
+        <Paragraph>{content}</Paragraph>
+      </InnerWrapper>
+      <StyledButton seeMore>read more</StyledButton>
+    </StyledWrapper>
   );
 };
 
