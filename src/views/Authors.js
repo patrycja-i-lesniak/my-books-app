@@ -1,21 +1,32 @@
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
-import { authorsData } from 'assets/booksData';
 
-const authors = authorsData;
-
-const Authors = () => (
+const Authors = ({authors}) => (
   <GridTemplate pageType="authors">
-    {authors.map(({ name, imageUrl, id, date, content, oficialPage }) => (
-      <Card
-        imageUrl={imageUrl}
-        title={name}
-        date={date}
-        oficialPage={oficialPage}
-        key={id}
-        content={content}
-      />
+    {authors.map(({ name, imageUrl, id }) => (
+      <Card imageUrl={imageUrl} title={name} key={id} />
     ))}
   </GridTemplate>
 );
-export default Authors;
+
+Authors.propTypes = {
+  authors: PropTypes.shape({
+    id: PropTypes.number.isRequired,
+    imageUrl: PropTypes.string.isRequired,
+    author: PropTypes.string.isRequired,
+  }),
+};
+
+Authors.defaultProps = {
+  authors: [],
+};
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  const { authors } = state;
+  return { authors };
+};
+
+export default connect(mapStateToProps)(Authors);
