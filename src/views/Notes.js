@@ -12,11 +12,14 @@ const Notes = ({notes}) => (
 );
 
 Notes.propTypes = {
-  notes: PropTypes.shape({
-    id: PropTypes.number.isRequired,
-    imageUrl: PropTypes.string.isRequired,
-    author: PropTypes.string.isRequired,
-  }),
+  notes: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      content: PropTypes.string.isRequired,
+      date: PropTypes.string.isRequired,
+    }),
+  ),
 };
 
 Notes.defaultProps = {
