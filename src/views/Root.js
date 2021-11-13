@@ -12,7 +12,7 @@ const Root = () => (
     <HashRouter>
       <MainTemplate>
         <Switch>
-          <Route exact path="/" render={() => <Redirect to="/home" />} />
+          <Route exact path="/" render={() => <Redirect to={routes.home} />} />
           <Route exact path={routes.home} component={Home} />
           <Route exact path={routes.books} component={Books} />
           <Route path={routes.book} component={DetailsPage} />
