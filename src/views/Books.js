@@ -12,13 +12,17 @@ const Books = ({ books }) => (
   </GridTemplate>
 );
 
+
+
 Books.propTypes = {
-  books: PropTypes.shape({
+  books: PropTypes.arrayOf(
+  PropTypes.shape({
     id: PropTypes.number.isRequired,
     imageUrl: PropTypes.string.isRequired,
     title: PropTypes.string.isRequired,
     author: PropTypes.string.isRequired,
   }),
+  )
 };
 
 Books.defaultProps = {
