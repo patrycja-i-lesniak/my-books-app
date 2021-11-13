@@ -121,8 +121,7 @@ const initialState = {
 };
 
 // eslint-disable-next-line
-const rootReducer = (state = initialState, action) => {
-  console.col(action);
+export const rootReducer = (state = initialState, action) => {
+      console.log(action);
+      return state;
 };
-
-export default rootReducer;
