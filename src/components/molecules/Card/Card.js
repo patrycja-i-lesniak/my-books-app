@@ -23,8 +23,8 @@ const StyledWrapper = styled.div`
 
 const StyledImage = styled.img`
   height: 225px;
-  padding: 0 0 10px;
   background-color: transparent;
+  margin-bottom: 10px;
 `;
 
 const StyledTitle = styled.h1`
@@ -32,7 +32,6 @@ const StyledTitle = styled.h1`
   font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.font.bold};
   text-align: center;
-  padding: 0 0 10px;
   margin: 0;
 
   ${StyledWrapper}:hover & {
@@ -46,7 +45,6 @@ const StyledAuthor = styled.h2`
   font-weight: ${({ theme }) => theme.font.regular};
   margin: 0;
   text-align: center;
-  padding: 0 0 5px;
 
   ${StyledWrapper}:hover & {
     color: white;
@@ -65,6 +63,7 @@ const StyledButton = styled(Button)`
   color: ${({ theme }) => theme.colors.grey};
   font-size: 1.2rem;
   font-weight: ${({ theme }) => theme.font.light};
+  height: 20px;
 
   ${StyledWrapper}:hover & {
     color: white;
@@ -74,6 +73,16 @@ const StyledButton = styled(Button)`
     font-weight: ${({ theme }) => theme.font.bold};
     color: ${({ theme }) => theme.colors.white};
   }
+
+   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    display: inline-block;
+   }
+`;
+
+const InnerWrapper = styled.div`
+display: flex;
+flex-direction: column;
+align-items: center;
 `;
 
 const Card = ({ pageType, imageUrl, title, author, content, date }) => {
@@ -81,11 +90,14 @@ const Card = ({ pageType, imageUrl, title, author, content, date }) => {
     <>
       <StyledWrapper pageType={pageType}>
         <StyledImage src={imageUrl} />
-        <StyledTitle>{title}</StyledTitle>
-        <StyledParagraph>{date}</StyledParagraph>
-        <StyledAuthor>{author}</StyledAuthor>
-        <Paragraph>{content}</Paragraph>
-        <StyledButton seeMore>see more</StyledButton>
+        <InnerWrapper>
+          <StyledTitle>{title}</StyledTitle>
+          <StyledAuthor>{author}</StyledAuthor>
+          {pageType === 'notes'
+            ? <StyledParagraph>{date}</StyledParagraph> && <Paragraph>{content}</Paragraph>
+            : null}
+        </InnerWrapper>
+        <StyledButton seeMore>read more</StyledButton>
       </StyledWrapper>
     </>
   );
