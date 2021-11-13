@@ -55,9 +55,9 @@ class MainTemplate extends Component {
 
   addItem = (e, newItem) => {
     e.preventDefault();
-
     this.setState((prevState) => ({
       [newItem.type]: [...prevState[newItem.type], newItem],
+      
     }));
 
     this.closeModal();
