@@ -3,9 +3,11 @@ import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
+import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
-import {connect} from 'react-redux';
-import {removeItemAction} from 'actions';
+import { connect } from 'react-redux';
+import { removeItemAction } from 'actions';
+import trashIcon from 'assets/icons/trash.svg';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -65,9 +67,8 @@ const StyledButton = styled(Button)`
   box-shadow: none;
   background-color: transparent;
   color: ${({ theme }) => theme.colors.grey};
-  font-size: 1.2rem;
-  font-weight: ${({ theme }) => theme.font.light};
-  height: 20px;
+  font-size: 1.4rem;
+  font-weight: ${({ theme }) => theme.font.regular};
 
   ${StyledWrapper}:hover & {
     color: white;
@@ -89,6 +90,10 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
+const ButtonWrapper = styled.div`
+  display: flex;
+`;
+
 class Card extends Component {
   state = {
     redirect: false,
@@ -106,16 +111,18 @@ class Card extends Component {
     return (
       <StyledWrapper>
         <div onClick={this.handleCardClick}>
-          <StyledImage src={imageUrl} />
-          <InnerWrapper>
+          {cardType === 'notes' ? null : <StyledImage src={imageUrl} />}
+          <InnerWrapper onClick={this.handleCardClick}>
             <StyledTitle>{title}</StyledTitle>
             <StyledAuthor>{author}</StyledAuthor>
-            <StyledParagraph>{date}</StyledParagraph>
-            <Paragraph>{content}</Paragraph>
+            {cardType === 'notes' ? <StyledParagraph>{date}</StyledParagraph> : null}
+            {cardType === 'notes' ? <Paragraph>{content}</Paragraph> : null}
           </InnerWrapper>
         </div>
-        <StyledButton seeMore>read more</StyledButton>
-        <Button secondary onClick={() => removeItem(cardType, id)}>REMOVE</Button>
+        <ButtonWrapper>
+          <StyledButton seeMore>read more</StyledButton>
+          <ButtonIcon secondary icon={trashIcon} onClick={() => removeItem(cardType, id)} />
+        </ButtonWrapper>
       </StyledWrapper>
     );
   }
@@ -143,7 +150,7 @@ Card.defaultProps = {
   content: null,
 };
 
-const mapDispatchToProps = dispatch => {
+const mapDispatchToProps = (dispatch) => {
   return {
     removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
   };
