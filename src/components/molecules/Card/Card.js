@@ -2,30 +2,31 @@ import React, { Component } from 'react';
 import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import Button from 'components/atoms/Button/Button';
+import Wrapper from 'components/atoms/Wrapper';
+// import Button from 'components/atoms/Button/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import { connect } from 'react-redux';
 import { removeItemAction } from 'actions';
 import trashIcon from 'assets/icons/trash.svg';
 
-const StyledWrapper = styled.div`
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-content: space-between;
-  width: 200px;
-  padding: 20px;
-  margin: 0;
-  transition: transform 0.3s;
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow};
-  background-color: ${({ theme }) => theme.colors.white};
+// const StyledWrapper = styled.div`
+//   display: flex;
+//   flex-wrap: wrap;
+//   justify-content: center;
+//   align-content: space-between;
+//   width: 200px;
+//   padding: 20px;
+//   margin: 0;
+//   transition: transform 0.3s;
+//   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
+//   background-color: ${({ theme }) => theme.colors.white};
 
-  &:hover {
-    transform: scale(1.03);
-    background-color: ${({ theme }) => theme.colors.lipstick};
-  }
-`;
+//   &:hover {
+//     transform: scale(1.03);
+//     background-color: ${({ theme }) => theme.colors.lipstick};
+//   }
+// `;
 
 const StyledImage = styled.img`
   height: 225px;
@@ -40,7 +41,7 @@ const StyledTitle = styled.h1`
   text-align: center;
   margin: 0;
 
-  ${StyledWrapper}:hover & {
+  ${Wrapper}:hover & {
     color: white;
   }
 `;
@@ -52,7 +53,7 @@ const StyledAuthor = styled.h2`
   margin: 0;
   text-align: center;
 
-  ${StyledWrapper}:hover & {
+  ${Wrapper}:hover & {
     color: white;
   }
 `;
@@ -62,27 +63,27 @@ const StyledParagraph = styled(Paragraph)`
   color: ${({ theme }) => theme.colors.grey};
 `;
 
-const StyledButton = styled(Button)`
-  border: none;
-  box-shadow: none;
-  background-color: transparent;
-  color: ${({ theme }) => theme.colors.grey};
-  font-size: 1.4rem;
-  font-weight: ${({ theme }) => theme.font.regular};
+// const StyledButton = styled(Button)`
+//   border: none;
+//   box-shadow: none;
+//   background-color: transparent;
+//   color: ${({ theme }) => theme.colors.grey};
+//   font-size: 1.4rem;
+//   font-weight: ${({ theme }) => theme.font.regular};
 
-  ${StyledWrapper}:hover & {
-    color: white;
-  }
+//   ${Wrapper}:hover & {
+//     color: white;
+//   }
 
-  &:active {
-    font-weight: ${({ theme }) => theme.font.bold};
-    color: ${({ theme }) => theme.colors.white};
-  }
+//   &:active {
+//     font-weight: ${({ theme }) => theme.font.bold};
+//     color: ${({ theme }) => theme.colors.white};
+//   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: inline-block;
-  }
-`;
+//   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+//     display: inline-block;
+//   }
+// `;
 
 const InnerWrapper = styled.div`
   display: flex;
@@ -90,8 +91,12 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const ButtonWrapper = styled.div`
-  display: flex;
+const StyledButtonIcon = styled(ButtonIcon)`
+margin-top: 10px;
+width: 35px;
+height: 35px;
+border-radius: 50%;
+  
 `;
 
 class Card extends Component {
@@ -109,7 +114,7 @@ class Card extends Component {
       return <Redirect to={`${cardType}/${id}`} />;
     }
     return (
-      <StyledWrapper>
+      <Wrapper> 
         <div onClick={this.handleCardClick}>
           {cardType === 'notes' ? null : <StyledImage src={imageUrl} />}
           <InnerWrapper onClick={this.handleCardClick}>
@@ -119,11 +124,8 @@ class Card extends Component {
             {cardType === 'notes' ? <Paragraph>{content}</Paragraph> : null}
           </InnerWrapper>
         </div>
-        <ButtonWrapper>
-          <StyledButton seeMore>read more</StyledButton>
-          <ButtonIcon secondary icon={trashIcon} onClick={() => removeItem(cardType, id)} />
-        </ButtonWrapper>
-      </StyledWrapper>
+          <StyledButtonIcon icon={trashIcon} onClick={() => removeItem(cardType, id)} />
+      </Wrapper>
     );
   }
 }
