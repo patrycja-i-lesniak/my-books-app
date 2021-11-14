@@ -68,9 +68,14 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
 `;
 
 const StyledButton = styled(Button)`
-font-weight: 600;
-font-size: 1.6rem;
-height: 36px;
+  font-weight: 600;
+  font-size: 1.6rem;
+  height: 36px;
+  text-transform: uppercase;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    display: none;
+  }
 `;
 
 const NavigationBar = () => (

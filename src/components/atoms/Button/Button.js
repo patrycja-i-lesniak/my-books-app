@@ -11,15 +11,10 @@ const Button = styled.button`
   cursor: pointer;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   text-decoration: none;
-  text-transform: uppercase;
   text-align: center;
 
   &:active {
     border-color: ${({ theme }) => theme.colors.lightLipstick};
-  }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: none;
   }
 
   ${({ secondary }) =>
