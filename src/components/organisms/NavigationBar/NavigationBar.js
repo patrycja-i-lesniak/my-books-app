@@ -67,7 +67,11 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   }
 `;
 
-
+const StyledButton = styled(Button)`
+font-weight: 600;
+font-size: 1.6rem;
+height: 36px;
+`;
 
 const NavigationBar = () => (
   <StyledWrapper>
@@ -86,7 +90,7 @@ const NavigationBar = () => (
       </StyledLinkList>
     </StyledNavigationWrapper>
     <SearchBox placeholder='search by title, author or ISBN'/>
-    <Button>log in</Button>
+    <StyledButton>log in</StyledButton>
   </StyledWrapper>
 );
 
