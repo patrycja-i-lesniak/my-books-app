@@ -1,17 +1,18 @@
 import styled, { css } from 'styled-components';
 
 const Button = styled.button`
-  border: 2px solid ${({ theme }) => theme.colors.lipstick};
+  border: 1px solid ${({ theme }) => theme.colors.lipstick};
   color: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.lipstick};
-  font-weight: 600;
+  font-size: 1.4rem;
   width: 120px;
-  height: 36px;
+  /* height: 36px; */
+  padding: 5px;
   border-radius: 3px;
   cursor: pointer;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
-  padding: 0;
-  margin: 0;
+  text-decoration: none;
+  text-transform: uppercase;
 
   &:active {
     border-color: ${({ theme }) => theme.colors.lightLipstick};
