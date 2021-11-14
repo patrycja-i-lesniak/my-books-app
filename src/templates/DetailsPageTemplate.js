@@ -9,14 +9,16 @@ import Button from "components/atoms/Button/Button";
 const StyledWrapper = styled.div`
 display: flex;
 flex-direction: column;
+padding: 0 25px;
 `;
+
 
 const DetailsPageTemplate = ({pageType, title, content}) => (
   <UserPageTemplate pageType={pageType}>
     <StyledWrapper>
       <Header>{title}</Header>
       <Paragraph>{content}</Paragraph>
-    <Button secondary as={Link} to={`/${pageType}`}>go back</Button>
+    <Button as={Link} to={`/${pageType}`}>go back</Button>
     </StyledWrapper>
   </UserPageTemplate>
 );
