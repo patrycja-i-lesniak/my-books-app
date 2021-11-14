@@ -1,3 +1,5 @@
+import React, { Component } from 'react';
+import { Redirect } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
@@ -85,25 +87,43 @@ const InnerWrapper = styled.div`
   align-items: center;
 `;
 
-const Card = ({ pageType, imageUrl, title, author, content, date }) => {
-  return (
-    <StyledWrapper pageType={pageType}>
-      <StyledImage src={imageUrl} />
-      <InnerWrapper>
-        <StyledTitle>{title}</StyledTitle>
-        <StyledAuthor>{author}</StyledAuthor>
-        <StyledParagraph>{date}</StyledParagraph>
-        <Paragraph>{content}</Paragraph>
-      </InnerWrapper>
-      <StyledButton seeMore>read more</StyledButton>
-    </StyledWrapper>
-  );
-};
+class Card extends Component {
+  state = {
+    redirect: false,
+  };
+
+  handleCardClick = () => this.setState({ redirect: true });
+
+  render() {
+    const { cardType, id, imageUrl, title, author, content, date } = this.props;
+    const { redirect } = this.state;
+
+    if (redirect) {
+      return <Redirect to={`${cardType}/${id}`} />;
+    }
+    return (
+      <StyledWrapper>
+        <div onClick={this.handleCardClick}>
+          <StyledImage src={imageUrl} />
+          <InnerWrapper>
+            <StyledTitle>{title}</StyledTitle>
+            <StyledAuthor>{author}</StyledAuthor>
+            <StyledParagraph>{date}</StyledParagraph>
+            <Paragraph>{content}</Paragraph>
+          </InnerWrapper>
+        </div>
+        <StyledButton seeMore>read more</StyledButton>
+        <Button secondary>REMOVE</Button>
+      </StyledWrapper>
+    );
+  }
+}
 
 Card.propTypes = {
-  pageType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  cardType: PropTypes.oneOf(['books', 'authors', 'notes']),
+  id: PropTypes.number.isRequired,
   imageUrl: PropTypes.any,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
   author: PropTypes.string,
   content: PropTypes.string,
   date: PropTypes.string,
@@ -111,7 +131,8 @@ Card.propTypes = {
 };
 
 Card.defaultProps = {
-  pageTypes: 'books',
+  cardType: 'books',
+  title: null,
   imageUrl: null,
   author: null,
   date: null,
