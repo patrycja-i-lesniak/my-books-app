@@ -83,7 +83,7 @@ const initialState = {
 
   authors: [
     {
-      id: 1,
+      id: 6,
       imageUrl: 'https://s.lubimyczytac.pl/upload/authors/30385/876459-352x500.jpg',
       name: 'Brandon Sanderson',
       date: '19.12.1975',
@@ -92,7 +92,7 @@ const initialState = {
       oficialPage: 'http://www.brandonsanderson.com/',
     },
     {
-      id: 2,
+      id: 7,
       imageUrl: 'https://s.lubimyczytac.pl/upload/authors/81732/766091-352x500.jpg',
       name: 'Samantha Shannon',
       date: '08.11.1991',
@@ -104,14 +104,14 @@ const initialState = {
 
   notes: [
     {
-      id: 1,
+      id: 8,
       title: 'Note title 1',
       date: '21.10.2021',
       content:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     },
     {
-      id: 2,
+      id: 9,
       title: 'Note title 2',
       date: '30.10.2021',
       content:
@@ -121,7 +121,19 @@ const initialState = {
 };
 
 // eslint-disable-next-line
-export const rootReducer = (state = initialState, action) => {
+const rootReducer = (state = initialState, action) => {
       console.log(action);
-      return state;
+      switch (action.type) {
+        case 'REMOVE_ITEM':
+        return {
+          ...state,
+          [action.payload.itemType]: [
+            ...state[action.payload.itemType].filter(item => item.id !== action.payload.id),
+          ],
+        };
+        default:
+          return state; 
+      }   
 };
+
+export default rootReducer;
