@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 
-const Notes = ({notes}) => (
+const Notes = ({ notes }) => (
   <GridTemplate pageType="notes">
     {notes.map(({ id, title, content, date }) => (
-      <Card title={title} date={date} content={content} key={id} />
+      <Card id={id} title={title} cardType='notes' date={date} content={content} key={id} />
     ))}
   </GridTemplate>
 );
