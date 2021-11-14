@@ -6,13 +6,13 @@ const Button = styled.button`
   background: ${({ theme }) => theme.colors.lipstick};
   font-size: 1.4rem;
   width: 120px;
-  /* height: 36px; */
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   text-decoration: none;
   text-transform: uppercase;
+  text-align: center;
 
   &:active {
     border-color: ${({ theme }) => theme.colors.lightLipstick};
