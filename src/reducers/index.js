@@ -120,7 +120,6 @@ const initialState = {
   ],
 };
 
-// eslint-disable-next-line
 const rootReducer = (state = initialState, action) => {
       console.log(action);
       switch (action.type) {
