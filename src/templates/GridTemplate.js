@@ -6,10 +6,11 @@ import { Container } from 'components/atoms/Container';
 
 const StyledGrid = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+  grid-template-columns: repeat(auto-fill, 200px);
   grid-gap: 2rem;
   margin: 4rem auto;
   justify-items: center;
+  justify-content: center;
   position: relative;
 
   ${({ pageType }) =>
