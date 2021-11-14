@@ -3,7 +3,7 @@ export const routes = {
   notes: '/notes',
   note: '/notes/:id',
   books: '/books',
-  book: '/book/:id',
+  book: '/books/:id',
   authors: '/authors',
-  author: '/author/:id',
+  author: '/authors/:id',
 };
