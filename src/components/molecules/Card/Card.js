@@ -4,6 +4,8 @@ import PropTypes from 'prop-types';
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import {connect} from 'react-redux';
+import {removeItemAction} from 'actions';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -95,7 +97,7 @@ class Card extends Component {
   handleCardClick = () => this.setState({ redirect: true });
 
   render() {
-    const { cardType, id, imageUrl, title, author, content, date } = this.props;
+    const { removeItem, cardType, id, imageUrl, title, author, content, date } = this.props;
     const { redirect } = this.state;
 
     if (redirect) {
@@ -113,7 +115,7 @@ class Card extends Component {
           </InnerWrapper>
         </div>
         <StyledButton seeMore>read more</StyledButton>
-        <Button secondary>REMOVE</Button>
+        <Button secondary onClick={() => removeItem(cardType, id)}>REMOVE</Button>
       </StyledWrapper>
     );
   }
@@ -128,6 +130,7 @@ Card.propTypes = {
   content: PropTypes.string,
   date: PropTypes.string,
   description: PropTypes.string,
+  removeItem: PropTypes.func.isRequired,
 };
 
 Card.defaultProps = {
@@ -140,4 +143,10 @@ Card.defaultProps = {
   content: null,
 };
 
-export default Card;
+const mapDispatchToProps = dispatch => {
+  return {
+    removeItem: (itemType, id) => dispatch(removeItemAction(itemType, id)),
+  };
+};
+
+export default connect(null, mapDispatchToProps)(Card);
