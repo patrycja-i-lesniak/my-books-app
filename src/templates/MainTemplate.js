@@ -17,6 +17,10 @@ const StyledButtonIcon = styled(ButtonIcon)`
   bottom: 70px;
   right: 20px;
   z-index: 999;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    display: none;
+  }
 `;
 
 const initialBookState = booksData;
