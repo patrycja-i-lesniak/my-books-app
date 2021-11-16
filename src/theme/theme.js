@@ -27,5 +27,5 @@ export const theme = {
     modalShadow: '0 10px 20px -5px rgba(0, 0, 0, .8);',
   },
 
-  transitionTimingFunction: 'cubic-bezier(0.4, 0.2, 0.2, 1)',
+  easeOut: 'cubic-bezier(0.4, 0.2, 0.2, 1)',
 };
