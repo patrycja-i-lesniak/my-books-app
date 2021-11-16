@@ -14,7 +14,7 @@ const Button = styled.button`
   text-align: center;
 
   &:active {
-    border-color: ${({ theme }) => theme.colors.lightLipstick};
+    background-color: ${({ theme }) => theme.colors.lightLipstick};
   }
 
   ${({ secondary }) =>
