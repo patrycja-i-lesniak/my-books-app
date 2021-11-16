@@ -13,14 +13,19 @@ const ButtonIcon = styled.button`
   background-repeat: no-repeat;
   background-image: url(${({ icon }) => icon});
 
-  ${({secondary}) => 
-  secondary && css`
-  border: none;
-  background-color: transparent;
-  width: 38px;
-  height: 38px;
-  box-shadow: none;
-  `}
+  &:active {
+    background-color: ${({ theme }) => theme.colors.lightLipstick};
+  }
+
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      border: none;
+      background-color: transparent;
+      width: 38px;
+      height: 38px;
+      box-shadow: none;
+    `}
 `;
 
 export default ButtonIcon;
