@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useFormik } from 'formik';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button/Button';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -38,8 +39,8 @@ const StyledButton = styled(Button)`
   }
 `;
 
-const ModalForm = ({addItemFn}) => {
-  const { values, handleChange, handleSubmit, handleBlur } = useFormik({
+const ModalForm = ({addItemFn, pageContext}) => {
+  const { values, handleChange, handleSubmit, handleBlur} = useFormik({
     initialValues: {
       type: '',
       title: '',
@@ -53,7 +54,11 @@ const ModalForm = ({addItemFn}) => {
       pages: '',
       content: '',
     },
-    onSubmit: (values) => alert(JSON.stringify(values)),
+    onSubmit: (values) => {
+      alert(JSON.stringify(values));
+      addItemFn(pageContext, values);
+      console.log('bla bla bla');
+    },
   });
 
   return (
@@ -138,7 +143,9 @@ const ModalForm = ({addItemFn}) => {
 };
 
 ModalForm.propTypes = {
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
   addItemFn: PropTypes.func.isRequired,
-}
+};
 
-export default ModalForm;
+
+export default withContext(ModalForm);

@@ -7,6 +7,7 @@ import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Button from 'components/atoms/Button/Button';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import trashIcon from 'assets/icons/trash.svg';
+import withContext from 'hoc/withContext';
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -39,12 +40,37 @@ const StyledButtonIcon = styled(ButtonIcon)`
   z-index: 999;
 `;
 
-const DetailsPageTemplate = ({ pageType, title, content }) => (
-  <UserPageTemplate pageType={pageType}>
+const StyledImage = styled.img`
+  height: 225px;
+  width: 150px;
+  background-color: transparent;
+  margin-bottom: 10px;
+`;
+
+const DetailsPageTemplate = ({
+  pageContext,
+  // id,
+  imageUrl,
+  title,
+  author,
+  // series,
+  // date,
+  // isbn,
+  // translation,
+  // publishing,
+  // pages,
+  content,
+  // LClink,
+}) => (
+  <UserPageTemplate >
     <StyledWrapper>
-      <Header>{title}</Header>
+      <div>{imageUrl === '' ? null : <StyledImage src={imageUrl} />}
+  <Header>{title}</Header>
+      {author === '' ? null : <Paragraph>{author}</Paragraph>}
       <StyledParagraph>{content}</StyledParagraph>
-      <StyledButton as={Link} to={`/${pageType}`}>
+</div>
+      
+      <StyledButton as={Link} to={`/${pageContext}`}>
         go back
       </StyledButton>
       <StyledButtonIcon icon={trashIcon} />
@@ -53,11 +79,21 @@ const DetailsPageTemplate = ({ pageType, title, content }) => (
 );
 
 DetailsPageTemplate.propTypes = {
-  pageType: PropTypes.string.isRequired,
+  pageContext: PropTypes.oneOf(['home','books','authors','notes']),
   title: PropTypes.string,
   content: PropTypes.string,
+  author: PropTypes.string,
+  imageUrl: PropTypes.string,
 };
 
-export default DetailsPageTemplate;
+DetailsPageTemplate.defaultProps = {
+  pageContext: 'home',
+  title: '',
+  content: '',
+  author: '',
+  imageUrl: '',
+};
+
+export default withContext(DetailsPageTemplate);
 
 // dodać akcję usuwania notatki do StyledButtonIcon

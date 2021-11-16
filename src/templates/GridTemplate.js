@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
 import { Container } from 'components/atoms/Container';
+import withContext from 'hoc/withContext';
 
 const StyledGrid = styled.div`
   display: grid;
@@ -13,24 +14,24 @@ const StyledGrid = styled.div`
   justify-content: center;
   position: relative;
 
-  ${({ pageType }) =>
-    pageType === 'home' &&
+  ${({ pageContext }) =>
+    pageContext === 'home' &&
     css`
       grid-template-columns: 1fr;
     `};
 
-  ${({ pageType }) =>
-    pageType === 'notes' &&
+  ${({ pageContext }) =>
+    pageContext === 'notes' &&
     css`
       display: flex;
     `}
 `;
 
-const GridTemplate = ({ children, pageType }) => (
-      <UserPageTemplate pageType={pageType}>
+const GridTemplate = ({ children, pageContext }) => (
+      <UserPageTemplate>
         <Container>
-          <Header>Nagłówek strony {pageType}</Header>
-          <StyledGrid pageType={pageType}>
+          <Header>Nagłówek strony {pageContext}</Header>
+          <StyledGrid >
             {children}
           </StyledGrid>
         </Container>
@@ -39,11 +40,11 @@ const GridTemplate = ({ children, pageType }) => (
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
-  pageType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
 };
 
 GridTemplate.defaultProps = {
-  pageType: 'home',
+  pageContext: 'home',
 };
 
-export default GridTemplate;
+export default withContext(GridTemplate);
