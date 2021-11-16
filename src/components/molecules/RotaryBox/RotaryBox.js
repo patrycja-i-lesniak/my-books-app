@@ -1,8 +1,19 @@
 import styles from "./RotaryBox.module.scss";
+import styled from 'styled-components';
+
+const Wrapper = styled.div`
+display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  gap: 20px;
+`;
 
 const RotaryBox = () => (
   <>
-    <div className={styles.wrapper}>
+    <Wrapper>
       <article className={styles.article}>
         <div className={styles.boxFront}>
           <div className={styles.text}>
@@ -50,7 +61,7 @@ const RotaryBox = () => (
           </div>
         </div>
       </article>
-    </div>
+    </Wrapper>
   </>
 );
 
