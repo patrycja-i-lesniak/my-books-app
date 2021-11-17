@@ -1,15 +1,20 @@
 import { NavLink } from 'react-router-dom';
 import styled from 'styled-components';
-import myBooksLogo from 'assets/icons/myBooksLogo.svg';
+import myBooksLogoBlack from 'assets/icons/myBooksLogoBlack.svg';
 import Button from 'components/atoms/Button/Button';
 import SearchBox from 'components/atoms/SearchBox';
 
 const StyledWrapper = styled.div`
   display: grid;
+  position: fixed;
+  top: 0;
+  width: 100vw;
+  background-color: ${({ theme }) => theme.colors.lipstick};
   grid-template-columns: 1fr 360px 120px;
   align-items: end;
+  height: 80px;
   padding: 20px 50px;
-  border-bottom: 2px solid ${({ theme }) => theme.colors.lipstick};
+  z-index: 9999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: 1fr 120px;
@@ -36,7 +41,7 @@ const StyledLogoLink = styled(NavLink)`
   width: 200px;
   height: 40px;
   background-position: 50% 50%;
-  background-image: url(${myBooksLogo});
+  background-image: url(${myBooksLogoBlack});
   background-repeat: no-repeat;
 `;
 
@@ -56,7 +61,7 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
   list-style: none;
   text-decoration: none;
   font-size: 1.7rem;
-  color: ${({ theme }) => theme.colors.grey};
+  color: ${({ theme }) => theme.colors.white};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
@@ -95,7 +100,7 @@ const NavigationBar = () => (
       </StyledLinkList>
     </StyledNavigationWrapper>
     <SearchBox placeholder='search by title, author or ISBN'/>
-    <StyledButton>log in</StyledButton>
+    <StyledButton secondary>log in</StyledButton>
   </StyledWrapper>
 );
 
