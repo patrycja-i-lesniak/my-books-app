@@ -28,15 +28,13 @@ const StyledGrid = styled.div`
 `;
 
 const GridTemplate = ({ children, pageContext }) => (
-      <UserPageTemplate>
-        <Container>
-          <Header>Nagłówek strony {pageContext}</Header>
-          <StyledGrid >
-            {children}
-          </StyledGrid>
-        </Container>
-      </UserPageTemplate>
-    );
+  <UserPageTemplate>
+    <Container>
+      <Header>Nagłówek strony {pageContext}</Header>
+      <StyledGrid>{children}</StyledGrid>
+    </Container>
+  </UserPageTemplate>
+);
 
 GridTemplate.propTypes = {
   children: PropTypes.arrayOf(PropTypes.object).isRequired,
