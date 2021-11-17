@@ -30,13 +30,7 @@ const StyledLabel = styled.label`
 
 const Input = ({ name, type, onChange, onBlur, values }) => (
   <StyledWrapper>
-    <StyledField
-      type={type}
-      name={name}
-      onChange={onChange}
-      onBlur={onBlur}
-      value={values}
-    />
+    <StyledField type={type} name={name} onChange={onChange} onBlur={onBlur} value={values} />
     <StyledLabel>{name}</StyledLabel>
   </StyledWrapper>
 );
@@ -44,10 +38,10 @@ const Input = ({ name, type, onChange, onBlur, values }) => (
 
 Input.propTypes = {
   name: PropTypes.string.isRequired,
-  type: PropTypes.oneOf(['text', 'number', 'url']),
+  type: PropTypes.oneOf(['text', 'number', 'url', 'date']),
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
-  values: PropTypes.func.isRequired,
+  values: PropTypes.func,
 };
 
 export default Input; 
