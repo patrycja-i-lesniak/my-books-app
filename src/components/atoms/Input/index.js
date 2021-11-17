@@ -17,7 +17,7 @@ const StyledField = styled.input`
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.grey};
-    font-size: 1.3rem;
+    font-size: 1.rem;
   }
 `;
 
