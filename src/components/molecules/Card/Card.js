@@ -132,8 +132,8 @@ class Card extends Component {
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['books', 'authors', 'notes']),
-  id: PropTypes.number.isRequired,
-  imageUrl: PropTypes.any,
+  id: PropTypes.string.isRequired,
+  imageUrl: PropTypes.string,
   title: PropTypes.string,
   author: PropTypes.string,
   content: PropTypes.string,
