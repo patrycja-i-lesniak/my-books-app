@@ -20,6 +20,7 @@ body {
     margin: 0 auto;
     font-family: "Poppins", sans-serif;
     background-color: white;
+    word-break: break-word;
 }
 `;
 
