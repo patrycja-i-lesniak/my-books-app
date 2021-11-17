@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg width="100%" height="100%" viewBox="0 0 471 97" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
+    <g transform="matrix(0.24,0,0,0.24,-52.279,-517.532)">
+        <g transform="matrix(7.36407,0,0,7.36407,-3587.55,-5122.42)">
+            <text x="513px" y="1030px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:white;">my</text>
+        </g>
+        <g transform="matrix(512.918,0,0,497.009,757.289,2429.24)">
+            <path d="M0.452,0.257L0.451,-0.549L0.532,-0.549L0.532,0.257L0.452,0.257Z" style="fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(512.918,0,0,497.009,833.864,2429.24)">
+            <path d="M0.452,0.257L0.451,-0.549L0.532,-0.549L0.531,0.257L0.452,0.257Z" style="fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(523.212,0,0,503.07,646.076,2429.31)">
+            <path d="M0.077,0.254L0.319,-0.335L0.397,-0.335L0.154,0.254L0.077,0.254Z" style="fill-rule:nonzero;"/>
+            <clipPath id="_clip1">
+                <path d="M0.077,0.254L0.319,-0.335L0.397,-0.335L0.154,0.254L0.077,0.254Z" clip-rule="nonzero"/>
+            </clipPath>
+            <g clip-path="url(#_clip1)">
+                <g transform="matrix(1,0,0,1.36929,0.396372,-0.0759102)">
+                    <path d="M0.077,0.254L0.451,-0.328L0.533,-0.328L0.154,0.254L0.077,0.254Z" style="fill-rule:nonzero;"/>
+                </g>
+            </g>
+        </g>
+        <g transform="matrix(523.212,0,0,688.847,721.324,2382.17)">
+            <path d="M0.077,0.254L0.395,-0.328L0.477,-0.328L0.154,0.254L0.077,0.254Z" style="fill-rule:nonzero;"/>
+        </g>
+        <g transform="matrix(7.36407,0,0,7.36407,-2671.88,-5028.67)">
+            <text x="513px" y="1030px" style="font-family:'Poppins-Regular', 'Poppins';font-size:50px;fill:white;">books</text>
+        </g>
+    </g>
+</svg>

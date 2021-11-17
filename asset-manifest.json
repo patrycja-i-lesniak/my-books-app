@@ -1,30 +1,30 @@
 {
   "files": {
-    "main.css": "/my-books-app/static/css/main.fbca0eda.chunk.css",
-    "main.js": "/my-books-app/static/js/main.a0babbb7.chunk.js",
-    "main.js.map": "/my-books-app/static/js/main.a0babbb7.chunk.js.map",
+    "main.css": "/my-books-app/static/css/main.c1c50c79.chunk.css",
+    "main.js": "/my-books-app/static/js/main.fb86cce3.chunk.js",
+    "main.js.map": "/my-books-app/static/js/main.fb86cce3.chunk.js.map",
     "runtime-main.js": "/my-books-app/static/js/runtime-main.8da1238d.js",
     "runtime-main.js.map": "/my-books-app/static/js/runtime-main.8da1238d.js.map",
-    "static/js/2.9c842ff2.chunk.js": "/my-books-app/static/js/2.9c842ff2.chunk.js",
-    "static/js/2.9c842ff2.chunk.js.map": "/my-books-app/static/js/2.9c842ff2.chunk.js.map",
+    "static/js/2.ad282475.chunk.js": "/my-books-app/static/js/2.ad282475.chunk.js",
+    "static/js/2.ad282475.chunk.js.map": "/my-books-app/static/js/2.ad282475.chunk.js.map",
     "index.html": "/my-books-app/index.html",
-    "static/css/main.fbca0eda.chunk.css.map": "/my-books-app/static/css/main.fbca0eda.chunk.css.map",
-    "static/js/2.9c842ff2.chunk.js.LICENSE.txt": "/my-books-app/static/js/2.9c842ff2.chunk.js.LICENSE.txt",
+    "static/css/main.c1c50c79.chunk.css.map": "/my-books-app/static/css/main.c1c50c79.chunk.css.map",
+    "static/js/2.ad282475.chunk.js.LICENSE.txt": "/my-books-app/static/js/2.ad282475.chunk.js.LICENSE.txt",
     "static/media/10minut.4e746013.jpg": "/my-books-app/static/media/10minut.4e746013.jpg",
     "static/media/RotaryBox.module.scss": "/my-books-app/static/media/readingIcon.6c279f8f.svg",
-    "static/media/close.c2cf8b48.svg": "/my-books-app/static/media/close.c2cf8b48.svg",
-    "static/media/hamburger.817b99e3.svg": "/my-books-app/static/media/hamburger.817b99e3.svg",
     "static/media/ksiegatesknot.4d071442.jpg": "/my-books-app/static/media/ksiegatesknot.4d071442.jpg",
     "static/media/malarzdusz.cb4678fc.jpg": "/my-books-app/static/media/malarzdusz.cb4678fc.jpg",
     "static/media/malezycie.eecd65c2.jpg": "/my-books-app/static/media/malezycie.eecd65c2.jpg",
-    "static/media/myBooksLogo.5916d3aa.svg": "/my-books-app/static/media/myBooksLogo.5916d3aa.svg",
+    "static/media/myBooksLogoBlack.a9a80186.svg": "/my-books-app/static/media/myBooksLogoBlack.a9a80186.svg",
+    "static/media/plus.15c51fc0.svg": "/my-books-app/static/media/plus.15c51fc0.svg",
     "static/media/search.c8fb929d.svg": "/my-books-app/static/media/search.c8fb929d.svg",
+    "static/media/trash.3dbc8c55.svg": "/my-books-app/static/media/trash.3dbc8c55.svg",
     "static/media/wyznaje.bcd8c1c0.jpg": "/my-books-app/static/media/wyznaje.bcd8c1c0.jpg"
   },
   "entrypoints": [
     "static/js/runtime-main.8da1238d.js",
-    "static/js/2.9c842ff2.chunk.js",
-    "static/css/main.fbca0eda.chunk.css",
-    "static/js/main.a0babbb7.chunk.js"
+    "static/js/2.ad282475.chunk.js",
+    "static/css/main.c1c50c79.chunk.css",
+    "static/js/main.fb86cce3.chunk.js"
   ]
 }
