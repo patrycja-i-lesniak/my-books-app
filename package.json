@@ -19,6 +19,7 @@
     "prettier": "^2.4.1",
     "prop-types": "^15.7.2",
     "react": "^17.0.2",
+    "react-clip-path": "0.0.6",
     "react-dom": "^17.0.2",
     "react-icons": "^4.3.1",
     "react-redux": "^7.2.6",
@@ -27,7 +28,8 @@
     "styled-components": "^5.3.3",
     "styled-normalize": "^8.0.7",
     "web-vitals": "^1.1.2",
-    "with-router": "^1.0.1"
+    "with-router": "^1.0.1",
+    "yup": "^0.32.11"
   },
   "scripts": {
     "start": "react-scripts start",
@@ -35,7 +37,8 @@
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "lint:css": "stylelint './src/**/*.js'"
   },
   "eslintConfig": {
     "extends": [
@@ -57,6 +60,10 @@
   },
   "devDependencies": {
     "eslint": "^7.32.0",
-    "eslint-plugin-react": "^7.26.1"
+    "eslint-plugin-react": "^7.26.1",
+    "stylelint": "^14.1.0",
+    "stylelint-config-recommended": "^6.0.0",
+    "stylelint-config-styled-components": "^0.1.1",
+    "stylelint-processor-styled-components": "^1.10.0"
   }
 }

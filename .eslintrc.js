@@ -29,5 +29,7 @@ module.exports = {
     'react/prop-types': 1,
     'react-hooks/rules-of-hooks': 'error',
     'react-hooks/exhaustive-deps': 'warn',
+    'import/prefer-default-export': 0,
+    'import/no-extraneous-dependencies': 0,
   },
 };
