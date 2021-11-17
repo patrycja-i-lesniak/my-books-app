@@ -25,12 +25,20 @@ const StyledLabel = styled.label`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.grey};
   position: absolute;
-  bottom: 3px
+  bottom: 3px;
 `;
 
-const Input = ({ name, type, onChange, onBlur, values }) => (
+const Input = ({ name, type, onChange, onBlur, values, placeholder }) => (
   <StyledWrapper>
-    <StyledField type={type} name={name} onChange={onChange} onBlur={onBlur} value={values} />
+    <StyledField
+      type={type}
+      name={name}
+      onChange={onChange}
+      onBlur={onBlur}
+      value={values}
+      placeholder={placeholder}
+      
+    />
     <StyledLabel>{name}</StyledLabel>
   </StyledWrapper>
 );
@@ -42,6 +50,11 @@ Input.propTypes = {
   onChange: PropTypes.func.isRequired,
   onBlur: PropTypes.func.isRequired,
   values: PropTypes.func,
+  placeholder: PropTypes.string,
 };
+
+Input.defaultProps = {
+  placeholder: '',
+}
 
 export default Input; 
