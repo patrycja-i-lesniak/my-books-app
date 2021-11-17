@@ -5,8 +5,8 @@ import Card from 'components/molecules/Card/Card';
 
 const Authors = ({ authors }) => (
   <GridTemplate pageType="authors">
-    {authors.map(({ name, imageUrl, id }) => (
-      <Card id={id} cardType='authors' imageUrl={imageUrl} title={name} key={id} />
+    {authors.map(({ author, imageUrl, id }) => (
+      <Card id={id} cardType='authors' imageUrl={imageUrl} title={author} key={id} />
     ))}
   </GridTemplate>
 );
@@ -14,9 +14,9 @@ const Authors = ({ authors }) => (
 Authors.propTypes = {
   authors: PropTypes.arrayOf(
     PropTypes.shape({
-      id: PropTypes.number.isRequired,
+      id: PropTypes.string.isRequired,
       imageUrl: PropTypes.string.isRequired,
-      name: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
     }),
   ),
 };

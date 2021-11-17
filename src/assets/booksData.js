@@ -6,10 +6,10 @@ import wyznaje from "assets/images/wyznaje.jpg";
 
 export const booksData = [
   {
-    id: 1,
+    id: '1',
     imageUrl: malezycie,
-    title: "Małe życie",
-    author: "Hanya Yanagihara",
+    title: 'Małe życie',
+    author: 'Hanya Yanagihara',
     // series: "",
     // date: "2018-10-17",
     // isbn: 9788328037342,
@@ -21,10 +21,10 @@ export const booksData = [
   },
 
   {
-    id: 2,
+    id: '2',
     imageUrl: ksiegatesknot,
-    title: "Księga tęsknot",
-    author: "Sue Monk Kidd",
+    title: 'Księga tęsknot',
+    author: 'Sue Monk Kidd',
     // series: "",
     // date: "2021-06-30",
     // ISBN: 9788308074015,
@@ -36,10 +36,10 @@ export const booksData = [
   },
 
   {
-    id: 3,
+    id: '3',
     imageUrl: dziesiecminut,
-    title: "10 minut i 38 sekund na tym dziwnym świecie",
-    author: "Elif Shafak",
+    title: '10 minut i 38 sekund na tym dziwnym świecie',
+    author: 'Elif Shafak',
     // series: "",
     // date: "2020-10-14",
     // ISBN: 9788366553552,
@@ -51,39 +51,43 @@ export const booksData = [
   },
 
   {
-    id: 4,
+    id: '4',
     imageUrl: malarzdusz,
-    title: "Malarz dusz",
-    author: "Ildefonso Falcones",
-    series: "",
-    date: "2020-05-20",
+    title: 'Malarz dusz',
+    author: 'Ildefonso Falcones',
+    series: '',
+    date: '2020-05-20',
     ISBN: 9788381259613,
-    translation: "Joanna Ostrowska, Elżbieta Rzewuska",
-    publishing: "Albatros",
+    translation: 'Joanna Ostrowska, Elżbieta Rzewuska',
+    publishing: 'Albatros',
     pages: 704,
-    content: "Sztuka, miłość, pasja i walka o ideały! Ildefonso Falcones, autor niezapomnianej „Katedry w Barcelonie”, wskrzesza ekscytujące czasy wielkich przemian społecznych i buntu wobec odwiecznych tradycji i zakurzonych konwenansów.Barcelona rok 1901. Przez miasto przetacza się fala niepokojów społecznych. Ubóstwo najbiedniejszych dzielnic kontrastuje z bogactwem dużych eleganckich alei, wzdłuż których wyrosły już niezwykłe budynki, symbol nadejścia epoki modernizmu.Dalmau Sala, syn skazanych na śmierć anarchistów, żyje na granicy dwóch światów. Z jednej strony członkowie jego rodziny oraz Emma, kobieta, którą kocha, są zagorzałymi zwolennikami walki o prawa robotników. Z drugiej, zatrudnienie w pracowni ceramiki don Manuela Bello, jego mentora i obrońcy wiary katolickiej, pozwala mu obracać się w towarzystwie, w którym kwitnie sztuka i dobrobyt. Artyście nie będzie łatwo odnaleźć właściwą ścieżkę, którą powinien podążyć, aby zrozumieć, że tym, co się w życiu liczy, są jego przekonania dotyczące równości i sprawiedliwości społecznej, jego czysta dusza i miłość odważnej i silnej kobiety. A przede wszystkim liczy się jego sztuka – obrazy, na których uwiecznia ubóstwo swojego miasta, w którym tli się już iskierka buntu i rewolty.",
-    goodReadsLink: "https://www.goodreads.com/book/show/17407389-wyznaj?ac=1&from_search=true&qid=NL0yNPL9lu&rank=1",
+    content:
+      'Sztuka, miłość, pasja i walka o ideały! Ildefonso Falcones, autor niezapomnianej „Katedry w Barcelonie”, wskrzesza ekscytujące czasy wielkich przemian społecznych i buntu wobec odwiecznych tradycji i zakurzonych konwenansów.Barcelona rok 1901. Przez miasto przetacza się fala niepokojów społecznych. Ubóstwo najbiedniejszych dzielnic kontrastuje z bogactwem dużych eleganckich alei, wzdłuż których wyrosły już niezwykłe budynki, symbol nadejścia epoki modernizmu.Dalmau Sala, syn skazanych na śmierć anarchistów, żyje na granicy dwóch światów. Z jednej strony członkowie jego rodziny oraz Emma, kobieta, którą kocha, są zagorzałymi zwolennikami walki o prawa robotników. Z drugiej, zatrudnienie w pracowni ceramiki don Manuela Bello, jego mentora i obrońcy wiary katolickiej, pozwala mu obracać się w towarzystwie, w którym kwitnie sztuka i dobrobyt. Artyście nie będzie łatwo odnaleźć właściwą ścieżkę, którą powinien podążyć, aby zrozumieć, że tym, co się w życiu liczy, są jego przekonania dotyczące równości i sprawiedliwości społecznej, jego czysta dusza i miłość odważnej i silnej kobiety. A przede wszystkim liczy się jego sztuka – obrazy, na których uwiecznia ubóstwo swojego miasta, w którym tli się już iskierka buntu i rewolty.',
+    goodReadsLink:
+      'https://www.goodreads.com/book/show/17407389-wyznaj?ac=1&from_search=true&qid=NL0yNPL9lu&rank=1',
   },
 
   {
-    id: 5,
+    id: '5',
     imageUrl: wyznaje,
-    title: "Wyznaję",
-    author: "Jaume Cabré",
-    series: "",
-    date: "2013-02-20",
+    title: 'Wyznaję',
+    author: 'Jaume Cabré',
+    series: '',
+    date: '2013-02-20',
     ISBN: 9788363656249,
-    translation: "Anna Sawicka",
-    publishing: "Marginesy",
+    translation: 'Anna Sawicka',
+    publishing: 'Marginesy',
     pages: 768,
-    content: "„Wielka powieść europejska”, „przełom w literaturze”, „powieść-katedra o idealnych proporcjach i epickim, pełnym kunsztownych detali wykonaniu”, „książka, która przeżyje nas wszystkich”.To trzymające w napięciu do ostatniej strony wyznanie miłosne i spowiedź człowieka starającego się przeniknąć istotę zła – w świecie i sobie samym. Historia chłopca dorastającego samotnie wśród książek, który musi zmierzyć się z rodzinnymi tajemnicami. Za sprawą osiemnastowiecznych skrzypiec zagłębia się w mroki dziejów hiszpańskiej inkwizycji i piekła dwudziestowiecznej Europy. wyznajCabre, którego pasją jest muzyka, skomponował tę powieść jak symfonię, z częstymi zmianami nastroju, tempa i głosu narracji. Bogactwo wątków, postaci, pomysłów literackich oszałamia i wzbudza zachwyt..",
-    goodReadsLink: "https://www.goodreads.com/book/show/17407389-wyznaj?ac=1&from_search=true&qid=NL0yNPL9lu&rank=1",
+    content:
+      '„Wielka powieść europejska”, „przełom w literaturze”, „powieść-katedra o idealnych proporcjach i epickim, pełnym kunsztownych detali wykonaniu”, „książka, która przeżyje nas wszystkich”.To trzymające w napięciu do ostatniej strony wyznanie miłosne i spowiedź człowieka starającego się przeniknąć istotę zła – w świecie i sobie samym. Historia chłopca dorastającego samotnie wśród książek, który musi zmierzyć się z rodzinnymi tajemnicami. Za sprawą osiemnastowiecznych skrzypiec zagłębia się w mroki dziejów hiszpańskiej inkwizycji i piekła dwudziestowiecznej Europy. wyznajCabre, którego pasją jest muzyka, skomponował tę powieść jak symfonię, z częstymi zmianami nastroju, tempa i głosu narracji. Bogactwo wątków, postaci, pomysłów literackich oszałamia i wzbudza zachwyt..',
+    goodReadsLink:
+      'https://www.goodreads.com/book/show/17407389-wyznaj?ac=1&from_search=true&qid=NL0yNPL9lu&rank=1',
   },
 ];
 
 export const authorsData = [
   {
-    id: 1,
+    id: '1',
     imageUrl: 'https://s.lubimyczytac.pl/upload/authors/30385/876459-352x500.jpg',
     name: 'Brandon Sanderson',
     date: '19.12.1975',
@@ -92,7 +96,7 @@ export const authorsData = [
     oficialPage: 'http://www.brandonsanderson.com/',
   },
   {
-    id: 2,
+    id: '2',
     imageUrl: 'https://s.lubimyczytac.pl/upload/authors/81732/766091-352x500.jpg',
     name: 'Samantha Shannon',
     date: '08.11.1991',
@@ -104,14 +108,14 @@ export const authorsData = [
 
 export const notesData = [
   {
-    id: 1,
+    id: '1',
     title: 'Note title 1',
     date: '21.10.2021',
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
   },
   {
-    id: 2,
+    id: '2',
     title: 'Note title 2',
     date: '30.10.2021',
     content:

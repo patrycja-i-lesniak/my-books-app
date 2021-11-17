@@ -1,7 +1,7 @@
 const initialState = {
   books: [
     {
-      id: 1,
+      id: '1',
       imageUrl: 'https://s.lubimyczytac.pl/upload/books/4862000/4862789/927606-352x500.jpg',
       title: 'Małe życie',
       author: 'Hanya Yanagihara',
@@ -17,7 +17,7 @@ const initialState = {
     },
 
     {
-      id: 2,
+      id: '2',
       imageUrl: 'https://s.lubimyczytac.pl/upload/books/4970000/4970476/904228-352x500.jpg',
       title: 'Księga tęsknot',
       author: 'Sue Monk Kidd',
@@ -33,7 +33,7 @@ const initialState = {
     },
 
     {
-      id: 3,
+      id: '3',
       imageUrl: 'https://s.lubimyczytac.pl/upload/books/4913000/4913238/822309-352x500.jpg',
       title: '10 minut i 38 sekund na tym dziwnym świecie',
       author: 'Elif Shafak',
@@ -49,7 +49,7 @@ const initialState = {
     },
 
     {
-      id: 4,
+      id: '4',
       imageUrl: 'https://s.lubimyczytac.pl/upload/books/4918000/4918760/798611-352x500.jpg',
       title: 'Malarz dusz',
       author: 'Ildefonso Falcones',
@@ -65,7 +65,7 @@ const initialState = {
     },
 
     {
-      id: 5,
+      id: '5',
       imageUrl: 'https://s.lubimyczytac.pl/upload/books/169000/169078/138439-352x500.jpg',
       title: 'Wyznaję',
       author: 'Jaume Cabré',
@@ -83,18 +83,18 @@ const initialState = {
 
   authors: [
     {
-      id: 6,
+      id: '6',
       imageUrl: 'https://s.lubimyczytac.pl/upload/authors/30385/876459-352x500.jpg',
-      name: 'Brandon Sanderson',
+      author: 'Brandon Sanderson',
       date: '19.12.1975',
       content:
         'Amerykański pisarz fantastyki i powieści przygodowych dla młodzieży, wykładowca twórczego pisania. Dwukrotny laureat nagrody Hugo. Jego książka „Stalowe serce” została nominowana w Plebiscycie Książka Roku 2015 lubimyczytac.pl w kategorii SF. Sanderson konsekwentnie pisał przez cały okres studiów licencjackich i magisterskich, a do 2003 roku napisał dwanaście powieści, chociaż żaden z wydawców nie zaakceptował żadnej z nich do publikacji. Będąc w trakcie studiów podyplomowych na BYU, redaktor Tor Books Moshe Feder skontaktował się z nim, aby powiedzieć, że chce nabyć jedną ze swoich książek. Sanderson przedłożył rękopis swojej szóstej powieści Elantris półtora roku wcześniej. Elantris został opublikowany przez Tor Books w dniu 21 kwietnia 2005 r., Aby ogólnie pozytywne recenzje. Następnie w 2006 r. Ukazał się Mistborn: The Final Empire , pierwsza książka w jego Mistbornfantastyczna trylogia, w której „allomanci” - ludzie zdolni do „spalania” metali i stopów po ich spożyciu - zyskują wzmocnione zmysły i kontrolę nad potężnymi siłami nadprzyrodzonymi. W 2007 roku opublikował drugą książkę z serii Mistborn The Well of Ascension . Później tego samego roku Sanderson opublikował powieść dla dzieci Alcatraz Versus the Evil Librarians , o chłopcu o imieniu Alcatraz z talentem do robienia rzeczy. Alcatraz konfrontuje się z grupą złych bibliotekarzy, którzy chcą przejąć władzę nad światem. Pierwsze z jego „ praw magii ” opublikowano po raz pierwszy w 2007 r., A drugie i trzecie odpowiednio w 2012 i 2013 r. W 2008 r. Opublikowano trzecią i ostatnią książkę trylogii Mistborn, zatytułowaną The Hero of Ages , a także drugą książkę z serii Alcatraz, zatytułowanąAlcatraz kontra kości skryba . W tym samym roku rozpoczął podcast Writing Excuses z Howardem Taylerem i Danem Wellsem. W 2009 roku Tor Books opublikował Warbreaker , który pierwotnie pojawił się seryjnie na stronie Sandersona, gdy pisał powieść od 2006 do 2009 roku. W tym samym roku ukazała się trzecia książka o Alcatraz , zatytułowana Alcatraz kontra rycerze kryształów .',
       oficialPage: 'http://www.brandonsanderson.com/',
     },
     {
-      id: 7,
+      id: '7',
       imageUrl: 'https://s.lubimyczytac.pl/upload/authors/81732/766091-352x500.jpg',
-      name: 'Samantha Shannon',
+      author: 'Samantha Shannon',
       date: '08.11.1991',
       content:
         'Urodziła się w zachodnim Londynie w 1991 roku. Zaczęła pisać w wieku piętnastu lat. W latach 2010–2013 studiowała angielską literaturę i literaturę powszechną w college’u Świętej Anny w Oxfordzie. W 2013 roku wydała Czas Żniw, pierwszą książkę z siedmiotomowej serii. Czas Żniw stał się bestsellerem w rankingu „New York Timesa”, „Sunday Timesa” i „Asian Age”, a także został wybrany Książką Roku przez „Daily Mail”, „Stylist” i „Huffington Post”. Ponadto powieść nazwano jedną z najlepszych książek roku 2013 w serwisie Amazon. Czas Żniw został przetłumaczony na dwadzieścia osiem języków. Prawa do ekranizacji nabyła wytwórnia Imaginarium Studios i 20th Century Fox. W 2014 roku Samantha Shannon znalazła się na liście Evening Standard Power 1000.',
@@ -104,14 +104,14 @@ const initialState = {
 
   notes: [
     {
-      id: 8,
+      id: '8',
       title: 'Note title 1',
       date: '21.10.2021',
       content:
         'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     },
     {
-      id: 9,
+      id: '9',
       title: 'Note title 2',
       date: '30.10.2021',
       content:
@@ -123,15 +123,21 @@ const initialState = {
 const rootReducer = (state = initialState, action) => {
       console.log(action);
       switch (action.type) {
+        case 'ADD_ITEM':
+          return {
+            ...state,
+            [action.payload.itemType]: [...state[action.payload.itemType], action.payload.item],
+          };
+
         case 'REMOVE_ITEM':
-        return {
-          ...state,
-          [action.payload.itemType]: [
-            ...state[action.payload.itemType].filter(item => item.id !== action.payload.id),
-          ],
-        };
+          return {
+            ...state,
+            [action.payload.itemType]: [
+              ...state[action.payload.itemType].filter((item) => item.id !== action.payload.id),
+            ],
+          };
         default:
-          return state; 
+          return state;
       }   
 };
 
