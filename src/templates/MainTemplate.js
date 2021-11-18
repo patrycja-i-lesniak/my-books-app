@@ -16,13 +16,13 @@ import NewItemBar from 'components/organisms/NewItemBar';
 const StyledButtonIcon = styled(ButtonIcon)`
 border-radius: 50%;
 position: fixed;
-bottom: 70px;
+bottom: 100px;
 right: 20px;
 z-index: 999;
 
-/* @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+@media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
   display: none;
-} */
+}
 `;
 
 const initialBookState = booksData;
