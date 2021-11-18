@@ -18,10 +18,16 @@ const StyledGrid = styled.div`
 `;
 
 const StyledQuote = styled.h2`
-color: ${({theme}) => theme.colors.grey};
-line-height: 1.5;
-padding: 20px 50px;
-text-align: center;
+  color: ${({ theme }) => theme.colors.grey};
+  line-height: 1.5;
+  padding: 20px 50px;
+  text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    font-size: 2rem;
+    padding: 0 0 30px;
+    margin: 0;
+  }
 `;
 
 
