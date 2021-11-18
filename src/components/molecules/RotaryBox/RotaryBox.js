@@ -2,14 +2,13 @@ import styled from 'styled-components';
 import Box from "components/atoms/Box";
 
 const Wrapper = styled.div`
-display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, 300px);
   align-items: center;
   justify-content: center;
-  height: 100%;
   gap: 20px;
-`;
+  padding-bottom: 40px;
+  `;
 
 const RotaryBox = () => (
   <>
