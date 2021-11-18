@@ -14,15 +14,16 @@ import NewItemBar from 'components/organisms/NewItemBar';
 // import { StyledBackdrop } from 'theme/GlobalStyle';
 
 const StyledButtonIcon = styled(ButtonIcon)`
-border-radius: 50%;
-position: fixed;
-bottom: 100px;
-right: 20px;
-z-index: 999;
+  border-radius: 50%;
+  position: fixed;
+  bottom: 100px;
+  right: 20px;
+  z-index: 999;
+  box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 
-@media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-  display: none;
-}
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    display: none;
+  }
 `;
 
 const initialBookState = booksData;
