@@ -1,5 +1,4 @@
-import { ThemeProvider } from 'styled-components';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import { Component } from 'react';
 import { withRouter } from 'react-router';
 import PropTypes from 'prop-types';
@@ -21,8 +20,8 @@ const StyledButtonIcon = styled(ButtonIcon)`
   z-index: 999;
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: none;
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    bottom: 80px;
   }
 `;
 
