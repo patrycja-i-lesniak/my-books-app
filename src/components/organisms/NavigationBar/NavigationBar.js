@@ -23,6 +23,12 @@ const StyledWrapper = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     grid-template-columns: 1fr;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    height: 60px;
+    padding: 0;
+    align-items: center;
+  }
 `;
 
 const StyledNavigationWrapper = styled.nav`
@@ -43,6 +49,11 @@ const StyledLogoLink = styled(NavLink)`
   background-position: 50% 50%;
   background-image: url(${myBooksLogoBlack});
   background-repeat: no-repeat;
+  
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    width: 150px;
+  
+  }
 `;
 
 const StyledLinkList = styled.ul`
