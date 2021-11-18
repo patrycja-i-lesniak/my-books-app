@@ -4,6 +4,8 @@ import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
 import { Container } from 'components/atoms/Container';
 import withContext from 'hoc/withContext';
+import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
+
 
 const StyledGrid = styled.div`
   display: grid;
@@ -14,22 +16,31 @@ const StyledGrid = styled.div`
   justify-content: center;
   position: relative;
 
-  ${({ pageContext }) =>
-    pageContext === 'home' &&
-    css`
-      grid-template-columns: 1fr;
-    `};
-
-  ${({ pageContext }) =>
+  /* ${({ pageContext }) =>
     pageContext === 'notes' &&
     css`
       display: flex;
-    `}
+    `} */
 `;
+
+const StyledQuote = styled.h2`
+color: ${({theme}) => theme.colors.grey};
+line-height: 1.5;
+padding: 20px 50px;
+text-align: center;
+`;
+
 
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
     <Container>
+      {pageContext === 'home' && (
+        <StyledQuote secondary>
+          {' "Książka to najlepszy przyjaciel człowieka, a biblioteka to świątynia jego myśli." – Cyceron'
+          }
+        </StyledQuote>
+      )}
+      {pageContext === 'home' && <RotaryBox />}
       <Header>Nagłówek strony {pageContext}</Header>
       <StyledGrid>{children}</StyledGrid>
     </Container>
