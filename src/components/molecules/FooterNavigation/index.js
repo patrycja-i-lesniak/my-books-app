@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
+import MobileNavigation from 'components/organisms/MobileNavigation';
 import { MdAlternateEmail } from 'react-icons/md';
 import { FaGithub } from 'react-icons/fa';
+
 
 const StyledWrapper = styled.div`
   display: flex;
@@ -10,17 +12,15 @@ const StyledWrapper = styled.div`
   align-items: center;
   color: ${({ theme }) => theme.colors.white};
   background-color: ${({ theme }) => theme.colors.lipstick};
-  height: 6rem;
+  height: 8rem;
   width: 100vw;
-  margin-top: 2rem;
   position: fixed;
   left: 0;
   bottom: 0;
   z-index: 9999;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    height: 3rem;
-    margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    height: 6rem;
   }
 `;
 
@@ -28,7 +28,7 @@ const StyledParagraph = styled(Paragraph)`
   margin: 0;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    font-size: 1rem;
+    display: none;
   }
 `;
 
@@ -36,6 +36,10 @@ const Link = styled.a`
   color: ${({ theme }) => theme.colors.white};
   transition: color 0.3s;
   margin: 0;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    display: none;
+  }
 
   &:hover {
     color: ${({ theme }) => theme.colors.black};
@@ -71,22 +75,23 @@ export const contact = [
   },
 ];
 
+const ItemList = () => (
+  <List>
+    {contact.map(({ name, url, Icon }) => (
+      <Item key={name}>
+        <Link href={url} title={name} target="_blank" rel="noreferrer">
+          <Icon />
+        </Link>
+      </Item>
+    ))}
+  </List>
+);
+
 const Footer = () => (
   <StyledWrapper>
-    <>
-      <StyledParagraph>© 2021 | Coded by Patrycja Leśniak</StyledParagraph>
-    </>
-    <>
-      <List>
-        {contact.map(({ name, url, Icon }) => (
-          <Item key={name}>
-            <Link href={url} title={name} target="_blank" rel="noreferrer">
-              <Icon />
-            </Link>
-          </Item>
-        ))}
-      </List>
-    </>
+    <StyledParagraph>© 2021 | Coded by Patrycja Leśniak</StyledParagraph>
+    <ItemList />
+    <MobileNavigation />
   </StyledWrapper>
 );
 
