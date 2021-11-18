@@ -11,7 +11,11 @@ const Select = styled.select`
   padding: 10px 0;
   outline: none;
   font-size: 1.5rem;
-  border: 1px solid ${({theme})=> theme.colors.lipstick};
+  border: 1px solid ${({ theme }) => theme.colors.lipstick};
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    width: 80%;
+  }
 `;
 
 const Option = styled.option`
