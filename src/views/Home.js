@@ -1,6 +1,7 @@
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
 import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 const Home = ({books}) => (
   <>
@@ -11,6 +12,17 @@ const Home = ({books}) => (
     </GridTemplate>
   </>
 );
+
+Home.propTypes = {
+  books: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.string.isRequired,
+      imageUrl: PropTypes.string.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired,
+    }),
+  ),
+};
 
 Home.defaultProps = {
   books: [],
