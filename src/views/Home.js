@@ -1,12 +1,25 @@
 import GridTemplate from 'templates/GridTemplate';
-import LastAdded from 'components/molecules/LastAddedItems';
+import Card from 'components/molecules/Card/Card';
+import { connect } from 'react-redux';
 
-const Home = () => (
+const Home = ({books}) => (
   <>
     <GridTemplate pageType="home">
-      <LastAdded/>
+      {books.map(({ author, imageUrl, id }) => (
+        <Card id={id} cardType="books" imageUrl={imageUrl} title={author} key={id} />
+      ))}
     </GridTemplate>
   </>
 );
 
-export default Home;
+Home.defaultProps = {
+  books: [],
+};
+
+const mapStateToProps = (state) => {
+  console.log(state);
+  const { books } = state;
+  return { books };
+};
+
+export default connect(mapStateToProps)(Home);

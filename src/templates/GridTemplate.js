@@ -6,7 +6,6 @@ import { Container } from 'components/atoms/Container';
 import withContext from 'hoc/withContext';
 import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
 
-
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
@@ -30,13 +29,13 @@ const StyledQuote = styled.h2`
   }
 `;
 
-
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
     <Container>
       {pageContext === 'home' && (
         <StyledQuote secondary>
-          {' "Książka to najlepszy przyjaciel człowieka, a biblioteka to świątynia jego myśli." – Cyceron'
+          {
+            ' "Książka to najlepszy przyjaciel człowieka, a biblioteka to świątynia jego myśli." – Cyceron'
           }
         </StyledQuote>
       )}
