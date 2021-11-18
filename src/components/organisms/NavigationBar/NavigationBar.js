@@ -13,7 +13,7 @@ const StyledWrapper = styled.div`
   grid-template-columns: 1fr 360px 120px;
   align-items: end;
   height: 80px;
-  padding: 20px 50px;
+  padding: 20px 40px;
   z-index: 9999;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
@@ -31,7 +31,7 @@ const StyledNavigationWrapper = styled.nav`
   align-items: end;
   justify-content: start;
 
-  @media (max-width: 768px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     justify-content: center;
   }
 `;
@@ -57,7 +57,7 @@ const StyledLinkList = styled.ul`
 const activeClassName = 'active';
 
 const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
-  padding: 0 30px 0 0;
+  padding: 0 20px 0 0;
   list-style: none;
   text-decoration: none;
   font-size: 1.7rem;
