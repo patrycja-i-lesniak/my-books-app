@@ -22,6 +22,12 @@ const Button = styled.button`
     css`
       background-color: ${({ theme }) => theme.colors.white};
       color: ${({ theme }) => theme.colors.lipstick};
+      box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
+
+
+      &:active {
+        background-color: ${({ theme }) => theme.colors.silver};
+      }
     `}
 `;
 
