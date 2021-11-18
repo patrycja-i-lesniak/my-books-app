@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { FaBars, FaBookOpen, FaUserEdit, FaPencilAlt, FaPlusCircle } from 'react-icons/fa';
+import { FaBars, FaBookOpen, FaUserEdit, FaPencilAlt } from 'react-icons/fa';
 import { NavLink } from 'react-router-dom';
 
 const StyledWrapper = styled.ul`
@@ -51,9 +51,6 @@ const MobileNavigation = () => (
     </StyledItem>
     <StyledItem as={NavLink} to="/notes">
       <FaPencilAlt />
-    </StyledItem>
-    <StyledItem as={NavLink} to="/notes">
-      <FaPlusCircle />
     </StyledItem>
   </StyledWrapper>
 );
