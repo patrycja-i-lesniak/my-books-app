@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import { Formik, Form } from 'formik';
+import { Formik, Form} from 'formik';
 import Input from 'components/atoms/Input';
 import Button from 'components/atoms/Button/Button';
 import Header from 'components/atoms/Header/Header';
@@ -16,7 +16,7 @@ const StyledWrapper = styled.div`
   display: flex;
   flex-direction: column;
   right: 0;
-  top: 80px;
+  top: 0;
   width: 50vw;
   max-width: 600px;
   padding-left: 50px;
@@ -25,7 +25,23 @@ const StyledWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
   transition: transform 0.25s ease-in-out;
-  /* overflow: auto; */
+  overflow: scroll;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    width: 100vw;
+    border-left: none;
+    padding-left: 0;
+    align-items: center;
+    max-width: unset;
+  }
+`;
+
+const StyledHeader = styled(Header)`
+  margin: 100px 0 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    margin-top: 80px;
+  }
 `;
 
 const StyledForm = styled(Form)`
@@ -33,6 +49,10 @@ const StyledForm = styled(Form)`
   flex-direction: column;
   width: 90%;
   justify-content: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    width: 80%;
+  }
 `;
 
 const StyledTextArea = styled(Input)`
@@ -53,19 +73,15 @@ const StyledTextArea = styled(Input)`
 `;
 
 const StyledButton = styled(Button)`
-  margin: 30px auto;
+  margin: 30px auto 120px;
+
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: inline-block;
+    margin: 30px auto 100px;
   }
 `;
 
-
-const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
-  return (
-    <StyledWrapper isVisible={isVisible}>
-      <Header secondary>Add new {pageContext}</Header>
-      <Formik
-        initialValues={{
+const initialValues = {
           type: '',
           title: '',
           author: '',
@@ -79,7 +95,14 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
           content: '',
           link: '',
           status: '',
-        }}
+        };
+
+const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
+  return (
+    <StyledWrapper isVisible={isVisible}>
+      <StyledHeader secondary>Add new {pageContext}</StyledHeader>
+      <Formik
+        initialValues={initialValues}
         onSubmit={(values) => {
           addItem(pageContext, values);
           handleClose();
@@ -94,7 +117,6 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.title}
-              
               />
             )}
             {pageContext === 'notes' ? null : (
@@ -167,13 +189,13 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
                 maxLenght="4"
               />
             )}
-              <Input
-                type="url"
-                name="link"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.link}
-              />
+            <Input
+              type="url"
+              name="link"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.link}
+            />
             {pageContext === 'books' && (
               <SelectStatus
                 type="select"
