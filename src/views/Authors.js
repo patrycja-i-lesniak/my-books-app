@@ -1,15 +1,36 @@
-import { connect } from 'react-redux';
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
+import { fetchAuthors } from 'api/authors';
 
-const Authors = ({ authors }) => (
-  <GridTemplate pageType="authors">
-    {authors.map(({ author, imageUrl, id }) => (
-      <Card id={id} cardType='authors' imageUrl={imageUrl} title={author} key={id} />
-    ))}
-  </GridTemplate>
-);
+
+const Authors = () => {
+  const [authors, setAuthors] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetchAuthors();
+    console.log(data);
+    setAuthors(data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <GridTemplate pageType="authors">
+      {authors.map(author => (
+        <Card
+          cardType="authors"
+          id={author.id}
+          author={author.author}
+          imageUrl={author.imageUrl}
+          key={author.id}
+        />
+      ))}
+    </GridTemplate>
+  );
+};
 
 Authors.propTypes = {
   authors: PropTypes.arrayOf(
@@ -25,10 +46,4 @@ Authors.defaultProps = {
   authors: [],
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  const { authors } = state;
-  return { authors };
-};
-
-export default connect(mapStateToProps)(Authors);
+export default Authors;
