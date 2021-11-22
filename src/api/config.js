@@ -17,4 +17,6 @@ export const apiConfig = {
   bookDetails: '/books',
   authorsList: '/authors?view=Grid%20view',
   authorDetails: '/authors',
+  notesList: '/notes?view=Grid%20view',
+  noteDetails: '/notes',
 };
