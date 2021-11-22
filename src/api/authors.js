@@ -13,11 +13,10 @@ export const fetchAuthors = async () => {
         author: author.fields.author,
       });
     });
-    console.log(records);
 
     return records;
   } catch (e) {
     console.error(e);
-    console.log('Fucking bugs!!!!!');
+    console.log('Ups... something went wrong');
   }
 };

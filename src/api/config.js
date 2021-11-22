@@ -10,7 +10,6 @@ export const axiosInstance = axios.create({
         Authorization: `Bearer ${REACT_APP_API_KEY}`,
     }
 });
-console.log(BASE_URL)
 
 export const apiConfig = {
   booksList: '/books?view=Grid%20view',

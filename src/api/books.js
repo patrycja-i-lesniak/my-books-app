@@ -13,7 +13,6 @@ export const fetchBooks = async () => {
         author: book.fields.author,
       });
     });
-    console.log(records);
 
     return records;
   } catch (e) {

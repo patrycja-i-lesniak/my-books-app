@@ -10,7 +10,6 @@ const Authors = () => {
 
   const fetchData = async () => {
     const data = await fetchAuthors();
-    console.log(data);
     setAuthors(data);
   };
   useEffect(() => {
