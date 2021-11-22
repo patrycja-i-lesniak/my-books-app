@@ -20,7 +20,6 @@
 
 # api key
 .env
-.env.local
 
 npm-debug.log*
 yarn-debug.log*
