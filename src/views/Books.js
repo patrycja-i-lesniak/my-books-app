@@ -1,15 +1,37 @@
-import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
+import { useState, useEffect } from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card';
+import { fetchBooks } from 'api/books';
 
-const Books = ({ books }) => (
-  <GridTemplate pageType="books">
-    {books.map(({ title, author, imageUrl, id }) => (
-      <Card id={id} cardType='books' imageUrl={imageUrl} title={title} author={author} key={id} />
-    ))}
-  </GridTemplate>
-);
+const Books = () => {
+  const [books, setBooks] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetchBooks();
+    console.log(data);
+    setBooks(data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <GridTemplate pageType="books">
+      {books &&
+        books.map(book => (
+          <Card
+            cardType="books"
+            id={book.id}
+            title={book.title}
+            author={book.author}
+            imageUrl={book.imageUrl}
+            key={book.id}
+          />
+        ))}
+    </GridTemplate>
+  );
+};
 
 Books.propTypes = {
   books: PropTypes.arrayOf(
@@ -26,10 +48,4 @@ Books.defaultProps = {
   books: [],
 };
 
-const mapStateToProps = (state) => {
-  console.log(state);
-  const { books } = state;
-  return { books };
-};
-
-export default connect(mapStateToProps)(Books);
+export default Books;
