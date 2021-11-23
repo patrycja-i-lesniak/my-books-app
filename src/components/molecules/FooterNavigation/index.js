@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Paragraph from '../../atoms/Paragraph/Paragraph';
 import MobileNavigation from 'components/organisms/MobileNavigation';
-import { MdAlternateEmail } from 'react-icons/md';
+// import { MdAlternateEmail } from 'react-icons/md';
 import { FaGithub } from 'react-icons/fa';
 
 
@@ -26,6 +26,7 @@ const StyledWrapper = styled.div`
 
 const StyledParagraph = styled(Paragraph)`
   margin: 0;
+  color: ${({theme}) => theme.colors.white};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
@@ -58,7 +59,7 @@ const Item = styled.li`
 `;
 
 export const styleIcon = (Icon) => styled(Icon)`
-font-size: 2rem;
+font-size: 3rem;
 `;
 
 export const contact = [
@@ -68,11 +69,11 @@ export const contact = [
     Icon: styleIcon(FaGithub),
   },
 
-  {
-    name: 'email',
-    url: 'mailto: patrycja.lesniak@gmail.com',
-    Icon: styleIcon(MdAlternateEmail),
-  },
+  // {
+  //   name: 'email',
+  //   url: 'mailto: patrycja.lesniak@gmail.com',
+  //   Icon: styleIcon(MdAlternateEmail),
+  // },
 ];
 
 const ItemList = () => (
