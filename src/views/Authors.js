@@ -22,7 +22,8 @@ const Authors = () => {
         <Card
           cardType="authors"
           id={author.id}
-          author={author.author}
+          firstName={author.firstName}
+          lastName={author.lastName}
           imageUrl={author.imageUrl}
           key={author.id}
         />
