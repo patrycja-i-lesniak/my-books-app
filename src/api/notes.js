@@ -11,6 +11,8 @@ export const fetchNotes = async () => {
         title: note.fields.title,
         imageUrl: note.fields.imageUrl,
         author: note.fields.author,
+        date: note.fields.date,
+        content: note.fields.content,
       });
     });
 
