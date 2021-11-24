@@ -1,15 +1,38 @@
-import { connect } from 'react-redux';
+import { useState, useEffect } from 'react';
+import {connect }from 'react-redux';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card/Card';
+import Card from 'components/molecules/Card/Card-test';
+import { fetchNotes } from 'api/notes';
 
-const Notes = ({ notes }) => (
-  <GridTemplate pageType="notes">
-    {notes.map(({ id, title, imageUrl, content, date }) => (
-      <Card id={id} title={title} imageUrl={imageUrl} cardType='notes' date={date} content={content} key={id} />
-    ))}
-  </GridTemplate>
-);
+const Notes = () => {
+  const [notes, setNotes] = useState([]);
+
+  const fetchData = async () => {
+    const data = await fetchNotes();
+    setNotes(data);
+  };
+  useEffect(() => {
+    fetchData();
+  }, []);
+
+  return (
+    <GridTemplate pageType="notes">
+      {notes &&
+        notes.map(note => (
+          <Card
+            cardType="notes"
+            id={note.id}
+            title={note.title}
+            date={note.date}
+            content={note.content}
+            imageUrl={note.imageUrl}
+            key={note.id}
+          />
+        ))}
+    </GridTemplate>
+  );
+};
 
 Notes.propTypes = {
   notes: PropTypes.arrayOf(
@@ -28,7 +51,7 @@ Notes.defaultProps = {
   imageUrl: '',
 };
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   console.log(state);
   const { notes } = state;
   return { notes };
