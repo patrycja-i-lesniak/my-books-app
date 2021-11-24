@@ -9,9 +9,13 @@ const Button = styled.button`
   padding: 5px;
   border-radius: 3px;
   cursor: pointer;
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow};
+  box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
   text-decoration: none;
   text-align: center;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    max-width: 100px;
+  }
 
   &:active {
     background-color: ${({ theme }) => theme.colors.lightLipstick};
@@ -23,7 +27,6 @@ const Button = styled.button`
       background-color: ${({ theme }) => theme.colors.white};
       color: ${({ theme }) => theme.colors.lipstick};
       box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
-
 
       &:active {
         background-color: ${({ theme }) => theme.colors.silver};
