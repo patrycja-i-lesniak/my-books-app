@@ -8,9 +8,9 @@ export const fetchAuthors = async () => {
     dbData.records.forEach(author => {
       records.push({
         id: author.id,
-        title: author.fields.title,
         imageUrl: author.fields.imageUrl,
-        author: author.fields.author,
+        firstName: author.fields.firstName,
+        lastName: author.fields.lastName,
       });
     });
 
