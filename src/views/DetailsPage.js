@@ -1,60 +1,46 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+// import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
-import { routes } from 'routes';
 
-class DetailsPage extends Component {
-  state = {
-    pageType: 'books',
+import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
+import { fetchBookDetails } from 'api/books';
+
+const DetailsPage = () => {
+  const [bookData, setBookData] = useState({});
+  const { id } = useParams();
+
+  const fetchData = async () => {
+    const dbData = await fetchBookDetails(id);
+    setBookData(dbData);
   };
 
-  componentDidMount() {
-    const { match } = this.props;
+  useEffect(() => {
+    fetchData();
+  });
 
-    switch (match.path) {
-      case routes.book:
-        this.setState({ pageType: 'books' });
-        break;
-
-      case routes.author:
-        this.setState({ pageType: 'authors' });
-        break;
-
-      case routes.note:
-        this.setState({ pageType: 'notes' });
-        break;
-
-      default:
-        console.log('Something went wrong with matching paths');
-    }
-  }
-
-  render() {
-    const exampleNote = {
-      id: 10,
-      title: 'Example note Title',
-      content:
-        'Lorem ipsum dolor sit amet. Aut consequatur pariatur ut odio ut doloribus vero a nihil cumque ut eligendi totam. Est dolor quasi a quos aliquid et deleniti explicabo? Ex sunt adipisci sit vero mollitia qui quam perspiciatis in suscipit illum et officiis illo quasi harum! Est quisquam quam vel dicta deleniti sed facere enim sit excepturi consectetur ad perferendis magni. Perferendis sapiente in sint placeat ut itaque quam. Vel eligendi iure sed sapiente assumenda a explicabo voluptatem quo quia possimus At autem officia. Ut unde odio eos quam dignissimos qui atque aliquam nam delectus quasi rem provident laudantium ex porro nisi. In consequatur provident ad doloremque aliquam est dolores maiores? Aut internos omnis vel minus enim et sapiente voluptatibus?',
-      imageUrl: 'http://image.url',
-    };
-
-    const { pageType } = this.state;
-
-    return (
-      <DetailsPageTemplate
-        pageType={pageType}
-        title={exampleNote.title}
-        content={exampleNote.content}
-        imageUrl={exampleNote.imageUrl}
-      />
-    );
-  }
-}
-
-DetailsPage.propTypes = {
-  match: PropTypes.shape({
-    path: PropTypes.string.isRequired,
-  }).isRequired,
+  return (
+    <>
+      {bookData && (
+        <DetailsPageTemplate
+          // pageType={pageType}
+          title={bookData.title}
+          firstName={bookData.firstName}
+          latNsme={bookData.lastName}
+          content={bookData.content}
+          imageUrl={bookData.imageUrl}
+          status={bookData.imageUrl}
+          numberOfPages={bookData.numberOfPages}
+          date={bookData.date}
+          translation={bookData.translation}
+          publishing={bookData.publishing}
+          isbn={bookData.isbn}
+          series={bookData.series}
+          LClink={bookData.LClink}
+        />
+      )}
+    </>
+  );
 };
 
 export default DetailsPage;
