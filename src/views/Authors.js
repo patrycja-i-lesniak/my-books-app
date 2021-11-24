@@ -1,9 +1,8 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card/Card';
+import Card from 'components/molecules/Card';
 import { fetchAuthors } from 'api/authors';
-
 
 const Authors = () => {
   const [authors, setAuthors] = useState([]);
