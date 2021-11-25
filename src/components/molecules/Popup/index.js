@@ -20,8 +20,8 @@ const Popup = ({ handleDeleteTrue, handleDeleteFalse }) => {
 };
 
 Popup.propTypes = {
-  handleDeleteTrue: PropTypes.func.isRequired,
-  handleDeleteFalse: PropTypes.func.isRequired,
+  handleDeleteTrue: PropTypes.bool.isRequired,
+  handleDeleteFalse: PropTypes.bool.isRequired,
 };
 
 export default Popup;
