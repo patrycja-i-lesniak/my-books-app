@@ -26,6 +26,7 @@ export const theme = {
     boxShadowDark: '5px 5px 15px -5px rgba(0, 0, 0, 0.8)',
     textShadow: '-1px 3px 3px #bfbfbf',
     modalShadow: '0 10px 20px -5px rgba(0, 0, 0, .8);',
+    popupShadow: '0 10px 20px -5px rgba(0, 0, 0, .8);',
   },
 
   easeOut: 'cubic-bezier(0.4, 0.2, 0.2, 1)',
