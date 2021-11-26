@@ -1,115 +1,126 @@
-import styled from 'styled-components';
-import { connect } from 'react-redux';
+import React, {useState} from 'react';
+import Axios from 'axios';
+import * as Yup from 'yup';
 import PropTypes from 'prop-types';
-import { Formik, Form} from 'formik';
+import { Formik, ErrorMessage } from 'formik';
 import Input from 'components/atoms/Input';
-import Button from 'components/atoms/Button/Button';
-import Header from 'components/atoms/Header/Header';
+import {
+  StyledWrapper,
+  StyledHeader,
+  StyledButton,
+  StyledTextArea,
+  StyledForm,
+} from './styled';
+// import SelectStatus from 'components/atoms/SelectStatus';
+import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
+import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
+
 import withContext from 'hoc/withContext';
-import { addItemAction } from 'actions';
-import SelectStatus from 'components/atoms/SelectStatus';
 
-const StyledWrapper = styled.div`
-  border-left: 3px solid ${({ theme }) => theme.colors.lipstick};
-  z-index: 0;
-  position: fixed;
-  display: flex;
-  flex-direction: column;
-  right: 0;
-  top: 0;
-  width: 50vw;
-  max-width: 600px;
-  padding-left: 50px;
-  height: 100vh;
-  background-color: white;
-  box-shadow: ${({ theme }) => theme.shadows.boxShadow};
-  transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 0.25s ease-in-out;
-  overflow: scroll;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    width: 100vw;
-    border-left: none;
-    padding-left: 0;
-    align-items: center;
-    max-width: unset;
-  }
-`;
+const NewItemBar = ({ isVisible, pageContext }) => {
+  const [popup, setPopup] = useState( undefined);
+  const [errorPopup, setErrorPopup] = useState(undefined);
 
-const StyledHeader = styled(Header)`
-  margin: 100px 0 10px;
+  const initialValues = {
+    type: '',
+    title: '',
+    firstName: '',
+    lastName: '',
+    imageUrl: '',
+    series: '',
+    date: '',
+    dateOfBirth: '',
+    dateOfDeath: '',
+    isbn: '',
+    translation: '',
+    publishing: '',
+    numberOfPages: '',
+    content: '',
+    // LClink: '',
+    // status: '',
+    // oficialWebsite: ',',
+  };
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    margin-top: 80px;
-  }
-`;
+  const key = process.env.REACT_APP_API_KEY;
 
-const StyledForm = styled(Form)`
-  display: flex;
-  flex-direction: column;
-  width: 90%;
-  justify-content: center;
+  const validationSchema = Yup.object().shape({
+    title: Yup.string().required('Required'),
+    firstName: Yup.string().required('Required'),
+    lastName: Yup.string().required('Required'),
+    imageUrl: Yup.string().url(),
+    series: Yup.string(),
+    date: Yup.date(),
+    dateOfBirth: Yup.date(),
+    dateOfDeath: Yup.date(),
+    isbn: Yup.number(),
+    translation: Yup.string(),
+    publishing: Yup.string(),
+    numberOfPages: Yup.number(),
+    content: Yup.string().required('Required'),
+    // LClink: Yup.string().url(),
+    // status: Yup.string(),
+    // oficialWebsite: Yup.string().url(),
+  });
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    width: 80%;
-  }
-`;
-
-const StyledTextArea = styled(Input)`
-  height: 120px;
-  border: 1px solid ${({ theme }) => theme.colors.silver};
-  line-height: 1.5;
-  border-radius: 5px;
-  margin-top: 30px;
-  resize: none;
-  outline: none;
-  font-size: 1.5rem;
-  color: ${({ theme }) => theme.colors.lipstick};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.grey};
-    font-size: 1.2rem;
-  }
-`;
-
-const StyledButton = styled(Button)`
-  margin: 30px auto 120px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: inline-block;
-    margin: 30px auto 100px;
-  }
-`;
-
-const initialValues = {
-          type: '',
-          title: '',
-          author: '',
-          imageUrl: '',
-          series: '',
-          date: '',
-          isbn: '',
-          translation: '',
-          publishing: '',
-          pages: '',
-          content: '',
-          link: '',
-          status: '',
-        };
-
-const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
   return (
     <StyledWrapper isVisible={isVisible}>
       <StyledHeader secondary>Add new {pageContext}</StyledHeader>
       <Formik
         initialValues={initialValues}
-        onSubmit={(values) => {
-          addItem(pageContext, values);
-          handleClose();
+        validationSchema={validationSchema}
+        onSubmit={async values => {
+          const book = {
+            records: [
+              {
+                fields: {
+                  title: values.title,
+                  firstName: values.firstName,
+                  lastName: values.lastName,
+                  imageUrl: values.imageUrl,
+                  series: values.series,
+                  date: values.date,
+                  dateOfBirth: values.dateOfBirth,
+                  dateOfDeath: values.dateOfDeath,
+                  isbn: values.isbn,
+                  translation: values.translation,
+                  publishing: values.publishing,
+                  numberOfPages: values.numberOfPages,
+                  content: values.content,
+                  // LClink: values.LClink,
+                  // status: values.status,
+                  // oficialWebsite: values.oficialWebsite,
+                },
+              },
+            ],
+          };
+
+          const axiosConfig = {
+            headers: {
+              Authorization: `Bearer ${key}`,
+              'Content-Type': 'application/json',
+            },
+          };
+
+          await Axios.post('https://api.airtable.com/v0/appsA6zFLzM76dL1o/books', book, axiosConfig)
+            .then(response => {
+              setPopup(true);
+              console.log(response);
+              console.log('Successfully submitted');
+            })
+            .catch(err => {
+              setErrorPopup(true);
+              console.error(err);
+            });
         }}
       >
-        {({ values, handleChange, handleBlur }) => (
-          <StyledForm autoComplete="off">
+        {({ values, handleChange, handleBlur, handleSubmit }) => (
+          <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
+            <>
+              {errorPopup && <ErrorPopup />}
+              {popup && <SuccessPopup />}
+            </>
             {pageContext === 'authors' ? null : (
               <Input
                 type="text"
@@ -117,24 +128,54 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.title}
+                autoComplete="given-name"
               />
             )}
+            <ErrorMessage name="title">
+              {msg => (
+                <div>
+                  <Paragraph>{msg} </Paragraph>
+                </div>
+              )}
+            </ErrorMessage>
             {pageContext === 'notes' ? null : (
               <Input
                 type="text"
-                name="author"
+                name="firstName"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.author}
+                value={values.firstName}
               />
             )}
+            <ErrorMessage name="firstName">
+              {msg => (
+                <div>
+                  <p>{msg} </p>
+                </div>
+              )}
+            </ErrorMessage>
+            {pageContext === 'notes' ? null : (
+              <Input
+                type="text"
+                name="lastName"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.lastName}
+              />
+            )}
+            <ErrorMessage name="lastName">
+              {msg => (
+                <div>
+                  <p>{msg} </p>
+                </div>
+              )}
+            </ErrorMessage>
             <Input
               type="url"
               name="imageUrl"
               onChange={handleChange}
               onBlur={handleBlur}
               value={values.imageUrl}
-              // placeholder="ex. https://image.jpg"
             />
             {pageContext === 'books' && (
               <Input
@@ -145,13 +186,33 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
                 value={values.series}
               />
             )}
-            <Input
-              type="date"
-              name="date"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.date}
-            />
+            {pageContext === 'authors' ? (
+              <>
+                <Input
+                  type="date"
+                  name="dateOfBirth"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.dateOfBirth}
+                />
+                <Input
+                  type="date"
+                  name="dateOfDeath"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.dateOfDeath}
+                />
+              </>
+            ) : (
+              <Input
+                type="date"
+                name="date"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.date}
+              />
+            )}
+
             {pageContext === 'books' && (
               <Input
                 type="number"
@@ -182,21 +243,33 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
             {pageContext === 'books' && (
               <Input
                 type="number"
-                name="pages"
+                name="numberOfPages"
                 onChange={handleChange}
                 onBlur={handleBlur}
-                value={values.pages}
+                value={values.numberOfPages}
                 maxLenght="4"
               />
             )}
-            <Input
-              type="url"
-              name="link"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.link}
-            />
+
             {pageContext === 'books' && (
+              <Input
+                type="url"
+                name="LClink"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.LClink}
+              />
+            )}
+            {/* {pageContext === 'authors' && (
+              <Input
+                type="url"
+                name="oficialWebsite"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.oficialWebsite}
+              />
+            )} */}
+            {/* {pageContext === 'books' && (
               <SelectStatus
                 type="select"
                 name="status"
@@ -204,7 +277,7 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
                 onBlur={handleBlur}
                 value={values.status}
               />
-            )}
+            )} */}
             <StyledTextArea
               type="text"
               name="content"
@@ -214,18 +287,26 @@ const NewItemBar = ({ pageContext, isVisible, handleClose, addItem }) => {
               onBlur={handleBlur}
               value={values.content}
             />
-            <StyledButton type="submit">Add new item</StyledButton>
+            <ErrorMessage name="content">
+              {msg => (
+                <div>
+                  <p>{msg} </p>
+                </div>
+              )}
+            </ErrorMessage>
+            <StyledButton type="submit">
+              Add new item
+            </StyledButton>
           </StyledForm>
         )}
       </Formik>
     </StyledWrapper>
   );
-};
+}
 
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
   isVisible: PropTypes.bool,
-  addItem: PropTypes.func.isRequired,
   handleClose: PropTypes.func.isRequired,
 };
 
@@ -234,8 +315,5 @@ NewItemBar.defaultProps = {
   isVisible: false,
 };
 
-const mapDispatchToProps = (dispatch) => ({
-  addItem: (itemType, itemContent) => dispatch(addItemAction(itemType, itemContent)),
-});
 
-export default connect(null, mapDispatchToProps)(withContext(NewItemBar));
+export default (withContext(NewItemBar));
