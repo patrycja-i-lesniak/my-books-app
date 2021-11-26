@@ -3,7 +3,7 @@ import { useState, useEffect } from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
 import { base } from 'airtable/base';
-import ConfirmPopup from 'components/molecules/Popups/ConfirmPopup';
+import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
 const Books = () => {
   const [books, setBooks] = useState([]);
@@ -74,7 +74,7 @@ const Books = () => {
             handleDelete={handleDelete}
           />
         ))}
-      {popup.show && <ConfirmPopup handleDeleteFalse={handleDeleteFalse} handleDeleteTrue={handleDeleteTrue}/>}
+      {popup.show && <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} handleDeleteTrue={handleDeleteTrue}/>}
     </GridTemplate>
   );
 };
