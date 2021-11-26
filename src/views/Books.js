@@ -3,49 +3,48 @@ import { useState, useEffect } from 'react';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
 import { base } from 'airtable/base';
-import Popup from 'components/molecules/Popup';
+import ConfirmPopup from 'components/molecules/Popups/ConfirmPopup';
 
 const Books = () => {
   const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    let isApiSubscribed = true;
-    base('books')
-      .select({ view: 'Grid view' })
-      .eachPage((records, fetchNextPage) => {
-        if (isApiSubscribed) {
-          setBooks(records);
-          fetchNextPage();
-          console.log(records);
-        }
-      });
-    return () => {
-      isApiSubscribed = false;
-    };
-  }, []);
-
   const [popup, setPopup] = useState({
     show: false,
     id: null,
   });
+
+  useEffect(() => {
+   
+    base('books')
+      .select({ view: 'Grid view'})
+      .eachPage((records, fetchNextPage) => {
+          setBooks(records);
+          fetchNextPage();
+          console.log(records);
+      }, function (err) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+      });
+  }, []);
 
   const handleDelete = id => {
     setPopup({
       show: true,
       id,
     });
-    console.log('Open popup');
+    console.log('open popup');
   };
 
-  const handleDeleteTrue = books => {
+  const handleDeleteTrue = () => {
     if (popup.show && popup.id) {
-      const filteredBooks = books.filter(book => book.id !== popup.id);
+      const filteredBooks = (books) => books.filter(book => book.id !== popup.id);
       setBooks(filteredBooks);
       setPopup({
         show: false,
         id: null,
       });
-      console.log('Delete item');
+      console.log('delete item & close popup');
     }
   };
 
@@ -75,9 +74,7 @@ const Books = () => {
             handleDelete={handleDelete}
           />
         ))}
-      {popup.show && (
-        <Popup handleDeleteTrue={handleDeleteTrue} handleDeleteFalse={handleDeleteFalse} />
-      )}
+      {popup.show && <ConfirmPopup handleDeleteFalse={handleDeleteFalse} handleDeleteTrue={handleDeleteTrue}/>}
     </GridTemplate>
   );
 };
