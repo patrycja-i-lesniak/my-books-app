@@ -1,9 +1,9 @@
-import React, {useState} from 'react';
+import React, { useState } from 'react';
 
 import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
 import validationSchema from 'helpers/validationSchema';
-import { axiosInstance,  apiEndpoints } from 'airtable/base';
+import { axiosInstance, apiEndpoints } from 'airtable/base';
 import Input from 'components/atoms/Input';
 import {
   StyledWrapper,
@@ -11,14 +11,16 @@ import {
   StyledButton,
   StyledTextArea,
   StyledForm,
+  NameContainer,
+  RequiredWrapper,
+  ContentContainer,
 } from './styled';
+import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 // import SelectStatus from 'components/atoms/SelectStatus';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
 
 import withContext from 'hoc/withContext';
-
 
 const NewItemBar = ({ isVisible, pageContext }) => {
   const [popup, setPopup] = useState(undefined);
@@ -43,8 +45,6 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     // status: '',
     // oficialWebsite: ',',
   };
-
-  
 
   return (
     <StyledWrapper isVisible={isVisible}>
@@ -78,7 +78,8 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             ],
           };
 
-          await axiosInstance.post(apiEndpoints.booksList, book)
+          await axiosInstance
+            .post(apiEndpoints.booksList, book)
             .then(response => {
               setPopup(true);
               console.log(response);
@@ -107,45 +108,33 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 autoComplete="given-name"
               />
             )}
-            <ErrorMessage name="title">
-              {msg => (
-                <div>
-                  <Paragraph>{msg} </Paragraph>
-                </div>
-              )}
-            </ErrorMessage>
-            {pageContext === 'notes' ? null : (
-              <Input
-                type="text"
-                name="firstName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.firstName}
-              />
-            )}
-            <ErrorMessage name="firstName">
-              {msg => (
-                <div>
-                  <p>{msg} </p>
-                </div>
-              )}
-            </ErrorMessage>
-            {pageContext === 'notes' ? null : (
-              <Input
-                type="text"
-                name="lastName"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.lastName}
-              />
-            )}
-            <ErrorMessage name="lastName">
-              {msg => (
-                <div>
-                  <p>{msg} </p>
-                </div>
-              )}
-            </ErrorMessage>
+            <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            <RequiredWrapper>
+              <NameContainer>
+                {pageContext === 'notes' ? null : (
+                  <Input
+                    type="text"
+                    name="firstName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.firstName}
+                  />
+                )}
+                <ErrorMessage name="firstName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+              </NameContainer>
+              <NameContainer>
+                {pageContext === 'notes' ? null : (
+                  <Input
+                    type="text"
+                    name="lastName"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.lastName}
+                  />
+                )}
+                <ErrorMessage name="lastName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+              </NameContainer>
+            </RequiredWrapper>
             <Input
               type="url"
               name="imageUrl"
@@ -181,13 +170,13 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 />
               </>
             ) : (*/}
-              <Input
-                type="date"
-                name="date"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.date}
-              />
+            <Input
+              type="date"
+              name="date"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.date}
+            />
             {/* )} */}
 
             {pageContext === 'books' && (
@@ -256,29 +245,26 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 value={values.status}
               />
             )}  */}
-            <StyledTextArea
-              type="text"
-              name="content"
-              as="textarea"
-              placeholder="add description"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.content}
-            />
-            <ErrorMessage name="content">
-              {msg => (
-                <div>
-                  <p>{msg} </p>
-                </div>
-              )}
-            </ErrorMessage>
+            <ContentContainer>
+              <StyledTextArea
+                type="text"
+                name="content"
+                as="textarea"
+                placeholder="add description"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+              />
+              <ErrorMessage name="content">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </ContentContainer>
+
             <StyledButton type="submit">Add new item</StyledButton>
           </StyledForm>
         )}
       </Formik>
     </StyledWrapper>
   );
-}
+};
 
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
@@ -291,5 +277,4 @@ NewItemBar.defaultProps = {
   isVisible: false,
 };
 
-
-export default (withContext(NewItemBar));
+export default withContext(NewItemBar);
