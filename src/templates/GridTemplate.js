@@ -47,7 +47,7 @@ const GridTemplate = ({ children, pageContext }) => (
 );
 
 GridTemplate.propTypes = {
-  children: PropTypes.arrayOf(PropTypes.object).isRequired,
+  children: PropTypes.node,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
 };
 
