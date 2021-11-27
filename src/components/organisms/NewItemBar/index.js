@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
-import Axios from 'axios';
-import * as Yup from 'yup';
+
 import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
+import validationSchema from 'helpers/validationSchema';
+import { axiosInstance,  apiEndpoints } from 'airtable/base';
 import Input from 'components/atoms/Input';
 import {
   StyledWrapper,
@@ -20,7 +21,7 @@ import withContext from 'hoc/withContext';
 
 
 const NewItemBar = ({ isVisible, pageContext }) => {
-  const [popup, setPopup] = useState( undefined);
+  const [popup, setPopup] = useState(undefined);
   const [errorPopup, setErrorPopup] = useState(undefined);
 
   const initialValues = {
@@ -31,38 +32,19 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     imageUrl: '',
     series: '',
     date: '',
-    dateOfBirth: '',
-    dateOfDeath: '',
+    // dateOfBirth: '',
+    // dateOfDeath: '',
     isbn: '',
     translation: '',
     publishing: '',
     numberOfPages: '',
     content: '',
-    // LClink: '',
+    LClink: '',
     // status: '',
     // oficialWebsite: ',',
   };
 
-  const key = process.env.REACT_APP_API_KEY;
-
-  const validationSchema = Yup.object().shape({
-    title: Yup.string().required('Required'),
-    firstName: Yup.string().required('Required'),
-    lastName: Yup.string().required('Required'),
-    imageUrl: Yup.string().url(),
-    series: Yup.string(),
-    date: Yup.date(),
-    dateOfBirth: Yup.date(),
-    dateOfDeath: Yup.date(),
-    isbn: Yup.number(),
-    translation: Yup.string(),
-    publishing: Yup.string(),
-    numberOfPages: Yup.number(),
-    content: Yup.string().required('Required'),
-    // LClink: Yup.string().url(),
-    // status: Yup.string(),
-    // oficialWebsite: Yup.string().url(),
-  });
+  
 
   return (
     <StyledWrapper isVisible={isVisible}>
@@ -81,14 +63,14 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                   imageUrl: values.imageUrl,
                   series: values.series,
                   date: values.date,
-                  dateOfBirth: values.dateOfBirth,
-                  dateOfDeath: values.dateOfDeath,
+                  // dateOfBirth: values.dateOfBirth,
+                  // dateOfDeath: values.dateOfDeath,
                   isbn: values.isbn,
                   translation: values.translation,
                   publishing: values.publishing,
                   numberOfPages: values.numberOfPages,
                   content: values.content,
-                  // LClink: values.LClink,
+                  LClink: values.LClink,
                   // status: values.status,
                   // oficialWebsite: values.oficialWebsite,
                 },
@@ -96,14 +78,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             ],
           };
 
-          const axiosConfig = {
-            headers: {
-              Authorization: `Bearer ${key}`,
-              'Content-Type': 'application/json',
-            },
-          };
-
-          await Axios.post('https://api.airtable.com/v0/appsA6zFLzM76dL1o/books', book, axiosConfig)
+          await axiosInstance.post(apiEndpoints.booksList, book)
             .then(response => {
               setPopup(true);
               console.log(response);
@@ -112,6 +87,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             .catch(err => {
               setErrorPopup(true);
               console.error(err);
+              console.log('Blajkdsjfekdvfjkd');
             });
         }}
       >
@@ -186,15 +162,16 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 value={values.series}
               />
             )}
-            {pageContext === 'authors' ? (
-              <>
-                <Input
-                  type="date"
-                  name="dateOfBirth"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.dateOfBirth}
-                />
+            {/* {pageContext === 'authors' ? (
+              <> 
+            <Input
+              type="date"
+              name="dateOfBirth"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.dateOfBirth}
+            />
+            {/*
                 <Input
                   type="date"
                   name="dateOfDeath"
@@ -203,7 +180,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                   value={values.dateOfDeath}
                 />
               </>
-            ) : (
+            ) : (*/}
               <Input
                 type="date"
                 name="date"
@@ -211,7 +188,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 onBlur={handleBlur}
                 value={values.date}
               />
-            )}
+            {/* )} */}
 
             {pageContext === 'books' && (
               <Input
@@ -240,6 +217,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 value={values.publishing}
               />
             )}
+
             {pageContext === 'books' && (
               <Input
                 type="number"
@@ -271,13 +249,13 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             )} */}
             {/* {pageContext === 'books' && (
               <SelectStatus
-                type="select"
+                type="single-select"
                 name="status"
                 onChange={handleChange}
                 onBlur={handleBlur}
                 value={values.status}
               />
-            )} */}
+            )}  */}
             <StyledTextArea
               type="text"
               name="content"
@@ -294,9 +272,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 </div>
               )}
             </ErrorMessage>
-            <StyledButton type="submit">
-              Add new item
-            </StyledButton>
+            <StyledButton type="submit">Add new item</StyledButton>
           </StyledForm>
         )}
       </Formik>
