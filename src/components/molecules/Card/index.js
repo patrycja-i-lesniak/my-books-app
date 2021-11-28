@@ -9,6 +9,7 @@ import {
   // StyledLink,
 } from './styled';
 import Wrapper from 'components/atoms/Wrapper';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import trashIcon from 'assets/icons/trash.svg';
 
 const Card = ({ book, author, note, cardType, handleDelete }) => {
@@ -39,6 +40,7 @@ const Card = ({ book, author, note, cardType, handleDelete }) => {
             {note.fields.imageUrl && <StyledImage src={note.fields.imageUrl} />}
             <StyledTitle>{note.fields.title} </StyledTitle>
             <StyledDate>{note.fields.date}</StyledDate>
+            <Paragraph>{note.fields.content}</Paragraph>
           </>
         )}
         <TrashButton icon={trashIcon} onClick={handleDelete} />
