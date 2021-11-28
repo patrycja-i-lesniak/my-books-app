@@ -1,5 +1,5 @@
-import PropTypes from 'prop-types';
 import { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card';
 import { base } from 'airtable/base';
@@ -13,19 +13,21 @@ const Books = () => {
   });
 
   useEffect(() => {
-   
     base('books')
-      .select({ view: 'Grid view'})
-      .eachPage((records, fetchNextPage) => {
+      .select({ view: 'Grid view' })
+      .eachPage(
+        (records, fetchNextPage) => {
           setBooks(records);
           fetchNextPage();
           console.log(records);
-      }, function (err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      });
+        },
+        function (err) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+        },
+      );
   }, []);
 
   const handleDelete = id => {
@@ -38,13 +40,13 @@ const Books = () => {
 
   const handleDeleteTrue = () => {
     if (popup.show && popup.id) {
-      const filteredBooks = (books) => books.filter(book => book.id !== popup.id);
+      const filteredBooks = books => books.filter(book => book.id !== popup.id);
       setBooks(filteredBooks);
       setPopup({
         show: false,
         id: null,
       });
-      console.log('delete item & close popup');
+      console.log('delete book & close popup');
     }
   };
 
@@ -64,17 +66,20 @@ const Books = () => {
             cardType="books"
             book={book}
             id={book.id}
-            title={book.title}
-            firstName={book.firstName}
-            lastName={book.lastName}
-            imageUrl={book.imageUrl}
-            date={book.date}
-            content={books.content}
             key={book.id}
+            // title={book.title}
+            // firstName={book.firstName}
+            // lastName={book.lastName}
+            imageUrl={book.imageUrl}
             handleDelete={handleDelete}
           />
         ))}
-      {popup.show && <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} handleDeleteTrue={handleDeleteTrue}/>}
+      {popup.show && (
+        <ConfirmationPopup
+          handleDeleteFalse={handleDeleteFalse}
+          handleDeleteTrue={handleDeleteTrue}
+        />
+      )}
     </GridTemplate>
   );
 };
@@ -84,8 +89,9 @@ Books.propTypes = {
     PropTypes.shape({
       id: PropTypes.string.isRequired,
       imageUrl: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
+      title: PropTypes.string,
+      firstName: PropTypes.string.isRequired,
+      lastName: PropTypes.string.isRequired,
     }),
   ),
 };
