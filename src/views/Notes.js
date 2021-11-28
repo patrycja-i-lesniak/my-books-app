@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card/Card-test';
+import Card from 'components/molecules/Card';
 import { base } from 'airtable/base';
 
 const Notes = () => {
