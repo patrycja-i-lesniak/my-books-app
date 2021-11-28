@@ -1,23 +1,36 @@
 import PropTypes from "prop-types";
 import styled from "styled-components";
+import {Field} from 'formik'
 
 const StyledWrapper = styled.div`
   position: relative;
   width: 100%;
-  display: flex; flex-direction: column;
+  display: flex; 
+  flex-direction: column;
 `;
 
-const StyledField = styled.input`
+const StyledField = styled(Field)`
   color: ${({ theme }) => theme.colors.lipstick};
   font-size: 1.5rem;
   border: none;
-  line-height: 3;
-  border-bottom: 1px solid ${({ theme }) => theme.colors.silver};
+  line-height: 2.5;
+  border: 1px solid ${({ theme }) => theme.colors.silver};
+  border-radius: 5px;
   outline: none;
+  margin-bottom: 1.5rem;
+  padding-left: 10px;
+  font-weight: bold;
 
   ::placeholder {
+    font-size: 1.2rem;
     color: ${({ theme }) => theme.colors.grey};
-    font-size: 1.rem;
+    :focus {
+      color: transparent;
+    }
+  }
+
+  :active {
+    outline: 1px solid ${({ theme }) => theme.colors.lipstick};
   }
 `;
 
@@ -25,11 +38,15 @@ const StyledLabel = styled.label`
   font-size: 1.2rem;
   color: ${({ theme }) => theme.colors.grey};
   position: absolute;
-  bottom: 3px;
+  top: -10px;
+  left: 10px;
+  background-color: white;
+  padding: 5px;
 `;
 
 const Input = ({ name, type, onChange, onBlur, values, placeholder }) => (
   <StyledWrapper>
+    <StyledLabel>{name}</StyledLabel>
     <StyledField
       type={type}
       name={name}
@@ -37,9 +54,7 @@ const Input = ({ name, type, onChange, onBlur, values, placeholder }) => (
       onBlur={onBlur}
       value={values}
       placeholder={placeholder}
-      
     />
-    <StyledLabel>{name}</StyledLabel>
   </StyledWrapper>
 );
 
