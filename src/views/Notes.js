@@ -1,19 +1,28 @@
 import { useState, useEffect } from 'react';
-import {connect }from 'react-redux';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import Card from 'components/molecules/Card/Card-test';
-import { fetchNotes } from 'api/notes';
+import { base } from 'airtable/base';
 
 const Notes = () => {
   const [notes, setNotes] = useState([]);
 
-  const fetchData = async () => {
-    const data = await fetchNotes();
-    setNotes(data);
-  };
   useEffect(() => {
-    fetchData();
+    base('notes')
+      .select({ view: 'Grid view' })
+      .eachPage(
+        (records, fetchNextPage) => {
+          setNotes(records);
+          fetchNextPage();
+          console.log(records);
+        },
+        function (err) {
+          if (err) {
+            console.error(err);
+            return;
+          }
+        },
+      );
   }, []);
 
   return (
@@ -22,12 +31,13 @@ const Notes = () => {
         notes.map(note => (
           <Card
             cardType="notes"
+            note={note}
             id={note.id}
+            key={note.id}
+            imageUrl={note.imageUrl}
             title={note.title}
             date={note.date}
             content={note.content}
-            imageUrl={note.imageUrl}
-            key={note.id}
           />
         ))}
     </GridTemplate>
@@ -51,10 +61,5 @@ Notes.defaultProps = {
   imageUrl: '',
 };
 
-const mapStateToProps = state => {
-  console.log(state);
-  const { notes } = state;
-  return { notes };
-};
 
-export default connect(mapStateToProps)(Notes);
+export default Notes;
