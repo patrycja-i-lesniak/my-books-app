@@ -13,7 +13,6 @@ export const StyledImage = styled.img`
   background-repeat: no-repeat;
   background-size: 50%;
   margin-bottom: 10px;
-  z-index: 999;
 
   ${Wrapper}:hover & {
     background-color: ${({ theme }) => theme.colors.lipstick};
