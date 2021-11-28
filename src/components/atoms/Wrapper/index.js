@@ -18,11 +18,16 @@ const Wrapper = styled.div`
     background-color: ${({ theme }) => theme.colors.lipstick};
   }
 
-  ${({ secondary }) =>
-    secondary &&
+  ${({ notes }) =>
+    notes &&
     css`
-      width: 400px;
-    `}
+  width: 340px;
+   &:hover {
+    background-color: ${({ theme }) => theme.colors.silver};
+   }
+      
+
+  `}
 `;
 
 export default Wrapper;
