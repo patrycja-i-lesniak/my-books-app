@@ -3,6 +3,8 @@ import { Form } from 'formik';
 import Button from 'components/atoms/Button/Button';
 import Header from 'components/atoms/Header/Header';
 import Input from 'components/atoms/Input';
+import Paragraph from 'components/atoms/Paragraph/Paragraph';
+
 
 export const StyledWrapper = styled.div`
   border-left: 3px solid ${({ theme }) => theme.colors.lipstick};
@@ -39,6 +41,12 @@ export const StyledHeader = styled(Header)`
   }
 `;
 
+export const StyledParagraph = styled(Paragraph)`
+width: 90%;
+padding: 10px 25px;
+text-align: center;
+`;
+
 export const StyledForm = styled(Form)`
   display: flex;
   flex-direction: column;
@@ -55,15 +63,18 @@ export const StyledTextArea = styled(Input)`
   border: 1px solid ${({ theme }) => theme.colors.silver};
   line-height: 1.5;
   border-radius: 5px;
-  margin-top: 30px;
+  margin-top: 20px;
+  margin-bottom: 0.5rem;
   resize: none;
   outline: none;
   font-size: 1.5rem;
+  width: 100%;
   color: ${({ theme }) => theme.colors.lipstick};
 
   ::placeholder {
     color: ${({ theme }) => theme.colors.grey};
     font-size: 1.2rem;
+    
   }
 `;
 
@@ -74,4 +85,34 @@ export const StyledButton = styled(Button)`
     display: inline-block;
     margin: 30px auto 100px;
   }
+`;
+
+export const RequiredWrapper = styled.div`
+  display: flex;
+  gap: 5px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    flex-wrap: wrap;
+    gap: 0;
+  }
+`;
+
+export const NameContainer = styled.div`
+  width: 50%; 
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    width: 100%;
+  }
+`;
+
+export const ContentContainer = styled.div`
+  width: 100%;
+`;
+
+export const StyledButton2 = styled(Button)`
+  position: fixed;
+  top: 43%;
+  width: 50px;
+  height: 100px;
+  left: -20px;
+  border-radius: 0 40px 40px 0  ;
 `;
