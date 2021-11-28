@@ -1,41 +1,46 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import {
   StyledImage,
   StyledTitle,
   StyledAuthor,
-  StyledParagraph,
   InnerWrapper,
   TrashButton,
+  StyledDate,
   // StyledLink,
 } from './styled';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Wrapper from 'components/atoms/Wrapper';
 import trashIcon from 'assets/icons/trash.svg';
 
-const Card = ({ book, cardType, handleDelete }) => {
-
+const Card = ({ book, author, note, cardType, handleDelete }) => {
   return (
-    <Wrapper
-    // as={StyledLink} to={`${cardType}/${book.id}`}
-    >
+    <Wrapper>
       <InnerWrapper>
-        {book.fields.imageUrl && <StyledImage src={book.fields.imageUrl} />}
-        {cardType === 'authors' ? (
-          <StyledTitle>
-            {book.fields.firstName} {book.fields.lastName}
-          </StyledTitle>
-        ) : (
-          <StyledTitle>{book.fields.title}</StyledTitle>
+        {cardType === 'books' && (
+          <>
+            <StyledImage src={book.fields.imageUrl} />
+            <StyledTitle>{book.fields.title}</StyledTitle>
+            <StyledAuthor>
+              {book.fields.firstName} {book.fields.lastName}
+            </StyledAuthor>
+          </>
         )}
-        {cardType === 'books' ? (
-          <StyledAuthor>
-            {book.fields.firstName} {book.fields.lastName}
-          </StyledAuthor>
-        ) : null}
 
-        {cardType === 'notes' ? <StyledParagraph>{book.fields.date}</StyledParagraph> : null}
-        {cardType === 'notes' ? <Paragraph>{book.fields.content}</Paragraph> : null}
+        {cardType === 'authors' && (
+          <>
+            <StyledImage src={author.fields.imageUrl} />
+            <StyledTitle>
+              {author.fields.firstName} {author.fields.lastName}
+            </StyledTitle>
+          </>
+        )}
+
+        {cardType === 'notes' && (
+          <>
+            {note.fields.imageUrl && <StyledImage src={note.fields.imageUrl} />}
+            <StyledTitle>{note.fields.title} </StyledTitle>
+            <StyledDate>{note.fields.date}</StyledDate>
+          </>
+        )}
         <TrashButton icon={trashIcon} onClick={handleDelete} />
       </InnerWrapper>
     </Wrapper>
@@ -44,12 +49,16 @@ const Card = ({ book, cardType, handleDelete }) => {
 
 Card.propTypes = {
   cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
-  book: PropTypes.object.isRequired,
-  handleDelete: PropTypes.func.isRequired,
+  book: PropTypes.object,
+  author: PropTypes.object,
+  note: PropTypes.object,
+  handleDelete: PropTypes.func,
 };
 
 Card.defaultProps = {
-  cardType: 'books',
-};
+  book: {},
+  author: {},
+  note: {},
+}
 
 export default Card;
