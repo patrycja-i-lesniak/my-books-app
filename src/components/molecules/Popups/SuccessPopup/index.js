@@ -6,7 +6,6 @@ import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './st
 import { Link } from 'react-router-dom';
 
 const SuccessPopup = ({ handlePopupClose }) => {
-
   return (
     <StyledWrapper>
       <StyledParagraph>Successfully submitted.</StyledParagraph>
@@ -21,7 +20,7 @@ const SuccessPopup = ({ handlePopupClose }) => {
 };
 
 SuccessPopup.propTypes = {
-  handlePopupClose: PropTypes.bool.isRequired,
+  handlePopupClose: PropTypes.func.isRequired,
 };
 
 export default SuccessPopup;
