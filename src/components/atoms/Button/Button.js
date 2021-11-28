@@ -5,17 +5,17 @@ const Button = styled.button`
   color: ${({ theme }) => theme.colors.white};
   background: ${({ theme }) => theme.colors.lipstick};
   font-size: 1.4rem;
-  width: 120px;
-  padding: 5px;
+  width: 140px;
+  padding: 10px;
   border-radius: 3px;
   cursor: pointer;
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
   text-decoration: none;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    max-width: 100px;
-  }
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    max-width: 120px;
+  } */
 
   &:active {
     background-color: ${({ theme }) => theme.colors.lightLipstick};
