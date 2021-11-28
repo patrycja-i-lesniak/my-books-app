@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
 import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
@@ -14,6 +14,12 @@ const StyledGrid = styled.div`
   justify-items: center;
   justify-content: center;
   position: relative;
+
+  ${({ notes }) =>
+    notes &&
+    css`
+      grid-template-columns: repeat(auto-fill, 340px);
+    `}
 `;
 
 const StyledQuote = styled.h2`
@@ -41,7 +47,11 @@ const GridTemplate = ({ children, pageContext }) => (
       )}
       {pageContext === 'home' && <RotaryBox />}
       <Header>Nagłówek strony {pageContext}</Header>
-      <StyledGrid>{children}</StyledGrid>
+      {pageContext === 'notes' ? (
+        <StyledGrid notes>{children}</StyledGrid>
+      ) : (
+        <StyledGrid>{children}</StyledGrid>
+      )}
     </Container>
   </UserPageTemplate>
 );
