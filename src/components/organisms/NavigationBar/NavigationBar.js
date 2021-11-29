@@ -15,6 +15,7 @@ const StyledWrapper = styled.div`
   height: 80px;
   padding: 20px 40px;
   z-index: 9999;
+  box-shadow: ${({theme}) => theme.shadows.boxShadowDark};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: 1fr 120px;
@@ -49,10 +50,9 @@ const StyledLogoLink = styled(NavLink)`
   background-position: 50% 50%;
   background-image: url(${myBooksLogoBlack});
   background-repeat: no-repeat;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     width: 150px;
-  
   }
 `;
 
