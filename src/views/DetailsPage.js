@@ -1,5 +1,5 @@
-import React, { useState, useEffect} from 'react';
-import { useParams} from 'react-router-dom';
+import React, { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import api from 'api';
 import Loader from 'components/atoms/Loader';
@@ -15,14 +15,14 @@ const DetailsPage = () => {
   const endpoint = `/books/${id}`;
 
   const getBookData = async () => {
-      try {
-        const data = await api.get(endpoint);
-        setBookData({ status: 'success', data });
-        console.log(bookData.data);
-      } catch (error) {
-        setBookData({ status: 'error' });
-      }
-    };
+    try {
+      const data = await api.get(endpoint);
+      setBookData({ status: 'success', data });
+      console.log(bookData.data);
+    } catch (error) {
+      setBookData({ status: 'error' });
+    }
+  };
 
   useEffect(() => {
     const delayGetData = setTimeout(getBookData, 3_000);
@@ -31,23 +31,20 @@ const DetailsPage = () => {
 
   return (
     <>
- 
+      <DetailsPageTemplate>
         {bookData.status === 'loading' ? (
           <Loader />
         ) : bookData.status === 'error' ? (
           <Error reloadButton />
         ) : (
-          <DetailsPageTemplate>
+          <>
             {bookData &&
               [bookData.data].map((book, index) => (
-                <CardBig 
-                  key={book.id}
-                  book={book}
-                  index={index}
-                />
+                <CardBig key={book.id} book={book} index={index} />
               ))}
-          </DetailsPageTemplate>
+          </>
         )}
+      </DetailsPageTemplate>
     </>
   );
 };
