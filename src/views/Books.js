@@ -3,14 +3,9 @@ import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
-import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
 const Books = () => {
   const [books, setBooks] = useState([]);
-  const [popup, setPopup] = useState({
-    show: false,
-    id: null,
-  });
 
   useEffect(() => {
     base('books')
@@ -30,55 +25,14 @@ const Books = () => {
       );
   }, []);
 
-  const handleDelete = id => {
-    setPopup({
-      show: true,
-      id,
-    });
-    console.log('open popup');
-  };
-
-  const handleDeleteTrue = () => {
-    if (popup.show && popup.id) {
-      const filteredBooks = books => books.filter(book => book.id !== popup.id);
-      setBooks(filteredBooks);
-      setPopup({
-        show: false,
-        id: null,
-      });
-      console.log('delete book & close popup');
-    }
-  };
-
-  const handleDeleteFalse = () => {
-    setPopup({
-      show: false,
-      id: null,
-    });
-    console.log('Close popup');
-  };
-
   return (
     <GridTemplate pageType="books">
       {books &&
         books.map(book => (
           <>
-            <CardSmall
-              id={book.id}
-              key={book.id}
-              cardType="books"
-              book={book}
-              handleDelete={handleDelete}
-            />
-      
+            <CardSmall id={book.id} key={book.id} book={book} cardType="books" />
           </>
         ))}
-      {popup.show && (
-        <ConfirmationPopup
-          handleDeleteFalse={handleDeleteFalse}
-          handleDeleteTrue={handleDeleteTrue}
-        />
-      )}
     </GridTemplate>
   );
 };
