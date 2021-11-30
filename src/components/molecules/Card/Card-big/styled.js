@@ -180,6 +180,18 @@ export const Icon = styled(ButtonIcon)`
   z-index: 5;
 `;
 
+export const LCButton = styled.a`
+  width: 50px;
+  height: 50px;
+  background-color: ${({ theme }) => theme.colors.lipstick};
+  background-image: url(${({ icon }) => icon});
+  background-size: 60%;
+  background-position: 50%;
+  background-repeat: no-repeat;
+  border-radius: 50%;
+  z-index: 5;
+`;
+
 export const Status = styled(Button)`
   background-color: green;
   color: black;

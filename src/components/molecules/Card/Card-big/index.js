@@ -6,6 +6,7 @@ import {
   StyledAuthor,
   InnerWrapper,
   Icon,
+  LCButton,
   Wrapper,
   UpperContainer,
   LowerContainer,
@@ -21,7 +22,6 @@ import {
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
-import { Link } from 'react-router-dom';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
@@ -98,11 +98,10 @@ const CardBig = ({ book }) => {
                 <ButtonsWrapper>
                   <Status>{book.fields.status}</Status>
 
-                  <Icon
-                    as={Link}
+                  <LCButton
                     target="_blank"
                     rel="noreferrer"
-                    to={book.fields.LClink}
+                    href={book.fields.LClink}
                     icon={lcLogo}
                   />
                   <Icon icon={trashIcon} onClick={handleDelete} />
