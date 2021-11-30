@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card';
+import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
 
 const Notes = () => {
@@ -29,7 +29,7 @@ const Notes = () => {
     <GridTemplate pageType="notes">
       {notes &&
         notes.map(note => (
-          <Card
+          <CardSmall
             cardType="notes"
             note={note}
             id={note.id}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import Card from 'components/molecules/Card';
+import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
@@ -63,7 +63,7 @@ const Books = () => {
       {books &&
         books.map(book => (
           <>
-            <Card
+            <CardSmall
               id={book.id}
               key={book.id}
               cardType="books"
