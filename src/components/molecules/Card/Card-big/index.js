@@ -109,7 +109,7 @@ const CardBig = ({ book }) => {
               </div>
             </ExtraWrapper>
           </UpperContainer>
-          {book.fields.content.length > 400 ? (
+          {book.fields.content && book.fields.content.length > 400 ? (
             <LowerContainer>
               {showMore ? book.fields.content : `${book.fields.content.slice(0, 400)}...`}
               <ShowMore onClick={() => setShowMore(!showMore)}>
