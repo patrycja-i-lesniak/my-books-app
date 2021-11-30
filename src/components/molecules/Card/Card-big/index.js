@@ -23,9 +23,31 @@ import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
 import { Link } from 'react-router-dom';
 import { Arrow } from 'components/atoms/Arrow';
+import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
-const CardBig = ({ book, handleDelete }) => {
+
+const CardBig = ({ book }) => {
   const [showMore, setShowMore] = useState(false);
+   const [popup, setPopup] = useState({
+     show: false,
+     id: null,
+   });
+
+   const handleDelete = id => {
+     setPopup({
+       show: true,
+       id,
+     });
+     console.log('open popup');
+   };
+
+   const handleDeleteFalse = () => {
+     setPopup({
+       show: false,
+       id: null,
+     });
+     console.log('Close popup');
+   };
 
   return (
     <>
@@ -104,6 +126,12 @@ const CardBig = ({ book, handleDelete }) => {
             <LowerContainer>{book.fields.content}</LowerContainer>
           )}
         </InnerWrapper>
+        {popup.show && (
+          <ConfirmationPopup
+            handleDeleteFalse={handleDeleteFalse}
+            // handleDeleteTrue={handleDeleteTrue}
+          />
+        )}
       </Wrapper>
     </>
   );
