@@ -29,11 +29,14 @@ export const Title = styled(Header)`
   }
 `;
 export const Subtitle = styled.p`
-  font-size: 2.5rem;
-  color: ${({theme}) => theme.colors.grey};
+  font-size: 2rem;
+  color: ${({ theme }) => theme.colors.grey};
+  text-align: center;
+  padding-bottom: 5rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     font-size: 1.6rem;
+    padding-bottom: 3rem;
   }
 `;
 
@@ -42,13 +45,14 @@ export const StyledNavLink = styled(NavLink)`
   margin-top: 24px;
   padding: 16px 24px;
   border-radius: 5px;
-  background-color: ${({ theme }) => theme.colors.backgroundButton};
-  color: ${({ theme }) => theme.colors.textTertiary};
+  background-color: ${({ theme }) => theme.colors.lipstick};
+  color: ${({ theme }) => theme.colors.white};
   font-size: 14px;
   font-weight: 700;
   line-height: 19px;
   font-family: 'Open Sans', sans-serif;
   text-decoration: none;
+  outline: none;
 
   &:hover {
     box-shadow: 2px -2px 0px #8cc2ff, -2px 2px 0px #8cc2ff, 2px 2px 0px #8cc2ff,
