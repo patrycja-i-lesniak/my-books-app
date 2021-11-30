@@ -23,6 +23,7 @@ export const StyledWrapper = styled.div`
   transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
   transition: transform 0.25s ease-in-out;
   overflow: scroll;
+  z-index:4;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     width: 100vw;
