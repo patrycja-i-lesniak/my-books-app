@@ -1,7 +1,6 @@
 import styled from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Wrapper from 'components/atoms/Wrapper';
-import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import LogoSmall from 'assets/icons/mblSmall.svg';
 
 export const StyledImage = styled.img`
@@ -58,18 +57,7 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  /* text-decoration: none;
-  color: ${({theme}) => theme.colors.black} */
 `;
-
-export const TrashButton = styled(ButtonIcon)`
-  margin-top: 10px;
-  width: 35px;
-  height: 35px;
-  border-radius: 50%;
-  z-index: 5;
-`;
-
 
 export const StyledDate = styled.p``;
 

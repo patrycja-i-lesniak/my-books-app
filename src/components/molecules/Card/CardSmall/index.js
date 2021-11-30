@@ -8,15 +8,13 @@ import {
   StyledTitle,
   StyledAuthor,
   InnerWrapper,
-  TrashButton,
   StyledDate,
   ButtonContentWrapper,
   ShowMore,
 } from './styled';
 import Wrapper from 'components/atoms/Wrapper';
-import trashIcon from 'assets/icons/trash.svg';
 
-const CardSmall = ({ book, author, note, cardType, handleDelete }) => {
+const CardSmall = ({ book, author, note, cardType}) => {
   const [showMore, setShowMore] = useState(false);
 
   return (
@@ -32,7 +30,6 @@ const CardSmall = ({ book, author, note, cardType, handleDelete }) => {
               {book.fields.firstName} {book.fields.lastName}
             </StyledAuthor>
           </InnerWrapper>
-          <TrashButton icon={trashIcon} onClick={handleDelete} />
         </Wrapper>
       )}
 
