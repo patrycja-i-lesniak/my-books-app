@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
@@ -35,18 +34,6 @@ const Books = () => {
         ))}
     </GridTemplate>
   );
-};
-
-Books.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-    }),
-  ),
-};
-
-Books.defaultProps = {
-  books: [],
 };
 
 export default Books;
