@@ -18,7 +18,6 @@ const DetailsPage = () => {
     try {
       const data = await api.get(endpoint);
       setBookData({ status: 'success', data });
-      console.log(bookData.data);
     } catch (error) {
       setBookData({ status: 'error' });
     }
