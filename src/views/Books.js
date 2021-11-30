@@ -62,17 +62,16 @@ const Books = () => {
     <GridTemplate pageType="books">
       {books &&
         books.map(book => (
-          <Card
-            cardType="books"
-            book={book}
-            id={book.id}
-            key={book.id}
-            // title={book.title}
-            // firstName={book.firstName}
-            // lastName={book.lastName}
-            imageUrl={book.imageUrl}
-            handleDelete={handleDelete}
-          />
+          <>
+            <Card
+              id={book.id}
+              key={book.id}
+              cardType="books"
+              book={book}
+              handleDelete={handleDelete}
+            />
+      
+          </>
         ))}
       {popup.show && (
         <ConfirmationPopup
@@ -88,10 +87,6 @@ Books.propTypes = {
   books: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      title: PropTypes.string,
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
     }),
   ),
 };
