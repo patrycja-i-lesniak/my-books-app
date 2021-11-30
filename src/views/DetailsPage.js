@@ -1,10 +1,14 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import styled from 'styled-components';
+import { useParams, useHistory } from 'react-router-dom';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import api from 'api';
 import Loader from 'components/atoms/Loader';
 import Error from 'components/atoms/Error';
 import CardBig from 'components/molecules/Card/Card-big';
+import Button from 'components/atoms/Button/Button';
+
+const StyledButton = styled(Button)``;
 
 const DetailsPage = () => {
   const [bookData, setBookData] = useState({
@@ -13,6 +17,7 @@ const DetailsPage = () => {
   });
   const { id } = useParams();
   const endpoint = `/books/${id}`;
+  const history = useHistory();
 
   const getBookData = async () => {
     try {
@@ -41,6 +46,14 @@ const DetailsPage = () => {
               [bookData.data].map((book, index) => (
                 <CardBig key={book.id} book={book} index={index} />
               ))}
+
+            <StyledButton
+              onClick={() => {
+                history.push('/books');
+              }}
+            >
+              Back to books
+            </StyledButton>
           </>
         )}
       </DetailsPageTemplate>
