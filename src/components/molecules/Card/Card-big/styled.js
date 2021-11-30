@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
   flex-wrap: wrap;
   min-height: 500px;
   justify-content: center;
-  margin: 120px auto;
+  margin: 120px auto 50px;
   padding: 50px;
   background-color: ${({ theme }) => theme.colors.white};
   position: relative;
