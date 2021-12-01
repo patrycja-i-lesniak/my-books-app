@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import {BsCaretRightFill} from 'react-icons/bs';
-
+import { BsCaretRightFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import { Formik, ErrorMessage } from 'formik';
 import validationSchema from 'helpers/validationSchema';
@@ -55,6 +54,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     console.log('Close popup');
   };
 
+
   const initialValues = {
     type: '',
     title: '',
@@ -63,7 +63,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     imageUrl: 'https://',
     series: '',
     date: '',
-    // dateOfBirth: '',
+    // dateOfBirth: '',===
     // dateOfDeath: '',
     isbn: '',
     translation: '',
@@ -96,35 +96,51 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                     title: values.title,
                     firstName: values.firstName,
                     lastName: values.lastName,
-                    imageUrl: values.imageUrl,
-                    series: values.series,
-                    date: values.date,
-                    // dateOfBirth: values.dateOfBirth,
-                    // dateOfDeath: values.dateOfDeath,
-                    isbn: values.isbn,
-                    translation: values.translation,
-                    publishing: values.publishing,
-                    numberOfPages: values.numberOfPages,
                     content: values.content,
-                    LClink: values.LClink,
-                    // status: values.status,
-                    // oficialWebsite: values.oficialWebsite,
+                  },
+                },
+              ],
+            };
+            const author = {
+              records: [
+                {
+                  fields: {
+                    firstName: values.firstName,
+                    lastName: values.lastName,
+                    content: values.content,
+                  },
+                },
+              ],
+            };
+            const note = {
+              records: [
+                {
+                  fields: {
+                    title: values.title,
+                    content: values.content,
                   },
                 },
               ],
             };
 
             await axiosInstance
-              .post(apiEndpoints.booksList, book)
+              .post(
+                apiEndpoints.booksList,
+                book,
+                apiEndpoints.authorsList,
+                author,
+                apiEndpoints.notesList,
+                note,
+              )
               .then(response => {
                 setPopup(true);
                 console.log(response);
-                console.log('Successfully submitted');
+                console.log('Successfully submitted.');
               })
               .catch(err => {
                 setErrorPopup(true);
                 console.error(err);
-                console.log('I znów nie udało się wysłać formularza');
+                console.log('The form could not be sent.');
               });
           }}
         >
@@ -135,40 +151,48 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 {popup && <SuccessPopup handlePopupClose={handlePopupClose} />}
               </>
               {pageContext === 'authors' ? null : (
-                <Input
-                  type="text"
-                  name="title"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.title}
-                  autoComplete="given-name"
-                />
+                <>
+                  <Input
+                    type="text"
+                    name="title"
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    value={values.title}
+                    autoComplete="given-name"
+                  />
+                  <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                </>
               )}
-              <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
               <RequiredWrapper>
                 <NameContainer>
                   {pageContext === 'notes' ? null : (
-                    <Input 
+                    <>
+                    <Input
                       type="text"
                       name="firstName"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.firstName}
                     />
+                    <ErrorMessage name="firstName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                    </>
                   )}
-                  <ErrorMessage name="firstName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                  
                 </NameContainer>
                 <NameContainer>
                   {pageContext === 'notes' ? null : (
-                    <Input 
+                    <>
+                    <Input
                       type="text"
                       name="lastName"
                       onChange={handleChange}
                       onBlur={handleBlur}
                       value={values.lastName}
                     />
+                    <ErrorMessage name="lastName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                    </>
                   )}
-                  <ErrorMessage name="lastName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                  
                 </NameContainer>
               </RequiredWrapper>
               <Input
@@ -298,7 +322,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             </StyledForm>
           )}
         </Formik>
-        <StyledButton2 >
+        <StyledButton2 type="button" >
           <BsCaretRightFill />
         </StyledButton2>
       </StyledWrapper>
@@ -309,11 +333,9 @@ const NewItemBar = ({ isVisible, pageContext }) => {
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
   isVisible: PropTypes.bool,
-  handleClose: PropTypes.func.isRequired,
 };
 
 NewItemBar.defaultProps = {
-  pageContext: 'notes',
   isVisible: false,
 };
 
