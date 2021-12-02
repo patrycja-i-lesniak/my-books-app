@@ -19,6 +19,7 @@ import {
   ExtraWrapper,
   ShowMore,
   ButtonContentWrapper,
+  StatusParagraph,
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
@@ -26,28 +27,47 @@ import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 
 
+
+
 const CardBig = ({ book }) => {
   const [showMore, setShowMore] = useState(false);
-   const [popup, setPopup] = useState({
-     show: false,
-     id: null,
-   });
+  const [popup, setPopup] = useState({
+    show: false,
+    id: null,
+  });
 
-   const handleDelete = id => {
-     setPopup({
-       show: true,
-       id,
-     });
-     console.log('open popup');
-   };
+  const handleDelete = id => {
+    setPopup({
+      show: true,
+      id,
+    });
+    console.log('open popup');
+  };
+  
+  // const handleDeleteTrue = () => {
+  //   if (popup.show && popup.id) {
+  //     const filteredBooks = books => books.filter(book => book.id !== popup.id);
+  //     setBooks(filteredBooks);
+  //     setPopup({
+  //       show: false,
+  //       id: null,
+  //     });
+  //     console.log('delete book & close popup');
 
-   const handleDeleteFalse = () => {
-     setPopup({
-       show: false,
-       id: null,
-     });
-     console.log('Close popup');
-   };
+
+
+
+  //   }
+  // };
+
+
+  const handleDeleteFalse = () => {
+    setPopup({
+      show: false,
+      id: null,
+    });
+    console.log('Close popup');
+  };
 
   return (
     <>
@@ -96,7 +116,12 @@ const CardBig = ({ book }) => {
               </div>
               <div>
                 <ButtonsWrapper>
-                  <Status>{book.fields.status}</Status>
+                  {book.fields.status && book.fields.status === 'to read' && <Status toRead />}
+                  {book.fields.status && book.fields.status === 'read' && <Status read />}
+                  {book.fields.status && book.fields.status === 'to buy' && <Status toBuy />}
+                  {book.fields.status && book.fields.status === 'borrowed' && <Status borrowed />}
+                  {book.fields.status && book.fields.status === 'in progress' && <Status inProgress />}
+                  <StatusParagraph>{book.fields.status}</StatusParagraph>
 
                   <LCButton
                     target="_blank"
@@ -129,6 +154,7 @@ const CardBig = ({ book }) => {
           <ConfirmationPopup
             handleDeleteFalse={handleDeleteFalse}
             // handleDeleteTrue={handleDeleteTrue}
+            book={book}
           />
         )}
       </Wrapper>

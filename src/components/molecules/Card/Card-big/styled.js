@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import LogoSmall from 'assets/icons/mblSmall.svg';
 import Header from 'components/atoms/Header/Header';
@@ -17,6 +17,7 @@ export const Wrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
     padding: 50px 20px;
+    margin: 80px auto 40px
   }
 `;
 
@@ -109,6 +110,9 @@ export const DataWrapper = styled.div`
   align-items: start;
   margin-top: 10px;
   column-gap: 20px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const Label = styled.p`
@@ -132,6 +136,9 @@ export const Label = styled.p`
 export const StyledData = styled.p`
   font-size: 1.5rem;
   margin: 0;
+  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
+    text-align: center;
+  }
 `;
 
 export const ShowMore = styled.button`
@@ -177,7 +184,6 @@ export const Icon = styled(ButtonIcon)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
-  z-index: 5;
 `;
 
 export const LCButton = styled.a`
@@ -189,23 +195,59 @@ export const LCButton = styled.a`
   background-position: 50%;
   background-repeat: no-repeat;
   border-radius: 50%;
-  z-index: 5;
 `;
 
 export const Status = styled(Button)`
-  background-color: green;
+  background-color: unset;
   color: black;
   border: none;
   display: flex;
   width: 50px;
   height: 50px;
-  margin-bottom: 50px;
+  margin: 50px 0 0;
   border-radius: 50%;
   justify-content: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    margin-bottom: 0;
+    margin: 0;
   }
+
+  ${({ read }) =>
+    read &&
+    css`
+      background-color: ${({ theme }) => theme.colors.japaneseLaurel}
+    `};
+
+  ${({ borrowed }) =>
+    borrowed &&
+    css`
+      background-color: ${({ theme }) => theme.colors.toreaBay}
+    `}
+
+  ${({ toRead }) =>
+    toRead &&
+    css`
+      background-color: ${({ theme }) => theme.colors.torchRed}
+    `};
+
+  ${({ toBuy }) =>
+    toBuy &&
+    css`
+      background-color: ${({ theme }) => theme.colors.vividViolet}
+    `};
+
+  ${({ inProgress }) =>
+    inProgress &&
+    css`
+      background-color: ${({ theme }) => theme.colors.webOrange}
+    `};
+`;
+
+export const StatusParagraph = styled.p`
+margin: -15px 0 50px;
+text-transform: uppercase;
+color: ${({theme}) => theme.colors.grey};
+
 `;
 
 export const ExtraWrapper = styled.div`
