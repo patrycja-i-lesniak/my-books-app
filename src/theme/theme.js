@@ -1,6 +1,11 @@
 export const theme = {
   colors: {
     white: '#FFFFFF',
+    webOrange: '#FFA502',
+    torchRed: '#FF0249',
+    japaneseLaurel: '#10830B',
+    toreaBay: '#15259D',
+    vividViolet: '#853597',
     lightLipstick: '#C4024F',
     lipstick: '#AE0046',
     desertStorm: '#F1F1EF',
