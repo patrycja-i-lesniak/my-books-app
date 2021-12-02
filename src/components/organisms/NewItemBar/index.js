@@ -15,16 +15,16 @@ import {
   RequiredWrapper,
   ContentContainer,
   StyledParagraph,
-  StyledButton2,
+  CloseBarButton,
 } from './styled';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
-// import SelectStatus from 'components/atoms/SelectStatus';
+import SelectStatus from 'components/atoms/SelectStatus';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
 
 import withContext from 'hoc/withContext';
 
-const NewItemBar = ({ isVisible, pageContext }) => {
+const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => {
   const [popup, setPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
 
@@ -54,7 +54,6 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     console.log('Close popup');
   };
 
-
   const initialValues = {
     type: '',
     title: '',
@@ -72,7 +71,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
     content:
       'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.',
     LClink: 'https://',
-    // status: '',
+    status: '',
     // oficialWebsite: ',',
   };
 
@@ -147,8 +146,18 @@ const NewItemBar = ({ isVisible, pageContext }) => {
           {({ values, handleChange, handleBlur, handleSubmit }) => (
             <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
               <>
-                {errorPopup && <ErrorPopup handlePopupClose={handlePopupClose} />}
-                {popup && <SuccessPopup handlePopupClose={handlePopupClose} />}
+                {errorPopup && (
+                  <ErrorPopup
+                    handlePopupClose={handlePopupClose}
+                    toggleNewItemBar={toggleNewItemBar}
+                  />
+                )}
+                {popup && (
+                  <SuccessPopup
+                    handlePopupClose={handlePopupClose}
+                    toggleNewItemBar={toggleNewItemBar}
+                  />
+                )}
               </>
               {pageContext === 'authors' ? null : (
                 <>
@@ -167,32 +176,34 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 <NameContainer>
                   {pageContext === 'notes' ? null : (
                     <>
-                    <Input
-                      type="text"
-                      name="firstName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.firstName}
-                    />
-                    <ErrorMessage name="firstName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                      <Input
+                        type="text"
+                        name="firstName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.firstName}
+                      />
+                      <ErrorMessage name="firstName">
+                        {msg => <RequiredBox msg={msg} />}
+                      </ErrorMessage>
                     </>
                   )}
-                  
                 </NameContainer>
                 <NameContainer>
                   {pageContext === 'notes' ? null : (
                     <>
-                    <Input
-                      type="text"
-                      name="lastName"
-                      onChange={handleChange}
-                      onBlur={handleBlur}
-                      value={values.lastName}
-                    />
-                    <ErrorMessage name="lastName">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+                      <Input
+                        type="text"
+                        name="lastName"
+                        onChange={handleChange}
+                        onBlur={handleBlur}
+                        value={values.lastName}
+                      />
+                      <ErrorMessage name="lastName">
+                        {msg => <RequiredBox msg={msg} />}
+                      </ErrorMessage>
                     </>
                   )}
-                  
                 </NameContainer>
               </RequiredWrapper>
               <Input
@@ -296,15 +307,15 @@ const NewItemBar = ({ isVisible, pageContext }) => {
                 value={values.oficialWebsite}
               />
             )} */}
-              {/* {pageContext === 'books' && (
-              <SelectStatus
-                type="single-select"
-                name="status"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.status}
-              />
-            )}  */}
+              {pageContext === 'books' && (
+                <SelectStatus
+                  type="single-select"
+                  name="status"
+                  onChange={handleChange}
+                  onBlur={handleBlur}
+                  value={values.status}
+                />
+              )}
               <ContentContainer>
                 <StyledTextArea
                   type="text"
@@ -322,9 +333,9 @@ const NewItemBar = ({ isVisible, pageContext }) => {
             </StyledForm>
           )}
         </Formik>
-        <StyledButton2 type="button" >
+        <CloseBarButton type="button" onClick={toggleNewItemBar}>
           <BsCaretRightFill />
-        </StyledButton2>
+        </CloseBarButton>
       </StyledWrapper>
     </>
   );
@@ -333,6 +344,7 @@ const NewItemBar = ({ isVisible, pageContext }) => {
 NewItemBar.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
   isVisible: PropTypes.bool,
+  toggleNewItemBar: PropTypes.func,
 };
 
 NewItemBar.defaultProps = {

@@ -109,11 +109,11 @@ export const ContentContainer = styled.div`
   width: 100%;
 `;
 
-export const StyledButton2 = styled(Button)`
+export const CloseBarButton = styled(Button)`
   position: fixed;
   top: 43%;
   width: 50px;
   height: 100px;
   left: -20px;
-  border-radius: 0 40px 40px 0  ;
+  border-radius: 0 40px 40px 0;
 `;
