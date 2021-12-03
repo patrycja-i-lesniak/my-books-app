@@ -8,9 +8,9 @@ const StyledWrapper = styled.ul`
   gap: 5rem;
   padding: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     gap: 2rem;
-  }
+  } */
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
@@ -29,9 +29,9 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
     color: ${({ theme }) => theme.colors.black};
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    font-size: 3rem;
-  }
+  /* @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    font-size: 3rem; */
+  /* } */
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
