@@ -18,10 +18,6 @@ const StyledWrapper = styled.div`
   left: 0;
   bottom: 0;
   z-index: 9999;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    height: 6rem;
-  }
 `;
 
 const StyledParagraph = styled(Paragraph)`
