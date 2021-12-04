@@ -1,59 +1,42 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
-import { useParams, useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useHistory } from 'react-router-dom';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
-import api from 'api';
 import Loader from 'components/atoms/Loader';
 import Error from 'components/atoms/Error';
 import CardBig from 'components/molecules/Card/Card-big';
 import Button from 'components/atoms/Button/Button';
+import useFetchDetailsData from 'actions/useFetchDetailsData';
+import withContext from 'hoc/withContext';
 
-const StyledButton = styled(Button)``;
+const DetailsPage = ( pageContext) => {
+  const endpoint = pageContext.location.pathname;
+  console.log(pageContext);
+  const { itemData } = useFetchDetailsData(endpoint);
 
-const DetailsPage = () => {
-  const [bookData, setBookData] = useState({
-    status: 'loading',
-    data: null,
-  });
-  const { id } = useParams();
-  const endpoint = `/books/${id}`;
-  const history = useHistory();
-
-  const getBookData = async () => {
-    try {
-      const data = await api.get(endpoint);
-      setBookData({ status: 'success', data });
-    } catch (error) {
-      setBookData({ status: 'error' });
-    }
-  };
-
-  useEffect(() => {
-    const delayGetData = setTimeout(getBookData, 3_000);
-    return () => clearTimeout(delayGetData);
-  }, []);
+ const history = useHistory();
 
   return (
     <>
       <DetailsPageTemplate>
-        {bookData.status === 'loading' ? (
+        {itemData.status === 'loading' ? (
           <Loader />
-        ) : bookData.status === 'error' ? (
+        ) : itemData.status === 'error' ? (
           <Error reloadButton />
         ) : (
           <>
-            {bookData &&
-              [bookData.data].map((book, index) => (
-                <CardBig key={book.id} book={book} index={index} />
+            {itemData &&
+              [itemData.data].map((item, index) => (
+                <CardBig key={item.id} item={item} index={index} endpoint={endpoint} />
               ))}
 
-            <StyledButton
+            <Button
               onClick={() => {
-                history.push('/books');
+                history.goBack();
               }}
             >
-              Back to books
-            </StyledButton>
+              Back 
+            </Button>
           </>
         )}
       </DetailsPageTemplate>
@@ -61,4 +44,8 @@ const DetailsPage = () => {
   );
 };
 
-export default DetailsPage;
+DetailsPage.propTypes = {
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'books'])
+}
+
+export default withContext(DetailsPage);
