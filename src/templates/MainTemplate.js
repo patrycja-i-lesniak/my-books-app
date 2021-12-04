@@ -10,7 +10,7 @@ import { booksData, authorsData, notesData } from 'assets/booksData';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/icons/plus.svg';
 import NewItemBar from 'components/organisms/NewItemBar';
-// import { StyledBackdrop } from 'theme/GlobalStyle';
+import { StyledBackdrop } from 'theme/GlobalStyle';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
@@ -31,7 +31,7 @@ class MainTemplate extends Component {
     book: [...initialBookState],
     author: [...initialAuthorState],
     note: [...initialNoteState],
-    // isModalOpen: false,
+    isNewItemBarOpen: false,
     isNewItemBarVisible: false,
   };
 
@@ -56,27 +56,6 @@ class MainTemplate extends Component {
     }
   };
 
-  // addItem = (e, newItem) => {
-  //   e.preventDefault();
-  //   this.setState((prevState) => ({
-  //     [newItem.type]: [...prevState[newItem.type], newItem],
-  //   }));
-
-  //   this.closeModal();
-  // };
-
-  // openModal = () => {
-  //   this.setState(() => ({
-  //     isModalOpen: true,
-  //   }));
-  // };
-
-  // closeModal = () => {
-  //   this.setState(() => ({
-  //     isModalOpen: false,
-  //   }));
-  // };
-
   toggleNewItemBar = () => {
     this.setState(prevState => ({
       isNewItemBarVisible: !prevState.isNewItemBarVisible,
@@ -87,8 +66,6 @@ class MainTemplate extends Component {
     const { children } = this.props;
     const { pageType } = this.state;
     const { isNewItemBarVisible } = this.state;
-    // const { isModalOpen } = this.state;
-    // const addItemFn = { ...this.state, addItem: this.state };
 
     return (
       <div>
@@ -96,16 +73,11 @@ class MainTemplate extends Component {
           <GlobalStyle />
           <ThemeProvider theme={theme}>
             {children}
-            {pageType === 'home' ? null : (
+            <NewItemBar isVisible={isNewItemBarVisible} toggleNewItemBar={this.toggleNewItemBar} />
+            {pageType === 'home' || isNewItemBarVisible ? null : (
               <StyledButtonIcon icon={plusIcon} onClick={this.toggleNewItemBar} />
             )}
-            <NewItemBar isVisible={isNewItemBarVisible} toggleNewItemBar={this.toggleNewItemBar} />
-            {/* {isModalOpen && (
-            <>
-              <StyledBackdrop onClick={this.closeModal} />
-              <Modal closeModalFn={this.closeModal} addItemFn={addItemFn} />
-            </>
-            )} */}
+            {isNewItemBarVisible && <StyledBackdrop onClick={this.toggleNewItemBar} />}
           </ThemeProvider>
         </PageContext.Provider>
       </div>
