@@ -18,7 +18,7 @@ export const StyledWrapper = styled.div`
   background-color: white;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   transform: translate(${({ isVisible }) => (isVisible ? '0' : '100%')});
-  transition: transform 0.25s ease-in-out;
+  transition: transform 0.6s ease-in-out;
   overflow: scroll;
   z-index: 4;
 
