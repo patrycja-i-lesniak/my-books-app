@@ -17,7 +17,6 @@ const StyledField = styled(Field)`
   border: 1px solid ${({ theme }) => theme.colors.silver};
   border-radius: 5px;
   outline: none;
-  margin-bottom: 1.5rem;
   padding-left: 10px;
   font-weight: bold;
 
