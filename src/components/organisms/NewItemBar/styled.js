@@ -117,3 +117,16 @@ export const CloseBarButton = styled(Button)`
   left: -20px;
   border-radius: 0 40px 40px 0;
 `;
+
+
+export const StyledSelect = styled(Form)`
+  width: 100%;
+  border: 1px solid ${({ theme }) => theme.colors.silver};
+  overflow: hidden;
+  color: ${({ theme }) => theme.colors.lipstick};
+  border-radius: 5px;
+  padding: 10px 0;
+  outline: none;
+  font-size: 1.5rem;
+  border: 1px solid ${({ theme }) => theme.colors.lipstick};
+`;

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { BsCaretRightFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
-import { Formik, ErrorMessage } from 'formik';
+import { Formik, ErrorMessage, validateYupSchema } from 'formik';
 import validationSchema from 'helpers/validationSchema';
 import { axiosInstance, apiEndpoints } from 'airtable/base';
 import Input from 'components/atoms/Input';
@@ -16,9 +16,9 @@ import {
   ContentContainer,
   StyledParagraph,
   CloseBarButton,
+  StyledSelect,
 } from './styled';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
-import SelectStatus from 'components/atoms/SelectStatus';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
 
@@ -75,6 +75,17 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => {
     // oficialWebsite: ',',
   };
 
+  const Options = () => (
+    <>
+      <option value="" label="Select status" />
+      <option value="read" label="read" />
+      <option value="to read" label="to read" />
+      <option value="in progress" label="in progress" />
+      <option value="to buy" label="to buy" />
+      <option value="borrowed" label="borrowed" />
+    </>
+  );
+
   return (
     <>
       <StyledWrapper isVisible={isVisible}>
@@ -95,41 +106,46 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => {
                     title: values.title,
                     firstName: values.firstName,
                     lastName: values.lastName,
-                    content: values.content,
+                    // imageUrl: values.imageUrl,
+                    // series: values.series,
+                    // date: values.date,
+                    // content: values.content,
+                    status: values.status,
+                    // isbn: values.isbn,
                   },
                 },
               ],
             };
-            const author = {
-              records: [
-                {
-                  fields: {
-                    firstName: values.firstName,
-                    lastName: values.lastName,
-                    content: values.content,
-                  },
-                },
-              ],
-            };
-            const note = {
-              records: [
-                {
-                  fields: {
-                    title: values.title,
-                    content: values.content,
-                  },
-                },
-              ],
-            };
+            // const author = {
+            //   records: [
+            //     {
+            //       fields: {
+            //         firstName: values.firstName,
+            //         lastName: values.lastName,
+            //         content: values.content,
+            //       },
+            //     },
+            //   ],
+            // };
+            // const note = {
+            //   records: [
+            //     {
+            //       fields: {
+            //         title: values.title,
+            //         content: values.content,
+            //       },
+            //     },
+            //   ],
+            // };
 
             await axiosInstance
               .post(
                 apiEndpoints.booksList,
                 book,
-                apiEndpoints.authorsList,
-                author,
-                apiEndpoints.notesList,
-                note,
+                // apiEndpoints.authorsList,
+                // author,
+                // apiEndpoints.notesList,
+                // note,
               )
               .then(response => {
                 setPopup(true);
@@ -143,7 +159,7 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => {
               });
           }}
         >
-          {({ values, handleChange, handleBlur, handleSubmit }) => (
+          {({ values, handleChange, handleBlur, handleSubmit, errors }) => (
             <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
               <>
                 {errorPopup && (
@@ -308,14 +324,18 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => {
               />
             )} */}
               {pageContext === 'books' && (
-                <SelectStatus
-                  type="single-select"
+                <StyledSelect
+                  as="select"
                   name="status"
+                  value={values.status}
                   onChange={handleChange}
                   onBlur={handleBlur}
-                  value={values.status}
-                />
+                  style={{ display: 'block' }}
+                >
+                  <Options />
+                </StyledSelect>
               )}
+
               <ContentContainer>
                 <StyledTextArea
                   type="text"
