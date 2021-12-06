@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import LogoSmall from 'assets/icons/mblSmall.svg';
 import Header from 'components/atoms/Header/Header';
@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
     padding: 50px 20px;
-    margin: 80px auto 40px
+    margin: 80px auto 40px;
   }
 `;
 
@@ -186,6 +186,12 @@ export const Icon = styled(ButtonIcon)`
   border-radius: 50%;
 `;
 
+export const DeleteIcon = styled(ButtonIcon)`
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+`;
+
 export const LCButton = styled.a`
   width: 50px;
   height: 50px;
@@ -215,39 +221,38 @@ export const Status = styled(Button)`
   ${({ read }) =>
     read &&
     css`
-      background-color: ${({ theme }) => theme.colors.japaneseLaurel}
+      background-color: ${({ theme }) => theme.colors.japaneseLaurel};
     `};
 
   ${({ borrowed }) =>
     borrowed &&
     css`
-      background-color: ${({ theme }) => theme.colors.toreaBay}
+      background-color: ${({ theme }) => theme.colors.toreaBay};
     `}
 
   ${({ toRead }) =>
     toRead &&
     css`
-      background-color: ${({ theme }) => theme.colors.torchRed}
+      background-color: ${({ theme }) => theme.colors.torchRed};
     `};
 
   ${({ toBuy }) =>
     toBuy &&
     css`
-      background-color: ${({ theme }) => theme.colors.vividViolet}
+      background-color: ${({ theme }) => theme.colors.vividViolet};
     `};
 
   ${({ inProgress }) =>
     inProgress &&
     css`
-      background-color: ${({ theme }) => theme.colors.webOrange}
+      background-color: ${({ theme }) => theme.colors.webOrange};
     `};
 `;
 
 export const StatusParagraph = styled.p`
-margin: -15px 0 50px;
-text-transform: uppercase;
-color: ${({theme}) => theme.colors.grey};
-
+  margin: -15px 0 50px;
+  text-transform: uppercase;
+  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const ExtraWrapper = styled.div`
