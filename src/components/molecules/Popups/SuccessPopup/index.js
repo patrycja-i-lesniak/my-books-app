@@ -6,14 +6,23 @@ import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './st
 
 import withContext from 'hoc/withContext';
 
-const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
+const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar, handleReset }) => {
+  const onClickActions = () => [
+    toggleNewItemBar(),
+    handlePopupClose(),
+    handleReset(),
+  ];
+
   return (
     <StyledWrapper>
       <StyledParagraph>Successfully submitted.</StyledParagraph>
       <CloseButton icon={closeIcon} type="button" onClick={handlePopupClose} />
       <ButtonWrapper>
-        <Button type="button" onClick={toggleNewItemBar}>
+        <Button type="reset" onClick={onClickActions}>
           Back to {pageContext}
+        </Button>
+        <Button secondary type="button" onClick={ handleReset}>
+          Add next item
         </Button>
       </ButtonWrapper>
     </StyledWrapper>
@@ -24,6 +33,7 @@ SuccessPopup.propTypes = {
   handlePopupClose: PropTypes.func.isRequired,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
   toggleNewItemBar: PropTypes.func,
+  handleReset: PropTypes.func,
 };
 
 export default withContext(SuccessPopup);

@@ -10,7 +10,7 @@ export const StyledWrapper = styled.div`
   right: 0;
   top: 50%;
   margin: 20px auto;
-  width: 350px;
+  width: 400px;
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }) => theme.colors.white};
