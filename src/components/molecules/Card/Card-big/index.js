@@ -36,6 +36,8 @@ const CardBig = ({ book }) => {
     id: null,
   });
 
+  const bookId = book.id;
+
   const handleDelete = id => {
     setPopup({
       show: true,
@@ -43,23 +45,6 @@ const CardBig = ({ book }) => {
     });
     console.log('open popup');
   };
-  
-  // const handleDeleteTrue = () => {
-  //   if (popup.show && popup.id) {
-  //     const filteredBooks = books => books.filter(book => book.id !== popup.id);
-  //     setBooks(filteredBooks);
-  //     setPopup({
-  //       show: false,
-  //       id: null,
-  //     });
-  //     console.log('delete book & close popup');
-
-
-
-
-  //   }
-  // };
-
 
   const handleDeleteFalse = () => {
     setPopup({
@@ -153,8 +138,8 @@ const CardBig = ({ book }) => {
         {popup.show && (
           <ConfirmationPopup
             handleDeleteFalse={handleDeleteFalse}
-            // handleDeleteTrue={handleDeleteTrue}
             book={book}
+            bookId={bookId}
           />
         )}
       </Wrapper>
