@@ -6,12 +6,13 @@ import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './st
 
 import withContext from 'hoc/withContext';
 
-const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar, handleReset }) => {
+const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
   const onClickActions = () => [
     toggleNewItemBar(),
     handlePopupClose(),
-    handleReset(),
   ];
+
+
 
   return (
     <StyledWrapper>
@@ -21,7 +22,7 @@ const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar, handleR
         <Button type="reset" onClick={onClickActions}>
           Back to {pageContext}
         </Button>
-        <Button secondary type="button" onClick={ handleReset}>
+        <Button secondary type="button" onClick={handlePopupClose}>
           Add next item
         </Button>
       </ButtonWrapper>
