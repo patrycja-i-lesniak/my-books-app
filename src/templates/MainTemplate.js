@@ -6,7 +6,6 @@ import PropTypes from 'prop-types';
 import { theme } from 'theme/theme';
 import { GlobalStyle } from 'theme/GlobalStyle';
 import PageContext from 'context';
-import { booksData, authorsData, notesData } from 'assets/booksData';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/icons/plus.svg';
 import NewItemBar from 'components/organisms/NewItemBar';
@@ -21,16 +20,9 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 `;
 
-const initialBookState = booksData;
-const initialAuthorState = authorsData;
-const initialNoteState = notesData;
-
 class MainTemplate extends Component {
   state = {
     pageType: 'home',
-    book: [...initialBookState],
-    author: [...initialAuthorState],
-    note: [...initialNoteState],
     isNewItemBarOpen: false,
     isNewItemBarVisible: false,
   };
