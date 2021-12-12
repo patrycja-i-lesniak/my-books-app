@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Arrow } from 'components/atoms/Arrow';
 import { Link } from 'react-router-dom';
-
 import {
   StyledImage,
   StyledTitle,
@@ -16,8 +15,7 @@ import Wrapper from 'components/atoms/Wrapper';
 
 const CardSmall = ({ book, author, note, cardType}) => {
   const [showMore, setShowMore] = useState(false);
-
-  return (
+    return (
     <>
       {cardType === 'books' && (
         <Wrapper>
