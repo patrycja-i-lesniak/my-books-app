@@ -1,5 +1,5 @@
-import styled from 'styled-components';
-import { Form } from 'formik';
+import styled, { css } from 'styled-components';
+import { Form, Field } from 'formik';
 import Button from 'components/atoms/Button/Button';
 import Input from 'components/atoms/Input';
 
@@ -8,28 +8,10 @@ export const StyledForm = styled(Form)`
   flex-direction: column;
   width: 90%;
   justify-content: center;
-  gap: 1.3rem;
+  gap: 1rem;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     width: 80%;
-  }
-`;
-
-export const StyledTextArea = styled(Input)`
-  height: 120px;
-  border: 1px solid ${({ theme }) => theme.colors.silver};
-  line-height: 1.5;
-  border-radius: 5px;
-  margin-bottom: 0.5rem;
-  resize: none;
-  outline: none;
-  font-size: 1.5rem;
-  width: 100%;
-  color: ${({ theme }) => theme.colors.lipstick};
-
-  ::placeholder {
-    color: ${({ theme }) => theme.colors.grey};
-    font-size: 1.2rem;
   }
 `;
 
@@ -42,35 +24,73 @@ export const StyledButton = styled(Button)`
   }
 `;
 
-export const RequiredWrapper = styled.div`
-  display: flex;
-  gap: 5px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    flex-wrap: wrap;
-    gap: 0;
-  }
-`;
-
-export const NameContainer = styled.div`
-  width: 50%;
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    width: 100%;
-  }
-`;
-
-export const ContentContainer = styled.div`
-  width: 100%;
-`;
-
-export const StyledSelect = styled(Form)`
-  width: 100%;
-  border: 1px solid ${({ theme }) => theme.colors.silver};
-  overflow: hidden;
+export const InputField = styled(Field)`
   color: ${({ theme }) => theme.colors.lipstick};
-  border-radius: 5px;
-  padding: 10px 0;
-  outline: none;
   font-size: 1.5rem;
-  border: 1px solid ${({ theme }) => theme.colors.lipstick};
+  border: none;
+  line-height: 2.5;
+  border: 1px solid ${({ theme }) => theme.colors.silver};
+  border-radius: 5px;
+  outline: none;
+  padding: 5px 0 2px 10px;
+  font-weight: bold;
+  height: 4rem;
+
+  ::placeholder {
+    font-size: 1.2rem;
+    color: ${({ theme }) => theme.colors.grey};
+    :focus {
+      color: transparent;
+    }
+  }
+
+  :active {
+    outline: 1px solid ${({ theme }) => theme.colors.lipstick};
+  }
+
+  ${({ textarea }) =>
+    textarea &&
+    css`
+      height: 12rem;
+
+      line-height: 1.5;
+
+      resize: none;
+      outline: none;
+      width: 100%;
+      font-weight: 400;
+    `}
+
+  ${({ select }) =>
+    select &&
+    css`
+      margin-top: 0.7rem;
+      overflow: hidden;
+      outline: none;
+      border: 1px solid ${({ theme }) => theme.colors.lipstick};
+    `}
+`;
+
+export const StyledLabel = styled.label`
+  font-size: 1.2rem;
+  color: ${({ theme }) => theme.colors.grey};
+  padding: 3px;
+  background-color: white;
+  display: inline-block;
+  max-width: 120px;
+  margin: 0 0 -20px 10px;
+  z-index: 2;
+`;
+
+export const InputWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+`;
+
+export const DataWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  flex-wrap: no-wrap;
+  gap: 0.7rem;
+  width: 49%;
 `;
