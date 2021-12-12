@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from 'styled-components';
 import PropTypes from 'prop-types';
 
 const Box = styled.div`
@@ -6,10 +6,10 @@ const Box = styled.div`
   border: none;
   background-color: #fce9f0;
   border-radius: 5px;
-  margin: -0.5rem 0 1rem;
+  margin: -0.7rem 0 0;
   height: 30px;
   align-items: center;
-  width: 100%
+  width: 100%;
 `;
 
 const StyledParagraph = styled.p`
@@ -24,8 +24,7 @@ const RequiredBox = ({ msg }) => (
 );
 
 RequiredBox.propTypes = {
-    msg: PropTypes.string.isRequired,
-}
+  msg: PropTypes.string.isRequired,
+};
 
 export default RequiredBox;
-
