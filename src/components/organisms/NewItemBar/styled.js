@@ -41,8 +41,9 @@ export const StyledHeader = styled(Header)`
 
 export const StyledParagraph = styled(Paragraph)`
   width: 90%;
-  padding: 10px 25px;
+  padding: 5px 0;
   text-align: center;
+  font-size: 1.7rem;
 `;
 
 export const CloseBarButton = styled(Button)`
