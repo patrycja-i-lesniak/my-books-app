@@ -356,7 +356,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             type="text"
             name="content"
             as="textarea"
-            placeholder="add description"
             onChange={handleChange}
             onBlur={handleBlur}
             value={values.content}
