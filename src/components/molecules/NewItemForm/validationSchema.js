@@ -1,6 +1,10 @@
 import * as Yup from 'yup';
 
-const validationSchema = Yup.object().shape({
+Yup.addMethod(Yup.date, 'stripEmptySDate', function () {
+  return this.transform(value => (value === '' ? undefined : value));
+});
+
+export const bookValidationSchema = Yup.object().shape({
   title: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required field is empty'),
   firstName: Yup.string()
     .min(2, 'Too Short!')
@@ -10,19 +14,40 @@ const validationSchema = Yup.object().shape({
     .min(2, 'Too Short!')
     .max(50, 'Too Long!')
     .required('Required field is empty'),
-  imageUrl: Yup.string().default(),
-  series: Yup.string().default(),
-  date: Yup.date().default(),
-  dateOfBirth: Yup.date().default(),
-  dateOfDeath: Yup.date().default(),
-  isbn: Yup.number('Must be a number').default(),
-  translation: Yup.string().default(),
-  publishing: Yup.string().default(),
-  numberOfPages: Yup.number('Must be a number').default(),
-  content: Yup.string().required('Required'),
-  LClink: Yup.string().default(),
-  status: Yup.string().oneOf(['read', 'to read', 'to buy', 'borrowed', 'in progress']).default(),
+  imageUrl: Yup.string().notRequired(),
+  series: Yup.string().notRequired(),
+  date: Yup.date().notRequired(),
+  isbn: Yup.number('Must be a number').notRequired(),
+  translation: Yup.string().notRequired(),
+  publishing: Yup.string().notRequired(),
+  numberOfPages: Yup.number('Must be a number').notRequired(),
+  content: Yup.string().required('Required field is empty'),
+  LClink: Yup.string().notRequired(),
+  status: Yup.string()
+    .oneOf(['read', 'to read', 'to buy', 'borrowed', 'in progress'])
+    .notRequired(),
+});
+
+export const authorValidationSchema = Yup.object().shape({
+  firstName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required field is empty'),
+  lastName: Yup.string()
+    .min(2, 'Too Short!')
+    .max(50, 'Too Long!')
+    .required('Required field is empty'),
+  imageUrl: Yup.string().required('Required field is empty'),
+  dateOfBirth: Yup.date().required('Required field is empty'),
+  dateOfDeath: Yup.date().nullable(true).transform(value => (!value ? null : value)),
+  content: Yup.string().required('Required field is empty'),
+  // LClink: Yup.string().notRequired(),
   oficialWebsite: Yup.string().default(),
 });
 
-export default validationSchema;
+export const noteValidationSchema = Yup.object().shape({
+  title: Yup.string().min(2, 'Too Short!').max(50, 'Too Long!').required('Required field is empty'),
+  imageUrl: Yup.string().notRequired(),
+  date: Yup.date().nullable().notRequired(),
+  content: Yup.string().required('Required field is empty'),
+});
