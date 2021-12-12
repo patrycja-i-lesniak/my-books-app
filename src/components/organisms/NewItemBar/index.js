@@ -14,7 +14,7 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => (
     <StyledWrapper isVisible={isVisible}>
       <StyledHeader secondary>Add new {pageContext}</StyledHeader>
       <StyledParagraph>
-        Fill in all the required fields and click the Add new item button to add new {pageContext} 
+        Fill in all the fields and click the button.
       </StyledParagraph>
       <NewItemForm toggleNewItemBar={toggleNewItemBar} />
       <CloseBarButton type="button" onClick={toggleNewItemBar}>
