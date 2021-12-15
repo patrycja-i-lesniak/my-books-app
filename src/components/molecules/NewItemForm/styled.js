@@ -1,7 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Form, Field } from 'formik';
 import Button from 'components/atoms/Button/Button';
-import Input from 'components/atoms/Input';
 
 export const StyledForm = styled(Form)`
   display: flex;
