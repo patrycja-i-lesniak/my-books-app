@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import Loader from 'components/atoms/Loader';
 import Error from 'components/atoms/Error';
@@ -9,12 +9,11 @@ import Button from 'components/atoms/Button/Button';
 import useFetchDetailsData from 'actions/useFetchDetailsData';
 import withContext from 'hoc/withContext';
 
-const DetailsPage = ( pageContext) => {
+const DetailsPage = pageContext => {
   const endpoint = pageContext.location.pathname;
-  console.log(pageContext);
-  const { itemData } = useFetchDetailsData(endpoint);
 
- const history = useHistory();
+  const { itemData } = useFetchDetailsData(endpoint);
+  const history = useHistory();
 
   return (
     <>
@@ -35,7 +34,7 @@ const DetailsPage = ( pageContext) => {
                 history.goBack();
               }}
             >
-              Back 
+              Back
             </Button>
           </>
         )}
@@ -45,7 +44,7 @@ const DetailsPage = ( pageContext) => {
 };
 
 DetailsPage.propTypes = {
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'books'])
-}
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'books']),
+};
 
 export default withContext(DetailsPage);
