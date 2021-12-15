@@ -1,28 +1,29 @@
-import React from 'react';
 import PropTypes from 'prop-types';
 import { useHistory } from 'react-router-dom';
+
 import Button from 'components/atoms/Button/Button';
 import closeIcon from 'assets/icons/close.svg';
 import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './styled';
 import { base } from 'airtable/base';
 import trashIcon from 'assets/icons/trash.svg';
+import withContext from 'hoc/withContext';
 
-const ConfirmationPopup = ({ handleDeleteFalse, bookId}) => {
+const ConfirmationPopup = ({ handleDeleteFalse, itemId, pageContext }) => {
   function DeleteButton() {
     const history = useHistory();
-    const deleteBook = () => {
-      base('books').destroy(bookId, function (err, deleteBook) {
+    const deleteItem = () => {
+      base(pageContext).destroy(itemId, function (err, deleteItem) {
         if (err) {
           console.error(err);
 
           return;
         }
-        return console.log('Deleted record', deleteBook.id), history.goBack();
+        return console.log('Deleted record with id', itemId), history.goBack();
       });
     };
     return (
       <div className="position-absolute">
-        <Button type="submit" icon={trashIcon} onClick={deleteBook}>
+        <Button type="submit" icon={trashIcon} onClick={deleteItem}>
           Yes
         </Button>
       </div>
@@ -46,7 +47,8 @@ const ConfirmationPopup = ({ handleDeleteFalse, bookId}) => {
 ConfirmationPopup.propTypes = {
   handleDeleteTrue: PropTypes.func,
   handleDeleteFalse: PropTypes.func,
-  bookId: PropTypes.string.isRequired,
+  itemId: PropTypes.string.isRequired,
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'note']),
 };
 
-export default ConfirmationPopup;
+export default withContext(ConfirmationPopup);
