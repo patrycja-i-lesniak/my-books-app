@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import {
   StyledImage,
   StyledTitle,
@@ -25,18 +26,16 @@ import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
+import withContext from 'hoc/withContext';
 
-
-
-
-const CardBig = ({ book }) => {
+const CardBig = ({ item, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
   const [popup, setPopup] = useState({
     show: false,
     id: null,
   });
 
-  const bookId = book.id;
+  const itemId = item.id;
 
   const handleDelete = id => {
     setPopup({
@@ -59,59 +58,87 @@ const CardBig = ({ book }) => {
       <Wrapper>
         <InnerWrapper>
           <UpperContainer>
-            <StyledImage src={book.fields.imageUrl} />
+            <StyledImage src={item.fields.imageUrl} />
             <ExtraWrapper>
               <div>
-                <StyledTitle>{book.fields.title}</StyledTitle>
-                <StyledAuthor>
-                  {book.fields.firstName} {book.fields.lastName}
-                </StyledAuthor>
+                {pageContext === 'authors' ? (
+                  <>
+                    <StyledTitle>
+                      {item.fields.firstName} {item.fields.lastName}
+                    </StyledTitle>
 
-                <Details>
-                  <DataWrapper>
-                    <Label>series:</Label>
-                    <StyledData>{book.fields.series}</StyledData>
-                  </DataWrapper>
+                    <DataWrapper>
+                      <Label>date of birth:</Label>
+                      <StyledData>{item.fields.dateOfBirth}</StyledData>
+                    </DataWrapper>
 
-                  <DataWrapper>
-                    <Label>date of publication:</Label>
-                    <StyledData>{book.fields.date}</StyledData>
-                  </DataWrapper>
+                    <DataWrapper>
+                      <Label>date of death:</Label>
+                      <StyledData>{item.fields.dateOfDeath}</StyledData>
+                    </DataWrapper>
 
-                  <DataWrapper>
-                    <Label>pages:</Label>
-                    <StyledData>{book.fields.numberOfPages}</StyledData>
-                  </DataWrapper>
+                    <DataWrapper>
+                      <Label>oficial website:</Label>
+                      <StyledData>{item.fields.oficialWebsite}</StyledData>
+                    </DataWrapper>
+                  </>
+                ) : (
+                  <StyledTitle>{item.fields.title}</StyledTitle>
+                )}
+                {pageContext === 'authors' ? null : (
+                  <StyledAuthor>
+                    {item.fields.firstName} {item.fields.lastName}
+                  </StyledAuthor>
+                )}
+                {pageContext === 'books' && (
+                  <Details>
+                    <DataWrapper>
+                      <Label>series:</Label>
+                      <StyledData>{item.fields.series}</StyledData>
+                    </DataWrapper>
 
-                  <DataWrapper>
-                    <Label>publisher:</Label>
-                    <StyledData>{book.fields.publishing}</StyledData>
-                  </DataWrapper>
+                    <DataWrapper>
+                      <Label>date of publication:</Label>
+                      <StyledData>{item.fields.date}</StyledData>
+                    </DataWrapper>
 
-                  <DataWrapper>
-                    <Label>ISBN:</Label>
-                    <StyledData>{book.fields.isbn}</StyledData>
-                  </DataWrapper>
+                    <DataWrapper>
+                      <Label>ISBN:</Label>
+                      <StyledData>{item.fields.isbn}</StyledData>
+                    </DataWrapper>
 
-                  <DataWrapper>
-                    <Label>translate:</Label>
-                    <StyledData>{book.fields.translation}</StyledData>
-                  </DataWrapper>
-                </Details>
+                    <DataWrapper>
+                      <Label>pages:</Label>
+                      <StyledData>{item.fields.numberOfPages}</StyledData>
+                    </DataWrapper>
+
+                    <DataWrapper>
+                      <Label>translate:</Label>
+                      <StyledData>{item.fields.translation}</StyledData>
+                    </DataWrapper>
+
+                    <DataWrapper>
+                      <Label>publisher:</Label>
+                      <StyledData>{item.fields.publishing}</StyledData>
+                    </DataWrapper>
+                  </Details>
+                )}
               </div>
               <div>
                 <ButtonsWrapper>
-                  {book.fields.status && book.fields.status === 'to read' && <Status toRead />}
-                  {book.fields.status && book.fields.status === 'read' && <Status read />}
-                  {book.fields.status && book.fields.status === 'to buy' && <Status toBuy />}
-                  {book.fields.status && book.fields.status === 'borrowed' && <Status borrowed />}
-                  {book.fields.status && book.fields.status === 'in progress' && <Status inProgress />}
-                  <StatusParagraph>{book.fields.status}</StatusParagraph>
+                  {item.fields.status && item.fields.status === 'to read' && <Status toRead />}
+                  {item.fields.status && item.fields.status === 'read' && <Status read />}
+                  {item.fields.status && item.fields.status === 'to buy' && <Status toBuy />}
+                  {item.fields.status && item.fields.status === 'borrowed' && <Status borrowed />}
+                  {item.fields.status && item.fields.status === 'in progress' && (
+                    <Status inProgress />
+                  )}
+                  <StatusParagraph>{item.fields.status}</StatusParagraph>
 
                   <LCButton
                     target="_blank"
                     rel="noreferrer"
-                    href={book.fields.LClink}
+                    href={item.fields.LClink}
                     icon={lcLogo}
                   />
                   <Icon icon={trashIcon} onClick={handleDelete} />
@@ -119,9 +146,9 @@ const CardBig = ({ book }) => {
               </div>
             </ExtraWrapper>
           </UpperContainer>
-          {book.fields.content && book.fields.content.length > 400 ? (
+          {item.fields.content && item.fields.content.length > 400 ? (
             <LowerContainer>
-              {showMore ? book.fields.content : `${book.fields.content.slice(0, 400)}...`}
+              {showMore ? item.fields.content : `${item.fields.content.slice(0, 400)}...`}
               <ShowMore onClick={() => setShowMore(!showMore)}>
                 <ButtonContentWrapper>
                   <span>
@@ -132,15 +159,11 @@ const CardBig = ({ book }) => {
               </ShowMore>
             </LowerContainer>
           ) : (
-            <LowerContainer>{book.fields.content}</LowerContainer>
+            <LowerContainer>{item.fields.content}</LowerContainer>
           )}
         </InnerWrapper>
         {popup.show && (
-          <ConfirmationPopup
-            handleDeleteFalse={handleDeleteFalse}
-            book={book}
-            bookId={bookId}
-          />
+          <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={item} itemId={itemId} />
         )}
       </Wrapper>
     </>
@@ -149,10 +172,11 @@ const CardBig = ({ book }) => {
 
 CardBig.propTypes = {
   cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
-  book: PropTypes.object,
+  item: PropTypes.object,
   author: PropTypes.object,
   note: PropTypes.object,
   handleDelete: PropTypes.func,
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
 };
 
 CardBig.defaultProps = {
@@ -161,4 +185,4 @@ CardBig.defaultProps = {
   note: {},
 };
 
-export default CardBig;
+export default withContext(CardBig);
