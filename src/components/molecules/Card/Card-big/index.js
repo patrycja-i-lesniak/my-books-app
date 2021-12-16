@@ -71,16 +71,19 @@ const CardBig = ({ item, pageContext }) => {
                       <Label>date of birth:</Label>
                       <StyledData>{item.fields.dateOfBirth}</StyledData>
                     </DataWrapper>
+                    {item.fields.dateOfDeath === '' ? null : (
+                      <DataWrapper>
+                        <Label>date of death:</Label>
 
-                    <DataWrapper>
-                      <Label>date of death:</Label>
-                      <StyledData>{item.fields.dateOfDeath}</StyledData>
-                    </DataWrapper>
-
-                    <DataWrapper>
-                      <Label>oficial website:</Label>
-                      <StyledData>{item.fields.oficialWebsite}</StyledData>
-                    </DataWrapper>
+                        <StyledData>{item.fields.dateOfDeath}</StyledData>
+                      </DataWrapper>
+                    )}
+                    {item.fields.oficialWebsite === '' ? null : (
+                      <DataWrapper>
+                        <Label>oficial website:</Label>
+                        <StyledData>{item.fields.oficialWebsite}</StyledData>
+                      </DataWrapper>
+                    )}
                   </>
                 ) : (
                   <StyledTitle>{item.fields.title}</StyledTitle>
