@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+
 import { Arrow } from 'components/atoms/Arrow';
 import { Link } from 'react-router-dom';
 import {
@@ -16,60 +17,61 @@ import Wrapper from 'components/atoms/Wrapper';
 const CardSmall = ({ book, author, note, cardType}) => {
   const [showMore, setShowMore] = useState(false);
     return (
-    <>
-      {cardType === 'books' && (
-        <Wrapper>
-          <InnerWrapper>
-            <Link to={`books/${book.id}`}>
-              <StyledImage src={book.fields.imageUrl} />
-            </Link>
-            <StyledTitle>{book.fields.title}</StyledTitle>
-            <StyledAuthor>
-              {book.fields.firstName} {book.fields.lastName}
-            </StyledAuthor>
-          </InnerWrapper>
-        </Wrapper>
-      )}
+      <>
+        {cardType === 'books' && (
+          <Wrapper>
+            <InnerWrapper>
+              <Link to={`books/${book.id}`}>
+                <StyledImage src={book.fields.imageUrl} />
+              </Link>
+              <StyledTitle>{book.fields.title}</StyledTitle>
+              <StyledAuthor>
+                {book.fields.firstName} {book.fields.lastName}
+              </StyledAuthor>
+            </InnerWrapper>
+          </Wrapper>
+        )}
+        {cardType === 'authors' && (
+          <Wrapper>
+            <InnerWrapper>
+              <Link to={`authors/${author.id}`}>
+                <StyledImage src={author.fields.imageUrl} />
+              </Link>
+              <StyledTitle>
+                {author.fields.firstName} {author.fields.lastName}
+              </StyledTitle>
+            </InnerWrapper>
+          </Wrapper>
+        )}
 
-      {cardType === 'authors' && (
-        <Wrapper>
-          <InnerWrapper>
-            <StyledImage src={author.fields.imageUrl} />
-            <StyledTitle>
-              {author.fields.firstName} {author.fields.lastName}
-            </StyledTitle>
-          </InnerWrapper>
-        </Wrapper>
-      )}
-
-      {cardType === 'notes' && (
-        <Wrapper notes>
-          <InnerWrapper>
-            <>
-              <StyledImage src={note.fields.imageUrl} />
-              <StyledTitle>{note.fields.title} </StyledTitle>
-              <StyledDate>{note.fields.date}</StyledDate>
-              {note.fields.content.length > 300 ? (
-                <>
-                  {showMore ? note.fields.content : `${note.fields.content.slice(0, 300)}...`}
-                  <ShowMore onClick={() => setShowMore(!showMore)}>
-                    <ButtonContentWrapper>
-                      <span>
-                        {showMore ? 'Show less' : 'Show more'}
-                        <Arrow showMore={showMore} />
-                      </span>
-                    </ButtonContentWrapper>
-                  </ShowMore>
-                </>
-              ) : (
-                <>{note.fields.content}</>
-              )}
-            </>
-          </InnerWrapper>
-        </Wrapper>
-      )}
-    </>
-  );
+        {cardType === 'notes' && (
+          <Wrapper notes>
+            <InnerWrapper>
+              <>
+                <StyledImage src={note.fields.imageUrl} />
+                <StyledTitle>{note.fields.title} </StyledTitle>
+                <StyledDate>{note.fields.date}</StyledDate>
+                {note.fields.content.length > 300 ? (
+                  <>
+                    {showMore ? note.fields.content : `${note.fields.content.slice(0, 300)}...`}
+                    <ShowMore onClick={() => setShowMore(!showMore)}>
+                      <ButtonContentWrapper>
+                        <span>
+                          {showMore ? 'Show less' : 'Show more'}
+                          <Arrow showMore={showMore} />
+                        </span>
+                      </ButtonContentWrapper>
+                    </ShowMore>
+                  </>
+                ) : (
+                  <>{note.fields.content}</>
+                )}
+              </>
+            </InnerWrapper>
+          </Wrapper>
+        )}
+      </>
+    );
 };
 
 CardSmall.propTypes = {
