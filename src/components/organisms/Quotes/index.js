@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 
 import api from 'api';
@@ -13,7 +13,8 @@ const QuoteWrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.grey};
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   position: relative;
-
+  justify-content: center;
+  
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 30px 20px;
     margin: 60px auto 40px;
@@ -25,8 +26,12 @@ const QuoteSource = styled.div`
   align-items: flex-end;
   font-size: 1rem;
   font-style: italic;
-  padding-top: 20px;
+  padding: 20px 50px 0 0;
   gap: 10px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    padding: 20px 30px 40px 0;
+    gap: 0;
 `;
 
 const StyledQuote = styled.h2`
@@ -35,9 +40,8 @@ const StyledQuote = styled.h2`
   margin: 0;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    font-size: 2rem;
-    padding: 0 0 30px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) 
+    padding: 0 0 10px;
     margin: 0;
   }
 `;
@@ -46,6 +50,11 @@ const StyledButton = styled(Button)`
   position: absolute;
   left: 50px;
   bottom: 50px;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    left: 20px;
+    bottom: 20px;
+  }
 `;
 
 function Quotes() {
@@ -65,6 +74,10 @@ function Quotes() {
     setQuotes(data.records[randomNumber]);
     console.log(data.records[randomNumber]);
   };
+
+  useEffect(() => {
+    getQuote();
+  }, []);
 
   return (
     <QuoteWrapper>
