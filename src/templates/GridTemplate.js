@@ -1,10 +1,12 @@
 import styled, { css } from 'styled-components';
 import PropTypes from 'prop-types';
+
 import UserPageTemplate from './UserPageTemplate';
 import Header from 'components/atoms/Header/Header';
 import { Container } from 'components/atoms/Container';
 import withContext from 'hoc/withContext';
 import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
+import Quotes from 'components/organisms/Quotes';
 
 const StyledGrid = styled.div`
   display: grid;
@@ -22,31 +24,20 @@ const StyledGrid = styled.div`
     `}
 `;
 
-const StyledQuote = styled.h2`
-  color: ${({ theme }) => theme.colors.grey};
-  line-height: 1.5;
-  padding: 20px 50px;
-  text-align: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    font-size: 2rem;
-    padding: 0 0 30px;
-    margin: 0;
-  }
-`;
-
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
     <Container>
-      {pageContext === 'home' && (
-        <StyledQuote secondary>
-          {
-            ' "Książka to najlepszy przyjaciel człowieka, a biblioteka to świątynia jego myśli." – Cyceron'
-          }
-        </StyledQuote>
+      {pageContext === 'home' ? (
+        <>
+          <Quotes />
+          <RotaryBox />
+
+          <Header>Last added books</Header>
+        </>
+      ) : (
+        <Header>Nagłówek strony {pageContext}</Header>
       )}
-      {pageContext === 'home' && <RotaryBox />}
-      <Header>Nagłówek strony {pageContext}</Header>
+
       {pageContext === 'notes' ? (
         <StyledGrid notes>{children}</StyledGrid>
       ) : (
