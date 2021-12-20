@@ -14,7 +14,7 @@ const QuoteWrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   position: relative;
   justify-content: center;
-  
+
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 30px 20px;
     margin: 60px auto 40px;
@@ -32,6 +32,7 @@ const QuoteSource = styled.div`
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 20px 30px 40px 0;
     gap: 0;
+  }
 `;
 
 const StyledQuote = styled.h2`
@@ -40,7 +41,7 @@ const StyledQuote = styled.h2`
   margin: 0;
   text-align: center;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) 
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 0 0 10px;
     margin: 0;
   }
@@ -60,19 +61,16 @@ const StyledButton = styled(Button)`
 function Quotes() {
   const [quotes, setQuotes] = useState({
     fields: {
-      content: 'Książka to najlepszy przyjaciel człowieka, a biblioteka to świątynia jego myśli.',
-      author: 'Cyceron',
+      content: '',
+      author: '',
       title: '',
     },
   });
 
   const getQuote = async () => {
     const data = await api.get('/quotes');
-
     let randomNumber = Math.floor(Math.random() * data.records.length);
-
     setQuotes(data.records[randomNumber]);
-    console.log(data.records[randomNumber]);
   };
 
   useEffect(() => {
@@ -82,12 +80,10 @@ function Quotes() {
   return (
     <QuoteWrapper>
       <StyledQuote>{quotes.fields.content}</StyledQuote>
-
       <QuoteSource>
         <StyledQuote>{quotes.fields.title}</StyledQuote>
         <StyledQuote>{quotes.fields.author}</StyledQuote>
       </QuoteSource>
-
       <StyledButton onClick={getQuote}>Get new quote</StyledButton>
     </QuoteWrapper>
   );
