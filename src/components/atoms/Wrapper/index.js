@@ -1,4 +1,4 @@
-import styled, {css} from 'styled-components';
+import styled, { css } from 'styled-components';
 
 const Wrapper = styled.div`
   display: flex;
@@ -21,13 +21,11 @@ const Wrapper = styled.div`
   ${({ notes }) =>
     notes &&
     css`
-  width: 340px;
-   &:hover {
-    background-color: ${({ theme }) => theme.colors.silver};
-   }
-      
-
-  `}
+      width: 340px;
+      &:hover {
+        background-color: ${({ theme }) => theme.colors.silver};
+      }
+    `}
 `;
 
 export default Wrapper;
