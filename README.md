@@ -9,7 +9,7 @@ My Books App is a simple home library management application powered by Airtable
 ## Demo
 https://patrycja-i-lesniak.github.io/my-books-app/
 
-![MyBooksApp](my-books-app/my-books-app.jpg)
+![MyBooksApp](assets/images/my-books-app.jpg)
 
 
 ## Technologies
