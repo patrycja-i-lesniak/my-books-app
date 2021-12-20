@@ -1,3 +1,31 @@
+# MY BOOKS APP (React)
+
+My Books App is a simple home library management application powered by Airtable REST API.
+
+* Author: **Patrycja Leśniak**
+* Work in progress.
+* October, 2021.
+
+## Demo
+https://patrycja-i-lesniak.github.io/my-books-app/
+
+![MyBooksApp](my-books-app/my-books-app.jpg)
+
+
+## Technologies
+Project is created with:
+* Semantic HTML
+* CSS
+* Grid
+* Flex
+* Media queries
+* ES6+
+* React JS
+* Styled components
+* Custom hooks
+
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
