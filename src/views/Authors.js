@@ -9,7 +9,7 @@ const Authors = () => {
 
    useEffect(() => {
      base('authors')
-       .select({ view: 'Grid view' })
+       .select({ view: 'Grid view', pageSize: 12, sort: [{ field: 'lastName' }] })
        .eachPage(
          (records, fetchNextPage) => {
            setAuthors(records);

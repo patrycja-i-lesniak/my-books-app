@@ -9,7 +9,7 @@ const Notes = () => {
 
   useEffect(() => {
     base('notes')
-      .select({ view: 'Grid view' })
+      .select({ view: 'Grid view', pageSize: 6, sort: [{ field: 'title' }] })
       .eachPage(
         (records, fetchNextPage) => {
           setNotes(records);
