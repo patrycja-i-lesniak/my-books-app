@@ -15,7 +15,7 @@ export const Search = styled.input`
   border: 1px solid ${({ theme }) => theme.colors.desertStorm};
   width: 340px;
   height: 36px;
-  border-radius: 5px;
+  border-radius: 3px;
 
   &:focus {
     border: 1px solid ${({ theme }) => theme.colors.lipstick};
