@@ -7,7 +7,7 @@ import Authors from 'views/Authors';
 import Notes from 'views/Notes';
 import Books from 'views/Books';
 import Home from 'views/Home';
-import AddQuotes from 'components/organisms/Quotes';
+import AddQuotes from 'views/AddQuotes';
 import DetailsPage from 'views/DetailsPage';
 import { routes } from 'routes';
 
