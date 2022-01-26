@@ -7,6 +7,7 @@ import Authors from 'views/Authors';
 import Notes from 'views/Notes';
 import Books from 'views/Books';
 import Home from 'views/Home';
+import Quotes from 'components/organisms/Quotes';
 import DetailsPage from 'views/DetailsPage';
 import { routes } from 'routes';
 
@@ -23,6 +24,7 @@ const Root = () => (
           <Route path={routes.author} component={DetailsPage} />
           <Route exact path={routes.notes} component={Notes} />
           <Route path={routes.note} component={DetailsPage} />
+          <Route exact path={routes.quotes} component={Quotes} />
         </Switch>
       </MainTemplate>
     </HashRouter>
