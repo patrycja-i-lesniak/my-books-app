@@ -108,9 +108,12 @@ const NavigationBar = () => (
         <StyledItem as={NavLink} to="/notes">
           notes
         </StyledItem>
+        <StyledItem as={NavLink} to="/quotes">
+          add quote
+        </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
-    <SearchBox placeholder='search by title, author or ISBN'/>
+    <SearchBox placeholder="search by title, author or ISBN" />
     <StyledButton secondary>log in</StyledButton>
   </StyledWrapper>
 );
