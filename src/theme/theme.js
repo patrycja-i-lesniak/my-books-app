@@ -29,7 +29,7 @@ export const theme = {
   },
   shadows: {
     boxShadow: '0 5px 20px -5px rgba(128, 128, 128, 0.8)',
-    boxShadowDark: '5px 5px 15px -5px rgba(0, 0, 0, 0.8)',
+    boxShadowDark: '5px 5px 15px -5px rgba(0, 0, 0, 0.5)',
     textShadow: '-1px 3px 3px #bfbfbf',
     modalShadow: '0 10px 20px -5px rgba(0, 0, 0, .8);',
     popupShadow: '0 10px 20px -5px rgba(0, 0, 0, .8);',
