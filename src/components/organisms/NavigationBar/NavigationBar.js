@@ -108,7 +108,7 @@ const NavigationBar = () => (
         <StyledItem as={NavLink} to="/notes">
           notes
         </StyledItem>
-        <StyledItem as={NavLink} to="/quotes">
+        <StyledItem as={NavLink} to="/addQuotes">
           add quote
         </StyledItem>
       </StyledLinkList>

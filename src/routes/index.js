@@ -6,5 +6,5 @@ export const routes = {
   book: '/books/:id',
   authors: '/authors',
   author: '/authors/:id',
-  quotes: '/quotes',
+  addQuotes: '/addQuotes',
 };
