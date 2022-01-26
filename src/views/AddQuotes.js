@@ -1,7 +1,12 @@
-
+import GridTemplate from "templates/GridTemplate";
 
 const AddQuotes = () => (
-    <p>add new quote</p>
+  <>
+    <GridTemplate pageType="addQuotes">
+      <p>add new quote</p>  
+    </GridTemplate>
+  
+  </>
 );
 
 export default AddQuotes;
