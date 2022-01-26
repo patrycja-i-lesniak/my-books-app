@@ -26,7 +26,7 @@ const MainTemplate = ({ children }) => {
   const location = useLocation();
 
   const setCurrentPage = () => {
-    const pageTypes = ['home', 'books', 'authors', 'notes'];
+    const pageTypes = ['home', 'books', 'authors', 'notes', 'addQuotes'];
 
     const [currentPage] = pageTypes.filter(page => location.pathname.includes(page));
     if (pageType !== currentPage) {

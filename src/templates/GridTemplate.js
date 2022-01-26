@@ -35,7 +35,7 @@ const GridTemplate = ({ children, pageContext }) => (
           <Header>Last added books</Header>
         </>
       ) : (
-        <Header>Nagłówek strony {pageContext}</Header>
+        <Header>{pageContext.toUpperCase()}</Header>
       )}
 
       {pageContext === 'notes' ? (
@@ -49,7 +49,7 @@ const GridTemplate = ({ children, pageContext }) => (
 
 GridTemplate.propTypes = {
   children: PropTypes.node,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'addQuotes']),
 };
 
 GridTemplate.defaultProps = {
