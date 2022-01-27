@@ -1,13 +1,11 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
-
 import {
   StyledImage,
   StyledTitle,
   StyledAuthor,
   InnerWrapper,
   Icon,
-  LCButton,
   Wrapper,
   UpperContainer,
   LowerContainer,
@@ -24,6 +22,7 @@ import {
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
+import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
@@ -66,12 +65,8 @@ const CardBig = ({ item, pageContext }) => {
                     <StyledTitle>
                       {item.fields.firstName} {item.fields.lastName}
                     </StyledTitle>
-                    <DataWrapper>
-                      <Label>books:</Label>
-                      <StyledData>{item.fields.books}</StyledData>
-                    </DataWrapper>
 
-                    <DataWrapper>
+                    {/* <DataWrapper>
                       <Label>date of birth:</Label>
                       <StyledData>{item.fields.dateOfBirth}</StyledData>
                     </DataWrapper>
@@ -81,13 +76,7 @@ const CardBig = ({ item, pageContext }) => {
 
                         <StyledData>{item.fields.dateOfDeath}</StyledData>
                       </DataWrapper>
-                    )}
-                    {item.fields.oficialWebsite === '' ? null : (
-                      <DataWrapper>
-                        <Label>oficial website:</Label>
-                        <StyledData>{item.fields.oficialWebsite}</StyledData>
-                      </DataWrapper>
-                    )}
+                    )} */}
                   </>
                 ) : (
                   <StyledTitle>{item.fields.title}</StyledTitle>
@@ -142,12 +131,20 @@ const CardBig = ({ item, pageContext }) => {
                   )}
                   <StatusParagraph>{item.fields.status}</StatusParagraph>
 
-                  <LCButton
+                  <Icon
                     target="_blank"
                     rel="noreferrer"
                     href={item.fields.LClink}
                     icon={lcLogo}
                   />
+                  {pageContext === 'authors' && item.fields.oficialWebsite ? (
+                    <Icon
+                      target="_blank"
+                      rel="noreferrer"
+                      href={item.fields.oficialWebsite}
+                      icon={linkIcon}
+                    />
+                  ) : null}
                   <Icon icon={trashIcon} onClick={handleDelete} />
                 </ButtonsWrapper>
               </div>
