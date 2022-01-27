@@ -18,6 +18,19 @@ const CardSmall = ({ book, author, note, cardType}) => {
   const [showMore, setShowMore] = useState(false);
     return (
       <>
+        {cardType === 'home' && (
+          <Wrapper>
+            <InnerWrapper>
+              <Link to={`books/${book.id}`}>
+                <StyledImage src={book.fields.imageUrl} />
+              </Link>
+              <StyledTitle>{book.fields.title}</StyledTitle>
+              <StyledAuthor>
+                {book.fields.firstName} {book.fields.lastName}
+              </StyledAuthor>
+            </InnerWrapper>
+          </Wrapper>
+        )}
         {cardType === 'books' && (
           <Wrapper>
             <InnerWrapper>
