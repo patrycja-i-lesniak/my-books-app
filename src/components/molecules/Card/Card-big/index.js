@@ -52,18 +52,35 @@ const CardBig = ({ item, pageContext }) => {
     console.log('Close popup');
   };
 
+  const {
+    status,
+    imageUrl,
+    firstName,
+    lastName,
+    title,
+    series,
+    date,
+    isbn,
+    numberOfPages,
+    translation,
+    publishing,
+    LClink,
+    oficialWebsite,
+    content,
+  } = item.fields;
+
   return (
     <>
       <Wrapper>
         <InnerWrapper>
           <UpperContainer>
-            <StyledImage src={item.fields.imageUrl} />
+            <StyledImage src={imageUrl} />
             <ExtraWrapper>
               <div>
                 {pageContext === 'authors' ? (
                   <>
                     <StyledTitle>
-                      {item.fields.firstName} {item.fields.lastName}
+                      {firstName} {lastName}
                     </StyledTitle>
 
                     {/* <DataWrapper>
@@ -79,80 +96,68 @@ const CardBig = ({ item, pageContext }) => {
                     )} */}
                   </>
                 ) : (
-                  <StyledTitle>{item.fields.title}</StyledTitle>
+                  <StyledTitle>{title}</StyledTitle>
                 )}
                 {pageContext === 'authors' ? null : (
                   <StyledAuthor>
-                    {item.fields.firstName} {item.fields.lastName}
+                    {firstName} {lastName}
                   </StyledAuthor>
                 )}
                 {pageContext === 'books' && (
                   <Details>
                     <DataWrapper>
                       <Label>series:</Label>
-                      <StyledData>{item.fields.series}</StyledData>
+                      <StyledData>{series}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>date of publication:</Label>
-                      <StyledData>{item.fields.date}</StyledData>
+                      <StyledData>{date}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>ISBN:</Label>
-                      <StyledData>{item.fields.isbn}</StyledData>
+                      <StyledData>{isbn}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>pages:</Label>
-                      <StyledData>{item.fields.numberOfPages}</StyledData>
+                      <StyledData>{numberOfPages}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>translate:</Label>
-                      <StyledData>{item.fields.translation}</StyledData>
+                      <StyledData>{translation}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>publisher:</Label>
-                      <StyledData>{item.fields.publishing}</StyledData>
+                      <StyledData>{publishing}</StyledData>
                     </DataWrapper>
                   </Details>
                 )}
               </div>
               <div>
                 <ButtonsWrapper>
-                  {item.fields.status && item.fields.status === 'to read' && <Status toRead />}
-                  {item.fields.status && item.fields.status === 'read' && <Status read />}
-                  {item.fields.status && item.fields.status === 'to buy' && <Status toBuy />}
-                  {item.fields.status && item.fields.status === 'borrowed' && <Status borrowed />}
-                  {item.fields.status && item.fields.status === 'in progress' && (
-                    <Status inProgress />
-                  )}
-                  <StatusParagraph>{item.fields.status}</StatusParagraph>
+                  {status && status === 'to read' && <Status toRead />}
+                  {status && status === 'read' && <Status read />}
+                  {status && status === 'to buy' && <Status toBuy />}
+                  {status && status === 'borrowed' && <Status borrowed />}
+                  {status && status === 'in progress' && <Status inProgress />}
+                  <StatusParagraph>{status}</StatusParagraph>
 
-                  <Icon
-                    target="_blank"
-                    rel="noreferrer"
-                    href={item.fields.LClink}
-                    icon={lcLogo}
-                  />
-                  {pageContext === 'authors' && item.fields.oficialWebsite ? (
-                    <Icon
-                      target="_blank"
-                      rel="noreferrer"
-                      href={item.fields.oficialWebsite}
-                      icon={linkIcon}
-                    />
+                  <Icon target="_blank" rel="noreferrer" href={LClink} icon={lcLogo} />
+                  {pageContext === 'authors' && oficialWebsite ? (
+                    <Icon target="_blank" rel="noreferrer" href={oficialWebsite} icon={linkIcon} />
                   ) : null}
                   <Icon icon={trashIcon} onClick={handleDelete} />
                 </ButtonsWrapper>
               </div>
             </ExtraWrapper>
           </UpperContainer>
-          {item.fields.content && item.fields.content.length > 400 ? (
+          {content && content.length > 400 ? (
             <LowerContainer>
-              {showMore ? item.fields.content : `${item.fields.content.slice(0, 400)}...`}
+              {showMore ? content : `${content.slice(0, 400)}...`}
               <ShowMore onClick={() => setShowMore(!showMore)}>
                 <ButtonContentWrapper>
                   <span>
@@ -163,7 +168,7 @@ const CardBig = ({ item, pageContext }) => {
               </ShowMore>
             </LowerContainer>
           ) : (
-            <LowerContainer>{item.fields.content}</LowerContainer>
+            <LowerContainer>{content}</LowerContainer>
           )}
         </InnerWrapper>
         {popup.show && (
