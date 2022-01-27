@@ -58,7 +58,7 @@ const StyledButton = styled(Button)`
   }
 `;
 
-function Quotes() {
+function QuotesBox() {
   const [quotes, setQuotes] = useState({
     fields: {
       content: '',
@@ -89,4 +89,4 @@ function Quotes() {
   );
 }
 
-export default Quotes;
+export default QuotesBox;

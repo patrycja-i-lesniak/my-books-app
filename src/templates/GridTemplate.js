@@ -6,7 +6,7 @@ import Header from 'components/atoms/Header/Header';
 import { Container } from 'components/atoms/Container';
 import withContext from 'hoc/withContext';
 import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
-import Quotes from 'components/organisms/Quotes';
+import QuotesBox from 'components/organisms/QuotesBox';
 
 const StyledGrid = styled.div`
   display: grid;
@@ -29,7 +29,7 @@ const GridTemplate = ({ children, pageContext }) => (
     <Container>
       {pageContext === 'home' ? (
         <>
-          <Quotes />
+          <QuotesBox />
           <RotaryBox />
 
           <Header>Last added books</Header>
@@ -49,7 +49,7 @@ const GridTemplate = ({ children, pageContext }) => (
 
 GridTemplate.propTypes = {
   children: PropTypes.node,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'addQuotes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
 GridTemplate.defaultProps = {
