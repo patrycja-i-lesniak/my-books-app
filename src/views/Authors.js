@@ -34,9 +34,6 @@ const Authors = () => {
           author={author}
           id={author.id}
           key={author.id}
-          imageUrl={author.imageUrl}
-          firstName={author.firstName}
-          lastName={author.lastName}
         />
       ))}
     </GridTemplate>
@@ -47,9 +44,6 @@ Authors.propTypes = {
   authors: PropTypes.arrayOf(
     PropTypes.shape({
       id: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      firstName: PropTypes.string.isRequired,
-      lastName: PropTypes.string.isRequired,
     }),
   ),
 };
