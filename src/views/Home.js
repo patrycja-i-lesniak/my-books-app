@@ -1,28 +1,21 @@
 import GridTemplate from 'templates/GridTemplate';
 import PropTypes from 'prop-types';
-import LastAddedItems from 'components/molecules/LastAddedItems';
+import LastAddedBooks from 'components/molecules/LastAddedBooks';
 
 const Home = () => (
   <>
     <GridTemplate pageType="home">
-      <LastAddedItems />
+      <LastAddedBooks />
     </GridTemplate>
   </>
 );
 
 Home.propTypes = {
-  books: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      imageUrl: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      author: PropTypes.string.isRequired,
-    }),
-  ),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
 Home.defaultProps = {
-  books: [],
+  pageContext: 'home',
 };
 
 export default Home;
