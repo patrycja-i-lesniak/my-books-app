@@ -6,6 +6,7 @@ import {
   bookValidationSchema,
   authorValidationSchema,
   noteValidationSchema,
+  quotesValidationSchema,
 } from 'components/molecules/NewItemForm/validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
@@ -45,6 +46,8 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ? bookValidationSchema
           : pageContext === 'authors'
           ? authorValidationSchema
+          : pageContext === 'quotes'
+          ? quotesValidationSchema
           : noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
@@ -100,6 +103,18 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ],
         };
 
+        const quote = {
+          records: [
+            {
+              fields: {
+                title: values.title,
+                author: values.author,
+                content: values.content,
+              },
+            },
+          ],
+        };
+
         api
           .post(
             endpoint,
@@ -107,6 +122,8 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               ? (endpoint, book)
               : pageContext === 'authors'
               ? (endpoint, author)
+              : pageContext === 'quotes'
+              ? (endpoint, quote)
               : (endpoint, note),
           )
           .then(response => {
@@ -159,7 +176,26 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'notes' ? null : (
+          {pageContext === 'quotes' ? (
+            <>
+              <StyledLabel as="label" htmlFor="author">
+                author
+              </StyledLabel>
+              <InputField
+                as="input"
+                type="text"
+                name="author"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.author}
+                autoComplete="given-name"
+              />
+
+              <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          ) : null}
+
+          {pageContext === 'notes' || 'quotes' ? null : (
             <InputWrapper>
               <DataWrapper>
                 <StyledLabel htmlFor="first name">first name</StyledLabel>
@@ -187,18 +223,22 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               </DataWrapper>
             </InputWrapper>
           )}
-          <>
-            <StyledLabel htmlFor="image url">image url</StyledLabel>
-            <InputField
-              as="input"
-              type="url"
-              name="imageUrl"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.imageUrl}
-            />
-            <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          </>
+
+          {pageContext === 'quotes' ? null : (
+            <>
+              <StyledLabel htmlFor="image url">image url</StyledLabel>
+              <InputField
+                as="input"
+                type="url"
+                name="imageUrl"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.imageUrl}
+              />
+
+              <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          )}
           {pageContext === 'books' && (
             <>
               <StyledLabel htmlFor="series">series</StyledLabel>
@@ -241,7 +281,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
                 <ErrorMessage name="dateOfDeath">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
               </DataWrapper>
             </InputWrapper>
-          ) : (
+          ) : pageContext === 'quotes' ? null : (
             <>
               <StyledLabel htmlFor="date">date of publication</StyledLabel>
               <InputField
@@ -369,7 +409,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 };
 
 NewItemForm.propTypes = {
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   toggleNewItemBar: PropTypes.func,
 };
 

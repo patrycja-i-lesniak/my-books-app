@@ -13,7 +13,7 @@ const UserPageTemplate = ({ children, pageContext}) => (
 
 UserPageTemplate.propTypes = {
   children: PropTypes.object,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
 UserPageTemplate.defaultProps = {

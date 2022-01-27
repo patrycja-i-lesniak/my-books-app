@@ -29,7 +29,7 @@ const ErrorPopup = ({ handlePopupClose, toggleNewItemBar, pageContext, handleRes
 ErrorPopup.propTypes = {
   toggleNewItemBar: PropTypes.func.isRequired,
   handlePopupClose: PropTypes.func.isRequired,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   handleReset: PropTypes.func,
 };
 

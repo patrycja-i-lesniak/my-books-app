@@ -44,7 +44,7 @@ const DetailsPage = pageContext => {
 };
 
 DetailsPage.propTypes = {
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'books']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'books', 'quotes']),
 };
 
 export default withContext(DetailsPage);

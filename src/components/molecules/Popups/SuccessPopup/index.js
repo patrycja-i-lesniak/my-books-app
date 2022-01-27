@@ -8,8 +8,10 @@ import withContext from 'hoc/withContext';
 
 const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
   const onClickActions = () => [
-    toggleNewItemBar(),
+    <>
+    {pageContext === 'quotes' ? null : toggleNewItemBar()},
     handlePopupClose(),
+    </>
   ];
 
 
@@ -32,7 +34,7 @@ const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
 
 SuccessPopup.propTypes = {
   handlePopupClose: PropTypes.func.isRequired,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   toggleNewItemBar: PropTypes.func,
   handleReset: PropTypes.func,
 };

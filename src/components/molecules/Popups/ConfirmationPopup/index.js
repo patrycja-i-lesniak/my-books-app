@@ -48,7 +48,7 @@ ConfirmationPopup.propTypes = {
   handleDeleteTrue: PropTypes.func,
   handleDeleteFalse: PropTypes.func,
   itemId: PropTypes.string.isRequired,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'note']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'note', 'quotes']),
 };
 
 export default withContext(ConfirmationPopup);

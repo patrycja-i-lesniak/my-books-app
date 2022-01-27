@@ -66,6 +66,10 @@ const CardBig = ({ item, pageContext }) => {
                     <StyledTitle>
                       {item.fields.firstName} {item.fields.lastName}
                     </StyledTitle>
+                    <DataWrapper>
+                      <Label>books:</Label>
+                      <StyledData>{item.fields.books}</StyledData>
+                    </DataWrapper>
 
                     <DataWrapper>
                       <Label>date of birth:</Label>
@@ -174,12 +178,12 @@ const CardBig = ({ item, pageContext }) => {
 };
 
 CardBig.propTypes = {
-  cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   item: PropTypes.object,
   author: PropTypes.object,
   note: PropTypes.object,
   handleDelete: PropTypes.func,
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
 CardBig.defaultProps = {

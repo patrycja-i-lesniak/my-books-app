@@ -25,7 +25,7 @@ const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => (
 );
 
 NewItemBar.propTypes = {
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   isVisible: PropTypes.bool,
   toggleNewItemBar: PropTypes.func,
 };
