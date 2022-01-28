@@ -34,10 +34,6 @@ const Notes = () => {
             note={note}
             id={note.id}
             key={note.id}
-            imageUrl={note.imageUrl}
-            title={note.title}
-            date={note.date}
-            content={note.content}
           />
         ))}
     </GridTemplate>
