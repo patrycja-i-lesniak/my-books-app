@@ -49,7 +49,7 @@ const MainTemplate = ({ children }) => {
         <ThemeProvider theme={theme}>
           {children}
           <NewItemBar isVisible={isNewItemBarVisible} toggleNewItemBar={toggleNewItemBar} />
-          {pageType === 'home' || isNewItemBarVisible ? null : (
+          {pageType === 'home' || pageType === 'quotes' || isNewItemBarVisible ? null : (
             <StyledButtonIcon icon={plusIcon} onClick={toggleNewItemBar} />
           )}
           {isNewItemBarVisible && <StyledBackdrop onClick={toggleNewItemBar} />}
