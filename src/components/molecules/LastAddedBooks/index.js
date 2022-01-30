@@ -1,14 +1,24 @@
 import { useState, useEffect } from 'react';
 import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
+// import { useParams } from 'react-router-dom';
 
 
 const LastAddedBooks = () => {
 const [books, setBooks] = useState([]);
+// const params = useParams();
+// console.log(params);
+// const filterByFormula = '{lastName}="Miller"';
 
 useEffect(() => {
+
   base('books')
-    .select({ view: 'Grid view', pageSize: 4, sort: [{ field: 'createdTime', direction: 'desc' }] })
+    .select({
+      view: 'Grid view',
+      pageSize: 5,
+      sort:[{ field: 'createdTime', direction: 'desc' }] ,
+      // filterByFormula,
+    })
     .eachPage(
       records => {
         setBooks(records);
@@ -27,7 +37,7 @@ return (
   <>
       {books &&
         books.map(book => (
-          <CardSmall cardType="home" book={book} key={book.id} />
+          <CardSmall cardType='home' book={book} key={book.id} />
         ))}
   </>
 );
