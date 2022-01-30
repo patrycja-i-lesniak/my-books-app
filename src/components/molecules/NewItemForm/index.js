@@ -1,12 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Formik, ErrorMessage } from 'formik';
-import PropTypes from 'prop-types';
+import PropTypes, { any } from 'prop-types';
+import { useHistory } from 'react-router-dom';
+
 import { axiosInstance, apiEndpoints } from 'airtable/base';
 import {
   bookValidationSchema,
   authorValidationSchema,
   noteValidationSchema,
-  quotesValidationSchema,
+  // quotesValidationSchema,
 } from 'components/molecules/NewItemForm/validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
@@ -38,6 +40,40 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
   const endpoint = `/${pageContext}`;
 
+  const history = useHistory();
+
+  // VER.1
+
+  //   const handleItemUpdateSuccess = () => {
+  //  history.push('/');
+  //  history.replace(endpoint)
+  //   };
+
+  // VER. 2
+
+  const useRefresh = () => {
+    let handler;
+    const refresh = () => {
+      history.push('/');
+      handler = setTimeout(() => history.push(endpoint), 10);
+    };
+
+    useEffect(() => {
+      return () => handler && clearTimeout(handler);
+    }, [handler]);
+    return refresh;
+  };
+
+  const refresh = useRefresh(history, endpoint);
+
+  const handleSuccess = () => {
+    if (history.location.pathname === endpoint) {
+      refresh();
+    } else {
+      history.push(endpoint);
+    }
+  };
+
   return (
     <Formik
       initialValues={initialValues}
@@ -46,11 +82,17 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ? bookValidationSchema
           : pageContext === 'authors'
           ? authorValidationSchema
-          : pageContext === 'quotes'
-          ? quotesValidationSchema
-          : noteValidationSchema
+          : // : pageContext === 'quotes'
+            // ? quotesValidationSchema
+            noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
+        // VER. 1
+        // handleItemUpdateSuccess();
+
+        // VER. 2
+        handleSuccess();
+
         console.log(values);
         const book = {
           records: [
@@ -82,8 +124,8 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
                 lastName: values.lastName,
                 content: values.content,
                 imageUrl: values.imageUrl,
-                dateOfBirth: values.dateOfBirth,
-                dateOfDeath: values.dateOfDeath,
+                // dateOfBirth: values.dateOfBirth,
+                // dateOfDeath: values.dateOfDeath,
                 oficialWebsite: values.oficialWebsite,
               },
             },
@@ -103,17 +145,17 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ],
         };
 
-        const quote = {
-          records: [
-            {
-              fields: {
-                title: values.title,
-                author: values.author,
-                content: values.content,
-              },
-            },
-          ],
-        };
+        // const quote = {
+        //   records: [
+        //     {
+        //       fields: {
+        //         title: values.title,
+        //         author: values.author,
+        //         content: values.content,
+        //       },
+        //     },
+        //   ],
+        // };
 
         api
           .post(
@@ -122,9 +164,9 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               ? (endpoint, book)
               : pageContext === 'authors'
               ? (endpoint, author)
-              : pageContext === 'quotes'
-              ? (endpoint, quote)
-              : (endpoint, note),
+              : // : pageContext === 'quotes'
+                // ? (endpoint, quote)
+                (endpoint, note),
           )
           .then(response => {
             setPopup(true);
@@ -176,7 +218,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'quotes' ? (
+          {/* {pageContext === 'quotes' ? (
             <>
               <StyledLabel as="label" htmlFor="author">
                 author
@@ -193,9 +235,9 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
               <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
             </>
-          ) : null}
+          ) : null} */}
 
-          {pageContext === 'notes' || 'quotes' ? null : (
+          {pageContext === 'notes' ? null : ( // || 'quotes'
             <InputWrapper>
               <DataWrapper>
                 <StyledLabel htmlFor="first name">first name</StyledLabel>
@@ -224,21 +266,21 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </InputWrapper>
           )}
 
-          {pageContext === 'quotes' ? null : (
-            <>
-              <StyledLabel htmlFor="image url">image url</StyledLabel>
-              <InputField
-                as="input"
-                type="url"
-                name="imageUrl"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.imageUrl}
-              />
+          {/* {pageContext === 'quotes' ? null : ( */}
+          <>
+            <StyledLabel htmlFor="image url">image url</StyledLabel>
+            <InputField
+              as="input"
+              type="url"
+              name="imageUrl"
+              onChange={handleChange}
+              onBlur={handleBlur}
+              value={values.imageUrl}
+            />
 
-              <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-            </>
-          )}
+            <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+          </>
+          {/* )} */}
           {pageContext === 'books' && (
             <>
               <StyledLabel htmlFor="series">series</StyledLabel>
@@ -254,34 +296,37 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'authors' ? (
-            <InputWrapper>
-              <DataWrapper>
-                <StyledLabel htmlFor="date of birth">date of birth</StyledLabel>
-                <InputField
-                  as="input"
-                  type="date"
-                  name="dateOfBirth"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.dateOfBirth}
-                />
-                <ErrorMessage name="dateOfBirth">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-              </DataWrapper>
-              <DataWrapper>
-                <StyledLabel htmlFor="date of death">date of death</StyledLabel>
-                <InputField
-                  as="input"
-                  type="date"
-                  name="dateOfDeath"
-                  onChange={handleChange}
-                  onBlur={handleBlur}
-                  value={values.dateOfDeath}
-                />
-                <ErrorMessage name="dateOfDeath">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-              </DataWrapper>
-            </InputWrapper>
-          ) : pageContext === 'quotes' ? null : (
+          {pageContext === 'authors' ? null 
+          // (
+          //   <InputWrapper>
+          //     <DataWrapper>
+          //       <StyledLabel htmlFor="date of birth">date of birth</StyledLabel>
+          //       <InputField
+          //         as="input"
+          //         type="date"
+          //         name="dateOfBirth"
+          //         onChange={handleChange}
+          //         onBlur={handleBlur}
+          //         value={values.dateOfBirth}
+          //       />
+          //       <ErrorMessage name="dateOfBirth">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+          //     </DataWrapper>
+          //     <DataWrapper>
+          //       <StyledLabel htmlFor="date of death">date of death</StyledLabel>
+          //       <InputField
+          //         as="input"
+          //         type="date"
+          //         name="dateOfDeath"
+          //         onChange={handleChange}
+          //         onBlur={handleBlur}
+          //         value={values.dateOfDeath}
+          //       />
+          //       <ErrorMessage name="dateOfDeath">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+          //     </DataWrapper>
+          //   </InputWrapper>
+          // ) 
+          : (
+            // pageContext === 'quotes' ? null :
             <>
               <StyledLabel htmlFor="date">date of publication</StyledLabel>
               <InputField
