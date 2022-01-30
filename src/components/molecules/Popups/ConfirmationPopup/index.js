@@ -9,7 +9,7 @@ import trashIcon from 'assets/icons/trash.svg';
 import withContext from 'hoc/withContext';
 
 const ConfirmationPopup = ({ handleDeleteFalse, itemId, pageContext }) => {
-  function DeleteButton() {
+  const DeleteButton = () => {
     const history = useHistory();
     const deleteItem = () => {
       base(pageContext).destroy(itemId, function (err, deleteItem) {
