@@ -15,7 +15,7 @@ const StyledWrapper = styled.div`
   height: 80px;
   padding: 20px 40px;
   z-index: 9999;
-  box-shadow: ${({theme}) => theme.shadows.boxShadowDark};
+  box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: 1fr 120px;
@@ -108,8 +108,8 @@ const NavigationBar = () => (
         <StyledItem as={NavLink} to="/notes">
           notes
         </StyledItem>
-        <StyledItem as={NavLink} to="/addQuotes">
-          add quote
+        <StyledItem as={NavLink} to="/quotes">
+          quotes
         </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
