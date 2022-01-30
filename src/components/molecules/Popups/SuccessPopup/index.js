@@ -3,18 +3,13 @@ import PropTypes from 'prop-types';
 import Button from 'components/atoms/Button/Button';
 import closeIcon from 'assets/icons/close.svg';
 import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './styled';
-
 import withContext from 'hoc/withContext';
 
 const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
-  const onClickActions = () => [
-    <>
-    {pageContext === 'quotes' ? null : toggleNewItemBar()},
-    handlePopupClose(),
-    </>
-  ];
 
-
+  const onClickActions = () => {
+    toggleNewItemBar(), handlePopupClose()
+  };
 
   return (
     <StyledWrapper>
