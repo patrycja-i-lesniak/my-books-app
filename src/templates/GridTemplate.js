@@ -7,6 +7,7 @@ import { Container } from 'components/atoms/Container';
 import withContext from 'hoc/withContext';
 import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
 import QuotesBox from 'components/organisms/QuotesBox';
+import { capitalizeFirstLetter } from 'helpers/capitalizeFirstLetter';
 
 const StyledGrid = styled.div`
   display: grid;
@@ -35,7 +36,7 @@ const GridTemplate = ({ children, pageContext }) => (
           <Header>Last added books</Header>
         </>
       ) : (
-        <Header>{pageContext.toUpperCase()}</Header>
+        <Header>{capitalizeFirstLetter(pageContext)}</Header>
       )}
 
       {pageContext === 'notes' ? (
