@@ -1,14 +1,14 @@
 import { useState, useEffect } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
+import { useLocation } from 'react-router';
+
 import { theme } from 'theme/theme';
-import { GlobalStyle } from 'theme/GlobalStyle';
+import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
+import plusIcon from 'assets/icons/plus.svg';
 import PageContext from 'context';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import plusIcon from 'assets/icons/plus.svg';
 import NewItemBar from 'components/organisms/NewItemBar';
-import { StyledBackdrop } from 'theme/GlobalStyle';
-import { useLocation } from 'react-router';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
