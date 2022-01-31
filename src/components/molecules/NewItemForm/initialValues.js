@@ -6,8 +6,6 @@ export const initialValues = {
   imageUrl: '',
   series: '',
   date: '',
-  dateOfBirth: '',
-  dateOfDeath: '',
   isbn: '',
   translation: '',
   publishing: '',
