@@ -44,35 +44,35 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
   // VER.1
 
-  //   const handleItemUpdateSuccess = () => {
-  //  history.push('/');
-  //  history.replace(endpoint)
-  //   };
+  // const handleSuccess = () => {
+  //   history.push('/');
+  //   history.replace(endpoint);
+  // };
 
   // VER. 2
 
-  const useRefresh = () => {
-    let handler;
-    const refresh = () => {
-      history.push('/');
-      handler = setTimeout(() => history.push(endpoint), 10);
-    };
+  // const useRefresh = () => {
+  //   let handler;
+  //   const refresh = () => {
+  //     history.push('/');
+  //     handler = setTimeout(() => history.push(endpoint), 10);
+  //   };
 
-    useEffect(() => {
-      return () => handler && clearTimeout(handler);
-    }, [handler]);
-    return refresh;
-  };
+  //   useEffect(() => {
+  //     return () => handler && clearTimeout(handler);
+  //   }, [handler]);
+  //   return refresh;
+  // };
 
-  const refresh = useRefresh(history, endpoint);
+  // const refresh = useRefresh(history, endpoint);
 
-  const handleSuccess = () => {
-    if (history.location.pathname === endpoint) {
-      refresh();
-    } else {
-      history.push(endpoint);
-    }
-  };
+  // const handleSuccess = () => {
+  //   if (history.location.pathname === endpoint) {
+  //     refresh();
+  //   } else {
+  //     history.push(endpoint);
+  //   }
+  // };
 
   return (
     <Formik
@@ -87,13 +87,10 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
-        // VER. 1
-        // handleItemUpdateSuccess();
-
-        // VER. 2
-        handleSuccess();
+        // handleSuccess();
 
         console.log(values);
+
         const book = {
           records: [
             {
@@ -124,8 +121,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
                 lastName: values.lastName,
                 content: values.content,
                 imageUrl: values.imageUrl,
-                // dateOfBirth: values.dateOfBirth,
-                // dateOfDeath: values.dateOfDeath,
                 oficialWebsite: values.oficialWebsite,
               },
             },
@@ -144,18 +139,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             },
           ],
         };
-
-        // const quote = {
-        //   records: [
-        //     {
-        //       fields: {
-        //         title: values.title,
-        //         author: values.author,
-        //         content: values.content,
-        //       },
-        //     },
-        //   ],
-        // };
 
         api
           .post(
@@ -218,25 +201,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {/* {pageContext === 'quotes' ? (
-            <>
-              <StyledLabel as="label" htmlFor="author">
-                author
-              </StyledLabel>
-              <InputField
-                as="input"
-                type="text"
-                name="author"
-                onChange={handleChange}
-                onBlur={handleBlur}
-                value={values.author}
-                autoComplete="given-name"
-              />
-
-              <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-            </>
-          ) : null} */}
-
           {pageContext === 'notes' ? null : ( // || 'quotes'
             <InputWrapper>
               <DataWrapper>
@@ -266,7 +230,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </InputWrapper>
           )}
 
-          {/* {pageContext === 'quotes' ? null : ( */}
           <>
             <StyledLabel htmlFor="image url">image url</StyledLabel>
             <InputField
@@ -280,7 +243,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
             <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
           </>
-          {/* )} */}
+
           {pageContext === 'books' && (
             <>
               <StyledLabel htmlFor="series">series</StyledLabel>
@@ -296,37 +259,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'authors' ? null 
-          // (
-          //   <InputWrapper>
-          //     <DataWrapper>
-          //       <StyledLabel htmlFor="date of birth">date of birth</StyledLabel>
-          //       <InputField
-          //         as="input"
-          //         type="date"
-          //         name="dateOfBirth"
-          //         onChange={handleChange}
-          //         onBlur={handleBlur}
-          //         value={values.dateOfBirth}
-          //       />
-          //       <ErrorMessage name="dateOfBirth">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          //     </DataWrapper>
-          //     <DataWrapper>
-          //       <StyledLabel htmlFor="date of death">date of death</StyledLabel>
-          //       <InputField
-          //         as="input"
-          //         type="date"
-          //         name="dateOfDeath"
-          //         onChange={handleChange}
-          //         onBlur={handleBlur}
-          //         value={values.dateOfDeath}
-          //       />
-          //       <ErrorMessage name="dateOfDeath">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          //     </DataWrapper>
-          //   </InputWrapper>
-          // ) 
-          : (
-            // pageContext === 'quotes' ? null :
+          {pageContext === 'authors' ? null : (
             <>
               <StyledLabel htmlFor="date">date of publication</StyledLabel>
               <InputField
