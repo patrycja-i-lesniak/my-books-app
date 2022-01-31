@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import CardSmall from 'components/molecules/Card/CardSmall';
 import { base } from 'airtable/base';
+import withContext from 'hoc/withContext';
 // import { useParams } from 'react-router-dom';
 
 
@@ -44,4 +45,4 @@ return (
 
 };
 
-export default LastAddedBooks;
+export default withContext(LastAddedBooks);
