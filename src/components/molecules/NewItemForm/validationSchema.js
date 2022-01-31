@@ -38,10 +38,7 @@ export const authorValidationSchema = Yup.object().shape({
     .max(50, 'Too Long!')
     .required('Required field is empty'),
   imageUrl: Yup.string().required('Required field is empty'),
-  dateOfBirth: Yup.date().required('Required field is empty'),
-  dateOfDeath: Yup.date().nullable(true).transform(value => (!value ? null : value)),
-  content: Yup.string().required('Required field is empty'),
-  // LClink: Yup.string().notRequired(),
+  content: Yup.string().required('Required field is empty'),,
   oficialWebsite: Yup.string().default(),
 });
 
