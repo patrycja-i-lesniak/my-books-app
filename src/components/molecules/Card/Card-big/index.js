@@ -82,18 +82,6 @@ const CardBig = ({ item, pageContext }) => {
                     <StyledTitle>
                       {firstName} {lastName}
                     </StyledTitle>
-
-                    {/* <DataWrapper>
-                      <Label>date of birth:</Label>
-                      <StyledData>{item.fields.dateOfBirth}</StyledData>
-                    </DataWrapper>
-                    {item.fields.dateOfDeath === '' ? null : (
-                      <DataWrapper>
-                        <Label>date of death:</Label>
-
-                        <StyledData>{item.fields.dateOfDeath}</StyledData>
-                      </DataWrapper>
-                    )} */}
                   </>
                 ) : (
                   <StyledTitle>{title}</StyledTitle>
