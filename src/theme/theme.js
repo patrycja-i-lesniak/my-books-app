@@ -11,6 +11,7 @@ export const theme = {
     desertStorm: '#F1F1EF',
     silver: '#CCCCCC',
     grey: '#808080',
+    lightGrey: '#9b9696',
     mineShaft: '#222222',
     black: '#000000',
   },
