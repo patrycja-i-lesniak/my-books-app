@@ -10,7 +10,7 @@ const QuoteWrapper = styled.div`
   min-height: 300px;
   margin: 120px auto 50px;
   padding: 50px;
-  background-color: ${({ theme }) => theme.colors.grey};
+  background-color: ${({ theme }) => theme.colors.lightGrey};
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   position: relative;
   justify-content: center;
@@ -49,6 +49,7 @@ const StyledQuote = styled.h2`
 
 const StyledButton = styled(Button)`
   position: absolute;
+  font-weight: 600;
   left: 50px;
   bottom: 50px;
 
