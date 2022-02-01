@@ -51,28 +51,28 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
   // VER. 2
 
-  // const useRefresh = () => {
-  //   let handler;
-  //   const refresh = () => {
-  //     history.push('/');
-  //     handler = setTimeout(() => history.push(endpoint), 10);
-  //   };
+  const useRefresh = () => {
+    let handler;
+    const refresh = () => {
+      history.push('/');
+      handler = setTimeout(() => history.push(endpoint), 10);
+    };
 
-  //   useEffect(() => {
-  //     return () => handler && clearTimeout(handler);
-  //   }, [handler]);
-  //   return refresh;
-  // };
+    useEffect(() => {
+      return () => handler && clearTimeout(handler);
+    }, [handler]);
+    return refresh;
+  };
 
-  // const refresh = useRefresh(history, endpoint);
+  const refresh = useRefresh(history, endpoint);
 
-  // const handleSuccess = () => {
-  //   if (history.location.pathname === endpoint) {
-  //     refresh();
-  //   } else {
-  //     history.push(endpoint);
-  //   }
-  // };
+  const handleSuccess = () => {
+    if (history.location.pathname === endpoint) {
+      refresh();
+    } else {
+      history.push(endpoint);
+    }
+  };
 
   return (
     <Formik
@@ -87,7 +87,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
-        // handleSuccess();
+        handleSuccess();
 
         console.log(values);
 
