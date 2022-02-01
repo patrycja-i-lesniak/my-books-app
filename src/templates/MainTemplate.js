@@ -3,12 +3,12 @@ import styled, { ThemeProvider } from 'styled-components';
 import PropTypes from 'prop-types';
 import { useLocation } from 'react-router';
 
-import { theme } from 'theme/theme';
-import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
 import plusIcon from 'assets/icons/plus.svg';
 import PageContext from 'context';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import NewItemBar from 'components/organisms/NewItemBar';
+import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
+import { theme } from 'theme/theme';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
