@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
-import styled from 'styled-components';
+import styled, {css} from 'styled-components';
 
 import api from 'api';
 import Button from 'components/atoms/Button/Button';
+import background from 'assets/images/background2.jpg'
 
 const QuoteWrapper = styled.div`
   display: flex;
@@ -10,10 +11,11 @@ const QuoteWrapper = styled.div`
   min-height: 300px;
   margin: 120px auto 50px;
   padding: 50px;
-  background-color: ${({ theme }) => theme.colors.lightGrey};
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   position: relative;
   justify-content: center;
+  background: linear-gradient(-45deg, rgba(174, 0, 70, 0.9), rgba(0, 0, 0, 0.7)),
+    url(${background}) center center / cover no-repeat;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 30px 20px;
@@ -37,9 +39,20 @@ const QuoteSource = styled.div`
 
 const StyledQuote = styled.h2`
   color: ${({ theme }) => theme.colors.white};
-  line-height: 1.5;
+  line-height: 1.3;
   margin: 0;
   text-align: center;
+  font-family: 'Caveat', cursive;
+  font-size: 2.7rem;
+  font-weight: 200;
+
+  ${({ secondary }) =>
+    secondary &&
+    css`
+      font-size: 2.2rem;
+      line-height:1;
+
+    `}
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     padding: 0 0 10px;
@@ -82,8 +95,8 @@ function QuotesBox() {
     <QuoteWrapper>
       <StyledQuote>{quotes.fields.content}</StyledQuote>
       <QuoteSource>
-        <StyledQuote>{quotes.fields.title}</StyledQuote>
-        <StyledQuote>{quotes.fields.author}</StyledQuote>
+        <StyledQuote secondary>{quotes.fields.title}</StyledQuote>
+        <StyledQuote secondary>{quotes.fields.author}</StyledQuote>
       </QuoteSource>
       <StyledButton onClick={getQuote}>Get new quote</StyledButton>
     </QuoteWrapper>
