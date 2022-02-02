@@ -168,7 +168,6 @@ const CardBig = ({ item, pageContext }) => {
 };
 
 CardBig.propTypes = {
-  cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   item: PropTypes.object,
   author: PropTypes.object,
   note: PropTypes.object,
