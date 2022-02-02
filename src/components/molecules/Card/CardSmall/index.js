@@ -13,38 +13,28 @@ import {
   ShowMore,
 } from './styled';
 import Wrapper from 'components/atoms/Wrapper';
+import withContext from 'hoc/withContext';
 
-const CardSmall = ({ book, author, note, cardType}) => {
+const CardSmall = ({ book, author, note, pageContext, 
+  }) => {
   const [showMore, setShowMore] = useState(false);
     return (
       <>
-        {cardType === 'home' && (
-          <Wrapper>
-            <InnerWrapper>
-              <Link to={`books/${book.id}`}>
-                <StyledImage src={book.fields.imageUrl} />
-              </Link>
-              <StyledTitle>{book.fields.title}</StyledTitle>
-              <StyledAuthor>
-                {book.fields.firstName} {book.fields.lastName}
-              </StyledAuthor>
-            </InnerWrapper>
-          </Wrapper>
-        )}
-        {cardType === 'books' && (
-          <Wrapper>
-            <InnerWrapper>
-              <Link to={`books/${book.id}`}>
-                <StyledImage src={book.fields.imageUrl} />
-              </Link>
-              <StyledTitle>{book.fields.title}</StyledTitle>
-              <StyledAuthor>
-                {book.fields.firstName} {book.fields.lastName}
-              </StyledAuthor>
-            </InnerWrapper>
-          </Wrapper>
-        )}
-        {cardType === 'authors' && (
+        {(pageContext === 'home' || pageContext === 'books') &&
+          
+            <Wrapper>
+              <InnerWrapper>
+                <Link to={`books/${book.id}`}>
+                  <StyledImage src={book.fields.imageUrl} />
+                </Link>
+                <StyledTitle>{book.fields.title}</StyledTitle>
+                <StyledAuthor>
+                  {book.fields.firstName} {book.fields.lastName}
+                </StyledAuthor>
+              </InnerWrapper>
+            </Wrapper>
+  }
+      {pageContext === 'authors' && (
           <Wrapper>
             <InnerWrapper>
               <Link to={`authors/${author.id}`}>
@@ -55,9 +45,9 @@ const CardSmall = ({ book, author, note, cardType}) => {
               </StyledTitle>
             </InnerWrapper>
           </Wrapper>
-        )}
+        )} 
 
-        {cardType === 'notes' && (
+        {pageContext === 'notes' && (
           <Wrapper notes>
             <InnerWrapper>
               <>
@@ -88,7 +78,7 @@ const CardSmall = ({ book, author, note, cardType}) => {
 };
 
 CardSmall.propTypes = {
-  cardType: PropTypes.oneOf(['home', 'books', 'authors', 'notes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   book: PropTypes.object,
   author: PropTypes.object,
   note: PropTypes.object,
@@ -101,4 +91,4 @@ CardSmall.defaultProps = {
   note: {},
 };
 
-export default CardSmall;
+export default withContext(CardSmall);
