@@ -27,15 +27,7 @@ const Notes = () => {
 
   return (
     <GridTemplate pageType="notes">
-      {notes &&
-        notes.map(note => (
-          <CardSmall
-            cardType="notes"
-            note={note}
-            id={note.id}
-            key={note.id}
-          />
-        ))}
+      {notes && notes.map(note => <CardSmall note={note} id={note.id} key={note.id} />)}
     </GridTemplate>
   );
 };
@@ -56,6 +48,5 @@ Notes.defaultProps = {
   date: '',
   imageUrl: '',
 };
-
 
 export default Notes;

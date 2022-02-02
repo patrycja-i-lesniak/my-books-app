@@ -9,7 +9,7 @@ const Authors = () => {
 
   useEffect(() => {
     base('authors')
-      .select({ view: 'Grid view', pageSize: 24, sort: [{ field: 'lastName'}] })
+      .select({ view: 'Grid view', pageSize: 24, sort: [{ field: 'lastName' }] })
       .eachPage(
         (records, fetchNextPage) => {
           setAuthors(records);
@@ -28,9 +28,7 @@ const Authors = () => {
   return (
     <GridTemplate pageType="authors">
       {authors &&
-        authors.map(author => (
-          <CardSmall cardType="authors" author={author} id={author.id} key={author.id} />
-        ))}
+        authors.map(author => <CardSmall author={author} id={author.id} key={authors.id} />)}
     </GridTemplate>
   );
 };
