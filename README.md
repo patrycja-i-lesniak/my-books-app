@@ -23,6 +23,8 @@ Project is created with:
 * React JS
 * Styled components
 * Custom hooks
+* UseHistory
+* Masonry layout
 
 
 
