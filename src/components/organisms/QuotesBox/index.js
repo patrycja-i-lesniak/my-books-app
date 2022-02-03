@@ -94,7 +94,7 @@ function QuotesBox() {
 
   return (
     <QuoteWrapper>
-      <StyledQuote>{quotes.fields.content}</StyledQuote>
+      <StyledQuote>{quotes.fields.quote}</StyledQuote>
       <QuoteSource>
         <StyledQuote secondary>{quotes.fields.title}</StyledQuote>
         <StyledQuote secondary>{quotes.fields.author}</StyledQuote>
