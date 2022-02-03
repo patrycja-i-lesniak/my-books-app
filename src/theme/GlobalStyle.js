@@ -1,6 +1,7 @@
 import { createGlobalStyle } from 'styled-components';
 import { normalize } from 'styled-normalize';
 import styled from 'styled-components';
+import pattern from 'assets/images/backgroundPattern.jpg'
 
 export const GlobalStyle = createGlobalStyle`
 ${normalize}
@@ -21,6 +22,7 @@ body {
     font-family: "Poppins", sans-serif;
     background-color: white;
     word-break: break-word;
+    background-image: url(${pattern});
 }
 `;
 
