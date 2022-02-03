@@ -3,7 +3,7 @@ import styled, {css} from 'styled-components';
 
 import api from 'api';
 import Button from 'components/atoms/Button/Button';
-import background from 'assets/images/background2.jpg'
+import background from 'assets/images/background.jpg'
 
 const QuoteWrapper = styled.div`
   display: flex;
@@ -73,7 +73,8 @@ const StyledButton = styled(Button)`
 `;
 
 function QuotesBox() {
-  const [quotes, setQuotes] = useState({
+  const [quotes, setQuotes] = useState(
+    {
     fields: {
       content: '',
       author: '',
