@@ -2,7 +2,7 @@ import React, { Children } from 'react';
 import PropTypes from 'prop-types';
 import { MasonryWrapper, MasonryColumn } from './styled';
 
-const Masonry = ({ columns = 3, gridGap = '2rem', isProvideLi = true, children }) => {
+const Masonry = ({ columns = 3, gridGap = '2.3rem', isProvideLi = true, children }) => {
   const output = Children.toArray(children).reduce((acc, child, i) => {
     acc[i % columns] = [
       ...acc[i % columns],
