@@ -3,12 +3,10 @@ import { Formik, ErrorMessage } from 'formik';
 import PropTypes, { any } from 'prop-types';
 import { useHistory } from 'react-router-dom';
 
-import { axiosInstance, apiEndpoints } from 'airtable/base';
 import {
   bookValidationSchema,
   authorValidationSchema,
   noteValidationSchema,
-  // quotesValidationSchema,
 } from 'components/molecules/NewItemForm/validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
@@ -51,7 +49,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
 
   // VER. 2
 
-  const useRefresh = () => {
+  const UseRefresh = () => {
     let handler;
     const refresh = () => {
       history.push('/');
@@ -64,7 +62,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
     return refresh;
   };
 
-  const refresh = useRefresh(history, endpoint);
+  const refresh = UseRefresh(history, endpoint);
 
   const handleSuccess = () => {
     if (history.location.pathname === endpoint) {
@@ -82,9 +80,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ? bookValidationSchema
           : pageContext === 'authors'
           ? authorValidationSchema
-          : // : pageContext === 'quotes'
-            // ? quotesValidationSchema
-            noteValidationSchema
+          : noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
         handleSuccess();
@@ -147,9 +143,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               ? (endpoint, book)
               : pageContext === 'authors'
               ? (endpoint, author)
-              : // : pageContext === 'quotes'
-                // ? (endpoint, quote)
-                (endpoint, note),
+              : (endpoint, note),
           )
           .then(response => {
             setPopup(true);
@@ -201,7 +195,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'notes' ? null : ( // || 'quotes'
+          {pageContext === 'notes' ? null : (
             <InputWrapper>
               <DataWrapper>
                 <StyledLabel htmlFor="first name">first name</StyledLabel>
