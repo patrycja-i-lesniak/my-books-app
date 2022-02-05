@@ -23,6 +23,12 @@ const StyledGrid = styled.div`
     css`
       grid-template-columns: repeat(auto-fill, 340px);
     `}
+
+  ${({ quotes }) =>
+    quotes &&
+    css`
+      grid-template-columns: 1fr;
+    `}
 `;
 
 const GridTemplate = ({ children, pageContext }) => (
@@ -41,6 +47,8 @@ const GridTemplate = ({ children, pageContext }) => (
 
       {pageContext === 'notes' ? (
         <StyledGrid notes>{children}</StyledGrid>
+      ) : pageContext === 'quotes' ? (
+        <StyledGrid quotes>{children}</StyledGrid>
       ) : (
         <StyledGrid>{children}</StyledGrid>
       )}
