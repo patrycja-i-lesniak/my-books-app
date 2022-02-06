@@ -2,17 +2,24 @@ import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { Formik, ErrorMessage } from 'formik';
 
+import api from 'api';
 import { validationSchema } from './validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
-import { StyledForm, StyledButton, InputField, StyledLabel } from './styled';
+import { StyledForm, StyledButton, InputField, StyledLabel, Checkbox, Label } from './styled';
 import { initialValues } from 'components/molecules/NewQuoteForm/initialValues';
-import api from 'api';
+import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
 
-const NewQuoteForm = () => {
+const NewQuoteForm = (...props) => {
   const [popup, setPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [checked, setChecked] = useState(false);
+
+  const toggleCheckbox = () => {
+    setChecked(!checked);
+  };
+
   const history = useHistory();
 
   const handlePopupClose = () => {
@@ -32,7 +39,7 @@ const NewQuoteForm = () => {
       validationSchema={validationSchema}
       onSubmit={async (values, { resetForm }) => {
         handleSuccess();
-        console.log(values);
+        console.log('Values from formik', values);
 
         const quote = {
           records: [
@@ -41,6 +48,7 @@ const NewQuoteForm = () => {
                 quote: values.quote,
                 title: values.title,
                 author: values.author,
+                checked: values.checked,
               },
             },
           ],
@@ -51,7 +59,7 @@ const NewQuoteForm = () => {
           .then(response => {
             setPopup(true);
             resetForm();
-            console.log(response);
+            console.log('Response from API in formik', response);
             console.log('Successfully submitted.');
           })
           .catch(err => {
@@ -85,8 +93,7 @@ const NewQuoteForm = () => {
               values={values.quote}
             />
             <ErrorMessage name="quote">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          </>
-          <>
+
             <StyledLabel as="label" htmlFor="title">
               title
             </StyledLabel>
@@ -96,12 +103,11 @@ const NewQuoteForm = () => {
               name="title"
               onChange={handleChange}
               onBlur={handleBlur}
-              // value={values.title}
+              value={values.title}
               autoComplete="given-name"
             />
             <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          </>
-          <>
+
             <StyledLabel as="label" htmlFor="author">
               author
             </StyledLabel>
@@ -111,10 +117,23 @@ const NewQuoteForm = () => {
               name="author"
               onChange={handleChange}
               onBlur={handleBlur}
-              // value={values.author}
+              value={values.author}
               autoComplete="given-name"
             />
             <ErrorMessage name="author">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+
+            <Label forHtml="checked">
+              {checked ? <AiFillHeart /> : <AiOutlineHeart />}
+              <Checkbox
+                type="checkbox"
+                name="checked"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.checked}
+                checked={checked}
+                onClick={toggleCheckbox}
+              />
+            </Label>
           </>
           <StyledButton type="submit">Add new quote</StyledButton>
         </StyledForm>
