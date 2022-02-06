@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FaBars, FaBookOpen, FaUserEdit, FaPencilAlt } from 'react-icons/fa';
+import { ImQuotesLeft } from 'react-icons/im';
 import { NavLink } from 'react-router-dom';
 
 const StyledWrapper = styled.ul`
@@ -8,9 +9,13 @@ const StyledWrapper = styled.ul`
   gap: 5rem;
   padding: 0;
 
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    gap: 2rem;
-  } */
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    gap: 3rem;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.xmall}px) {
+    gap: 1rem;
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
@@ -29,9 +34,12 @@ const StyledItem = styled(NavLink).attrs(() => ({ activeClassName }))`
     color: ${({ theme }) => theme.colors.black};
   }
 
-  /* @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    font-size: 3rem; */
-  /* } */
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    font-size: 4rem;
+  }
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+    font-size: 3.5rem;
+  }
 
   @media (min-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: none;
@@ -51,6 +59,9 @@ const MobileNavigation = () => (
     </StyledItem>
     <StyledItem as={NavLink} to="/notes">
       <FaPencilAlt />
+    </StyledItem>
+    <StyledItem as={NavLink} to="/quotes">
+      <ImQuotesLeft />
     </StyledItem>
   </StyledWrapper>
 );
