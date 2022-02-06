@@ -72,4 +72,15 @@ export const StyledLabel = styled.label`
   z-index: 2;
 `;
 
+export const Label = styled.label`
+  width: 3rem;
+  height: 3rem;
+  font-size: 3rem;
+  color: ${({ theme }) => theme.colors.lipstick};
+`;
 
+export const Checkbox = styled.input.attrs({ type: 'checkbox' })`
+  width: 3rem;
+  height: 3rem;
+  display: none;
+`;
