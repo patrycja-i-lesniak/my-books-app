@@ -10,7 +10,7 @@ const StyledWrapper = styled.div`
   top: 0;
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.lipstick};
-  grid-template-columns: 1fr 360px 120px;
+  grid-template-columns: 1fr 280px 120px;
   align-items: end;
   height: 80px;
   padding: 20px 40px;
