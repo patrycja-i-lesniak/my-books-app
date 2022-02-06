@@ -13,7 +13,7 @@ export const Search = styled.input`
   transition: 0.1s all;
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.desertStorm};
-  width: 340px;
+  width: 260px;
   height: 36px;
   border-radius: 3px;
 
