@@ -10,6 +10,8 @@ import NewItemBar from 'components/organisms/NewItemBar';
 import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
 import { theme } from 'theme/theme';
 
+import GetCurrentPage from 'helpers/GetCurrentPage';
+
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
   position: fixed;
@@ -19,24 +21,10 @@ const StyledButtonIcon = styled(ButtonIcon)`
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 `;
 
-const MainTemplate = ({ children }) => {
-  const [pageType, setPageType] = useState('home');
+const MainTemplate = ({ children}) => {
   const [isNewItemBarVisible, setNewItemBarVisible] = useState(false);
 
-  const location = useLocation();
-
-  const setCurrentPage = () => {
-    const pageTypes = ['home', 'books', 'authors', 'notes', 'quotes'];
-
-    const [currentPage] = pageTypes.filter(page => location.pathname.includes(page));
-    if (pageType !== currentPage) {
-      setPageType(currentPage);
-    }
-  };
-
-  useEffect(() => {
-    setCurrentPage();
-  });
+  const pageType = GetCurrentPage();
 
   const toggleNewItemBar = () => {
     setNewItemBarVisible(!isNewItemBarVisible);
