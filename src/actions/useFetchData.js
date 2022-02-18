@@ -2,13 +2,15 @@ import { useState, useEffect } from 'react';
 import GetCurrentPage from 'helpers/GetCurrentPage';
 import { base } from 'airtable/base';
 
-const useFetchData = (pageSize, sort) => {
+const useFetchData = ( pageSize, sort, table) => {
   const [items, setItems] = useState([]);
 
-  const page = GetCurrentPage();
+  // const page = GetCurrentPage();
 
   useEffect(() => {
-    base(`${page}`)
+// 
+ base(`${table}`)
+    // base(`${page}`)
       .select({ view: 'Grid view', pageSize: pageSize, sort: sort })
       .eachPage(
         (records, fetchNextPage) => {
@@ -22,6 +24,7 @@ const useFetchData = (pageSize, sort) => {
           }
         },
       );
+
   }, []);
 
   return {
@@ -29,6 +32,7 @@ const useFetchData = (pageSize, sort) => {
     setItems,
   };
 };
+
 
 export default useFetchData;
 
