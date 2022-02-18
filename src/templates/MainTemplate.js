@@ -10,7 +10,7 @@ import NewItemBar from 'components/organisms/NewItemBar';
 import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
 import { theme } from 'theme/theme';
 
-import useGetCurrentPage from 'customHooks/useGetCurrentPage'
+import {useGetCurrentPage} from 'customHooks'
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;

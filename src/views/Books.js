@@ -2,11 +2,11 @@ import { useState, useEffect } from 'react';
 
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
-import useFetchData from 'actions/useFetchData';
+import {useFetchData} from 'customHooks';
 
 const Books = () => {
   const table = 'books';
-  const pageSize = 24;
+  const pageSize = 50;
   const sort = [{ field: 'title', direction: 'asc' }];
   const { items: books } = useFetchData(pageSize, sort, table);
 
