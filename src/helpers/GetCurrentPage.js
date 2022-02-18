@@ -12,7 +12,7 @@ const GetCurrentPage = () => {
     if (pageType !== currentPage) {
       setPageType(currentPage);
     }
-    console.log('current page:', currentPage);
+    console.log('current page from GetCurrentPage:', currentPage);
   };
 
   useEffect(() => {
