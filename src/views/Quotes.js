@@ -4,7 +4,7 @@ import GridTemplate from 'templates/GridTemplate';
 import NewQuoteForm from 'components/molecules/NewQuoteForm';
 import QuoteCard from 'components/molecules/Card/QuoteCard';
 import Masonry from 'components/molecules/Masonry';
-import useFetchData from 'actions/useFetchData';
+import {useFetchData} from 'customHooks';
 
 const Quotes = () => {
   const table = 'quotes';

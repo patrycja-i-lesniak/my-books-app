@@ -1,11 +1,12 @@
 import { useState, useEffect } from 'react';
 import { base } from 'airtable/base';
+import { useLocalStorage } from 'customHooks';
 
-const useFetchData = ( pageSize, sort, table) => {
-  const [items, setItems] = useState([]);
+const useFetchData = (pageSize, sort, table) => {
+  const [items, setItems] = useLocalStorage('items', '');
 
   useEffect(() => {
- base(`${table}`)
+    base(`${table}`)
       .select({ view: 'Grid view', pageSize: pageSize, sort: sort })
       .eachPage(
         (records, fetchNextPage) => {
@@ -19,7 +20,6 @@ const useFetchData = ( pageSize, sort, table) => {
           }
         },
       );
-
   }, []);
 
   return {
@@ -27,7 +27,6 @@ const useFetchData = ( pageSize, sort, table) => {
     setItems,
   };
 };
-
 
 export default useFetchData;
 

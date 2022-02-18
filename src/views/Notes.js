@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
-import useFetchData from 'actions/useFetchData';
+import {useFetchData} from 'customHooks';
 
 const Notes = () => {
   const table = 'notes';
