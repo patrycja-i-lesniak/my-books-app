@@ -5,10 +5,10 @@ import CardSmall from 'components/molecules/Card/CardSmall';
 import useFetchData from 'actions/useFetchData';
 
 const Notes = () => {
+  const table = 'notes';
   const pageSize = 6;
   const sort = [{ field: 'date', direction: 'asc' }];
-  const { items: notes } = useFetchData(pageSize, sort);
-
+  const { items: notes } = useFetchData(pageSize, sort, table);
   console.log('data from Notes:', notes);
 
   return (
