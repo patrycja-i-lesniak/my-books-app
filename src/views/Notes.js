@@ -2,32 +2,18 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
-import { base } from 'airtable/base';
+import useFetchData from 'actions/useFetchData';
 
 const Notes = () => {
-  const [notes, setNotes] = useState([]);
+  const pageSize = 6;
+  const sort = [{ field: 'date', direction: 'asc' }];
+  const { items: notes } = useFetchData(pageSize, sort);
 
-  useEffect(() => {
-    base('notes')
-      .select({ view: 'Grid view', pageSize: 6, sort: [{ field: 'title' }] })
-      .eachPage(
-        (records, fetchNextPage) => {
-          setNotes(records);
-          fetchNextPage();
-          console.log(records);
-        },
-        function (err) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        },
-      );
-  }, []);
+  console.log('data from Notes:', notes);
 
   return (
     <GridTemplate pageType="notes">
-      {notes && notes.map(note => <CardSmall note={note} id={note.id} key={note.id} />)}
+      {notes && notes.map(note => <CardSmall note={note} key={note.id} />)}
     </GridTemplate>
   );
 };
