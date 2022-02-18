@@ -1,34 +1,20 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import { base } from 'airtable/base';
 import CardSmall from 'components/molecules/Card/CardSmall';
+import useFetchData from 'actions/useFetchData';
 
 const Authors = () => {
-  const [authors, setAuthors] = useState([]);
+  const pageSize = 12;
+  const sort = [{ field: 'lastName' }];
 
-  useEffect(() => {
-    base('authors')
-      .select({ view: 'Grid view', pageSize: 24, sort: [{ field: 'lastName' }] })
-      .eachPage(
-        (records, fetchNextPage) => {
-          setAuthors(records);
-          fetchNextPage();
-          console.log(records);
-        },
-        function (err) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        },
-      );
-  }, []);
+  const { items: authors } = useFetchData(pageSize, sort);
+
+  console.log('data from Authors:', authors);
 
   return (
     <GridTemplate pageType="authors">
-      {authors &&
-        authors.map(author => <CardSmall author={author} id={author.id} key={authors.id} />)}
+      {authors && authors.map(author => <CardSmall author={author} key={author.id} />)}
     </GridTemplate>
   );
 };
