@@ -10,7 +10,7 @@ import NewItemBar from 'components/organisms/NewItemBar';
 import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
 import { theme } from 'theme/theme';
 
-import GetCurrentPage from 'helpers/GetCurrentPage';
+import useGetCurrentPage from 'customHooks/useGetCurrentPage'
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
@@ -24,7 +24,7 @@ const StyledButtonIcon = styled(ButtonIcon)`
 const MainTemplate = ({ children}) => {
   const [isNewItemBarVisible, setNewItemBarVisible] = useState(false);
 
-  const pageType = GetCurrentPage();
+  const pageType = useGetCurrentPage();
 
   const toggleNewItemBar = () => {
     setNewItemBarVisible(!isNewItemBarVisible);

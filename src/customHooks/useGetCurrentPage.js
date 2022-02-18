@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useLocation } from 'react-router';
 
-const GetCurrentPage = () => {
+const useGetCurrentPage = () => {
   const [pageType, setPageType] = useState();
   const location = useLocation();
 
@@ -22,4 +22,4 @@ const GetCurrentPage = () => {
   return pageType
 };
 
-export default GetCurrentPage;
+export default useGetCurrentPage;
