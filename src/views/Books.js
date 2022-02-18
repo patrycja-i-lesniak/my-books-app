@@ -1,35 +1,21 @@
 import { useState, useEffect } from 'react';
+
 import GridTemplate from 'templates/GridTemplate';
 import CardSmall from 'components/molecules/Card/CardSmall';
-import { base } from 'airtable/base';
+import useFetchData from 'actions/useFetchData';
 
 const Books = () => {
-  const [books, setBooks] = useState([]);
-
-  useEffect(() => {
-    base('books')
-      .select({ view: 'Grid view' })
-      .eachPage(
-        (records, fetchNextPage) => {
-          setBooks(records);
-          fetchNextPage();
-          console.log(records);
-        },
-        function (err) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        },
-      );
-  }, []);
+  const table = 'books';
+  const pageSize = 24;
+  const sort = [{ field: 'title', direction: 'asc' }];
+  const { items: books } = useFetchData(pageSize, sort, table);
 
   return (
     <GridTemplate pageType="books">
       {books &&
-        books.map(book => (
+        books.map((book, index) => (
           <>
-            <CardSmall id={book.id} key={book.id} book={book} cardType="books" />
+            <CardSmall key={book.id} book={book} index={index} />
           </>
         ))}
     </GridTemplate>
