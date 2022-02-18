@@ -1,48 +1,16 @@
 import { useState, useEffect } from 'react';
-import CardSmall from 'components/molecules/Card/CardSmall';
-import { base } from 'airtable/base';
-import withContext from 'hoc/withContext';
-// import { useParams } from 'react-router-dom';
 
+import CardSmall from 'components/molecules/Card/CardSmall';
+import {useFetchData} from 'customHooks';
 
 const LastAddedBooks = () => {
-const [books, setBooks] = useState([]);
-// const params = useParams();
-// console.log(params);
-// const filterByFormula = '{lastName}="Miller"';
+  const table = 'books';
+  const pageSize = 5;
+  const sort = [{ field: 'createdTime', direction: 'desc' }];
+  const { items: books } = useFetchData(pageSize, sort, table);
+  console.log('data from LastAddedBooks:', books);
 
-useEffect(() => {
-
-  base('books')
-    .select({
-      view: 'Grid view',
-      pageSize: 5,
-      sort:[{ field: 'createdTime', direction: 'desc' }] ,
-      // filterByFormula,
-    })
-    .eachPage(
-      records => {
-        setBooks(records);
-        console.log(records);
-      },
-      function (err) {
-        if (err) {
-          console.error(err);
-          return;
-        }
-      },
-    );
-}, []);
-
-return (
-  <>
-      {books &&
-        books.map(book => (
-          <CardSmall cardType='home' book={book} key={book.id} />
-        ))}
-  </>
-);
-
+  return <>{books && books.map(book => <CardSmall book={book} key={book.id} />)}</>;
 };
 
-export default withContext(LastAddedBooks);
+export default LastAddedBooks;
