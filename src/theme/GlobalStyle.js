@@ -17,13 +17,14 @@ html  {
 }
 
 body {
+  height: 100vh;
     font-size: 1.6rem;
-    margin: 0 auto;
+    margin: 0 ;
     font-family: "Poppins", sans-serif;
     background-color: white;
     word-break: break-word;
     background-image: url(${pattern});
-}
+    overscroll-behavior: none;
 `;
 
 export const StyledBackdrop = styled.div`
