@@ -1,6 +1,4 @@
 import React from 'react';
-import store from 'store';
-import { Provider } from 'react-redux';
 import { HashRouter, Switch, Route, Redirect } from 'react-router-dom';
 import MainTemplate from 'templates/MainTemplate';
 import Authors from 'views/Authors';
@@ -12,7 +10,6 @@ import DetailsPage from 'views/DetailsPage';
 import { routes } from 'routes';
 
 const Root = () => (
-  <Provider store={store}>
     <HashRouter>
       <MainTemplate>
         <Switch>
@@ -28,7 +25,6 @@ const Root = () => (
         </Switch>
       </MainTemplate>
     </HashRouter>
-  </Provider>
 );
 
 export default Root;
