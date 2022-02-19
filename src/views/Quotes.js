@@ -4,7 +4,7 @@ import GridTemplate from 'templates/GridTemplate';
 import NewQuoteForm from 'components/molecules/NewQuoteForm';
 import QuoteCard from 'components/molecules/Card/QuoteCard';
 import Masonry from 'components/molecules/Masonry';
-import {useFetchData} from 'customHooks';
+import { useFetchData } from 'customHooks';
 
 const Quotes = () => {
   const table = 'quotes';
@@ -14,12 +14,12 @@ const Quotes = () => {
   console.log('data from Quotes:', quotes);
 
   return (
-    <GridTemplate pageType="quotes">
-      <NewQuoteForm />
-      <Masonry column3={3}>
-        {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
-      </Masonry>
-    </GridTemplate>
+      <GridTemplate pageType="quotes">
+        <NewQuoteForm />
+        <Masonry column={3}>
+          {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
+        </Masonry>
+      </GridTemplate>
   );
 };
 
