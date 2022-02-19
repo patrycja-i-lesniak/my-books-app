@@ -23,10 +23,10 @@ const Masonry = ({ columns = 3, gridGap = '2.3rem', isProvideLi = true, children
 };
 
 Masonry.propTypes = {
-  columns: PropTypes.number.isRequired,
-  gridGap: PropTypes.string.isRequired,
-  isProvideLi: PropTypes.bool.isRequired,
-  children: PropTypes.any.isRequired,
+  columns: PropTypes.number,
+  gridGap: PropTypes.string,
+  isProvideLi: PropTypes.bool,
+  children: PropTypes.any,
 };
 
 export default Masonry;

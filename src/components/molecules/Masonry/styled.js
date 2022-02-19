@@ -8,11 +8,11 @@ export const MasonryWrapper = styled.ul`
   padding: 0;
   margin: 0;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     grid-template-columns: 1fr;
   }
 `;
