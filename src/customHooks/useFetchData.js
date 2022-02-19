@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { base } from 'airtable/base';
-import { useLocalStorage } from 'customHooks';
+
 
 const useFetchData = (pageSize, sort, table) => {
-  const [items, setItems] = useLocalStorage('items', '');
+  const [items, setItems] = useState([]);
 
   useEffect(() => {
     base(`${table}`)
@@ -29,39 +29,3 @@ const useFetchData = (pageSize, sort, table) => {
 };
 
 export default useFetchData;
-
-// const useFetchData = endpoint => {
-//   const [data, setData] = useState({
-//     status: 'loading',
-//     data: null,
-//   });
-
-//   const getData = async () => {
-//     if (!endpoint) {
-//       setData({ status: 'error' });
-//     } else {
-//       try {
-//         const { records } = await api.get(endpoint);
-
-//         setData({
-//           status: 'success',
-//           data: records,
-//           o
-//         });
-//         console.log(data);
-//       } catch (error) {
-//         setData({
-//           status: 'error',
-//         });
-//       }
-//     }
-//   };
-
-//   return {
-//     data,
-//     setData,
-//     getData,
-//   };
-// };
-
-// export default useFetchData;
