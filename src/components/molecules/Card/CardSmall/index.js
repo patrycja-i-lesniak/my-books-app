@@ -15,66 +15,64 @@ import {
 import Wrapper from 'components/atoms/Wrapper';
 import withContext from 'hoc/withContext';
 
-const CardSmall = ({ book, author, note, pageContext, 
-  }) => {
+const CardSmall = ({ book, author, note, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
-    return (
-      <>
-        {(pageContext === 'home' || pageContext === 'books') &&
-          
-            <Wrapper>
-              <InnerWrapper>
-                <Link to={`books/${book.id}`}>
-                  <StyledImage src={book.fields.imageUrl} />
-                </Link>
-                <StyledTitle>{book.fields.title}</StyledTitle>
-                <StyledAuthor>
-                  {book.fields.firstName} {book.fields.lastName}
-                </StyledAuthor>
-              </InnerWrapper>
-            </Wrapper>
-  }
+  return (
+    <>
+      {(pageContext === 'home' || pageContext === 'books') && (
+        <Wrapper>
+          <InnerWrapper>
+            <Link to={`books/${book.id}`}>
+              <StyledImage src={book.fields.imageUrl} />
+            </Link>
+            <StyledTitle>{book.fields.title}</StyledTitle>
+            <StyledAuthor>
+              {book.fields.firstName} {book.fields.lastName}
+            </StyledAuthor>
+          </InnerWrapper>
+        </Wrapper>
+      )}
       {pageContext === 'authors' && (
-          <Wrapper>
-            <InnerWrapper>
-              <Link to={`authors/${author.id}`}>
-                <StyledImage src={author.fields.imageUrl} />
-              </Link>
-              <StyledTitle>
-                {author.fields.firstName} {author.fields.lastName}
-              </StyledTitle>
-            </InnerWrapper>
-          </Wrapper>
-        )} 
+        <Wrapper>
+          <InnerWrapper>
+            <Link to={`authors/${author.id}`}>
+              <StyledImage src={author.fields.imageUrl} />
+            </Link>
+            <StyledTitle>
+              {author.fields.firstName} {author.fields.lastName}
+            </StyledTitle>
+          </InnerWrapper>
+        </Wrapper>
+      )}
 
-        {pageContext === 'notes' && (
-          <Wrapper notes>
-            <InnerWrapper>
-              <>
-                <StyledImage src={note.fields.imageUrl} />
-                <StyledTitle>{note.fields.title} </StyledTitle>
-                <StyledDate>{note.fields.date}</StyledDate>
-                {note.fields.content.length > 300 ? (
-                  <>
-                    {showMore ? note.fields.content : `${note.fields.content.slice(0, 300)}...`}
-                    <ShowMore onClick={() => setShowMore(!showMore)}>
-                      <ButtonContentWrapper>
-                        <span>
-                          {showMore ? 'Show less' : 'Show more'}
-                          <Arrow showMore={showMore} />
-                        </span>
-                      </ButtonContentWrapper>
-                    </ShowMore>
-                  </>
-                ) : (
-                  <>{note.fields.content}</>
-                )}
-              </>
-            </InnerWrapper>
-          </Wrapper>
-        )}
-      </>
-    );
+      {pageContext === 'notes' && (
+        <Wrapper notes>
+          <InnerWrapper>
+            <>
+              <StyledImage src={note.fields.imageUrl} />
+              <StyledTitle>{note.fields.title} </StyledTitle>
+              <StyledDate>{note.fields.date}</StyledDate>
+              {note.fields.content.length > 300 ? (
+                <>
+                  {showMore ? note.fields.content : `${note.fields.content.slice(0, 300)}...`}
+                  <ShowMore onClick={() => setShowMore(!showMore)}>
+                    <ButtonContentWrapper>
+                      <span>
+                        {showMore ? 'Show less' : 'Show more'}
+                        <Arrow showMore={showMore} />
+                      </span>
+                    </ButtonContentWrapper>
+                  </ShowMore>
+                </>
+              ) : (
+                <>{note.fields.content}</>
+              )}
+            </>
+          </InnerWrapper>
+        </Wrapper>
+      )}
+    </>
+  );
 };
 
 CardSmall.propTypes = {
