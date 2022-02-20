@@ -1,38 +1,18 @@
-import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import GridTemplate from 'templates/GridTemplate';
-import CardSmall from 'components/molecules/Card/CardSmall';
-import {useFetchData} from 'customHooks';
+import { GetData } from 'GetData';
 
 const Notes = () => {
-  const table = 'notes';
-  const pageSize = 6;
-  const sort = [{ field: 'date', direction: 'asc' }];
-  const { items: notes } = useFetchData(pageSize, sort, table);
-  console.log('data from Notes:', notes);
+  const data = {
+    table: 'notes',
+    pageSize: 6,
+    sort: [{ field: 'date', direction: 'asc' }],
+  };
 
   return (
     <GridTemplate pageType="notes">
-      {notes && notes.map(note => <CardSmall note={note} key={note.id} />)}
+      <GetData data={data} />
     </GridTemplate>
   );
-};
-
-Notes.propTypes = {
-  notes: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.string.isRequired,
-      title: PropTypes.string.isRequired,
-      content: PropTypes.string.isRequired,
-      date: PropTypes.string,
-      imageUrl: PropTypes.string,
-    }),
-  ),
-};
-
-Notes.defaultProps = {
-  date: '',
-  imageUrl: '',
 };
 
 export default Notes;
