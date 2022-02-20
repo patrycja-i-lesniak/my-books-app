@@ -34,8 +34,6 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
     console.log('Close popup');
   };
 
-  console.log(pageContext);
-
   const endpoint = `/${pageContext}`;
 
   const history = useHistory();
