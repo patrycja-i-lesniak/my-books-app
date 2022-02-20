@@ -2,8 +2,9 @@ import { useState, useEffect } from 'react';
 import { base } from 'airtable/base';
 
 
-const useFetchData = (pageSize, sort, table) => {
+const useFetchData = (data) => {
   const [items, setItems] = useState([]);
+  const { table, pageSize, sort } = data.data;
 
   useEffect(() => {
     base(`${table}`)
