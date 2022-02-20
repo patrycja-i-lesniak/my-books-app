@@ -1,21 +1,18 @@
 import GridTemplate from 'templates/GridTemplate';
-import PropTypes from 'prop-types';
-import LastAddedBooks from 'components/molecules/LastAddedBooks';
+import {GetBooksData} from 'GetData';
 
-const Home = () => (
-  <>
+const Home = () => {
+  const data = {
+    table: 'books',
+    pageSize: 5,
+    sort: [{ field: 'title', direction: 'asc' }],
+  };
+
+  return (
     <GridTemplate pageType="home">
-      <LastAddedBooks />
+      <GetBooksData data={data} />
     </GridTemplate>
-  </>
-);
-
-Home.propTypes = {
-  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
-};
-
-Home.defaultProps = {
-  pageContext: 'home',
+  );
 };
 
 export default Home;

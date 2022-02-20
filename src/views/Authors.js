@@ -1,19 +1,16 @@
-import { useState, useEffect } from 'react';
-
 import GridTemplate from 'templates/GridTemplate';
-import CardSmall from 'components/molecules/Card/CardSmall';
-import {useFetchData} from 'customHooks';
+import { GetAuthorsData } from 'GetData';
 
 const Authors = () => {
-  const table = 'authors';
-  const pageSize = 12;
-  const sort = [{ field: 'lastName' }];
-  const { items: authors } = useFetchData(pageSize, sort, table);
-  console.log('data from Authors:', authors);
+  const data = {
+    table: 'authors',
+    pageSize: 12,
+    sort: [{ field: 'lastName' }],
+  };
 
   return (
     <GridTemplate pageType="authors">
-      {authors && authors.map(author => <CardSmall author={author} key={author.id} />)}
+      <GetAuthorsData data={data} />
     </GridTemplate>
   );
 };
