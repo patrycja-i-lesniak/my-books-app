@@ -15,46 +15,48 @@ import {
 import Wrapper from 'components/atoms/Wrapper';
 import withContext from 'hoc/withContext';
 
-const CardSmall = ({ book, author, note, pageContext }) => {
+const CardSmall = ({ item, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
   return (
     <>
-      {(pageContext === 'home' || pageContext === 'books') && (
+      <>
         <Wrapper>
           <InnerWrapper>
-            <Link to={`books/${book.id}`}>
-              <StyledImage src={book.fields.imageUrl} />
-            </Link>
-            <StyledTitle>{book.fields.title}</StyledTitle>
-            <StyledAuthor>
-              {book.fields.firstName} {book.fields.lastName}
-            </StyledAuthor>
+            {(pageContext === 'home' || pageContext === 'books') && (
+              <>
+                <Link to={`books/${item.id}`}>
+                  <StyledImage src={item.fields.imageUrl} />
+                </Link>
+                <StyledTitle>{item.fields.title}</StyledTitle>
+                <StyledAuthor>
+                  {item.fields.firstName} {item.fields.lastName}
+                </StyledAuthor>
+              </>
+            )}
+            {pageContext === 'authors' && (
+              <>
+                <Link to={`authors/${item.id}`}>
+                  <StyledImage src={item.fields.imageUrl} />
+                </Link>
+                <StyledTitle>
+                  {item.fields.firstName} {item.fields.lastName}
+                </StyledTitle>
+              </>
+            )}
           </InnerWrapper>
         </Wrapper>
-      )}
-      {pageContext === 'authors' && (
-        <Wrapper>
-          <InnerWrapper>
-            <Link to={`authors/${author.id}`}>
-              <StyledImage src={author.fields.imageUrl} />
-            </Link>
-            <StyledTitle>
-              {author.fields.firstName} {author.fields.lastName}
-            </StyledTitle>
-          </InnerWrapper>
-        </Wrapper>
-      )}
+      </>
 
       {pageContext === 'notes' && (
         <Wrapper notes>
           <InnerWrapper>
             <>
-              <StyledImage src={note.fields.imageUrl} />
-              <StyledTitle>{note.fields.title} </StyledTitle>
-              <StyledDate>{note.fields.date}</StyledDate>
-              {note.fields.content.length > 300 ? (
+              <StyledImage src={item.fields.imageUrl} />
+              <StyledTitle>{item.fields.title} </StyledTitle>
+              <StyledDate>{item.fields.date}</StyledDate>
+              {item.fields.content.length > 300 ? (
                 <>
-                  {showMore ? note.fields.content : `${note.fields.content.slice(0, 300)}...`}
+                  {showMore ? item.fields.content : `${item.fields.content.slice(0, 300)}...`}
                   <ShowMore onClick={() => setShowMore(!showMore)}>
                     <ButtonContentWrapper>
                       <span>
@@ -65,7 +67,7 @@ const CardSmall = ({ book, author, note, pageContext }) => {
                   </ShowMore>
                 </>
               ) : (
-                <>{note.fields.content}</>
+                <>{item.fields.content}</>
               )}
             </>
           </InnerWrapper>
@@ -77,16 +79,12 @@ const CardSmall = ({ book, author, note, pageContext }) => {
 
 CardSmall.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
-  book: PropTypes.object,
-  author: PropTypes.object,
-  note: PropTypes.object,
+  item: PropTypes.object,
   handleDelete: PropTypes.func,
 };
 
 CardSmall.defaultProps = {
-  book: {},
-  author: {},
-  note: {},
+  item: {},
 };
 
 export default withContext(CardSmall);
