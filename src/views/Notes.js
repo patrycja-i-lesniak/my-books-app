@@ -1,5 +1,5 @@
 import GridTemplate from 'templates/GridTemplate';
-import { GetData } from 'GetData';
+import GetData from 'GetData';
 
 const Notes = () => {
   const data = {
