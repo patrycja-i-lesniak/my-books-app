@@ -1,2 +1,1 @@
-export { default as GetBooksData } from './GetBooksData';
-export { default as GetAuthorsData } from './GetAuthorsData';
+export { default as GetData } from './GetData';
