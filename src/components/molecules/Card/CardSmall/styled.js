@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Paragraph from 'components/atoms/Paragraph/Paragraph';
 import Wrapper from 'components/atoms/Wrapper';
-import LogoSmall from 'assets/icons/mblSmall.svg';
+import LogoSmall from 'assets/logo/myBooksLogo9.svg';
 
 export const StyledImage = styled.img`
   width: 165px;

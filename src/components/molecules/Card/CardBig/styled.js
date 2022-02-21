@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import LogoSmall from 'assets/icons/mblSmall.svg';
+import LogoSmall from 'assets/logo/myBooksLogo9.svg';
 import Header from 'components/atoms/Header/Header';
 import Button from 'components/atoms/Button/Button';
 
