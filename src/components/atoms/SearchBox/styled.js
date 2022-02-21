@@ -1,7 +1,8 @@
 import styled from 'styled-components';
 import searchIcon from 'assets/icons/search.svg';
+import {Field} from 'formik';
 
-export const Search = styled.input`
+export const Search = styled(Field)`
   position: relative;
   color: ${({ theme }) => theme.colors.lipstick};
   padding: 10px 20px 10px 40px;
