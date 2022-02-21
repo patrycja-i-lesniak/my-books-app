@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import myBooksLogoBlack from 'assets/icons/myBooksLogoBlack.svg';
+import myBooksLogo from 'assets/logo/myBooksLogo8.svg';
 import Button from 'components/atoms/Button/Button';
 
 export const StyledWrapper = styled.div`
@@ -46,9 +46,9 @@ export const StyledNavigationWrapper = styled.nav`
 export const StyledLogoLink = styled(NavLink)`
   display: block;
   width: 200px;
-  height: 40px;
+  height: 50px;
   background-position: 50% 50%;
-  background-image: url(${myBooksLogoBlack});
+  background-image: url(${myBooksLogo});
   background-repeat: no-repeat;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
