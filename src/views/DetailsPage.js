@@ -4,7 +4,7 @@ import { useHistory } from 'react-router-dom';
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import Loader from 'components/atoms/Loader';
 import Error from 'components/atoms/Error';
-import CardBig from 'components/molecules/Card/Card-big';
+import CardBig from 'components/molecules/Card/CardBig';
 import Button from 'components/atoms/Button/Button';
 import useFetchDetailsData from 'actions/useFetchDetailsData';
 import withContext from 'hoc/withContext';
