@@ -17,7 +17,6 @@ const StyledGrid = styled.div`
   justify-items: center;
   justify-content: center;
   position: relative;
-  padding-bottom: 120px;
 
   ${({ notes }) =>
     notes &&
