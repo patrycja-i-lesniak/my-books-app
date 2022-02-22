@@ -1,13 +1,13 @@
 import PropTypes from 'prop-types';
-import NavigationBar from 'components/organisms/NavigationBar/NavigationBar';
-import Footer from 'components/molecules/FooterNavigation';
+import { NavigationBar } from 'components/organisms/Navigation';
+import { FooterNavigation } from 'components/organisms/Navigation';
 import withContext from 'hoc/withContext';
 
-const UserPageTemplate = ({ children, pageContext}) => (
+const UserPageTemplate = ({ children, pageContext }) => (
   <>
-    <NavigationBar pageContext={pageContext}/>
+    <NavigationBar pageContext={pageContext} />
     {children}
-    <Footer />
+    <FooterNavigation />
   </>
 );
 

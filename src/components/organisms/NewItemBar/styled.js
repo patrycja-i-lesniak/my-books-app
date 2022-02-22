@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import Button from 'components/atoms/Button/Button';
 import Header from 'components/atoms/Header/Header';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import Paragraph from 'components/atoms/Paragraph';
 
 export const StyledWrapper = styled.div`
   border-left: 3px solid ${({ theme }) => theme.colors.lipstick};

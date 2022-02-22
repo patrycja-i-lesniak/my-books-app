@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import Paragraph from 'components/atoms/Paragraph/Paragraph';
+import Paragraph from 'components/atoms/Paragraph';
 import Wrapper from 'components/atoms/Wrapper';
 import LogoSmall from 'assets/logo/myBooksLogo9.svg';
 
