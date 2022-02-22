@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.js": "/my-books-app/static/js/main.63bac973.chunk.js",
-    "main.js.map": "/my-books-app/static/js/main.63bac973.chunk.js.map",
+    "main.js": "/my-books-app/static/js/main.9516e166.chunk.js",
+    "main.js.map": "/my-books-app/static/js/main.9516e166.chunk.js.map",
     "runtime-main.js": "/my-books-app/static/js/runtime-main.2990649e.js",
     "runtime-main.js.map": "/my-books-app/static/js/runtime-main.2990649e.js.map",
     "static/js/2.332e1cc0.chunk.js": "/my-books-app/static/js/2.332e1cc0.chunk.js",
@@ -19,8 +19,8 @@
     "static/media/error.46513cbc.svg": "/my-books-app/static/media/error.46513cbc.svg",
     "static/media/lcLogo.d8002aa1.svg": "/my-books-app/static/media/lcLogo.d8002aa1.svg",
     "static/media/link.99466d54.svg": "/my-books-app/static/media/link.99466d54.svg",
-    "static/media/mblSmall.d7646728.svg": "/my-books-app/static/media/mblSmall.d7646728.svg",
-    "static/media/myBooksLogoBlack.a9a80186.svg": "/my-books-app/static/media/myBooksLogoBlack.a9a80186.svg",
+    "static/media/logoMyBooks.f8665f12.svg": "/my-books-app/static/media/logoMyBooks.f8665f12.svg",
+    "static/media/myBooksLogo9.0a309783.svg": "/my-books-app/static/media/myBooksLogo9.0a309783.svg",
     "static/media/plus.15c51fc0.svg": "/my-books-app/static/media/plus.15c51fc0.svg",
     "static/media/readingIcon.6c279f8f.svg": "/my-books-app/static/media/readingIcon.6c279f8f.svg",
     "static/media/search.c8fb929d.svg": "/my-books-app/static/media/search.c8fb929d.svg",
@@ -29,6 +29,6 @@
   "entrypoints": [
     "static/js/runtime-main.2990649e.js",
     "static/js/2.332e1cc0.chunk.js",
-    "static/js/main.63bac973.chunk.js"
+    "static/js/main.9516e166.chunk.js"
   ]
 }
