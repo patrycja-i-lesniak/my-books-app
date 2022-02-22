@@ -29,7 +29,7 @@ const NavigationBar = () => (
         </StyledItem>
       </StyledLinkList>
     </StyledNavigationWrapper>
-    <SearchBox placeholder="search by title, author or ISBN" />
+    <SearchBox />
     <StyledButton secondary>log in</StyledButton>
   </StyledWrapper>
 );
