@@ -2,7 +2,6 @@ import { useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { Arrow } from 'components/atoms/Arrow';
-import { Link } from 'react-router-dom';
 import {
   StyledImage,
   StyledTitle,
@@ -11,6 +10,7 @@ import {
   StyledDate,
   ButtonContentWrapper,
   ShowMore,
+  StyledLink,
 } from './styled';
 import Wrapper from 'components/atoms/Wrapper';
 import withContext from 'hoc/withContext';
@@ -19,34 +19,35 @@ const CardSmall = ({ item, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
   return (
     <>
-      <>
-        <Wrapper>
-          <InnerWrapper>
-            {(pageContext === 'home' || pageContext === 'books') && (
-              <>
-                <Link to={`books/${item.id}`}>
-                  <StyledImage src={item.fields.imageUrl} />
-                </Link>
+      <Wrapper>
+        <InnerWrapper>
+          {(pageContext === 'home' || pageContext === 'books') && (
+            <>
+              <StyledLink to={`books/${item.id}`}>
+                <StyledImage src={item.fields.imageUrl} />
                 <StyledTitle>{item.fields.title}</StyledTitle>
                 <StyledAuthor>
                   {item.fields.firstName} {item.fields.lastName}
                 </StyledAuthor>
-              </>
-            )}
-            {pageContext === 'authors' && (
-              <>
-                <Link to={`authors/${item.id}`}>
-                  <StyledImage src={item.fields.imageUrl} />
-                </Link>
-                <StyledTitle>
-                  {item.fields.firstName} {item.fields.lastName}
-                </StyledTitle>
-              </>
-            )}
-          </InnerWrapper>
-        </Wrapper>
-      </>
+              </StyledLink>
+            </>
+          )}
+          {pageContext === 'authors' && (
+            <>
+              <StyledLink to={`authors/${item.id}`}>
+                <StyledImage src={item.fields.imageUrl} />
+              </StyledLink>
+              <StyledTitle>
+                {item.fields.firstName} {item.fields.lastName}
+              </StyledTitle>
+            </>
+          )}
+        </InnerWrapper>
+      </Wrapper>
+      {/* </>
 
+
+<> */}
       {pageContext === 'notes' && (
         <Wrapper notes>
           <InnerWrapper>
