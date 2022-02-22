@@ -14,12 +14,12 @@ const Quotes = () => {
   console.log('data from Quotes:', quotes);
 
   return (
-      <GridTemplate pageType="quotes">
-        <NewQuoteForm />
-        <Masonry column={3}>
-          {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
-        </Masonry>
-      </GridTemplate>
+    <GridTemplate pageType="quotes">
+      <NewQuoteForm />
+      <Masonry column={3}>
+        {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
+      </Masonry>
+    </GridTemplate>
   );
 };
 
