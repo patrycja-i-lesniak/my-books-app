@@ -3,6 +3,7 @@ export const theme = {
     white: '#FFFFFF',
     webOrange: '#FFA502',
     torchRed: '#FF0249',
+    darkBlue: '#111827',
     japaneseLaurel: '#10830B',
     toreaBay: '#15259D',
     vividViolet: '#853597',
