@@ -5,20 +5,22 @@ import NewQuoteForm from 'components/molecules/NewQuoteForm';
 import QuoteCard from 'components/molecules/Card/QuoteCard';
 import Masonry from 'components/molecules/Masonry';
 import { useFetchData } from 'customHooks';
+import { GetAllData } from 'GetData';
 
 const Quotes = () => {
-  const table = 'quotes';
-  const pageSize = 100;
-  const sort = [{ field: 'author', direction: 'asc' }];
-  const { items: quotes } = useFetchData(pageSize, sort, table);
-  console.log('data from Quotes:', quotes);
+  const data = {
+    table: 'quotes',
+    pageSize: 100,
+    sort: [{ field: 'author', direction: 'asc' }],
+  };
 
   return (
     <GridTemplate pageType="quotes">
       <NewQuoteForm />
-      <Masonry column={3}>
+      {/* <Masonry column={3}>
         {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
-      </Masonry>
+      </Masonry> */}
+      <GetAllData data={data} />
     </GridTemplate>
   );
 };
