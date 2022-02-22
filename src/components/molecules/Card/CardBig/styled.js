@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import LogoSmall from 'assets/logo/myBooksLogo9.svg';
+import LogoSmallWhite from 'assets/logo/logoSmallWhite.svg';
 import Header from 'components/atoms/Header/Header';
 import Button from 'components/atoms/Button/Button';
 
@@ -56,7 +56,7 @@ export const StyledImage = styled.img`
   width: 250px;
   height: 350px;
   background-color: ${({ theme }) => theme.colors.silver};
-  background-image: url(${LogoSmall});
+  background-image: url(${LogoSmallWhite});
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 45%;
