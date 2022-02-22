@@ -1,13 +1,15 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 import Paragraph from 'components/atoms/Paragraph';
 import Wrapper from 'components/atoms/Wrapper';
-import LogoSmall from 'assets/logo/myBooksLogo9.svg';
+import LogoSmallWhite from 'assets/logo/logoSmallWhite.svg';
+import LogoSmallPink from 'assets/logo/logoSmallPink.svg';
 
 export const StyledImage = styled.img`
   width: 165px;
   height: 225px;
   background-color: ${({ theme }) => theme.colors.silver};
-  background-image: url(${LogoSmall});
+  background-image: url(${LogoSmallWhite});
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 45%;
@@ -15,7 +17,7 @@ export const StyledImage = styled.img`
   cursor: pointer;
 
   ${Wrapper}:hover & {
-    background-color: ${({ theme }) => theme.colors.lipstick};
+    background-image: url(${LogoSmallPink});
   }
 `;
 
@@ -25,7 +27,6 @@ export const StyledTitle = styled.h1`
   font-weight: ${({ theme }) => theme.font.bold};
   text-align: center;
   margin-top: 10px 0 0;
-  text-decoration: none;
 
   ${Wrapper}:hover & {
     color: white;
@@ -38,7 +39,6 @@ export const StyledAuthor = styled.h2`
   font-weight: ${({ theme }) => theme.font.regular};
   margin: 0;
   text-align: center;
-  text-decoration: none;
 
   ${Wrapper}:hover & {
     color: white;
@@ -48,6 +48,7 @@ export const StyledAuthor = styled.h2`
 export const StyledParagraph = styled(Paragraph)`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.grey};
+  
   ${Wrapper}:hover & {
     color: white;
   }
@@ -57,6 +58,10 @@ export const InnerWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  ${Wrapper}:hover & {
+    background-color: ${({ theme }) => theme.colors.lipstick};
+  }
 `;
 
 export const StyledDate = styled.p``;
@@ -83,4 +88,8 @@ export const ButtonContentWrapper = styled.span`
   grid-template-columns: auto auto;
   grid-gap: 6px;
   align-items: center;
+`;
+
+export const StyledLink = styled(Link)`
+text-decoration: none;
 `;
