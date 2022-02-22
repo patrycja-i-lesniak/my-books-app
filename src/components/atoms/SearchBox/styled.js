@@ -1,8 +1,14 @@
 import styled from 'styled-components';
 import searchIcon from 'assets/icons/search.svg';
-import {Field} from 'formik';
+import { Field } from 'formik';
 
-export const Search = styled(Field)`
+export const SearchWrapper = styled.div`
+  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
+    display: none;
+  }
+`;
+
+export const SearchField = styled(Field)`
   position: relative;
   color: ${({ theme }) => theme.colors.lipstick};
   padding: 10px 20px 10px 40px;
@@ -14,7 +20,7 @@ export const Search = styled(Field)`
   transition: 0.1s all;
   outline: none;
   border: 1px solid ${({ theme }) => theme.colors.desertStorm};
-  width: 260px;
+  width: 240px;
   height: 36px;
   border-radius: 3px;
 
@@ -25,10 +31,4 @@ export const Search = styled(Field)`
   ::placeholder {
     color: ${({ theme }) => theme.colors.grey};
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-    display: none;
-  }
 `;
-
-export default Search;
