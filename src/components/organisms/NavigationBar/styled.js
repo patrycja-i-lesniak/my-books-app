@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import myBooksLogo from 'assets/logo/myBooksLogo8.svg';
+import myBooksLogo from 'assets/logo/logoMyBooks.svg';
 import Button from 'components/atoms/Button/Button';
 
 export const StyledWrapper = styled.div`
@@ -10,31 +10,28 @@ export const StyledWrapper = styled.div`
   top: 0;
   width: 100vw;
   background-color: ${({ theme }) => theme.colors.lipstick};
-  grid-template-columns: 1fr 280px 120px;
+  grid-template-columns: 1fr 260px 120px;
   align-items: end;
   height: 80px;
-  padding: 20px 40px;
+  padding: 15px 40px;
   z-index: 9999;
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
 
   @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
     grid-template-columns: 1fr 120px;
   }
-
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     grid-template-columns: 1fr;
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    height: 60px;
-    padding: 0;
     align-items: center;
   }
 `;
 
 export const StyledNavigationWrapper = styled.nav`
   display: grid;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(5, auto);
   align-items: end;
   justify-content: start;
 
@@ -50,10 +47,6 @@ export const StyledLogoLink = styled(NavLink)`
   background-position: 50% 50%;
   background-image: url(${myBooksLogo});
   background-repeat: no-repeat;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    width: 150px;
-  }
 `;
 
 export const StyledLinkList = styled.ul`
@@ -93,4 +86,3 @@ export const StyledButton = styled(Button)`
     display: none;
   }
 `;
-
