@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom';
+
 import {
   StyledWrapper,
   StyledNavigationWrapper,
@@ -7,7 +8,6 @@ import {
   StyledItem,
   StyledButton,
 } from './styled';
-
 import SearchBox from 'components/atoms/SearchBox';
 
 const NavigationBar = () => (
