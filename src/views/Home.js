@@ -1,5 +1,5 @@
 import GridTemplate from 'templates/GridTemplate';
-import GetData from 'GetData';
+import { GetAllData } from 'GetData';
 
 const Home = () => {
   const data = {
@@ -10,7 +10,7 @@ const Home = () => {
 
   return (
     <GridTemplate pageType="home">
-      <GetData data={data} />
+      <GetAllData data={data} />
     </GridTemplate>
   );
 };
