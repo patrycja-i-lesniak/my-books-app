@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { NavLink } from 'react-router-dom';
 
-import myBooksLogo from 'assets/logo/logoMyBooks.svg';
+import myBooksLogo from 'assets/logo/logoMyBooks.png';
 import Button from 'components/atoms/Button/Button';
 
 export const StyledWrapper = styled.div`
