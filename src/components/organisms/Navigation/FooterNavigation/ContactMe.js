@@ -1,62 +1,21 @@
-import styled from 'styled-components';
+import {Wrapper, StyledParagraph, List, Item, Icon, Link, StyleIcon} from './styled';
 import { FaGithub } from 'react-icons/fa';
-import Paragraph from 'components/atoms/Paragraph';
 
-const Wrapper = styled.div`
-  text-align: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: none;
-  }
-`;
-
-const StyledParagraph = styled(Paragraph)`
-  margin: 0;
-  color: ${({ theme }) => theme.colors.white};
-`;
-
-const Link = styled.a`
-  color: ${({ theme }) => theme.colors.white};
-  transition: color 0.3s;
-  margin: 0;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: none;
-  }
-
-  &:hover {
-    color: ${({ theme }) => theme.colors.black};
-  }
-`;
-const List = styled.ul`
-  margin: 0;
-  padding: 0;
-  display: inline-flex;
-  gap: 10px;
-`;
-
-const Item = styled.li`
-  list-style: none;
-`;
-
-const styleIcon = Icon => styled(Icon)`
-  font-size: 3rem;
-`;
-
-export const ContactMe = () => {
-  const contact = [
+const contact = [
     {
       name: 'github',
       url: 'https://github.com/patrycja-i-lesniak',
-      Icon: styleIcon(FaGithub),
+      Icon: StyleIcon(FaGithub),
     },
 
     // {
     //   name: 'email',
     //   url: 'mailto: patrycja.lesniak@gmail.com',
-    //   Icon: styleIcon(MdAlternateEmail),
+    //   Icon: StyleIcon(MdAlternateEmail),
     // },
   ];
+
+export const ContactMe = () => {
 
   return (
     <Wrapper>
