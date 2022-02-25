@@ -8,17 +8,17 @@ import { base } from 'airtable/base';
 import trashIcon from 'assets/icons/trash.svg';
 import withContext from 'hoc/withContext';
 
-const ConfirmationPopup = ({ handleDeleteFalse, itemId, pageContext }) => {
+const ConfirmationPopup = ({ handleDeleteFalse, id, pageContext }) => {
   const DeleteButton = () => {
     const history = useHistory();
     const deleteItem = () => {
-      base(pageContext).destroy(itemId, function (err, deleteItem) {
+      base(pageContext).destroy(id, function (err, deleteItem) {
         if (err) {
           console.error(err);
 
           return;
         }
-        return console.log('Deleted record with id', itemId), history.goBack();
+        return console.log('Deleted record with id', id), history.goBack();
       });
     };
     return (
@@ -47,7 +47,7 @@ const ConfirmationPopup = ({ handleDeleteFalse, itemId, pageContext }) => {
 ConfirmationPopup.propTypes = {
   handleDeleteTrue: PropTypes.func,
   handleDeleteFalse: PropTypes.func,
-  itemId: PropTypes.string.isRequired,
+  id: PropTypes.string.isRequired,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'note', 'quotes']),
 };
 
