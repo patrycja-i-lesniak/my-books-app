@@ -48,7 +48,6 @@ export const StyledAuthor = styled.h2`
 export const StyledParagraph = styled(Paragraph)`
   font-size: 1rem;
   color: ${({ theme }) => theme.colors.grey};
-  
   ${Wrapper}:hover & {
     color: white;
   }
@@ -64,7 +63,11 @@ export const InnerWrapper = styled.div`
   }
 `;
 
-export const StyledDate = styled.p``;
+export const StyledDate = styled.p`
+  ${Wrapper}:hover & {
+    color: white;
+  }
+`;
 
 export const ShowMore = styled.button`
   display: block;
@@ -76,7 +79,8 @@ export const ShowMore = styled.button`
   font-weight: 500;
   margin: 0 auto 0;
   color: ${({ theme }) => theme.colors.lipstick};
-  padding: 10px;
+  padding: 20px;
+  font-weight: 600;
 
   ${Wrapper}:hover & {
     color: white;
@@ -91,5 +95,5 @@ export const ButtonContentWrapper = styled.span`
 `;
 
 export const StyledLink = styled(Link)`
-text-decoration: none;
+  text-decoration: none;
 `;
