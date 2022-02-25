@@ -22,8 +22,11 @@ const Wrapper = styled.div`
     notes &&
     css`
       width: 340px;
+      padding: 30px;
+      background-color: ${({ theme }) => theme.colors.white};
       &:hover {
-        background-color: ${({ theme }) => theme.colors.silver};
+        transform: scale(1.01);
+        background-color: ${({ theme }) => theme.colors.lipstick};
       }
     `}
 `;
