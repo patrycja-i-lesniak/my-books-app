@@ -15,6 +15,8 @@ const NewQuoteForm = (...props) => {
   const [popup, setPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
   const [checked, setChecked] = useState(false);
+  const [state, setState] = useState();
+
 
   const toggleCheckbox = () => {
     setChecked(!checked);
@@ -93,7 +95,6 @@ const NewQuoteForm = (...props) => {
               values={values.quote}
             />
             <ErrorMessage name="quote">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-
             <StyledLabel as="label" htmlFor="title">
               title
             </StyledLabel>
@@ -107,7 +108,6 @@ const NewQuoteForm = (...props) => {
               autoComplete="given-name"
             />
             <ErrorMessage name="title">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-
             <StyledLabel as="label" htmlFor="author">
               author
             </StyledLabel>
@@ -121,7 +121,6 @@ const NewQuoteForm = (...props) => {
               autoComplete="given-name"
             />
             <ErrorMessage name="author">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-
             <Label forHtml="checked">
               {checked ? <AiFillHeart /> : <AiOutlineHeart />}
               <Checkbox

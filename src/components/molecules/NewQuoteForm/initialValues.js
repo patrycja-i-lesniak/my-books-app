@@ -2,4 +2,5 @@
   quote: '',
   author: '',
   title: '',
+  checked: false,
 };
