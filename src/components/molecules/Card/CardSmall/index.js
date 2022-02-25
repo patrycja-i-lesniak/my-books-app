@@ -19,10 +19,10 @@ const CardSmall = ({ item, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
   return (
     <>
-      <Wrapper>
-        <InnerWrapper>
-          {(pageContext === 'home' || pageContext === 'books') && (
-            <>
+      {(pageContext === 'home' || pageContext === 'books') && (
+        <>
+          <Wrapper>
+            <InnerWrapper>
               <StyledLink to={`books/${item.id}`}>
                 <StyledImage src={item.fields.imageUrl} />
                 <StyledTitle>{item.fields.title}</StyledTitle>
@@ -30,24 +30,26 @@ const CardSmall = ({ item, pageContext }) => {
                   {item.fields.firstName} {item.fields.lastName}
                 </StyledAuthor>
               </StyledLink>
-            </>
-          )}
-          {pageContext === 'authors' && (
-            <>
+            </InnerWrapper>
+          </Wrapper>
+        </>
+      )}
+
+      {pageContext === 'authors' && (
+        <>
+          <Wrapper>
+            <InnerWrapper>
               <StyledLink to={`authors/${item.id}`}>
                 <StyledImage src={item.fields.imageUrl} />
               </StyledLink>
               <StyledTitle>
                 {item.fields.firstName} {item.fields.lastName}
               </StyledTitle>
-            </>
-          )}
-        </InnerWrapper>
-      </Wrapper>
-      {/* </>
+            </InnerWrapper>
+          </Wrapper>
+        </>
+      )}
 
-
-<> */}
       {pageContext === 'notes' && (
         <Wrapper notes>
           <InnerWrapper>
@@ -61,7 +63,7 @@ const CardSmall = ({ item, pageContext }) => {
                   <ShowMore onClick={() => setShowMore(!showMore)}>
                     <ButtonContentWrapper>
                       <span>
-                        {showMore ? 'Show less' : 'Show more'}
+                        {showMore ? 'Show less ' : 'Show more '}
                         <Arrow showMore={showMore} />
                       </span>
                     </ButtonContentWrapper>
