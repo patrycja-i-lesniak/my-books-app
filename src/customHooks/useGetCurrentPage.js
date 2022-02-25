@@ -12,14 +12,13 @@ const useGetCurrentPage = () => {
     if (pageType !== currentPage) {
       setPageType(currentPage);
     }
-    console.log('current page from GetCurrentPage:', currentPage);
   };
 
   useEffect(() => {
     setCurrentPage();
   });
 
-  return pageType
+  return pageType;
 };
 
 export default useGetCurrentPage;
