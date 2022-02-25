@@ -34,9 +34,8 @@ const CardBig = ({ itemData, pageContext }) => {
     id: null,
   });
 
-const id = itemData.id;
-console.log('itemDataID', id);
-
+  const id = itemData.id;
+  // console.log('itemDataID', id);
 
   const handleDelete = id => {
     setPopup({
@@ -54,66 +53,62 @@ console.log('itemDataID', id);
     console.log('Close popup');
   };
 
- console.log('ITEM DATA from BigCard', itemData);
+  console.log('ITEM DATA from BigCard', itemData);
 
-  // const {
-  //   // status,
-  //   imageUrl,
-  //   firstName,
-  //   lastName,
-  //   title,
-  //   series,
-  //   date,
-  //   isbn,
-  //   numberOfPages,
-  //   translation,
-  //   publishing,
-  //   LClink,
-  //   oficialWebsite,
-  //   content,
-  // } = itemData;
-
-  //
-
- 
+  const {
+    status,
+    imageUrl,
+    firstName,
+    lastName,
+    title,
+    series,
+    date,
+    isbn,
+    numberOfPages,
+    translation,
+    publishing,
+    LClink,
+    oficialWebsite,
+    content,
+  } = itemData.fields;
 
   return (
     <>
       <Wrapper>
         <InnerWrapper>
           <UpperContainer>
-            <StyledImage src={itemData.fields.imageUrl} />
+            <StyledImage src={imageUrl} />
             <ExtraWrapper>
               <div>
                 {pageContext === 'authors' ? (
                   <>
                     <StyledTitle>
-                      {itemData.fields.firstName} {itemData.fields.lastName}
+                      {firstName} {lastName}
                     </StyledTitle>
                   </>
                 ) : (
-                  <StyledTitle>{itemData.fields.title}</StyledTitle>
+                  <StyledTitle>{title}</StyledTitle>
                 )}
                 {pageContext === 'authors' ? null : (
                   <StyledAuthor>
-                    {itemData.fields.firstName} {itemData.fields.lastName}
+                    {firstName} {lastName}
                   </StyledAuthor>
                 )}
                 {pageContext === 'books' && (
                   <Details>
                     <DataWrapper>
                       <Label>series:</Label>
-                      <StyledData>{itemData.fields.series}</StyledData>
+                      <StyledData>{series}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>date of publication:</Label>
-                      <StyledData>{itemData.fields.date}</StyledData>
+                      <StyledData>{date}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>ISBN:</Label>
-                      <StyledData>{itemData.fields.isbn}</StyledData>
+                      <StyledData>{isbn}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
@@ -123,12 +118,12 @@ console.log('itemDataID', id);
 
                     <DataWrapper>
                       <Label>translate:</Label>
-                      <StyledData>{itemData.fields.translation}</StyledData>
+                      <StyledData>{translation}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
                       <Label>publisher:</Label>
-                      <StyledData>{itemData.fields.publishing}</StyledData>
+                      <StyledData>{publishing}</StyledData>
                     </DataWrapper>
                   </Details>
                 )}
@@ -142,19 +137,9 @@ console.log('itemDataID', id);
                   {status && status === 'in progress' && <Status inProgress />}
                   <StatusParagraph>{status}</StatusParagraph>
 
-                  <Icon
-                    target="_blank"
-                    rel="noreferrer"
-                    href={itemData.fields.LClink}
-                    icon={lcLogo}
-                  />
-                  {pageContext === 'authors' && itemData.fields.oficialWebsite ? (
-                    <Icon
-                      target="_blank"
-                      rel="noreferrer"
-                      href={itemData.fields.oficialWebsite}
-                      icon={linkIcon}
-                    />
+                  <Icon target="_blank" rel="noreferrer" href={LClink} icon={lcLogo} />
+                  {pageContext === 'authors' && oficialWebsite ? (
+                    <Icon target="_blank" rel="noreferrer" href={oficialWebsite} icon={linkIcon} />
                   ) : null}
                   <Icon icon={trashIcon} onClick={handleDelete} />
                 </ButtonsWrapper>
@@ -174,11 +159,11 @@ console.log('itemDataID', id);
               </ShowMore>
             </LowerContainer>
           ) : (
-            <LowerContainer>{itemData.fields.content}</LowerContainer>
+            <LowerContainer>{content}</LowerContainer>
           )}
         </InnerWrapper>
         {popup.show && (
-          <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={item} itemId={itemId} />
+          <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={itemData} id={id} />
         )}
       </Wrapper>
     </>
@@ -192,164 +177,3 @@ CardBig.propTypes = {
 };
 
 export default withContext(CardBig);
-
-
-
-
-
-// const CardBig = ({ item, pageContext}) => {
-//   const [showMore, setShowMore] = useState(false);
-//   const [popup, setPopup] = useState({
-//     show: false,
-//     id: null,
-//   });
-// // console.log( 'itemData from BigCard', itemData)
-//   const itemId = id;
-
-//   const handleDelete = id => {
-//     setPopup({
-//       show: true,
-//       id,
-//     });
-//     console.log('open popup');
-//   };
-
-//   const handleDeleteFalse = () => {
-//     setPopup({
-//       show: false,
-//       id: null,
-//     });
-//     console.log('Close popup');
-//   };
-
-//   const {
-//     // status,
-//     imageUrl,
-//     firstName,
-//     lastName,
-//     title,
-//     series,
-//     date,
-//     isbn,
-//     numberOfPages,
-//     translation,
-//     publishing,
-//     LClink,
-//     oficialWebsite,
-//     content,
-//   } = fields;
-//   console.log(item)
-
-//   return (
-//     <>
-//       <Wrapper>
-//         <InnerWrapper>
-//           <UpperContainer>
-//             <StyledImage src={imageUrl} />
-//             <ExtraWrapper>
-//               <div>
-//                 {pageContext === 'authors' ? (
-//                   <>
-//                     <StyledTitle>
-//                       {firstName} {lastName}
-//                     </StyledTitle>
-//                   </>
-//                 ) : (
-//                   <StyledTitle>{title}</StyledTitle>
-//                 )}
-//                 {pageContext === 'authors' ? null : (
-//                   <StyledAuthor>
-//                     {firstName} {lastName}
-//                   </StyledAuthor>
-//                 )}
-//                 {pageContext === 'books' && (
-//                   <Details>
-//                     <DataWrapper>
-//                       <Label>series:</Label>
-//                       <StyledData>{series}</StyledData>
-//                     </DataWrapper>
-
-//                     <DataWrapper>
-//                       <Label>date of publication:</Label>
-//                       <StyledData>{date}</StyledData>
-//                     </DataWrapper>
-
-//                     <DataWrapper>
-//                       <Label>ISBN:</Label>
-//                       <StyledData>{isbn}</StyledData>
-//                     </DataWrapper>
-
-//                     <DataWrapper>
-//                       <Label>pages:</Label>
-//                       <StyledData>{numberOfPages}</StyledData>
-//                     </DataWrapper>
-
-//                     <DataWrapper>
-//                       <Label>translate:</Label>
-//                       <StyledData>{translation}</StyledData>
-//                     </DataWrapper>
-
-//                     <DataWrapper>
-//                       <Label>publisher:</Label>
-//                       <StyledData>{publishing}</StyledData>
-//                     </DataWrapper>
-//                   </Details>
-//                 )}
-//               </div>
-//               <div>
-//                 <ButtonsWrapper>
-//                   {status && status === 'to read' && <Status toRead />}
-//                   {status && status === 'read' && <Status read />}
-//                   {status && status === 'to buy' && <Status toBuy />}
-//                   {status && status === 'borrowed' && <Status borrowed />}
-//                   {status && status === 'in progress' && <Status inProgress />}
-//                   <StatusParagraph>{status}</StatusParagraph>
-
-//                   <Icon target="_blank" rel="noreferrer" href={LClink} icon={lcLogo} />
-//                   {pageContext === 'authors' && oficialWebsite ? (
-//                     <Icon target="_blank" rel="noreferrer" href={oficialWebsite} icon={linkIcon} />
-//                   ) : null}
-//                   <Icon icon={trashIcon} onClick={handleDelete} />
-//                 </ButtonsWrapper>
-//               </div>
-//             </ExtraWrapper>
-//           </UpperContainer>
-//           {content && content.length > 400 ? (
-//             <LowerContainer>
-//               {showMore ? content : `${content.slice(0, 400)}...`}
-//               <ShowMore onClick={() => setShowMore(!showMore)}>
-//                 <ButtonContentWrapper>
-//                   <span>
-//                     {showMore ? 'Show less' : 'Show more'}
-//                     <Arrow showMore={showMore} />
-//                   </span>
-//                 </ButtonContentWrapper>
-//               </ShowMore>
-//             </LowerContainer>
-//           ) : (
-//             <LowerContainer>{content}</LowerContainer>
-//           )}
-//         </InnerWrapper>
-//         {popup.show && (
-//           <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={item} itemId={itemId} />
-//         )}
-//       </Wrapper>
-//     </>
-//   );
-// };
-
-// CardBig.propTypes = {
-//   item: PropTypes.object,
-//   author: PropTypes.object,
-//   note: PropTypes.object,
-//   handleDelete: PropTypes.func,
-//   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
-// };
-
-// CardBig.defaultProps = {
-//   book: {},
-//   author: {},
-//   note: {},
-// };
-
-// export default withContext(CardBig);
