@@ -1,15 +1,15 @@
-import styles from 'components/atoms/Box/Box.module.scss';
+import './styled.css';
 import PropTypes from 'prop-types';
 
 const Box = ({ header, content }) => (
-  <article className={styles.article}>
-    <div className={styles.boxFront}>
-      <div className={styles.text}>
+  <article className="article">
+    <div className="boxFront">
+      <div className="text">
         <h1>{header}</h1>
       </div>
     </div>
-    <div className={styles.boxBack}>
-      <div className={styles.text}>
+    <div className="boxBack">
+      <div className="text">
         <p>{content}</p>
       </div>
     </div>
@@ -17,8 +17,8 @@ const Box = ({ header, content }) => (
 );
 
 Box.propTypes = {
-    header: PropTypes.string.isRequired,
-    content: PropTypes.string.isRequired,
-}
+  header: PropTypes.string.isRequired,
+  content: PropTypes.string.isRequired,
+};
 
 export default Box;
