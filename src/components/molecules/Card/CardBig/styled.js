@@ -16,7 +16,7 @@ export const Wrapper = styled.div`
   position: relative;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
-    padding: 50px 20px;
+    padding: 50px 25px;
     margin: 80px auto 40px;
   }
 `;
@@ -31,6 +31,7 @@ export const InnerWrapper = styled.div`
 export const UpperContainer = styled.div`
   display: grid;
   align-items: start;
+  grid-gap: 40px;
   grid-template-columns: auto 1fr auto;
   line-height: 2;
 
@@ -38,7 +39,7 @@ export const UpperContainer = styled.div`
     grid-template-columns: auto 1fr;
   }
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     grid-template-columns: 1fr;
     justify-items: center;
   }
@@ -60,21 +61,10 @@ export const StyledImage = styled.img`
   background-position: 50% 50%;
   background-repeat: no-repeat;
   background-size: 45%;
-  margin-right: 40px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    width: 200px;
-    height: 280px;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    align-self: center;
-    width: 250px;
-    height: 350px;
-    margin: 0 0 20px;
-  }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
-    max-width: 150px;
-    height: 200px;
+    width: 220px;
+    height: 308px;
   }
 `;
 
@@ -82,7 +72,7 @@ export const StyledTitle = styled(Header)`
   font-size: 3rem;
   text-align: left;
   margin: 0;
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     text-align: center;
   }
 `;
@@ -94,7 +84,7 @@ export const StyledAuthor = styled.h2`
   text-align: left;
   color: ${({ theme }) => theme.colors.black};
   margin: 0;
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     text-align: center;
   }
 `;
@@ -106,29 +96,29 @@ export const StyledParagraph = styled.p`
 
 export const DataWrapper = styled.div`
   display: grid;
-  grid-template-columns: 200px auto;
+  grid-template-columns: 250px auto;
   align-items: start;
   margin-top: 10px;
   column-gap: 20px;
-  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
+    grid-template-columns: 180px auto;
+  }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     grid-template-columns: auto;
+    justify-items: center;
   }
 `;
 
 export const Label = styled.p`
-  text-transform: uppercase;
-
   font-size: 1.5rem;
   margin: 0;
   padding: 0;
   color: ${({ theme }) => theme.colors.grey};
-  @media (max-width: ${({ theme }) => theme.breakpoints.large}px) {
-    display: none;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     display: block;
-  }
-  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
     display: none;
   }
 `;
@@ -136,7 +126,7 @@ export const Label = styled.p`
 export const StyledData = styled.p`
   font-size: 1.5rem;
   margin: 0;
-  @media (max-width: ${({ theme }) => theme.breakpoints.xsmall}px) {
+  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     text-align: center;
   }
 `;
@@ -152,10 +142,6 @@ export const ShowMore = styled.button`
   margin: 0 auto 0;
   color: ${({ theme }) => theme.colors.lipstick};
   padding-top: 20px;
-
-  /* ${Wrapper}:hover & {
-    color: grey;
-  } */
 `;
 
 export const ButtonContentWrapper = styled.span`
@@ -166,13 +152,16 @@ export const ButtonContentWrapper = styled.span`
 `;
 
 export const ButtonsWrapper = styled.div`
-  margin-top: 10px;
+  margin-top: 20px;
   display: flex;
-  flex-direction: column;
-  gap: 20px;
+  flex-wrap: wrap;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-
+  justify-content: flex-start;
+  gap: 30px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
+    justify-content: center;
+  }
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     flex-direction: row;
     justify-content: center;
@@ -186,27 +175,13 @@ export const Icon = styled(ButtonIcon)`
   border-radius: 50%;
 `;
 
-export const DeleteIcon = styled(ButtonIcon)`
-  width: 50px;
-  height: 50px;
-  border-radius: 50%;
-`;
-
-
-export const Status = styled(Button)`
-  background-color: unset;
-  color: black;
-  border: none;
-  display: flex;
-  width: 50px;
-  height: 50px;
-  margin: 50px 0 0;
-  border-radius: 50%;
-  justify-content: center;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    margin: 0;
-  }
+export const Status = styled(Icon)`
+  color: ${({ theme }) => theme.colors.white};
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  border: inherit;
+  pointer: none;
 
   ${({ read }) =>
     read &&
@@ -237,12 +212,6 @@ export const Status = styled(Button)`
     css`
       background-color: ${({ theme }) => theme.colors.webOrange};
     `};
-`;
-
-export const StatusParagraph = styled.p`
-  margin: -15px 0 50px;
-  text-transform: uppercase;
-  color: ${({ theme }) => theme.colors.grey};
 `;
 
 export const ExtraWrapper = styled.div`
