@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useHistory, useParams } from 'react-router-dom';
+import styled from 'styled-components';
 
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import Loader from 'components/atoms/Loader';
@@ -9,6 +10,10 @@ import Button from 'components/atoms/Button/Button';
 import withContext from 'hoc/withContext';
 import { useFetchDetailsData } from 'customHooks';
 import { IoMdArrowDropleft } from 'react-icons/io';
+
+const StyledButton = styled(Button)`
+  margin: 20px 0;
+`;
 
 const DetailsPage = pageContext => {
   const { id } = useParams();
@@ -26,13 +31,13 @@ const DetailsPage = pageContext => {
       ) : (
         <>
           <CardBig itemData={itemData} />
-          <Button
+          <StyledButton
             onClick={() => {
               history.goBack();
             }}
           >
             <IoMdArrowDropleft /> Go Back
-          </Button>
+          </StyledButton>
         </>
       )}
     </DetailsPageTemplate>
