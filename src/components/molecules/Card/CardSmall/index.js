@@ -49,7 +49,6 @@ const CardSmall = ({ item, pageContext }) => {
           </Wrapper>
         </>
       )}
-
       {pageContext === 'notes' && (
         <Wrapper notes>
           <InnerWrapper>
