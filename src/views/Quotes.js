@@ -1,11 +1,8 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect, Children } from 'react';
 
 import GridTemplate from 'templates/GridTemplate';
-import NewQuoteForm from 'components/molecules/NewQuoteForm';
-import QuoteCard from 'components/molecules/Card/QuoteCard';
-import Masonry from 'components/molecules/Masonry';
 import { useFetchData } from 'customHooks';
-import { GetAllData } from 'GetData';
+import GetData from 'GetData';
 
 const Quotes = () => {
   const data = {
@@ -16,11 +13,7 @@ const Quotes = () => {
 
   return (
     <GridTemplate pageType="quotes">
-      <NewQuoteForm />
-      {/* <Masonry column={3}>
-        {quotes && quotes.map(quote => <QuoteCard quote={quote} key={quote.id} />)}
-      </Masonry> */}
-      <GetAllData data={data} />
+      <GetData data={data} />
     </GridTemplate>
   );
 };
