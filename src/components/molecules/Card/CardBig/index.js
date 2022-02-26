@@ -1,5 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
+
 import {
   StyledImage,
   StyledTitle,
@@ -35,7 +37,6 @@ const CardBig = ({ itemData, pageContext }) => {
   });
 
   const id = itemData.id;
-  // console.log('itemDataID', id);
 
   const handleDelete = id => {
     setPopup({
@@ -127,22 +128,28 @@ const CardBig = ({ itemData, pageContext }) => {
                     </DataWrapper>
                   </Details>
                 )}
-              </div>
-              <div>
-                <ButtonsWrapper>
-                  {status && status === 'to read' && <Status toRead />}
-                  {status && status === 'read' && <Status read />}
-                  {status && status === 'to buy' && <Status toBuy />}
-                  {status && status === 'borrowed' && <Status borrowed />}
-                  {status && status === 'in progress' && <Status inProgress />}
-                  <StatusParagraph>{status}</StatusParagraph>
+                <div>
+                  <ButtonsWrapper>
+                    {status && status === 'to read' && <Status toRead>to read</Status>}
+                    {status && status === 'read' && <Status read>read</Status>}
+                    {status && status === 'to buy' && <Status toBuy>to buy</Status>}
+                    {status && status === 'borrowed' && <Status borrowed>borrowed</Status>}
+                    {status && status === 'in progress' && <Status inProgress>in progress</Status>}
 
-                  <Icon target="_blank" rel="noreferrer" href={LClink} icon={lcLogo} />
-                  {pageContext === 'authors' && oficialWebsite ? (
-                    <Icon target="_blank" rel="noreferrer" href={oficialWebsite} icon={linkIcon} />
-                  ) : null}
-                  <Icon icon={trashIcon} onClick={handleDelete} />
-                </ButtonsWrapper>
+                    <Icon target="_blank" rel="noreferrer" as={'a'} href={LClink} icon={lcLogo} />
+
+                    {pageContext === 'authors' && oficialWebsite ? (
+                      <Icon
+                        target="_blank"
+                        rel="noreferrer"
+                        as={'a'}
+                        href={oficialWebsite}
+                        icon={linkIcon}
+                      />
+                    ) : null}
+                    <Icon icon={trashIcon} onClick={handleDelete} />
+                  </ButtonsWrapper>
+                </div>
               </div>
             </ExtraWrapper>
           </UpperContainer>
