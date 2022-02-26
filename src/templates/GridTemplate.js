@@ -13,7 +13,7 @@ const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
   grid-gap: 2rem;
-  margin: 4rem auto 4rem ;
+  margin: 4rem auto 4rem;
   justify-items: center;
   justify-content: center;
   position: relative;
@@ -22,12 +22,6 @@ const StyledGrid = styled.div`
     notes &&
     css`
       grid-template-columns: repeat(auto-fill, 340px);
-    `}
-
-  ${({ quotes }) =>
-    quotes &&
-    css`
-      grid-template-columns: 1fr;
     `}
 `;
 
@@ -48,7 +42,7 @@ const GridTemplate = ({ children, pageContext }) => (
       {pageContext === 'notes' ? (
         <StyledGrid notes>{children}</StyledGrid>
       ) : pageContext === 'quotes' ? (
-        <StyledGrid quotes>{children}</StyledGrid>
+        <div>{children}</div>
       ) : (
         <StyledGrid>{children}</StyledGrid>
       )}
