@@ -25,7 +25,7 @@ export const InnerWrapper = styled.div`
   display: grid;
   align-items: center;
   grid-template-rows: auto 1fr;
-  gap: 20px;
+  gap: 40px;
 `;
 
 export const UpperContainer = styled.div`
