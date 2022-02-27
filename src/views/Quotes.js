@@ -1,4 +1,3 @@
-import React, { useState, useEffect, Children } from 'react';
 import Masonry from 'react-masonry-css';
 
 import './styles.css';
