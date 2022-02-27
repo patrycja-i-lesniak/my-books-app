@@ -13,6 +13,19 @@ export const Wrapper = styled.div`
   }
 `;
 
+export const IconWrapper = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  color: ${({ theme }) => theme.colors.grey};
+  z-index: 999;
+  cursor: pointer;
+
+  ${Wrapper}:hover & {
+    color: ${({ theme }) => theme.colors.white};
+  }
+`;
+
 export const StyledQuote = styled.p`
   color: ${({ theme }) => theme.colors.grey};
   font-size: 1.6rem;
@@ -27,7 +40,7 @@ export const StyledQuote = styled.p`
 
 export const StyledTitle = styled.p`
   color: ${({ theme }) => theme.colors.grey};
-  font-size: 1.6rem;
+  font-size: 1.4rem;
   color: ${({ theme }) => theme.colors.lipstick};
   text-align: center;
   margin-top: 10px 0 0;
