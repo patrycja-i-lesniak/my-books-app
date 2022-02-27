@@ -17,7 +17,7 @@ export const Wrapper = styled.div`
 export const IconWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 20px;
   color: ${({ theme }) => theme.colors.grey};
   z-index: 999;
   cursor: pointer;
