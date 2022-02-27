@@ -14,4 +14,6 @@ export const initialValues = {
   LClink: '',
   status: '',
   oficialWebsite: '',
+  author: '',
+  quote: '',
 };
