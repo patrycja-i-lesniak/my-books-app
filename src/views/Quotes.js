@@ -1,8 +1,10 @@
 import React, { useState, useEffect, Children } from 'react';
+import Masonry from 'react-masonry-css';
 
+import './styles.css';
 import GridTemplate from 'templates/GridTemplate';
 import { useFetchData } from 'customHooks';
-import GetData from 'GetData';
+import { QuoteCardSmall } from 'components/molecules/Card/index';
 
 const Quotes = () => {
   const data = {
@@ -11,9 +13,25 @@ const Quotes = () => {
     sort: [{ field: 'author', direction: 'asc' }],
   };
 
+  const breakpointColumnsObj = {
+    default: 3,
+    700: 2,
+    500: 1,
+  };
+
+  const { items } = useFetchData(data);
+
   return (
     <GridTemplate pageType="quotes">
-      <GetData data={data} />
+      <Masonry
+        breakpointCols={breakpointColumnsObj}
+        className="my-masonry-grid"
+        columnClassName="my-masonry-grid_column"
+      >
+        {items.map(item => (
+          <QuoteCardSmall item={item} key={item.id} />
+        ))}
+      </Masonry>
     </GridTemplate>
   );
 };
