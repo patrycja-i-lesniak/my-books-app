@@ -7,7 +7,7 @@ import withContext from 'hoc/withContext';
 const GetData = ({ data, pageContext }) => {
   const { items } = useFetchData(data);
 
-  return <>{items && items.map(item => <CardSmall item={item} key={item.id} />)}</>;
+  return <>{items && items.map(item => <CardSmall item={item} key={item.id} />)};</>;
 };
 
 GetData.propTypes = {
