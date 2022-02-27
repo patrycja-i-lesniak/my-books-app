@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Wrapper = styled.div`
+  border-top: 3px solid ${({ theme }) => theme.colors.lipstick};
   padding: 20px;
   transition: transform 0.3s;
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
