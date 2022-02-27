@@ -18,7 +18,10 @@ const ConfirmationPopup = ({ handleDeleteFalse, id, pageContext }) => {
 
           return;
         }
-        return console.log('Deleted record with id', id), history.goBack();
+        return (
+          console.log('Deleted record with id', id),
+          (<> {pageContext !== 'quotes' && history.goBack()}</>)
+        );
       });
     };
     return (
@@ -28,7 +31,7 @@ const ConfirmationPopup = ({ handleDeleteFalse, id, pageContext }) => {
         </Button>
       </div>
     );
-  }
+  };
 
   return (
     <StyledWrapper>
