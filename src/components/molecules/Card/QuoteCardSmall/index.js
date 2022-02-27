@@ -10,6 +10,7 @@ import {
   StyledQuote,
   StyledTitle,
   StyledAuthor,
+  Icon,
 } from './styled';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
@@ -19,7 +20,7 @@ const QuoteCardSmall = ({ item, pageContext }) => {
     show: false,
     id: null,
   });
-  const [randomID, setRandomID] = useState(String(Math.random()))
+  const [randomID, setRandomID] = useState(String(Math.random()));
 
   const id = item.id;
 
@@ -43,11 +44,13 @@ const QuoteCardSmall = ({ item, pageContext }) => {
     <>
       <Wrapper>
         <IconWrapper>
-          <FiEdit data-tip="edit" data-for={randomID} />
-
-          <FiTrash data-tip='delete' data-for={randomID} onClick={handleDelete} />
-
-          <ReactTooltip id={randomID} place="left" effect="float" multiline="false" type='light' />
+          <Icon data-tip="edit" data-for={randomID}>
+            <FiEdit />
+          </Icon>
+          <Icon data-tip="delete" data-for={randomID} onClick={handleDelete}>
+            <FiTrash />
+          </Icon>
+          <ReactTooltip id={randomID} place="left" effect="float" type="light" />
         </IconWrapper>
         <StyledQuote>{item.fields.quote}</StyledQuote>
         <StyledAuthor>{item.fields.author}</StyledAuthor>

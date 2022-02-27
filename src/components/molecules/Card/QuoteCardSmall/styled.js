@@ -21,10 +21,16 @@ export const IconWrapper = styled.div`
   color: ${({ theme }) => theme.colors.grey};
   z-index: 999;
   cursor: pointer;
+  
 
   ${Wrapper}:hover & {
     color: ${({ theme }) => theme.colors.white};
+
   }
+`;
+
+export const Icon = styled.div`
+outline: none;
 `;
 
 export const StyledQuote = styled.p`
