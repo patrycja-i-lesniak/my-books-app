@@ -1,12 +1,11 @@
 import PropTypes from 'prop-types';
 
-import { CardSmall, QuoteCard, QuoteCardSmall } from 'components/molecules/Card/index';
+import { CardSmall } from 'components/molecules/Card/index';
 import { useFetchData } from 'customHooks';
+import withContext from 'hoc/withContext';
 
-const GetData = data => {
+const GetData = ({ data, pageContext }) => {
   const { items } = useFetchData(data);
-
-  console.log('items from GetData:', items);
 
   return <>{items && items.map(item => <CardSmall item={item} key={item.id} />)}</>;
 };
@@ -16,4 +15,4 @@ GetData.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
-export default GetData;
+export default withContext(GetData);
