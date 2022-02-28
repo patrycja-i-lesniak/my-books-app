@@ -6,16 +6,8 @@ import { Formik, Form, Field } from 'formik';
 import api from 'api';
 import { validationSchema } from './validationSchema.js';
 import { initialValues } from './initialValues.js';
-import {
-  StyledWrapper,
-  Top,
-  Text,
-  Quote,
-  ButtonSmall,
-  QuoteWrapper,
-} from './styled.js';
+import { StyledWrapper, Top, Text, Quote, ButtonSmall, QuoteWrapper } from './styled.js';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
-import EditQuotePopup from 'components/molecules/Popups/EditQuotePopup/index.js';
 
 const Label = styled.label`
   width: 3rem;
@@ -43,31 +35,31 @@ const StyledForm = styled(Form)`
   }
 `;
 
-const QuoteCard = ({ quote }) => {
+const QuoteCard = item => {
   const [checked, setChecked] = useState(false);
 
   const toggleCheckbox = () => {
     setChecked(!checked);
   };
 
+  const [isEditPopupOpen, setEditPopupOpen] = useState(true);
 
-  // const [isEditPopupOpen, setEditPopupOpen] = useState(true);
+  const toggleEditPopup = () => {
+    setEditPopupOpen(!isEditPopupOpen);
+    console.log('Edit popup is open');
+  };
 
-  // const toggleEditPopup = () => {
-  //     setEditPopupOpen(!isEditPopupOpen);
-  //     console.log('Edit popup is open');
-  // };
+  const handleEditQuotePopupClose = () => {
+    setEditQuotePopupOpen(false);
+    console.log('Close EditQuotePopup');
+  };
 
-  // const handleEditQuotePopupClose = () => {
-  //   setEditQuotePopupOpen(false);
-  //   console.log('Close EditQuotePopup');
-  // };
-
+  console.log(item);
 
   return (
     <StyledWrapper>
       <Top />
-      <Formik
+      {/* <Formik
         initialValues={initialValues}
         validationSchema={validationSchema}
         onSubmit={async values => {
@@ -78,6 +70,9 @@ const QuoteCard = ({ quote }) => {
             records: [
               {
                 fields: {
+                  title: values.title,
+                  quote: values.quote,
+                  author: values.author,
                   checked: values.checked,
                 },
               },
@@ -102,8 +97,8 @@ const QuoteCard = ({ quote }) => {
         {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
           <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
             <Label forHtml="checked">
-              {checked ? <AiFillHeart  /> : <AiOutlineHeart type="submit" />}
-              <Checkbox 
+              {checked ? <AiFillHeart /> : <AiOutlineHeart type="submit" />}
+              <Checkbox
                 type="checkbox"
                 name="checked"
                 onChange={handleChange}
@@ -115,15 +110,16 @@ const QuoteCard = ({ quote }) => {
             </Label>
           </StyledForm>
         )}
-      </Formik>
-      <Quote>{quote.fields.quote}</Quote>
+      </Formik> */}
+
+      <Quote>{item.quote}</Quote>
       <QuoteWrapper>
         <ButtonSmall>edit</ButtonSmall>
-        <Text>{quote.fields.title}</Text>
+        <Text>{item.title}</Text>
       </QuoteWrapper>
       <QuoteWrapper>
         <ButtonSmall secondary>delete</ButtonSmall>
-        <Text>{quote.fields.author}</Text>
+        <Text>{item.author}</Text>
       </QuoteWrapper>
 
       {/* <EditQuotePopup isVisible={isEditPopupOpen} toggleEditPopup={toggleEditPopup} /> */}
@@ -132,7 +128,7 @@ const QuoteCard = ({ quote }) => {
 };
 
 QuoteCard.propTypes = {
-  quote: PropTypes.object.isRequired,
+  item: PropTypes.object,
 };
 
 export default QuoteCard;
