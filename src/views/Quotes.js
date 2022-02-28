@@ -14,7 +14,7 @@ const Quotes = () => {
 
   const breakpointColumnsObj = {
     default: 3,
-    700: 2,
+    850: 2,
     500: 1,
   };
 
