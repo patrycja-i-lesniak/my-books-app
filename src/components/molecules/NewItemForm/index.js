@@ -7,6 +7,7 @@ import {
   bookValidationSchema,
   authorValidationSchema,
   noteValidationSchema,
+  quoteValidationSchema,
 } from 'components/molecules/NewItemForm/validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
@@ -78,6 +79,8 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ? bookValidationSchema
           : pageContext === 'authors'
           ? authorValidationSchema
+          : pageContext === 'quotes'
+          ? quoteValidationSchema
           : noteValidationSchema
       }
       onSubmit={async (values, { resetForm }) => {
@@ -134,6 +137,18 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
           ],
         };
 
+        const quote = {
+          records: [
+            {
+              fields: {
+                title: values.title,
+                author: values.author,
+                quote: values.quote,
+              },
+            },
+          ],
+        };
+
         api
           .post(
             endpoint,
@@ -141,6 +156,8 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               ? (endpoint, book)
               : pageContext === 'authors'
               ? (endpoint, author)
+              : pageContext === 'quotes'
+              ? (endpoint, quote)
               : (endpoint, note),
           )
           .then(response => {
@@ -193,7 +210,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'notes' ? null : (
+          {pageContext === 'notes' || pageContext === 'quotes' ? null : (
             <InputWrapper>
               <DataWrapper>
                 <StyledLabel htmlFor="first name">first name</StyledLabel>
@@ -222,19 +239,20 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </InputWrapper>
           )}
 
-          <>
-            <StyledLabel htmlFor="image url">image url</StyledLabel>
-            <InputField
-              as="input"
-              type="url"
-              name="imageUrl"
-              onChange={handleChange}
-              onBlur={handleBlur}
-              value={values.imageUrl}
-            />
-
-            <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
-          </>
+          {pageContext === 'quotes' ? null : (
+            <>
+              <StyledLabel htmlFor="image url">image url</StyledLabel>
+              <InputField
+                as="input"
+                type="url"
+                name="imageUrl"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.imageUrl}
+              />
+              <ErrorMessage name="imageUrl">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          )}
 
           {pageContext === 'books' && (
             <>
@@ -251,7 +269,7 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
             </>
           )}
 
-          {pageContext === 'authors' ? null : (
+          {pageContext === 'authors' || pageContext === 'quotes' ? null : (
             <>
               <StyledLabel htmlFor="date">date of publication</StyledLabel>
               <InputField
@@ -359,18 +377,50 @@ const NewItemForm = ({ pageContext, toggleNewItemBar }) => {
               <ErrorMessage name="oficialWebsite">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
             </>
           )}
+          {pageContext === 'quotes' && (
+            <>
+              <StyledLabel htmlFor="author">author</StyledLabel>
+              <InputField
+                as="input"
+                type="text"
+                name="author"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.author}
+              />
+              <ErrorMessage name="author">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          )}
+          {pageContext === 'quotes' ? (
+            <>
+              <StyledLabel htmlFor="quote">quote</StyledLabel>
+              <InputField
+                textarea
+                type="text"
+                name="quote"
+                as="textarea"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.quote}
+              />
+              <ErrorMessage name="quote">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          ) : (
+            <>
+              <StyledLabel htmlFor="content">description</StyledLabel>
+              <InputField
+                textarea
+                type="text"
+                name="content"
+                as="textarea"
+                onChange={handleChange}
+                onBlur={handleBlur}
+                value={values.content}
+              />
+              <ErrorMessage name="content">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
+            </>
+          )}
 
-          <StyledLabel htmlFor="content">description</StyledLabel>
-          <InputField
-            textarea
-            type="text"
-            name="content"
-            as="textarea"
-            onChange={handleChange}
-            onBlur={handleBlur}
-            value={values.content}
-          />
-          <ErrorMessage name="content">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
           <StyledButton type="submit">Add new item</StyledButton>
         </StyledForm>
       )}
