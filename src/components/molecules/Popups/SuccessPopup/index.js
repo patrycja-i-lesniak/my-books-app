@@ -5,10 +5,10 @@ import closeIcon from 'assets/icons/close.svg';
 import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './styled';
 import withContext from 'hoc/withContext';
 
-const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
+const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemSlider }) => {
 
   const onClickActions = () => {
-    toggleNewItemBar(), handlePopupClose()
+    toggleNewItemSlider(), handlePopupClose()
   };
 
   return (
@@ -30,7 +30,7 @@ const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemBar }) => {
 SuccessPopup.propTypes = {
   handlePopupClose: PropTypes.func.isRequired,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
-  toggleNewItemBar: PropTypes.func,
+  toggleNewItemSlider: PropTypes.func,
   handleReset: PropTypes.func,
 };
 

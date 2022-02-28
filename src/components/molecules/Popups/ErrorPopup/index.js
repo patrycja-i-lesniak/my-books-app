@@ -6,9 +6,9 @@ import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './st
 import withContext from 'hoc/withContext';
 
 
-const ErrorPopup = ({ handlePopupClose, toggleNewItemBar, pageContext, handleReset }) => {
+const ErrorPopup = ({ handlePopupClose, toggleNewItemSlider, pageContext, handleReset }) => {
   const onClickActions = () => 
-  [toggleNewItemBar(), handleReset()
+  [toggleNewItemSlider(), handleReset()
   ];
   return (
     <StyledWrapper>
@@ -27,7 +27,7 @@ const ErrorPopup = ({ handlePopupClose, toggleNewItemBar, pageContext, handleRes
 };
 
 ErrorPopup.propTypes = {
-  toggleNewItemBar: PropTypes.func.isRequired,
+  toggleNewItemSlider: PropTypes.func.isRequired,
   handlePopupClose: PropTypes.func.isRequired,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   handleReset: PropTypes.func,

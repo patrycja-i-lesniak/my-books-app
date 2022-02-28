@@ -46,7 +46,7 @@ export const StyledParagraph = styled(Paragraph)`
   font-size: 1.7rem;
 `;
 
-export const CloseBarButton = styled(Button)`
+export const CloseSliderButton = styled(Button)`
   position: fixed;
   top: 43%;
   width: 50px;

@@ -22,12 +22,14 @@ import {
 } from './styled';
 import withContext from 'hoc/withContext';
 import { initialValues } from './initialValues';
+import { savedValues } from './savedValues';
 import { Options } from './Options';
 import api from 'api';
 
-const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
+const EditForm = ({ pageContext, toggleNewItemSlider }) => {
   const [popup, setPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [formValues, setFormValues] = useState(null);
 
   const handlePopupClose = () => {
     setPopup(false);
@@ -73,7 +75,8 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      //   initialValues={initialValues}
+      initialValues={formValues || initialValues}
       validationSchema={
         pageContext === 'books'
           ? bookValidationSchema
@@ -172,6 +175,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
             console.log('The form could not be sent.');
           });
       }}
+      enableReinitialize
     >
       {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
         <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
@@ -422,15 +426,18 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
           )}
 
           <StyledButton type="submit">Add new item</StyledButton>
+          <StyledButton type="buttont" onClick={() => setFormValues(savedValues)}>
+            Load saved data
+          </StyledButton>
         </StyledForm>
       )}
     </Formik>
   );
 };
 
-NewItemForm.propTypes = {
+EditForm.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   toggleNewItemSlider: PropTypes.func,
 };
 
-export default withContext(NewItemForm);
+export default withContext(EditForm);

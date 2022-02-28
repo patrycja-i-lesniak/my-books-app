@@ -6,7 +6,7 @@ import { useLocation } from 'react-router';
 import plusIcon from 'assets/icons/plus.svg';
 import PageContext from 'context';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import NewItemBar from 'components/organisms/NewItemBar';
+import NewItemSlider from 'components/organisms/Sliders/NewItemSlider';
 import { GlobalStyle, StyledBackdrop } from 'theme/GlobalStyle';
 import { theme } from 'theme/theme';
 
@@ -22,12 +22,12 @@ const StyledButtonIcon = styled(ButtonIcon)`
 `;
 
 const MainTemplate = ({ children }) => {
-  const [isNewItemBarVisible, setNewItemBarVisible] = useState(false);
+  const [isNewItemSliderVisible, setNewItemSliderVisible] = useState(false);
 
   const pageType = useGetCurrentPage();
 
-  const toggleNewItemBar = () => {
-    setNewItemBarVisible(!isNewItemBarVisible);
+  const toggleNewItemSlider = () => {
+    setNewItemSliderVisible(!isNewItemSliderVisible);
   };
 
   return (
@@ -36,11 +36,11 @@ const MainTemplate = ({ children }) => {
         <GlobalStyle />
         <ThemeProvider theme={theme}>
           {children}
-          <NewItemBar isVisible={isNewItemBarVisible} toggleNewItemBar={toggleNewItemBar} />
-          {pageType === 'home' || isNewItemBarVisible ? null : (
-            <StyledButtonIcon icon={plusIcon} onClick={toggleNewItemBar} />
+          <NewItemSlider isVisible={isNewItemSliderVisible} toggleNewItemSlider={toggleNewItemSlider} />
+          {pageType === 'home' || isNewItemSliderVisible ? null : (
+            <StyledButtonIcon icon={plusIcon} onClick={toggleNewItemSlider} />
           )}
-          {isNewItemBarVisible && <StyledBackdrop onClick={toggleNewItemBar} />}
+          {isNewItemSliderVisible && <StyledBackdrop onClick={toggleNewItemSlider} />}
         </ThemeProvider>
       </PageContext.Provider>
     </div>
