@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { FiEdit, FiTrash } from 'react-icons/fi';
+import ReactTooltip from 'react-tooltip';
 
 import {
   Wrapper,
@@ -9,6 +10,7 @@ import {
   StyledQuote,
   StyledTitle,
   StyledAuthor,
+  Icon,
 } from './styled';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
@@ -18,6 +20,7 @@ const QuoteCardSmall = ({ item, pageContext }) => {
     show: false,
     id: null,
   });
+  const [randomID, setRandomID] = useState(String(Math.random()));
 
   const id = item.id;
 
@@ -41,8 +44,13 @@ const QuoteCardSmall = ({ item, pageContext }) => {
     <>
       <Wrapper>
         <IconWrapper>
-          <FiEdit />
-          <FiTrash onClick={handleDelete} />
+          <Icon data-tip="edit" data-for={randomID}>
+            <FiEdit />
+          </Icon>
+          <Icon data-tip="delete" data-for={randomID} onClick={handleDelete}>
+            <FiTrash />
+          </Icon>
+          <ReactTooltip id={randomID} place="left" effect="float" type="light" />
         </IconWrapper>
         <StyledQuote>{item.fields.quote}</StyledQuote>
         <StyledAuthor>{item.fields.author}</StyledAuthor>

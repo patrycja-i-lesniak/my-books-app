@@ -7,7 +7,6 @@ export const Wrapper = styled.div`
   box-shadow: ${({ theme }) => theme.shadows.boxShadow};
   background-color: ${({ theme }) => theme.colors.white};
   position: relative;
-
   &:hover {
     transform: scale(1.01);
     background-color: ${({ theme }) => theme.colors.lipstick};
@@ -17,7 +16,7 @@ export const Wrapper = styled.div`
 export const IconWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 10px;
+  gap: 20px;
   color: ${({ theme }) => theme.colors.grey};
   z-index: 999;
   cursor: pointer;
@@ -27,13 +26,16 @@ export const IconWrapper = styled.div`
   }
 `;
 
+export const Icon = styled.div`
+  outline: none;
+`;
+
 export const StyledQuote = styled.p`
   color: ${({ theme }) => theme.colors.grey};
   font-size: 1.6rem;
   font-weight: ${({ theme }) => theme.font.bold};
   text-align: center;
   margin-top: 10px 0 0;
-
   ${Wrapper}:hover & {
     color: ${({ theme }) => theme.colors.white};
   }
@@ -46,7 +48,6 @@ export const StyledTitle = styled.p`
   text-align: center;
   margin-top: 10px 0 0;
   font-style: italic;
-
   ${Wrapper}:hover & {
     color: ${({ theme }) => theme.colors.white};
   }
@@ -58,7 +59,6 @@ export const StyledAuthor = styled.p`
   font-weight: ${({ theme }) => theme.font.regular};
   margin: 0;
   text-align: center;
-
   ${Wrapper}:hover & {
     color: ${({ theme }) => theme.colors.black};
   }
