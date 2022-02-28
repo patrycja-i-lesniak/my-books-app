@@ -6,7 +6,7 @@ import {
   StyledParagraph, 
   CloseBarButton } 
   from './styled';
-import NewItemForm from 'components/molecules/NewItemForm';
+import NewItemForm from 'components/molecules/Forms/NewItemForm';
 import withContext from 'hoc/withContext';
 
 const NewItemBar = ({ isVisible, pageContext, toggleNewItemBar }) => (

@@ -8,7 +8,7 @@ import {
   authorValidationSchema,
   noteValidationSchema,
   quoteValidationSchema,
-} from 'components/molecules/NewItemForm/validationSchema';
+} from 'components/molecules/Forms/validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
 import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
