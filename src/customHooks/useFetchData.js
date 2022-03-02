@@ -25,6 +25,9 @@ const useFetchData = data => {
           }
         },
       );
+    return () => {
+      base;
+    };
   }, [pageSize, sort, table]);
 
   return {
