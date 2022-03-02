@@ -2,20 +2,20 @@ import { useState, useEffect } from 'react';
 import { base } from 'airtable/base';
 
 const useFetchDetailsData = id => {
-  const [data, setData] = useState({ status: 'loading', data: null });
+  const [itemData, setItemData] = useState({ status: 'loading', data: null });
   useEffect(() => {
     base('books').find(`${id}`, function (err, record) {
       if (err) {
         console.error(err);
         return;
       }
-      setData(record);
+      setItemData(record);
       console.log('Retrieved', record);
     });
   }, [id]);
   return {
-    data,
-    setData,
+    itemData,
+    setItemData,
   };
 };
 
