@@ -14,15 +14,18 @@ import {
 } from './styled';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
+import { useFetchDetailsData } from 'customHooks';
 
 const QuoteCardSmall = ({ item, pageContext }) => {
   const [popup, setPopup] = useState({
     show: false,
     id: null,
   });
-  const [randomID, setRandomID] = useState(String(Math.random()));
 
-  const id = item.id;
+  const [randomID, setRandomID] = useState(String(Math.random()));
+  const [editItem, setEditItem] = useState();
+
+  const { id } = item;
 
   const handleDelete = id => {
     setPopup({
@@ -40,12 +43,17 @@ const QuoteCardSmall = ({ item, pageContext }) => {
     console.log('Close popup');
   };
 
+  const handleGetEditItemId = id => {
+    const editItem = item.id;
+    console.log(editItem);
+  };
+
   return (
     <>
       <Wrapper>
         <IconWrapper>
           <Icon data-tip="edit" data-for={randomID}>
-            <FiEdit />
+            <FiEdit onClick={handleGetEditItemId} />
           </Icon>
           <Icon data-tip="delete" data-for={randomID} onClick={handleDelete}>
             <FiTrash />
