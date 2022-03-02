@@ -6,9 +6,8 @@ import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './st
 import withContext from 'hoc/withContext';
 
 const SuccessPopup = ({ handlePopupClose, pageContext, toggleNewItemSlider }) => {
-
   const onClickActions = () => {
-    toggleNewItemSlider(), handlePopupClose()
+    toggleNewItemSlider(), handlePopupClose();
   };
 
   return (

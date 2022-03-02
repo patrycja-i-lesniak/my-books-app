@@ -5,11 +5,9 @@ import closeIcon from 'assets/icons/close.svg';
 import { StyledWrapper, ButtonWrapper, StyledParagraph, CloseButton } from './styled';
 import withContext from 'hoc/withContext';
 
-
 const ErrorPopup = ({ handlePopupClose, toggleNewItemSlider, pageContext, handleReset }) => {
-  const onClickActions = () => 
-  [toggleNewItemSlider(), handleReset()
-  ];
+  const onClickActions = () => [toggleNewItemSlider(), handleReset()];
+
   return (
     <StyledWrapper>
       <StyledParagraph>The item could not be added. </StyledParagraph>
