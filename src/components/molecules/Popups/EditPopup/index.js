@@ -4,12 +4,13 @@ import { useState, useHistory } from 'react-router-dom';
 import Button from 'components/atoms/Button/Button';
 import Header from 'components/atoms/Header/Header';
 import closeIcon from 'assets/icons/close.svg';
-import { StyledWrapper, CloseButton, ButtonWrapper } from './styled';
+import { StyledWrapper, CloseButton, ButtonWrapper, FormWrapper } from './styled';
 import { base } from 'airtable/base';
-import trashIcon from 'assets/icons/trash.svg';
 import withContext from 'hoc/withContext';
 
-import EditForm from 'components/molecules/Forms/EditForm/index';
+import EditForm from 'components/molecules/Forms/EditForm';
+
+// czy pageContext jest wykorzystywany?
 
 const EditPopup = ({ closeEditPopup, itemData, pageContext }) => {
   const id = itemData.id;
@@ -60,11 +61,9 @@ const EditPopup = ({ closeEditPopup, itemData, pageContext }) => {
     <StyledWrapper>
       <Header secondary>Edit item</Header>
       <CloseButton icon={closeIcon} onClick={closeEditPopup} />
-
-      <div>
-        {/* <EditForm /> */}
-        miejsce na edit form
-      </div>
+      <FormWrapper>
+       <EditForm itemData={itemData}/>
+      </FormWrapper>
       <ButtonWrapper>
         {/* <EditButton>Edit item</EditButton> */}
         <Button>Saved Data</Button>

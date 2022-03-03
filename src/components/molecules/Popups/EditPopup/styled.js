@@ -10,17 +10,13 @@ export const StyledWrapper = styled.div`
   right: 0;
   top: 50%;
   margin: 0 auto;
-  width: 70vw;
   max-width: 500px;
-  min-height: 500px;
   max-height: 700px;
-  align-items: center;
-  justify-content: space-between;
+ 
   background-color: ${({ theme }) => theme.colors.white};
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
   z-index: 99999;
   padding: 30px;
-  overflow: auto;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
     width: 90%;
@@ -35,6 +31,14 @@ export const CloseButton = styled(ButtonIcon)`
   width: 32px;
   height: 32px;
   box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
+`;
+
+export const FormWrapper = styled.div`
+  display: flex;
+  overflow: auto;
+  align-items: center;
+  justify-content: center;
+  align-items: stretch;
 `;
 
 export const ButtonWrapper = styled.div`
