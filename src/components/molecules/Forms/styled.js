@@ -51,9 +51,7 @@ export const InputField = styled(Field)`
     textarea &&
     css`
       height: 12rem;
-
       line-height: 1.5;
-
       resize: none;
       outline: none;
       width: 100%;
