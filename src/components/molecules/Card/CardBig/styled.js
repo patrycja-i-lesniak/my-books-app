@@ -173,6 +173,8 @@ export const Icon = styled(ButtonIcon)`
   width: 50px;
   height: 50px;
   border-radius: 50%;
+  font-size: 2.2rem;
+  color: ${({ theme }) => theme.colors.white};
 `;
 
 export const Status = styled(Icon)`

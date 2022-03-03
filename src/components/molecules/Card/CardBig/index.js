@@ -27,11 +27,19 @@ import lcLogo from 'assets/icons/lcLogo.svg';
 import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
+import EditPopup from 'components/molecules/Popups/EditPopup';
 import withContext from 'hoc/withContext';
+import { FiEdit, FiTrash } from 'react-icons/fi';
+import ReactTooltip from 'react-tooltip';
 
 const CardBig = ({ itemData, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
-  const [popup, setPopup] = useState({
+  const [randomID, setRandomID] = useState(String(Math.random()));
+  const [confirmationPopup, setConfirmationPopup] = useState({
+    show: false,
+    id: null,
+  });
+  const [editPopup, setEditPopup] = useState({
     show: false,
     id: null,
   });
@@ -39,22 +47,36 @@ const CardBig = ({ itemData, pageContext }) => {
   const id = itemData.id;
 
   const handleDelete = id => {
-    setPopup({
+    setConfirmationPopup({
       show: true,
       id,
     });
-    console.log('open popup');
+    console.log('Open confirmation popup');
   };
 
   const handleDeleteFalse = () => {
-    setPopup({
+    setConfirmationPopup({
       show: false,
       id: null,
     });
-    console.log('Close popup');
+    console.log('Close confirmation popup');
   };
 
-  console.log('ITEM DATA from BigCard', itemData);
+  const openEditPopup = id => {
+    setEditPopup({
+      show: true,
+      id,
+    });
+    console.log('Open edit popup');
+  };
+
+  const closeEditPopup = () => {
+    setEditPopup({
+      show: false,
+      id: null,
+    });
+    console.log('Close edit popup');
+  };
 
   const {
     status,
@@ -114,7 +136,7 @@ const CardBig = ({ itemData, pageContext }) => {
 
                     <DataWrapper>
                       <Label>pages:</Label>
-                      <StyledData>{itemData.numberOfPages}</StyledData>
+                      <StyledData>{numberOfPages}</StyledData>
                     </DataWrapper>
 
                     <DataWrapper>
@@ -148,6 +170,10 @@ const CardBig = ({ itemData, pageContext }) => {
                       />
                     ) : null}
                     <Icon icon={trashIcon} onClick={handleDelete} />
+                    <Icon data-tip="edit" data-for={randomID}>
+                      <FiEdit onClick={openEditPopup} />
+                      <ReactTooltip id={randomID} place="top" effect="float" type="dark" />
+                    </Icon>
                   </ButtonsWrapper>
                 </div>
               </div>
@@ -169,9 +195,10 @@ const CardBig = ({ itemData, pageContext }) => {
             <LowerContainer>{content}</LowerContainer>
           )}
         </InnerWrapper>
-        {popup.show && (
+        {confirmationPopup.show && (
           <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={itemData} id={id} />
         )}
+        {editPopup.show && <EditPopup closeEditPopup={closeEditPopup} itemData={itemData} />}
       </Wrapper>
     </>
   );
@@ -180,6 +207,7 @@ const CardBig = ({ itemData, pageContext }) => {
 CardBig.propTypes = {
   itemData: PropTypes.object,
   handleDelete: PropTypes.func,
+  handleCloseEdit: PropTypes.func,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
 };
 
