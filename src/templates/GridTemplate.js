@@ -10,20 +10,6 @@ import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
 import QuotesBox from 'components/organisms/QuotesBox';
 import { capitalizeFirstLetter } from 'helpers/capitalizeFirstLetter';
 
-import NewItemSlider from 'components/organisms/NewItemSlider';
-import { StyledBackdrop } from 'theme/GlobalStyle';
-import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
-import plusIcon from 'assets/icons/plus.svg';
-
-const StyledButtonIcon = styled(ButtonIcon)`
-  border-radius: 50%;
-  position: fixed;
-  bottom: 100px;
-  right: 20px;
-  z-index: 999;
-  box-shadow: ${({ theme }) => theme.shadows.boxShadowDark};
-`;
-
 const StyledGrid = styled.div`
   display: grid;
   grid-template-columns: repeat(auto-fill, 200px);
@@ -40,47 +26,28 @@ const StyledGrid = styled.div`
     `}
 `;
 
-const GridTemplate = ({ children, pageContext }) => {
-  const [isNewItemSliderVisible, setNewItemSliderVisible] = useState(false);
-
-  const toggleNewItemSlider = () => {
-    setNewItemSliderVisible(!isNewItemSliderVisible);
-  };
-
-  return (
-    <UserPageTemplate>
-      <Container>
-        {pageContext === 'home' ? (
-          <>
-            <QuotesBox />
-            <RotaryBox />
-
-            <Header>Last added books</Header>
-          </>
-        ) : (
-          <Header>{capitalizeFirstLetter(pageContext)}</Header>
-        )}
-
-        {pageContext === 'notes' ? (
-          <StyledGrid notes>{children}</StyledGrid>
-        ) : pageContext === 'quotes' ? (
-          <div>{children}</div>
-        ) : (
-          <StyledGrid>{children}</StyledGrid>
-        )}
-
-        <NewItemSlider
-          isVisible={isNewItemSliderVisible}
-          toggleNewItemSlider={toggleNewItemSlider}
-        />
-        {pageContext === 'home' || isNewItemSliderVisible ? null : (
-          <StyledButtonIcon icon={plusIcon} onClick={toggleNewItemSlider} />
-        )}
-        {isNewItemSliderVisible && <StyledBackdrop onClick={toggleNewItemSlider} />}
-      </Container>
-    </UserPageTemplate>
-  );
-};
+const GridTemplate = ({ children, pageContext }) => (
+  <UserPageTemplate>
+    <Container>
+      {pageContext === 'home' ? (
+        <>
+          <QuotesBox />
+          <RotaryBox />
+          <Header>Last added books</Header>
+        </>
+      ) : (
+        <Header>{capitalizeFirstLetter(pageContext)}</Header>
+      )}
+      {pageContext === 'notes' ? (
+        <StyledGrid notes>{children}</StyledGrid>
+      ) : pageContext === 'quotes' ? (
+        <div>{children}</div>
+      ) : (
+        <StyledGrid>{children}</StyledGrid>
+      )}
+    </Container>
+  </UserPageTemplate>
+);
 
 GridTemplate.propTypes = {
   children: PropTypes.node,
