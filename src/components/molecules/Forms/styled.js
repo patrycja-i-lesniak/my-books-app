@@ -1,6 +1,6 @@
 import styled, { css } from 'styled-components';
 import { Form, Field } from 'formik';
-import Button from 'components/atoms/Button/Button';
+
 
 export const StyledForm = styled(Form)`
   display: flex;
@@ -11,15 +11,6 @@ export const StyledForm = styled(Form)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     width: 80%;
-  }
-`;
-
-export const StyledButton = styled(Button)`
-  margin: 10px auto 120px;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
-    display: inline-block;
-    margin: 10px auto 100px;
   }
 `;
 
@@ -94,5 +85,7 @@ export const DataWrapper = styled.div`
 
 export const ButtonWrapper = styled.div`
   display: flex;
+  justify-content: center;
   padding-top: 20px;
+  gap: 50px;
 `;
