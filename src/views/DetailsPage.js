@@ -1,6 +1,5 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
-
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -19,8 +18,8 @@ const StyledButton = styled(Button)`
 
 const DetailsPage = pageContext => {
   const { id } = useParams();
-  const { itemData } = useFetchDetailsData(id);
   const history = useHistory();
+  const { itemData } = useFetchDetailsData(id);
 
   return (
     <DetailsPageTemplate>

@@ -10,10 +10,8 @@ const DetailsPageTemplate = ({ children, pageContext }) => (
 );
 
 DetailsPageTemplate.propTypes = {
-  pageContext: PropTypes.oneOf(['home','books', 'authors', 'notes', 'quotes']),
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   children: PropTypes.object,
 };
 
 export default withContext(DetailsPageTemplate);
-
-
