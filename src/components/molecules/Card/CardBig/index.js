@@ -39,10 +39,6 @@ const CardBig = ({ itemData, pageContext }) => {
     show: false,
     id: null,
   });
-  const [editPopup, setEditPopup] = useState({
-    show: false,
-    id: null,
-  });
 
   const id = itemData.id;
 
@@ -60,22 +56,6 @@ const CardBig = ({ itemData, pageContext }) => {
       id: null,
     });
     console.log('Close confirmation popup');
-  };
-
-  const openEditPopup = id => {
-    setEditPopup({
-      show: true,
-      id,
-    });
-    console.log('Open edit popup');
-  };
-
-  const closeEditPopup = () => {
-    setEditPopup({
-      show: false,
-      id: null,
-    });
-    console.log('Close edit popup');
   };
 
   const {
@@ -170,10 +150,6 @@ const CardBig = ({ itemData, pageContext }) => {
                       />
                     ) : null}
                     <Icon icon={trashIcon} onClick={handleDelete} />
-                    <Icon data-tip="edit" data-for={randomID}>
-                      <FiEdit onClick={openEditPopup} />
-                      <ReactTooltip id={randomID} place="top" effect="float" type="dark" />
-                    </Icon>
                   </ButtonsWrapper>
                 </div>
               </div>
@@ -198,7 +174,6 @@ const CardBig = ({ itemData, pageContext }) => {
         {confirmationPopup.show && (
           <ConfirmationPopup handleDeleteFalse={handleDeleteFalse} item={itemData} id={id} />
         )}
-        {editPopup.show && <EditPopup closeEditPopup={closeEditPopup} itemData={itemData} />}
       </Wrapper>
     </>
   );
