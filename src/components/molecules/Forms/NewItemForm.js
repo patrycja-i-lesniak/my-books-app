@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, ErrorMessage } from 'formik';
-import PropTypes, { any } from 'prop-types';
-import { useHistory } from 'react-router-dom';
+import PropTypes from 'prop-types';
+import { useHistory, useParams } from 'react-router-dom';
 
 import {
   bookValidationSchema,
@@ -14,20 +14,27 @@ import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
 import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
 import {
   StyledForm,
-  StyledButton,
   InputField,
   StyledLabel,
   InputWrapper,
   DataWrapper,
+  ButtonWrapper,
 } from './styled';
+import Button from 'components/atoms/Button/Button';
 import withContext from 'hoc/withContext';
 import { initialValues } from './initialValues';
 import { Options } from './Options';
-import api from 'api';
+import { base } from 'airtable/base';
+import { useFetchDetailsData } from 'customHooks';
 
 const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
   const [popup, setPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
+  const [formValues, setFormValues] = useState('');
+
+  const { id } = useParams();
+  const { itemData } = useFetchDetailsData(id);
+  const savedData = itemData.fields;
 
   const handlePopupClose = () => {
     setPopup(false);
@@ -36,7 +43,6 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
   };
 
   const endpoint = `/${pageContext}`;
-
   const history = useHistory();
 
   // VER.1
@@ -73,7 +79,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
 
   return (
     <Formik
-      initialValues={initialValues}
+      initialValues={formValues ? formValues : initialValues}
       validationSchema={
         pageContext === 'books'
           ? bookValidationSchema
@@ -86,94 +92,95 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
       onSubmit={async (values, { resetForm }) => {
         handleSuccess();
 
-        console.log(values);
-
         const book = {
-          records: [
-            {
-              fields: {
-                title: values.title,
-                firstName: values.firstName,
-                lastName: values.lastName,
-                imageUrl: values.imageUrl,
-                series: values.series,
-                date: values.date,
-                numberOfPages: values.numberOfPages,
-                isbn: values.isbn,
-                translation: values.translation,
-                publishing: values.publishing,
-                status: values.status,
-                content: values.content,
-                LClink: values.LClink,
-              },
-            },
-          ],
+          title: values.title,
+          firstName: values.firstName,
+          lastName: values.lastName,
+          imageUrl: values.imageUrl,
+          series: values.series,
+          date: values.date,
+          numberOfPages: values.numberOfPages,
+          isbn: values.isbn,
+          translation: values.translation,
+          publishing: values.publishing,
+          status: values.status,
+          content: values.content,
+          LClink: values.LClink,
         };
 
         const author = {
-          records: [
-            {
-              fields: {
-                firstName: values.firstName,
-                lastName: values.lastName,
-                content: values.content,
-                imageUrl: values.imageUrl,
-                oficialWebsite: values.oficialWebsite,
-              },
-            },
-          ],
+          firstName: values.firstName,
+          lastName: values.lastName,
+          content: values.content,
+          imageUrl: values.imageUrl,
+          oficialWebsite: values.oficialWebsite,
         };
 
         const note = {
-          records: [
-            {
-              fields: {
-                title: values.title,
-                imageUrl: values.imageUrl,
-                date: values.date,
-                content: values.content,
-              },
-            },
-          ],
+          title: values.title,
+          imageUrl: values.imageUrl,
+          date: values.date,
+          content: values.content,
         };
 
         const quote = {
-          records: [
-            {
-              fields: {
-                title: values.title,
-                author: values.author,
-                quote: values.quote,
-              },
-            },
-          ],
+          title: values.title,
+          author: values.author,
+          quote: values.quote,
         };
 
-        api
-          .post(
-            endpoint,
-            pageContext === 'books'
-              ? (endpoint, book)
-              : pageContext === 'authors'
-              ? (endpoint, author)
-              : pageContext === 'quotes'
-              ? (endpoint, quote)
-              : (endpoint, note),
-          )
-          .then(response => {
-            setPopup(true);
-            resetForm();
-            console.log(response);
-            console.log('Successfully submitted.');
-          })
-          .catch(err => {
-            setErrorPopup(true);
-            console.error(err);
-            console.log('The form could not be sent.');
-          });
+        const FormAction = () => {
+          const minifyRecord = record => {
+            return {
+              id: record.id,
+              fields: record.fields,
+            };
+          };
+          if (!id) {
+            const createRecord = async fields => {
+              const createdRecord = await base(pageContext).create(fields);
+              console.log('Succesful created the record');
+              setPopup(true);
+            };
+            createRecord(
+              pageContext === 'books'
+                ? book
+                : pageContext === 'authors'
+                ? author
+                : pageContext === 'quotes'
+                ? quote
+                : note,
+            ),
+              function (err, records) {
+                if (err) {
+                  console.error(err);
+                  return;
+                }
+              };
+          } else {
+            const updateRecord = async (id, fields) => {
+              const updatedRecord = await base(pageContext).update(id, fields);
+              console.log('Succesfull updated the record');
+              setPopup(true);
+            };
+            updateRecord(
+              id,
+              pageContext === 'books'
+                ? book
+                : pageContext === 'authors'
+                ? author
+                : pageContext === 'quotes'
+                ? quote
+                : note,
+            );
+          }
+        };
+
+        FormAction();
       }}
+      enableReinitialize={true}
     >
-      {({ values, handleChange, handleBlur, handleSubmit, handleReset }) => (
+      {({ values, handleChange, handleBlur, handleSubmit, handleReset, setFieldValue }) => (
         <StyledForm method="POST" autoComplete="off" onSubmit={handleSubmit}>
           <>
             {errorPopup && (
@@ -300,7 +307,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
                   <ErrorMessage name="isbn">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
                 </DataWrapper>
                 <DataWrapper>
-                  <StyledLabel htmlFor="number of pages">number of pages</StyledLabel>
+                  <StyledLabel htmlFor="number of pages">pages</StyledLabel>
                   <InputField
                     as="input"
                     type="number"
@@ -420,8 +427,18 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
               <ErrorMessage name="content">{msg => <RequiredBox msg={msg} />}</ErrorMessage>
             </>
           )}
-
-          <StyledButton type="submit">Add new item</StyledButton>
+          {id ? (
+            <ButtonWrapper>
+              <Button secondary type="button" onClick={() => setFormValues(savedData)}>
+                Load saved data
+              </Button>
+              <Button type="submit">Edit {pageContext && pageContext.slice(0, -1)}</Button>
+            </ButtonWrapper>
+          ) : (
+            <ButtonWrapper>
+              <Button type="submit">Add new item</Button>
+            </ButtonWrapper>
+          )}
         </StyledForm>
       )}
     </Formik>
