@@ -27,7 +27,6 @@ import lcLogo from 'assets/icons/lcLogo.svg';
 import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
-import EditPopup from 'components/molecules/Popups/EditPopup';
 import withContext from 'hoc/withContext';
 import { FiEdit, FiTrash } from 'react-icons/fi';
 import ReactTooltip from 'react-tooltip';
