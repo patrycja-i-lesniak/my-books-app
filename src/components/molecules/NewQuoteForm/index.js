@@ -5,8 +5,7 @@ import { Formik, ErrorMessage } from 'formik';
 import api from 'api';
 import { validationSchema } from './validationSchema';
 import RequiredBox from 'components/molecules/RequredBox/RequiredBox';
-import ErrorPopup from 'components/molecules/Popups/ErrorPopup';
-import SuccessPopup from 'components/molecules/Popups/SuccessPopup';
+import { ErrorPopup, SuccessPopup } from 'components/molecules/Popups';
 import { StyledForm, StyledButton, InputField, StyledLabel, Checkbox, Label } from './styled';
 import { initialValues } from 'components/molecules/NewQuoteForm/initialValues';
 import { AiFillHeart, AiOutlineHeart } from 'react-icons/ai';
@@ -16,7 +15,6 @@ const NewQuoteForm = (...props) => {
   const [errorPopup, setErrorPopup] = useState(false);
   const [checked, setChecked] = useState(false);
   const [state, setState] = useState();
-
 
   const toggleCheckbox = () => {
     setChecked(!checked);
