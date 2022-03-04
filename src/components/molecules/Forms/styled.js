@@ -91,3 +91,8 @@ export const DataWrapper = styled.div`
   gap: 0.7rem;
   width: 49%;
 `;
+
+export const ButtonWrapper = styled.div`
+  display: flex;
+  padding-top: 20px;
+`;
