@@ -4,7 +4,7 @@ import GetData  from 'GetData';
 const Notes = () => {
   const data = {
     table: 'notes',
-    pageSize: 6,
+    pageSize: 100,
     sort: [{ field: 'date', direction: 'asc' }],
   };
 
