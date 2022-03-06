@@ -6,6 +6,7 @@ const Authors = () => {
     table: 'authors',
     pageSize: 100,
     sort: [{ field: 'lastName' }],
+    filterByFormula: '',
   };
 
   return (

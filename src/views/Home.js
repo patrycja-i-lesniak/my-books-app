@@ -6,6 +6,7 @@ const Home = () => {
     table: 'books',
     pageSize: 100,
     sort: [{ field: 'title', direction: 'asc' }],
+    filterByFormula: '',
   };
 
   return (

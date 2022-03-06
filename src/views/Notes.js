@@ -6,6 +6,7 @@ const Notes = () => {
     table: 'notes',
     pageSize: 100,
     sort: [{ field: 'date', direction: 'asc' }],
+    filterByFormula: '',
   };
 
   return (

@@ -3,7 +3,7 @@ import { base } from 'airtable/base';
 
 const useFetchData = data => {
   const [items, setItems] = useState([]);
-  const { table, pageSize, sort } = data;
+  const { table, pageSize, sort, filterByFormula } = data;
 
   useEffect(() => {
     base(`${table}`)
@@ -11,7 +11,7 @@ const useFetchData = data => {
         view: 'Grid view',
         pageSize: pageSize,
         sort: sort,
-        // filterByFormula: {filterByFormula}
+        filterByFormula: filterByFormula,
       })
       .eachPage(
         (records, fetchNextPage) => {
@@ -28,7 +28,7 @@ const useFetchData = data => {
     return () => {
       base;
     };
-  }, [pageSize, sort, table]);
+  }, [pageSize, sort, table, filterByFormula]);
 
   return {
     items,

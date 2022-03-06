@@ -10,6 +10,7 @@ const Quotes = () => {
     table: 'quotes',
     pageSize: 100,
     sort: [{ field: 'author', direction: 'asc' }],
+    filterByFormula: '',
   };
 
   const breakpointColumnsObj = {
