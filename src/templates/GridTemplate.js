@@ -9,22 +9,7 @@ import withContext from 'hoc/withContext';
 import RotaryBox from 'components/molecules/RotaryBox/RotaryBox';
 import QuotesBox from 'components/organisms/QuotesBox';
 import { capitalizeFirstLetter } from 'helpers/capitalizeFirstLetter';
-
-const StyledGrid = styled.div`
-  display: grid;
-  grid-template-columns: repeat(auto-fill, 200px);
-  grid-gap: 2rem;
-  margin: 4rem auto 4rem;
-  justify-items: center;
-  justify-content: center;
-  position: relative;
-
-  ${({ notes }) =>
-    notes &&
-    css`
-      grid-template-columns: repeat(auto-fill, 340px);
-    `}
-`;
+import { StyledGrid } from 'components/atoms/StyledGrid';
 
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
