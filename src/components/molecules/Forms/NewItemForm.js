@@ -138,7 +138,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
             const createRecord = async fields => {
               const createdRecord = await base(pageContext).create(fields);
               console.log('Succesful created the record');
-              setSuccessPopup(!successPopup);
+              setSuccessPopup(true);
             };
             createRecord(
               pageContext === 'books'
@@ -152,7 +152,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
               function (err, records) {
                 if (err) {
                   console.error(err);
-                  setErrorPopup(true)
+                  setErrorPopup(true);
                   return;
                 }
               };
@@ -450,6 +450,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
 NewItemForm.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   toggleNewItemSlider: PropTypes.func,
+  id: PropTypes.string,
 };
 
 export default withContext(NewItemForm);
