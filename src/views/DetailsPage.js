@@ -1,25 +1,63 @@
 import PropTypes from 'prop-types';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { useHistory, useParams } from 'react-router-dom';
 import styled from 'styled-components';
 
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import Loader from 'components/atoms/Loader';
 import Error from 'components/atoms/Error';
-import { CardBig } from 'components/molecules/Card';
+import { CardBig, CardSmall } from 'components/molecules/Card';
 import Button from 'components/atoms/Button/Button';
 import withContext from 'hoc/withContext';
-import { useFetchDetailsData } from 'customHooks';
+import { useFetchDetailsData, useFetchData } from 'customHooks';
 import { IoMdArrowDropleft } from 'react-icons/io';
+import GetData from 'GetData';
+import Header from 'components/atoms/Header/Header';
+import { StyledGrid } from 'components/atoms/StyledGrid';
 
 const StyledButton = styled(Button)`
   margin: 20px 0;
 `;
 
-const DetailsPage = pageContext => {
+const DetailsPage = (pageContext) => {
   const { id } = useParams();
-  const history = useHistory();
   const { itemData } = useFetchDetailsData(id);
+  const history = useHistory();
+
+ 
+
+  // const {lastName} = itemData.fields;
+
+  const data = {
+    table: 'books',
+    pageSize: 100,
+    sort: [{ field: 'title', direction: 'asc' }],
+    filterByFormula: ''
+    // '({lastName} = "${lastName}")',
+  };
+const {items} = useFetchData(data) ;
+
+  //"${lastName}"
+  // console.log(lastName)
+  // const series  = itemData.series;
+
+  // const dataBook = {
+  //   table: 'books',
+  //   pageSize: 100,
+  //   sort: [{ field: 'title', direction: 'asc' }],
+  //   flterByFormula: `({series} = "${series}")`,
+  // };
+
+  
+useEffect(() => {
+  const lastName = 'du Maurier';
+      const filteredBooks = items
+        ? items.filter(item => item.fields.lastName === lastName)
+        : [];
+      return filteredBooks,
+      console.log(filteredBooks)
+}, [items])
+
 
   return (
     <DetailsPageTemplate>
@@ -30,6 +68,18 @@ const DetailsPage = pageContext => {
       ) : (
         <>
           <CardBig itemData={itemData} />
+          {pageContext.pageContext === 'books' ? (
+            <Header>Other books in this series</Header>
+          ) : pageContext.pageContext === 'authors' ? (
+            <Header>All books by this author</Header>
+          ) : null}
+          <StyledGrid>
+            {/* {pageContext === 'books' ? (
+              <GetData dataBook={data} />
+            ) : pageContext === 'authors' ? ( */}
+            <GetData data={data} />
+            {/* ) : null} */}
+          </StyledGrid>
           <StyledButton
             onClick={() => {
               history.goBack();
