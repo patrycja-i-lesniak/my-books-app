@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Formik, ErrorMessage } from 'formik';
 import PropTypes from 'prop-types';
-import { useHistory, useParams } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 import {
   bookValidationSchema,
@@ -27,17 +27,15 @@ import { Options } from './Options';
 import { base } from 'airtable/base';
 import { useFetchDetailsData } from 'customHooks';
 
-const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
-  const [popup, setPopup] = useState(false);
+const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
+  const [successPopup, setSuccessPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
   const [formValues, setFormValues] = useState('');
-
-  const { id } = useParams();
   const { itemData } = useFetchDetailsData(id);
   const savedData = itemData.fields;
 
   const handlePopupClose = () => {
-    setPopup(false);
+    setSuccessPopup(false);
     setErrorPopup(false);
     console.log('Close popup');
   };
@@ -140,7 +138,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
             const createRecord = async fields => {
               const createdRecord = await base(pageContext).create(fields);
               console.log('Succesful created the record');
-              setPopup(true);
+              setSuccessPopup(!successPopup);
             };
             createRecord(
               pageContext === 'books'
@@ -154,6 +152,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
               function (err, records) {
                 if (err) {
                   console.error(err);
+                  setErrorPopup(true)
                   return;
                 }
               };
@@ -161,7 +160,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
             const updateRecord = async (id, fields) => {
               const updatedRecord = await base(pageContext).update(id, fields);
               console.log('Succesfull updated the record');
-              setPopup(true);
+              setSuccessPopup(true);
             };
             updateRecord(
               id,
@@ -190,7 +189,7 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
                 handleReset={handleReset}
               />
             )}
-            {popup && (
+            {successPopup && (
               <SuccessPopup
                 handlePopupClose={handlePopupClose}
                 toggleNewItemSlider={toggleNewItemSlider}
@@ -429,6 +428,9 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider }) => {
           )}
           {id ? (
             <ButtonWrapper>
+              <Button secondary type="button" onClick={() => setFormValues(savedData)}>
+                Load saved data
+              </Button>
               <Button secondary type="button" onClick={() => setFormValues(savedData)}>
                 Load saved data
               </Button>

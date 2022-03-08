@@ -25,7 +25,7 @@ const NewItemSlider = ({ isVisible, pageContext, toggleNewItemSlider }) => {
           </StyledParagraph>
         </>
       )}
-      <NewItemForm toggleNewItemSlider={toggleNewItemSlider} />
+      <NewItemForm toggleNewItemSlider={toggleNewItemSlider} id={id}/>
       <CloseSliderButton type="button" onClick={toggleNewItemSlider}>
         <BsCaretRightFill />
       </CloseSliderButton>
