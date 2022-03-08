@@ -10,7 +10,6 @@ const useFetchDetailsData = id => {
         return;
       }
       setItemData(record);
-      console.log('Retrieved', record);
     });
   }, [id]);
   return {

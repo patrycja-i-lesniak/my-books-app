@@ -31,7 +31,7 @@ const useFetchData = data => {
           return;
         }
         setItems(records);
-        console.log(records);
+        // console.log(records);
         // records.forEach(function (record) {
         //   {
         //     console.log(record.get('lastName'));
