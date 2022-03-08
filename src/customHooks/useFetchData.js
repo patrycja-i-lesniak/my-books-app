@@ -13,18 +13,31 @@ const useFetchData = data => {
         sort: sort,
         filterByFormula: filterByFormula,
       })
-      .eachPage(
-        (records, fetchNextPage) => {
-          setItems(records);
-          // fetchNextPage();
-        },
-        function (err) {
-          if (err) {
-            console.error(err);
-            return;
-          }
-        },
-      );
+      // .eachPage(
+      //   (records, fetchNextPage) => {
+      //     setItems(records);
+      //     // fetchNextPage();
+      //   },
+      //   function (err) {
+      //     if (err) {
+      //       console.error(err);
+      //       return;
+      //     }
+      //   },
+      // );
+      .firstPage(function (err, records) {
+        if (err) {
+          console.error(err);
+          return;
+        }
+        setItems(records);
+        console.log(records);
+        // records.forEach(function (record) {
+        //   {
+        //     console.log(record.get('lastName'));
+        //   }
+        // });
+      });
     return () => {
       base;
     };
