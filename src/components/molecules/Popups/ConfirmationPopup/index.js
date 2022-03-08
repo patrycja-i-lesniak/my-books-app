@@ -15,7 +15,7 @@ const ConfirmationPopup = ({ handleDeleteFalse, id, pageContext }) => {
       base(pageContext).destroy(id, function (err, deleteItem) {
         if (err) {
           console.error(err);
-
+          console.log('Item has not been deleted')
           return;
         }
         return (
