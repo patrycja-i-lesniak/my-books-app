@@ -15,3 +15,4 @@ export const StyledGrid = styled.div`
       grid-template-columns: repeat(auto-fill, 340px);
     `}
 `;
+
