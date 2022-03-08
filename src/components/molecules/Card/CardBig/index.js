@@ -20,7 +20,7 @@ import {
   ExtraWrapper,
   ShowMore,
   ButtonContentWrapper,
-  StatusParagraph,
+  // StatusParagraph,
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
@@ -28,12 +28,12 @@ import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
-import { FiEdit, FiTrash } from 'react-icons/fi';
-import ReactTooltip from 'react-tooltip';
+// import { FiEdit, FiTrash } from 'react-icons/fi';
+// import ReactTooltip from 'react-tooltip';
 
 const CardBig = ({ itemData, pageContext }) => {
   const [showMore, setShowMore] = useState(false);
-  const [randomID, setRandomID] = useState(String(Math.random()));
+  // const [randomID, setRandomID] = useState(String(Math.random()));
   const [confirmationPopup, setConfirmationPopup] = useState({
     show: false,
     id: null,
