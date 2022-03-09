@@ -4,6 +4,8 @@ import { CardSmall } from 'components/molecules/Card/index';
 import { useFetchData } from 'customHooks';
 import withContext from 'hoc/withContext';
 import Loader from 'components/atoms/Loader';
+import LoaderSmall from 'components/atoms/LoaderSmall';
+
 import Error from 'components/atoms/Error';
 
 const GetData = ({ data, pageContext }) => {
@@ -11,8 +13,7 @@ const GetData = ({ data, pageContext }) => {
 
   return (
     <>
-      {items.status === 'loading' ? (
-        <Loader />
+      {items.status === 'loading' ? (pageContext === 'home' ? (<LoaderSmall/>) : (<Loader />)
       ) : items.status === 'error' ? (
         <Error reloadButton />
       ) : (
