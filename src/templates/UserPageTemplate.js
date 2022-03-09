@@ -10,8 +10,6 @@ import NewItemSlider from 'components/organisms/NewItemSlider';
 import { StyledBackdrop } from 'theme/GlobalStyle';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/icons/plus.svg';
-import { ImPlus } from 'react-icons/im';
-import { FiEdit } from 'react-icons/fi';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
@@ -26,7 +24,6 @@ const StyledButtonIcon = styled(ButtonIcon)`
 
 const UserPageTemplate = ({ children, pageContext }) => {
   const [isNewItemSliderVisible, setNewItemSliderVisible] = useState(false);
-  const { id } = useParams();
 
   const toggleNewItemSlider = () => {
     setNewItemSliderVisible(!isNewItemSliderVisible);
@@ -38,9 +35,7 @@ const UserPageTemplate = ({ children, pageContext }) => {
       {children}
       <NewItemSlider isVisible={isNewItemSliderVisible} toggleNewItemSlider={toggleNewItemSlider} />
       {pageContext === 'home' || isNewItemSliderVisible ? null : (
-        <StyledButtonIcon onClick={toggleNewItemSlider}>
-          {id ? <FiEdit /> : <ImPlus />}
-        </StyledButtonIcon>
+        <StyledButtonIcon onClick={toggleNewItemSlider} icon={plusIcon} />
       )}
       {isNewItemSliderVisible && <StyledBackdrop onClick={toggleNewItemSlider} />}
       <FooterNavigation />
