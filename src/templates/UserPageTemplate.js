@@ -1,15 +1,15 @@
+import React, { useState } from 'react';
+import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 import styled from 'styled-components';
-import { useState } from 'react';
-import { useParams } from 'react-router-dom';
 
-import { NavigationBar } from 'components/organisms/Navigation';
-import { FooterNavigation } from 'components/organisms/Navigation';
+import { FooterNavigation, NavigationBar } from 'components/organisms/Navigation';
 import withContext from 'hoc/withContext';
 import NewItemSlider from 'components/organisms/NewItemSlider';
 import { StyledBackdrop } from 'theme/GlobalStyle';
 import ButtonIcon from 'components/atoms/ButtonIcon/ButtonIcon';
 import plusIcon from 'assets/icons/plus.svg';
+import { ItemSliderProvider } from 'context/ItemSliderContext';
 
 const StyledButtonIcon = styled(ButtonIcon)`
   border-radius: 50%;
@@ -29,12 +29,14 @@ const UserPageTemplate = ({ children, pageContext }) => {
     setNewItemSliderVisible(!isNewItemSliderVisible);
   };
 
+  const { id } = useParams();
+
   return (
     <>
       <NavigationBar pageContext={pageContext} />
-      {children}
+      <ItemSliderProvider value={toggleNewItemSlider}>{children}</ItemSliderProvider>
       <NewItemSlider isVisible={isNewItemSliderVisible} toggleNewItemSlider={toggleNewItemSlider} />
-      {pageContext === 'home' || isNewItemSliderVisible ? null : (
+      {pageContext === 'home' || isNewItemSliderVisible || id ? null : (
         <StyledButtonIcon onClick={toggleNewItemSlider} icon={plusIcon} />
       )}
       {isNewItemSliderVisible && <StyledBackdrop onClick={toggleNewItemSlider} />}

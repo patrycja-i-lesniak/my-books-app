@@ -1,6 +1,7 @@
-import { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import ItemSliderContext from 'context/ItemSliderContext';
 
 import {
   StyledImage,
@@ -23,6 +24,7 @@ import {
   // StatusParagraph,
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
+import editIcon from 'assets/icons/editIcon.svg';
 import lcLogo from 'assets/icons/lcLogo.svg';
 import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
@@ -40,7 +42,6 @@ const CardBig = ({ itemData, pageContext }) => {
   });
 
   const id = itemData.id;
-
   const handleDelete = id => {
     setConfirmationPopup({
       show: true,
@@ -56,6 +57,8 @@ const CardBig = ({ itemData, pageContext }) => {
     });
     console.log('Close confirmation popup');
   };
+
+  const toggleNewItemSlider = useContext(ItemSliderContext);
 
   const {
     status,
@@ -149,6 +152,8 @@ const CardBig = ({ itemData, pageContext }) => {
                       />
                     ) : null}
                     <Icon icon={trashIcon} onClick={handleDelete} />
+
+                    <Icon icon={editIcon} onClick={toggleNewItemSlider} />
                   </ButtonsWrapper>
                 </div>
               </div>
