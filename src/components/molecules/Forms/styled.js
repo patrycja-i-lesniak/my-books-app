@@ -15,7 +15,7 @@ export const StyledForm = styled(Form)`
 `;
 
 export const InputField = styled(Field)`
-  color: ${({ theme }) => theme.colors.lipstick};
+  color: ${({ theme }) => theme.colors.grey};
   font-size: 1.5rem;
   border: none;
   line-height: 2.5;
@@ -46,7 +46,7 @@ export const InputField = styled(Field)`
       resize: none;
       outline: none;
       width: 100%;
-      font-weight: 400;
+      font-weight: 600;
     `}
 
   ${({ select }) =>
@@ -87,5 +87,5 @@ export const ButtonWrapper = styled.div`
   display: flex;
   justify-content: center;
   padding-top: 20px;
-  gap: 50px;
+  gap: 30px;
 `;

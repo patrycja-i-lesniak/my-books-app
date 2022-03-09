@@ -27,7 +27,7 @@ import { Options } from './Options';
 import { base } from 'airtable/base';
 import { useFetchDetailsData } from 'customHooks';
 
-const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
+const Form = ({ pageContext, toggleNewItemSlider, id }) => {
   const [successPopup, setSuccessPopup] = useState(false);
   const [errorPopup, setErrorPopup] = useState(false);
   const [formValues, setFormValues] = useState('');
@@ -431,9 +431,6 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
               <Button secondary type="button" onClick={() => setFormValues(savedData)}>
                 Load saved data
               </Button>
-              <Button secondary type="button" onClick={() => setFormValues(savedData)}>
-                Load saved data
-              </Button>
               <Button type="submit">Edit {pageContext && pageContext.slice(0, -1)}</Button>
             </ButtonWrapper>
           ) : (
@@ -447,10 +444,10 @@ const NewItemForm = ({ pageContext, toggleNewItemSlider, id }) => {
   );
 };
 
-NewItemForm.propTypes = {
+Form.propTypes = {
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
   toggleNewItemSlider: PropTypes.func,
   id: PropTypes.string,
 };
 
-export default withContext(NewItemForm);
+export default withContext(Form);

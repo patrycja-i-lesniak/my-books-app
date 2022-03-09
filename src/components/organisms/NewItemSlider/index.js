@@ -2,7 +2,7 @@ import { BsCaretRightFill } from 'react-icons/bs';
 import PropTypes from 'prop-types';
 import { useParams } from 'react-router-dom';
 import { StyledWrapper, StyledHeader, StyledParagraph, CloseSliderButton } from './styled';
-import NewItemForm from 'components/molecules/Forms/NewItemForm';
+import Form from 'components/molecules/Forms/Form';
 import withContext from 'hoc/withContext';
 
 const NewItemSlider = ({ isVisible, pageContext, toggleNewItemSlider }) => {
@@ -14,7 +14,7 @@ const NewItemSlider = ({ isVisible, pageContext, toggleNewItemSlider }) => {
         <>
           <StyledHeader secondary>Edit {pageContext && pageContext.slice(0, -1)}</StyledHeader>
           <StyledParagraph>
-            Load saved data or fill in all fields of the form and click the edit button.
+            <strong>Load saved data</strong> or fill in all fields of the form and click the <strong>edit</strong> button.
           </StyledParagraph>
         </>
       ) : (
@@ -25,7 +25,7 @@ const NewItemSlider = ({ isVisible, pageContext, toggleNewItemSlider }) => {
           </StyledParagraph>
         </>
       )}
-      <NewItemForm toggleNewItemSlider={toggleNewItemSlider} id={id}/>
+      <Form toggleNewItemSlider={toggleNewItemSlider} id={id} />
       <CloseSliderButton type="button" onClick={toggleNewItemSlider}>
         <BsCaretRightFill />
       </CloseSliderButton>
