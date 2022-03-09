@@ -44,7 +44,7 @@ export const StyledParagraph = styled(Paragraph)`
   padding: 5px 0;
   text-align: center;
   font-size: 1.7rem;
-  color: ${({theme}) => theme.colors.lipstick}
+  color: ${({theme}) => theme.colors.lipstick};
 `;
 
 export const CloseSliderButton = styled(Button)`
