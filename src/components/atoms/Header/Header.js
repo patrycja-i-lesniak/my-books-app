@@ -11,7 +11,7 @@ const Header = styled.h1`
   ${({ secondary }) =>
     secondary &&
     css`
-      color: ${({ theme }) => theme.colors.gray};
+      color: ${({ theme }) => theme.colors.grey};
       font-size: 2.6rem;
       margin: 3rem 0;
     `};
