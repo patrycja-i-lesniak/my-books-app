@@ -6,6 +6,8 @@ const useFetchData = data => {
   const { table, pageSize, sort, filterByFormula } = data;
 
   useEffect(() => {
+    // let isBaseSubscribed = true;
+    // if (isBaseSubscribed) {
     base(`${table}`)
       .select({
         view: 'Grid view',
@@ -13,39 +15,21 @@ const useFetchData = data => {
         sort: sort,
         filterByFormula: filterByFormula,
       })
-      // .eachPage(
-      //   (records, fetchNextPage) => {
-      //     setItems(records);
-      //     // fetchNextPage();
-      //   },
-      //   function (err) {
-      //     if (err) {
-      //       console.error(err);
-      //       return;
-      //     }
-      //   },
-      // );
       .firstPage(function (err, records) {
         if (err) {
           console.error(err);
           return;
         }
         setItems(records);
-        // console.log(records);
-        // records.forEach(function (record) {
-        //   {
-        //     console.log(record.get('lastName'));
-        //   }
-        // });
       });
-    return () => {
-      base;
-    };
+    // }
+    // return () => {
+    //  isBaseSubscribed = false;
+    // };
   }, [pageSize, sort, table, filterByFormula]);
 
   return {
     items,
-    setItems,
   };
 };
 
