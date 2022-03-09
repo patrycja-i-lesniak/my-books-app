@@ -1,5 +1,15 @@
 import styled, { keyframes } from 'styled-components';
 
+export const Centred = styled.div`
+  /* width: 400px; */
+  /* height: 400px; */
+  margin: 150px auto 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+`;
+
 const rotateRightAnimation = keyframes`
   0% {transform: rotate(0deg);}
   100% {transform: rotate(360deg);}

@@ -1,13 +1,20 @@
 import PropTypes from 'prop-types';
-import { LoaderContainer, Load, StyledParagraph } from './styled.js';
+import { LoaderContainer, Load, StyledParagraph, Centred } from './styled.js';
 import Header from 'components/atoms/Header/Header';
+import withContext from 'hoc/withContext';
 
-const LoaderSmall = () => (
-  <LoaderContainer>
-    <Header secondary>Loading data...</Header>
-    <StyledParagraph>Please wait...</StyledParagraph>
-    <Load />
-  </LoaderContainer>
+const LoaderSmall = ({pageContext}) => (
+  <Centred>
+    <LoaderContainer>
+      <Header secondary>Loading {pageContext} data...</Header>
+      <StyledParagraph>Please wait...</StyledParagraph>
+      <Load />
+    </LoaderContainer>
+  </Centred>
 );
 
-export default LoaderSmall;
+LoaderSmall.propTypes = {
+  pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
+};
+
+export default withContext(LoaderSmall);
