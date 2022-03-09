@@ -4,6 +4,8 @@ import './styles.css';
 import GridTemplate from 'templates/GridTemplate';
 import { useFetchData } from 'customHooks';
 import { QuoteCardSmall } from 'components/molecules/Card/index';
+import LoaderSmall from 'components/atoms/LoaderSmall';
+import Error from 'components/atoms/Error';
 
 const Quotes = () => {
   const data = {
@@ -23,6 +25,12 @@ const Quotes = () => {
 
   return (
     <GridTemplate pageType="quotes">
+      {items.status === 'loading' ? (
+        <LoaderSmall />
+      ) : items.status === 'error' ? (
+        <Error reloadButton />
+      ) :  (
+        <>
       <Masonry
         breakpointCols={breakpointColumnsObj}
         className="my-masonry-grid"
@@ -32,6 +40,7 @@ const Quotes = () => {
           <QuoteCardSmall item={item} key={item.id} />
         ))}
       </Masonry>
+      </> )}
     </GridTemplate>
   );
 };
