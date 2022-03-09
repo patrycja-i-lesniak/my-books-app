@@ -15,6 +15,7 @@ const animationRight = keyframes`
 export const Centred = styled.div`
   width: 400px;
   height: 400px;
+  margin: 200px auto;
   position: absolute;
   top: 50%;
   left: 50%;
