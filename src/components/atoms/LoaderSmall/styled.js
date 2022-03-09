@@ -13,8 +13,8 @@ const rotateLeftAnimation = keyframes`
 export const LoaderContainer = styled.div`
   margin: 0 auto;
   padding: 40px 0;
-  min-height: 30vh;
   max-width: 400px;
+  max-height: 400px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -43,4 +43,9 @@ export const Load = styled.div`
     /* border-left: 10px solid transparent; */
     animation: ${rotateRightAnimation} 1s linear infinite;
   }
+`;
+export const StyledParagraph = styled.p`
+  font-size: 2rem;
+  text-align: center;
+  color: ${({ theme }) => theme.colors.grey};
 `;
