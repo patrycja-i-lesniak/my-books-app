@@ -4,8 +4,8 @@ import Header from 'components/atoms/Header/Header';
 
 const LoaderSmall = () => (
   <LoaderContainer>
-    <Header>Loading data...</Header>
-    <StyledParagraph>Please wait.</StyledParagraph>
+    <Header secondary>Loading data...</Header>
+    <StyledParagraph>Please wait...</StyledParagraph>
     <Load />
   </LoaderContainer>
 );
