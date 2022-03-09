@@ -5,6 +5,7 @@ import styled from 'styled-components';
 
 import DetailsPageTemplate from 'templates/DetailsPageTemplate';
 import Loader from 'components/atoms/Loader';
+import LoaderSmall from 'components/atoms/LoaderSmall';
 import Error from 'components/atoms/Error';
 import { CardBig, CardSmall } from 'components/molecules/Card';
 import Button from 'components/atoms/Button/Button';
@@ -19,12 +20,10 @@ const StyledButton = styled(Button)`
   margin: 20px 0;
 `;
 
-const DetailsPage = (pageContext) => {
+const DetailsPage = pageContext => {
   const { id } = useParams();
   const { itemData } = useFetchDetailsData(id);
   const history = useHistory();
-
- 
 
   // const {lastName} = itemData.fields;
 
@@ -32,10 +31,10 @@ const DetailsPage = (pageContext) => {
     table: 'books',
     pageSize: 100,
     sort: [{ field: 'title', direction: 'asc' }],
-    filterByFormula: ''
+    filterByFormula: '',
     // '({lastName} = "${lastName}")',
   };
-const {items} = useFetchData(data) ;
+  // const { items } = useFetchData(data);
 
   //"${lastName}"
   // console.log(lastName)
@@ -48,21 +47,17 @@ const {items} = useFetchData(data) ;
   //   flterByFormula: `({series} = "${series}")`,
   // };
 
-  
-useEffect(() => {
-  const lastName = 'du Maurier';
-      const filteredBooks = items
-        ? items.filter(item => item.fields.lastName === lastName)
-        : [];
-      return filteredBooks,
-      console.log(filteredBooks)
-}, [items])
+  // useEffect(()=> {
+  //  const lastName = 'du Maurier';
+  //   const filteredBooks = items ? items.filter(item => item.fields.lastName === lastName) : [];
 
+  //   return () => { filteredBooks};
+  // }, [items]);
 
   return (
     <DetailsPageTemplate>
       {itemData.status === 'loading' ? (
-        <Loader />
+        <LoaderSmall />
       ) : itemData.status === 'error' ? (
         <Error reloadButton />
       ) : (
@@ -73,13 +68,10 @@ useEffect(() => {
           ) : pageContext.pageContext === 'authors' ? (
             <Header>All books by this author</Header>
           ) : null}
+          <p>Tu będzie przefiltrowana lista książek</p>
           <StyledGrid>
-            {/* {pageContext === 'books' ? (
-              <GetData dataBook={data} />
-            ) : pageContext === 'authors' ? ( */}
-            <GetData data={data} />
-            {/* ) : null} */}
-          </StyledGrid>
+            {/* <FilteredBooks/> */}
+            </StyledGrid>
           <StyledButton
             onClick={() => {
               history.goBack();
