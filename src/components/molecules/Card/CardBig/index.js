@@ -41,7 +41,8 @@ const CardBig = ({ itemData, pageContext }) => {
     id: null,
   });
 
-  const id = itemData.id;
+  const { id } = itemData;
+
   const handleDelete = id => {
     setConfirmationPopup({
       show: true,
@@ -188,6 +189,10 @@ CardBig.propTypes = {
   handleDelete: PropTypes.func,
   handleCloseEdit: PropTypes.func,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
+};
+
+CardBig.defaultProps = {
+  pageContext: '',
 };
 
 export default withContext(CardBig);
