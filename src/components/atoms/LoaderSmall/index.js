@@ -6,7 +6,7 @@ import withContext from 'hoc/withContext';
 const LoaderSmall = ({pageContext}) => (
   <Centred>
     <LoaderContainer>
-      <Header secondary>Loading {pageContext} data...</Header>
+      <Header secondary> {pageContext === 'home' ? 'Loading last added books' : `Loading ${pageContext} data...`}</Header>
       <StyledParagraph>Please wait...</StyledParagraph>
       <Load />
     </LoaderContainer>
