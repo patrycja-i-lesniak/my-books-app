@@ -1,16 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg width="100%" height="100%" viewBox="0 0 175 176" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;">
-    <g transform="matrix(1,0,0,1,-648.492,-1311.95)">
-        <g transform="matrix(1,0,0,1,-224.508,-12)">
-            <g transform="matrix(1,0,0,1,-3.79543,-6)">
-                <circle cx="963" cy="1490" r="15" style="fill:rgb(255,0,102);"/>
-            </g>
-            <path d="M873,1354L908,1354L939,1463L1024,1463L1048,1377C1048,1377 1035.83,1376.96 1025,1377C1024.88,1393.64 1025.46,1422.01 1018.23,1423.01C993.075,1423.29 968.502,1422.92 953,1423C934.732,1423.1 936.979,1394.33 937,1376C930.485,1375.92 921,1376 921,1376L912,1348L873,1348L873,1354Z" style="fill:rgb(255,0,102);"/>
-            <path d="M1018.21,1324C1018.23,1351.51 1018.23,1398.52 1018.21,1417C999.704,1416.96 956.987,1417.04 952,1417C943.279,1414.04 944.305,1407.15 944.205,1407C944.186,1393.13 944.216,1347.1 944.205,1333C946.331,1324.27 954,1324 954,1324C954,1324 1014.88,1323.9 1018.21,1324ZM957.092,1410.76L1012.21,1410.76L1012.21,1397L957.092,1397C953.295,1397 950.212,1400.08 950.212,1403.88C950.212,1407.68 953.295,1410.76 957.092,1410.76Z" style="fill:rgb(255,0,102);"/>
-            <g transform="matrix(1,0,0,1,40.2046,-6)">
-                <circle cx="963" cy="1490" r="15" style="fill:rgb(255,0,102);"/>
-            </g>
-        </g>
-    </g>
-</svg>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd"><svg width="100%" height="100%" viewBox="0 0 75 76" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xml:space="preserve" xmlns:serif="http://www.serif.com/" style="fill-rule:evenodd;clip-rule:evenodd;stroke-linejoin:round;stroke-miterlimit:2;"><g><g><g><circle cx="36.945" cy="68.593" r="6.429" style="fill:#f06;"/></g><path d="M0,12.879l15,-0l13.286,46.714l36.428,-0l10.286,-36.857c0,-0 -5.216,-0.017 -9.857,-0c-0.052,7.131 0.197,19.29 -2.902,19.718c-10.78,0.12 -21.312,-0.038 -27.955,-0.004c-7.829,0.043 -6.866,-12.287 -6.857,-20.143c-2.793,-0.034 -6.858,0 -6.858,0l-3.857,-12l-16.714,0l-0,2.572Z" style="fill:#f06;"/><path d="M62.233,0.021c0.008,11.79 0.008,31.938 -0,39.858c-7.931,-0.018 -26.239,0.017 -28.376,-0c-3.737,-1.269 -3.298,-4.222 -3.341,-4.286c-0.008,-5.944 0.005,-25.672 0,-31.714c0.912,-3.742 4.198,-3.858 4.198,-3.858c0,0 26.092,-0.042 27.519,0Zm-26.194,37.183l23.622,0l0,-5.897l-23.622,0c-1.627,0 -2.948,1.32 -2.948,2.949c-0,1.628 1.321,2.948 2.948,2.948Z" style="fill:#f06;"/><g><circle cx="55.802" cy="68.593" r="6.429" style="fill:#f06;"/></g></g></g></svg>

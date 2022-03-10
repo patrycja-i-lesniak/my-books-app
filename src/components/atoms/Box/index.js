@@ -1,11 +1,14 @@
 import './styled.css';
 import PropTypes from 'prop-types';
 
-const Box = ({ header, content }) => (
+const Box = ({ header, content, icon }) => (
   <article className="article">
     <div className="boxFront">
       <div className="text">
-        <h1>{header}</h1>
+        <div className="flex">
+          <img src={icon} />
+          <h1>{header}</h1>
+        </div>
       </div>
     </div>
     <div className="boxBack">
@@ -19,6 +22,7 @@ const Box = ({ header, content }) => (
 Box.propTypes = {
   header: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
+  icon: PropTypes.object.isRequired,
 };
 
 export default Box;
