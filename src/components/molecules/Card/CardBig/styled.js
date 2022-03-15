@@ -72,6 +72,7 @@ export const StyledTitle = styled(Header)`
   font-size: 3rem;
   text-align: left;
   margin: 0;
+  padding-top: 0px;
   @media (max-width: ${({ theme }) => theme.breakpoints.medium}px) {
     text-align: center;
   }
