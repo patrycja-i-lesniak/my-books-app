@@ -1,8 +1,6 @@
 import styled, { keyframes } from 'styled-components';
 
 export const Centred = styled.div`
-  /* width: 400px; */
-  /* height: 400px; */
   margin: 150px auto 0;
   position: absolute;
   top: 50%;
@@ -34,10 +32,10 @@ export const LoaderContainer = styled.div`
 export const Load = styled.div`
   & {
     position: relative;
-    width: 90px;
-    height: 90px;
+    min-width: 90px;
+    min-height: 90px;
     border-radius: 50%;
-    border: 10px solid  ${({ theme }) => theme.colors.lipstick};;
+    border: 10px solid ${({ theme }) => theme.colors.lipstick};
     /* border-top: 15px solid transparent; */
     /* border-bottom: 15px solid transparen}; */
     animation: ${rotateLeftAnimation} 1.5s linear infinite;
