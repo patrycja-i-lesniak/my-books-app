@@ -20,39 +20,24 @@ const StyledButton = styled(Button)`
   margin: 20px 0;
 `;
 
-const DetailsPage = pageContext => {
+const DetailsPage = ({ pageContext }) => {
+  const history = useHistory();
   const { id } = useParams();
   const { itemData } = useFetchDetailsData(id);
-  const history = useHistory();
 
-  // const {lastName} = itemData.fields;
-
-  const data = {
+  const authorsData = {
     table: 'books',
-    pageSize: 100,
+    pageSize: 20,
     sort: [{ field: 'title', direction: 'asc' }],
-    filterByFormula: '',
-    // '({lastName} = "${lastName}")',
+    filterByFormula: `( {lastName} = "${itemData.fields?.lastName}")`,
   };
-  // const { items } = useFetchData(data);
 
-  //"${lastName}"
-  // console.log(lastName)
-  // const series  = itemData.series;
-
-  // const dataBook = {
-  //   table: 'books',
-  //   pageSize: 100,
-  //   sort: [{ field: 'title', direction: 'asc' }],
-  //   flterByFormula: `({series} = "${series}")`,
-  // };
-
-  // useEffect(()=> {
-  //  const lastName = 'du Maurier';
-  //   const filteredBooks = items ? items.filter(item => item.fields.lastName === lastName) : [];
-
-  //   return () => { filteredBooks};
-  // }, [items]);
+  const seriesData = {
+    table: 'books',
+    pageSize: 30,
+    sort: [{ field: 'date', direction: 'desc' }],
+    filterByFormula: `( {series} = "${itemData.fields?.series}")`,
+  };
 
   return (
     <DetailsPageTemplate>
@@ -63,15 +48,18 @@ const DetailsPage = pageContext => {
       ) : (
         <>
           <CardBig itemData={itemData} />
-          {pageContext.pageContext === 'books' ? (
-            <Header>Other books in this series</Header>
-          ) : pageContext.pageContext === 'authors' ? (
+          {pageContext === 'books' ? (
+            <Header details>All books in series - {itemData.fields?.series}</Header>
+          ) : pageContext === 'authors' ? (
             <Header>All books by this author</Header>
           ) : null}
-          <p>Tu będzie przefiltrowana lista książek</p>
           <StyledGrid>
-            {/* <FilteredBooks/> */}
-            </StyledGrid>
+            {pageContext === 'authors' ? (
+              <GetData data={authorsData} />
+            ) : (
+              <GetData data={seriesData} />
+            )}
+          </StyledGrid>
           <StyledButton
             onClick={() => {
               history.goBack();
