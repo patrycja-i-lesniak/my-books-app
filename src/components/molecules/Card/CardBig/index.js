@@ -21,7 +21,6 @@ import {
   ExtraWrapper,
   ShowMore,
   ButtonContentWrapper,
-  // StatusParagraph,
 } from './styled';
 import trashIcon from 'assets/icons/trash.svg';
 import editIcon from 'assets/icons/editIcon.svg';
@@ -30,7 +29,6 @@ import linkIcon from 'assets/icons/link.svg';
 import { Arrow } from 'components/atoms/Arrow';
 import ConfirmationPopup from 'components/molecules/Popups/ConfirmationPopup';
 import withContext from 'hoc/withContext';
-// import { FiEdit, FiTrash } from 'react-icons/fi';
 // import ReactTooltip from 'react-tooltip';
 
 const CardBig = ({ itemData, pageContext }) => {
@@ -189,10 +187,6 @@ CardBig.propTypes = {
   handleDelete: PropTypes.func,
   handleCloseEdit: PropTypes.func,
   pageContext: PropTypes.oneOf(['home', 'books', 'authors', 'notes', 'quotes']),
-};
-
-CardBig.defaultProps = {
-  pageContext: '',
 };
 
 export default withContext(CardBig);
