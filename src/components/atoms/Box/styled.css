@@ -5,15 +5,14 @@
 }
 
 img {
-	height: 75px;
 	width: 75px;
+	height: 75px;
 }
 
 p {
 	line-height: 1.5;
 	font-size: 1.3rem;
 }
-
 
 .boxFront h1 {
 	font-size: 2.5rem;
@@ -116,6 +115,7 @@ article:hover .boxBack .text {
 article:nth-child(1) .boxFront {
 	background-image: url(assets/images/book1.jpg);
 	height: 100%;
+
 }
 
 article:nth-child(2) .boxFront {
@@ -125,4 +125,3 @@ article:nth-child(2) .boxFront {
 article:nth-child(3) .boxFront {
 	background-image: url(assets/images/book3.jpg);
 }
-

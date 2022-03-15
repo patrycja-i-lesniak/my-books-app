@@ -22,7 +22,7 @@ const Box = ({ header, content, icon }) => (
 Box.propTypes = {
   header: PropTypes.string.isRequired,
   content: PropTypes.string.isRequired,
-  icon: PropTypes.object.isRequired,
+  icon: PropTypes.string.isRequired,
 };
 
 export default Box;
