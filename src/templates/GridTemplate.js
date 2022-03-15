@@ -13,10 +13,16 @@ import { StyledGrid } from 'components/atoms/StyledGrid';
 
 const GridTemplate = ({ children, pageContext }) => (
   <UserPageTemplate>
-    {/* <Container> */}
-      {pageContext === 'home' ? null : (
-        <Header>{capitalizeFirstLetter(pageContext)}</Header>
-      )}
+    <Container>
+      
+      {pageContext === 'home' ? (
+      <>
+      <QuotesBox />
+      <RotaryBox />
+        <Header details>Last added books</Header> 
+        </>
+      )
+       : <Header>{capitalizeFirstLetter(pageContext)}</Header>}
       {pageContext === 'notes' ? (
         <StyledGrid notes>{children}</StyledGrid>
       ) : pageContext === 'quotes' ? (
@@ -24,7 +30,7 @@ const GridTemplate = ({ children, pageContext }) => (
       ) : (
         <StyledGrid>{children}</StyledGrid>
       )}
-    {/* </Container> */}
+    </Container>
   </UserPageTemplate>
 );
 
