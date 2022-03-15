@@ -7,6 +7,7 @@ const Header = styled.h1`
   text-align: center;
   text-shadow: ${({ theme }) => theme.shadows.textShadow};
   line-height: 1.3;
+  padding-top: 100px;
 
   ${({ secondary }) =>
     secondary &&
@@ -14,6 +15,11 @@ const Header = styled.h1`
       color: ${({ theme }) => theme.colors.grey};
       font-size: 2.6rem;
       margin: 3rem 0;
+    `};
+  ${({ details }) =>
+    details &&
+    css`
+    padding-top: 20px;
     `};
 `;
 
