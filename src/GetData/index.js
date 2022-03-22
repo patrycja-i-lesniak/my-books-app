@@ -16,9 +16,12 @@ const GetData = ({ data }) => {
       ) : items.status === 'error' ? (
         <Error reloadButton />
       ) : (
-        <>{items && items.map(item => <CardSmall item={item} key={item.id} />)}</>
+        <>
+          {items &&
+            items.map(item => <CardSmall item={item} key={item.id} />)}
+        </>
       )}
-    </>
+      </>
   );
 };
 
