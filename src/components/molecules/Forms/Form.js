@@ -40,6 +40,11 @@ const Form = ({ pageContext, toggleNewItemSlider, id }) => {
     console.log('Close popup');
   };
 
+  // const handleOpenSuccessPopup = () => {
+  //   setSuccessPopup(true);
+  //   console.log('Open Success popup');
+  // };
+
   const endpoint = `/${pageContext}`;
   const history = useHistory();
 
@@ -52,7 +57,7 @@ const Form = ({ pageContext, toggleNewItemSlider, id }) => {
 
   // VER. 2
 
-  const UseRefresh = () => {
+  const useRefresh = () => {
     let handler;
     const refresh = () => {
       history.push('/');
@@ -65,7 +70,7 @@ const Form = ({ pageContext, toggleNewItemSlider, id }) => {
     return refresh;
   };
 
-  const refresh = UseRefresh(history, endpoint);
+  const refresh = useRefresh(history, endpoint);
 
   const handleSuccess = () => {
     if (history.location.pathname === endpoint) {
@@ -137,8 +142,8 @@ const Form = ({ pageContext, toggleNewItemSlider, id }) => {
           if (!id) {
             const createRecord = async fields => {
               const createdRecord = await base(pageContext).create(fields);
-              console.log('Succesful created the record');
               setSuccessPopup(true);
+              console.log('Succesful created the record');
             };
             createRecord(
               pageContext === 'books'
