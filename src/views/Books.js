@@ -1,19 +1,19 @@
 import GridTemplate from 'templates/GridTemplate';
-import GetData  from 'GetData';
+import GetData from 'GetData';
 
 const Books = () => {
-  const data = {
-    table: 'books',
-    pageSize: 100,
-    sort: [{ field: 'title', direction: 'asc' }],
-    filterByFormula: '',
-  };
+	const data = {
+		table: 'books',
+		pageSize: 100,
+		sort: [ { field: 'title', direction: 'asc' } ],
+		filterByFormula: ''
+	};
 
-  return (
-    <GridTemplate pageType="books">
-      <GetData data={data} />
-    </GridTemplate>
-  );
+	return (
+		<GridTemplate pageType="books">
+			<GetData data={data} />
+		</GridTemplate>
+	);
 };
 
 export default Books;
