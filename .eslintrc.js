@@ -11,13 +11,13 @@ module.exports = {
 		//'eslint:recommended'
 	],
 
+	parser: 'babel-eslint',
 	parserOptions: {
+		ecmaVersion: 2017,
+		sourceType: 'module',
 		ecmaFeatures: {
 			jsx: true
-		},
-		ecmaVersion: 12,
-
-		sourceType: 'module'
+		}
 	},
 	globals: {
 		MyGlobal: true,
