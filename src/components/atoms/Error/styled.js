@@ -3,20 +3,19 @@ import Header from '../Header/Header';
 import { NavLink } from 'react-router-dom';
 
 export const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 200px auto;
-  align-items: center;
-  justify-content: center;
-
+	display: flex;
+	flex-direction: column;
+	margin: 200px auto;
+	align-items: center;
+	justify-content: center;
 `;
 
 export const ErrorIcon = styled.img`
-  width: 100px;
-  margin-bottom: 5rem;
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    width: 80px;
-  }
+	width: 100px;
+	margin-bottom: 5rem;
+	@media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+		width: 80px;
+	}
 `;
 
 export const Title = styled(Header)`
@@ -29,15 +28,15 @@ export const Title = styled(Header)`
   }
 `;
 export const Subtitle = styled.p`
-  font-size: 2rem;
-  color: ${({ theme }) => theme.colors.grey};
-  text-align: center;
-  padding-bottom: 5rem;
+	font-size: 2rem;
+	color: ${({ theme }) => theme.colors.grey};
+	text-align: center;
+	padding-bottom: 5rem;
 
-  @media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
-    font-size: 1.6rem;
-    padding-bottom: 3rem;
-  }
+	@media (max-width: ${({ theme }) => theme.breakpoints.small}px) {
+		font-size: 1.6rem;
+		padding-bottom: 3rem;
+	}
 `;
 
 export const StyledNavLink = styled(NavLink)`
