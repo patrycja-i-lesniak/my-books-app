@@ -12,7 +12,7 @@ I'm currently working on:
 
 ## Demo
 
-![MyBookApp](https://patrycja-i-lesniak.github.io/my-books-app/)
+[MyBookApp](https://patrycja-i-lesniak.github.io/my-books-app/)
 
 ![MyBooksAppHomePage](src/assets/images/my-books-app.jpg)
 
