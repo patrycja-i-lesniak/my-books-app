@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/my-books-app/static/css/main.31b8123c.chunk.css",
-    "main.js": "/my-books-app/static/js/main.10ab2dc5.chunk.js",
-    "main.js.map": "/my-books-app/static/js/main.10ab2dc5.chunk.js.map",
+    "main.js": "/my-books-app/static/js/main.26d0e264.chunk.js",
+    "main.js.map": "/my-books-app/static/js/main.26d0e264.chunk.js.map",
     "runtime-main.js": "/my-books-app/static/js/runtime-main.2990649e.js",
     "runtime-main.js.map": "/my-books-app/static/js/runtime-main.2990649e.js.map",
-    "static/js/2.902a06d9.chunk.js": "/my-books-app/static/js/2.902a06d9.chunk.js",
-    "static/js/2.902a06d9.chunk.js.map": "/my-books-app/static/js/2.902a06d9.chunk.js.map",
+    "static/js/2.5b5aa297.chunk.js": "/my-books-app/static/js/2.5b5aa297.chunk.js",
+    "static/js/2.5b5aa297.chunk.js.map": "/my-books-app/static/js/2.5b5aa297.chunk.js.map",
     "index.html": "/my-books-app/index.html",
     "static/css/main.31b8123c.chunk.css.map": "/my-books-app/static/css/main.31b8123c.chunk.css.map",
-    "static/js/2.902a06d9.chunk.js.LICENSE.txt": "/my-books-app/static/js/2.902a06d9.chunk.js.LICENSE.txt",
+    "static/js/2.5b5aa297.chunk.js.LICENSE.txt": "/my-books-app/static/js/2.5b5aa297.chunk.js.LICENSE.txt",
     "static/media/background.06d094c3.jpg": "/my-books-app/static/media/background.06d094c3.jpg",
     "static/media/backgroundPattern.c1ddb424.jpg": "/my-books-app/static/media/backgroundPattern.c1ddb424.jpg",
     "static/media/styled.css": "/my-books-app/static/media/book3.6655dd05.jpg",
@@ -29,8 +29,8 @@
   },
   "entrypoints": [
     "static/js/runtime-main.2990649e.js",
-    "static/js/2.902a06d9.chunk.js",
+    "static/js/2.5b5aa297.chunk.js",
     "static/css/main.31b8123c.chunk.css",
-    "static/js/main.10ab2dc5.chunk.js"
+    "static/js/main.26d0e264.chunk.js"
   ]
 }
